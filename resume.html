@@ -10,6 +10,7 @@
         h1 {
             text-align: center;
             color: Tomato;
+            font-size: 3rem; /* Larger title */
         }
         .resume-container {
             display: flex;
@@ -17,10 +18,9 @@
             margin-top: 20px;
         }
         iframe {
-            width: 80%;
-            height: 600px;
-            border: 1px solid #ccc;
-            box-shadow: 2px 2px 10px #ddd;
+            width: 90%; /* Wider viewer */
+            height: 1000px; /* Taller viewer for a full PDF page */
+            border: 1px solid Ivory; /* Simple border */
         }
     </style>
 </head>
@@ -28,7 +28,7 @@
     <h1>Juliette's Resume</h1>
     <div class="resume-container">
         <!-- Update the `src` with the actual path to your PDF -->
-        <iframe src="JulietteMangonResume.pdf" width="100%" height="600px"></iframe>
+        <iframe src="JulietteMangonResume.pdf" width="100%" height="1000px"></iframe>
     </div>
 </body>
 </html>
