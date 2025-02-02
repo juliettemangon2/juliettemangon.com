@@ -1,131 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Juliette's Website</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        body {
-            background-color: LightYellow;
-            font-family: Georgia, serif;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            text-align: center;
-            color: Tomato;
-            font-size: 3rem;
-            margin-top: 20px;
-        }
-        h3 {
-            text-align: center;
-            color: #f25c75;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #252e59;
-            line-height: 1.5;
-        }
-        /* Container for the About Me section with fixed width */
-        .about-container {
-            display: flex;
-            width: 60%;
-            margin: 20px auto;
-            align-items: center;
-            box-sizing: border-box;
-        }
-        /* Photo on the left side: much smaller */
-        .about-photo {
-            flex: 0 0 auto;
-            margin-right: 20px;
-        }
-        .about-photo img {
-            width: 150px;  /* adjust this value for desired photo size */
-            height: auto;
-            display: block;
-        }
-        /* Text column next to the photo */
-        .about-text {
-            flex: 1;
-            padding: 15px;
-            background-color: Ivory;
-            border: 1px solid LavenderBlush;
-            text-align: center;
-            font-size: 1.5rem;
-            box-sizing: border-box;
-        }
-        /* Educational background section styling */
-        .educational-background {
-            width: 60%;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: Ivory;
-            border: 1px solid LavenderBlush;
-            text-align: center;
-            font-size: 1.5rem;
-            box-sizing: border-box;
-        }
-        /* Links styling */
-        .links {
-            margin-top: 30px;
-            text-align: center;
-        }
-        .links a {
-            display: inline-block;
-            margin: 15px;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: #252e59;
-            background-color: Ivory;
-            text-decoration: none;
-            border: 1px solid LavenderBlush;
-        }
-        .links a:hover {
-            background-color: Bisque;
-        }
-        /* Responsive: On smaller screens, stack the photo and text */
-        @media (max-width: 768px) {
-            .about-container {
-                flex-direction: column;
-                width: 90%;
-            }
-            .about-photo {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-        }
-    </style>
+  <title>Juliette's Website</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      background-color: LightYellow;
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: Tomato;
+      font-size: 3rem;
+      margin-top: 20px;
+    }
+    h3.about-title {
+      text-align: center;
+      color: #f25c75;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #252e59;
+      line-height: 1.5;
+    }
+    /* Container for the About Me section with fixed width */
+    .about-container {
+      display: flex;
+      width: 60%;
+      margin: 20px auto;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    /* Photo on the left side: slightly larger */
+    .about-photo {
+      flex: 0 0 auto;
+      margin-right: 20px;
+    }
+    .about-photo img {
+      width: 200px;  /* Increased picture size */
+      height: auto;
+      display: block;
+    }
+    /* Text column next to the photo */
+    .about-text {
+      flex: 1;
+      padding: 15px;
+      background-color: Ivory;
+      border: 1px solid LavenderBlush;
+      box-sizing: border-box;
+    }
+    /* Educational background section styling */
+    .educational-background {
+      width: 60%;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: Ivory;
+      border: 1px solid LavenderBlush;
+      text-align: center;
+      font-size: 1.5rem;
+      box-sizing: border-box;
+    }
+    /* Links styling */
+    .links {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .links a {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      color: #252e59;
+      background-color: Ivory;
+      text-decoration: none;
+      border: 1px solid LavenderBlush;
+    }
+    .links a:hover {
+      background-color: Bisque;
+    }
+    /* Responsive: On smaller screens, stack the photo and text */
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        width: 90%;
+      }
+      .about-photo {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Juliette Mangon</h1>
+  <h1>Juliette Mangon</h1>
 
-    <!-- About Me Section with Photo on the Left and Text on the Right -->
-    <h3>About Me</h3>
-    <div class="about-container">
-        <div class="about-photo">
-            <img src="juliette.jpeg" alt="Photo of Juliette">
-        </div>
-        <div class="about-text">
-            <p>
-                I am 20 years old and was raised in Lexington, MA but now live in New York City. I am very passionate about sustainability and climate change, and became vegetarian in 7th grade after learning about the meat industry's impact on the environment. In my free time I like to paint, draw, and explore different art mediums; acrylic painting has become my favorite.
-            </p>
-        </div>
+  <!-- About Me Section with Photo on the Left and Text on the Right -->
+  <div class="about-container">
+    <div class="about-photo">
+      <img src="juliette.jpeg" alt="Photo of Juliette">
     </div>
+    <div class="about-text">
+      <h3 class="about-title">About Me</h3>
+      <p>
+        I am 20 years old and was raised in Lexington, MA but now live in New York City. I am very passionate about sustainability and climate change, and became vegetarian in 7th grade after learning about the meat industry's impact on the environment. In my free time I like to paint, draw, and explore different art mediums; acrylic painting has become my favorite.
+      </p>
+    </div>
+  </div>
 
-    <!-- Educational Background Section -->
-    <h3>Educational Background</h3>
-    <div class="educational-background">
-        <p>
-            Hello! My name is Juliette Mangon. I am a student at New York University pursuing a Bachelor’s degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology, graduating in December 2025. I have always enjoyed math, and became just as passionate about computer science when I took my first programming class my sophomore year of high school. Despite my love for these subjects, I couldn't visualize an exact career path for myself given the vast range of fields available with this degree. After taking a course on media and entertainment industries last spring, I was pleasantly surprised—so much so that I decided to add my minor. Now, I am interested in exploring the more creative side of computer science, perhaps in media.
-        </p>
-    </div>
+  <!-- Educational Background Section -->
+  <h3 style="text-align:center; color:#f25c75; font-size:1.6rem; margin-bottom:10px;">Educational Background</h3>
+  <div class="educational-background">
+    <p>
+      Hello! My name is Juliette Mangon. I am a student at New York University pursuing a Bachelor’s degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology, graduating in December 2025. I have always enjoyed math, and became just as passionate about computer science when I took my first programming class my sophomore year of high school. Despite my love for these subjects, I couldn't visualize an exact career path for myself given the vast range of fields available with this degree. After taking a course on media and entertainment industries last spring, I was pleasantly surprised—so much so that I decided to add my minor. Now, I am interested in exploring the more creative side of computer science, perhaps in media.
+    </p>
+  </div>
 
-    <!-- Navigation Links -->
-    <div class="links">
-        <a href="resume.html">Check out my Resume</a>
-        <a href="art.html">Check out my Art</a>
-    </div>
+  <!-- Navigation Links -->
+  <div class="links">
+    <a href="resume.html">Check out my Resume</a>
+    <a href="art.html">Check out my Art</a>
+  </div>
 </body>
 </html>
 
