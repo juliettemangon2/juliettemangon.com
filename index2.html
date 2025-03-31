@@ -21,14 +21,17 @@
       color: Tomato;
       text-decoration: none;
     }
+
     /* About Me Section */
     .about-container {
       display: flex;
+      /* Ensures top edges line up */
       align-items: flex-start;
       width: 60%;
       margin: 20px auto;
       box-sizing: border-box;
     }
+
     /* Left column: Photo */
     .about-photo {
       flex: 0 0 auto;
@@ -39,6 +42,7 @@
       height: auto;
       display: block;
     }
+
     /* Right column: Contains Title and Text */
     .about-right {
       flex: 1;
@@ -46,20 +50,23 @@
       flex-direction: column;
       box-sizing: border-box;
     }
+
     /* "About Me" Title */
     .about-title {
-      text-align: center;
+      /* Remove extra margin/padding so it aligns closer to the image top */
+      margin: 0;
+      padding: 0;
+      text-align: left;
       color: #f25c75;
       font-size: 1.6rem;
-      margin: 0;
-      padding: 9px;
-      box-sizing: border-box;
     }
+
     /* About text: plain paragraphs */
     .about-text {
-      padding: 5px;
+      margin-top: 10px;  /* Some spacing below the title */
       font-size: 1.3rem;
     }
+
     /* Educational Background Section */
     .educational-background {
       width: 60%;
@@ -69,6 +76,7 @@
       font-size: 1.5rem;
       box-sizing: border-box;
     }
+
     /* Navigation Links: plain text links */
     .links {
       margin-top: 10px;
@@ -83,6 +91,7 @@
     .links a:hover {
       text-decoration: underline;
     }
+
     /* Responsive: On smaller screens, stack the photo and text vertically */
     @media (max-width: 768px) {
       .about-container {
@@ -99,6 +108,9 @@
       }
       .about-right {
         flex-direction: column;
+      }
+      .about-title {
+        text-align: center; /* Center the title on mobile if you prefer */
       }
     }
   </style>
