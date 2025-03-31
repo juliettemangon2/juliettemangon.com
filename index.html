@@ -1,152 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Juliette's Website</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <title>Mateo Photography</title>
+  <!-- If you'd like to use a specific font (e.g., Helvetica Neue), you can load it:
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@700&display=swap" rel="stylesheet">
+  -->
   <style>
-    body {
-      background-color: LightYellow;
-      font-family: Georgia, serif;
+    /* Basic page reset */
+    * {
       margin: 0;
       padding: 0;
-    }
-    h1 {
-      text-align: center;
-      color: Tomato;
-      font-size: 3rem;
-      margin-top: 20px;
-      /* Remove bottom margin to reduce space below the title */
-      margin-bottom: 10px;
-    }
-    /* About Me Section */
-    .about-container {
-      display: flex;
-      align-items: stretch; /* Ensure both columns stretch to the container's height */
-      width: 60%;
-      margin: 20px auto;
-      height: 400px; /* Fixed height so both sides match; adjust as needed */
       box-sizing: border-box;
     }
-    /* Left column: Photo */
-    .about-photo {
-      flex: 0 0 auto;
-      margin-right: 20px;
+
+    /* Page styling */
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      color: #000;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Approx. "Summer Meltdown" vibe */
+      position: relative;
     }
-    .about-photo img {
-      height: 100%; /* Fill the container's height */
-      width: auto;  /* Maintain aspect ratio */
-      display: block;
+
+    /* Left side links (Photo, Exhibits) */
+    .left-links {
+      position: absolute;
+      top: 20%;        /* Adjust to position vertically */
+      left: 5%;        /* Adjust spacing from left edge */
+      text-transform: uppercase;
+      font-weight: 700; 
+      font-size: 3rem; /* Adjust size as desired */
+      line-height: 1.3;
     }
-    /* Right column: Contains Title and Text Box */
-    .about-right {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-    }
-    /* "About Me" Title (outside the text box) */
-    .about-title {
-      text-align: center;
-      color: #f25c75;
-      font-size: 1.6rem;
-      margin: 0;
-      padding: 9px;  /* Some padding around the title */
-      border-bottom: none; /* So that the title and text box appear connected */
-      box-sizing: border-box;
-    }
-    /* Text Box (the rest of the right column) */
-    .about-text {
-      flex: 1;
-      padding: 10px;
-      background-color: Ivory;
-      border: 1px solid LavenderBlush;
-      box-sizing: border-box;
-      font-size: 1.3rem;
-      overflow: auto;
-    }
-    /* Educational Background Section */
-    .educational-background {
-      width: 60%;
-      margin: 20px auto;
-      padding: 15px;
-      background-color: Ivory;
-      border: 1px solid LavenderBlush;
-      text-align: center;
-      font-size: 1.5rem;
-      box-sizing: border-box;
-    }
-    /* Navigation Links */
-    .links {
-      margin-top: 10px; /* Reduced margin-top to decrease the space below the title */
-      text-align: center;
-    }
-    .links a {
-      display: inline-block;
-      margin: 5px;           /* Reduced margin around the buttons */
-      padding: 10px 20px;    /* Reduced padding for smaller buttons */
-      font-size: 1.3rem;     /* Slightly smaller font size */
-      color: #252e59;
-      background-color: Ivory;
+    .left-links a {
+      color: #000;
       text-decoration: none;
-      border: 1px solid LavenderBlush;
+      display: block;
+      margin-bottom: 0.75rem;
     }
-    .links a:hover {
-      background-color: Bisque;
+    .left-links a:hover {
+      text-decoration: underline;
     }
-    /* Responsive: On smaller screens, stack the photo and text vertically */
-    @media (max-width: 768px) {
-      .about-container {
-        flex-direction: column;
-        width: 90%;
-        height: auto; /* Let the height adjust naturally */
-      }
-      .about-photo {
-        margin-right: 0;
-        margin-bottom: 15px;
-      }
-      .about-photo img {
-        height: auto;
-        width: 100%;
-      }
-      .about-right {
-        flex-direction: column;
-      }
+
+    /* Bottom-right corner (Mateo, NYC, Info, Contact) */
+    .bottom-right {
+      position: absolute;
+      bottom: 5%;      /* Adjust spacing from bottom edge */
+      right: 5%;       /* Adjust spacing from right edge */
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: right; /* Align text to the right */
+    }
+    .bottom-right .mateo {
+      font-size: 4rem;  /* Biggest text for "Mateo" */
+      margin-bottom: 0.5rem;
+    }
+    .bottom-right .nyc {
+      font-size: 2rem;  /* Slightly smaller text for "New York City" */
+      margin-bottom: 2rem;
+    }
+    .bottom-right a {
+      font-size: 2rem;  /* Links for Information, Contact */
+      color: #000;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .bottom-right a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>Juliette Mangon</h1>
-   <!-- Navigation Links -->
-  <div class="links">
-    <a href="resume.html">Check out my Resume</a>
-    <a href="art.html">Check out my Art</a>
+
+  <!-- Left Side: Photo, Exhibits -->
+  <div class="left-links">
+    <a href="resume.html">Resume</a>
+    <a href="art.html">Artwork</a>
   </div>
 
-  <!-- About Me Section -->
-  <div class="about-container">
-    <div class="about-photo">
-      <img src="juliette.jpeg" alt="Photo of Juliette">
-    </div>
-    <div class="about-right">
-      <h3 class="about-title">About Me</h3>
-      <div class="about-text">
-        <p>
-          Hello! My name is Juliette Mangon. I am a 20-year-old originally from Lexington, MA, and I currently reside in New York City. I am deeply passionate about sustainability and climate change—a commitment that inspired me to adopt a vegetarian lifestyle in the seventh grade after learning about the environmental impact of the meat industry. In addition to my academic pursuits, I have a strong creative side; I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also enrich my perspective as I explore innovative solutions in my field.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Educational Background Section -->
-  <h3 style="text-align:center; color:#f25c75; font-size:1.6rem; margin-bottom:10px;">Educational Background</h3>
-  <div class="educational-background">
-    <p>
-      I am currently a student at New York University, pursuing a Bachelor’s degree in Computer Science and Mathematics, with a minor in Business of Entertainment, Media, and Technology, and I am set to graduate in December 2025. My passion for mathematics naturally led me to computer science, a field that captured my interest during my first programming course in high school. While I have always been drawn to the analytical and problem-solving aspects of these disciplines, I initially found it challenging to define a specific career path amidst the diverse opportunities available.
-
-A transformative course on media and entertainment last spring opened my eyes to the creative possibilities within the tech industry. This experience not only broadened my academic perspective but also resonated with my lifelong passion for painting and creative expression. As a result, I have become deeply interested in exploring the creative side of computer science, with a particular focus on forging a career in the media and entertainment industry. I am excited by the prospect of blending technical expertise with artistic creativity to innovate and redefine the way digital media is experienced and created.
+  <!-- Bottom Right: Mateo, NYC, Info, Contact -->
+  <div class="bottom-right">
+    <div class="mateo">Juliette Mangon</div>
+    <div class="nyc">new york city</div>
+    <a href="index2.html">information</a>
+    <a href="contact.html">contact</a>
   </div>
 
 </body>
 </html>
-
-
