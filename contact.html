@@ -37,6 +37,28 @@
     .sidebar a:hover {
       text-decoration: underline;
     }
+    .home-tab {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background-color: #f0f8ff;
+      border: 2px solid #12245e;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .home-tab a {
+      color: #12245e;
+      text-decoration: none;
+    }
+
+    .home-tab a:hover {
+      background-color: AliceBlue;
+    }
+
 
     .main {
       margin-left: 400px; /* Match sidebar width */
@@ -55,6 +77,10 @@
   </style>
 </head>
 <body>
+  <div class="home-tab">
+  <a href="index.html">← Back to Home</a>
+</div>
+
 
   <div class="sidebar">
     <!-- Optional sidebar content -->
