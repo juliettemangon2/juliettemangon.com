@@ -14,7 +14,9 @@
       background-color: AliceBlue;
       color: #12245e;
       display: flex;
+      height: 100vh; /* Ensure full height */
     }
+
     .sidebar {
       width: 400px;
       padding: 40px 20px;
@@ -26,33 +28,36 @@
       position: fixed;
       height: 100vh;
     }
+
     .sidebar a {
       color: #222;
       text-decoration: none;
     }
+
     .sidebar a:hover {
       text-decoration: underline;
     }
-    .main {
-      margin-left: 420px;
-      padding: 40px;
-      flex: 1;
 
+    .main {
+      margin-left: 400px; /* Match sidebar width */
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: center;   /* Vertically center */
+      align-items: center;       /* Horizontally center */
       text-align: center;
       height: 100vh;
     }
+
     .main h2 {
       margin-top: 0;
     }
   </style>
 </head>
 <body>
+
   <div class="sidebar">
-    <!-- You can add your navigation links here -->
+    <!-- Optional sidebar content -->
   </div>
 
   <div class="main">
@@ -60,5 +65,6 @@
     <p>Email: <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a></p>
     <p>Phone: <a href="tel:+17816288078">+1 (781) 628-8078</a></p>
   </div>
+
 </body>
 </html>
