@@ -16,27 +16,6 @@
       display: flex;
       height: 100vh; /* Ensure full height */
     }
-
-    .sidebar {
-      width: 400px;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 20px;
-      line-height: 1.6;
-      position: fixed;
-      height: 100vh;
-    }
-
-    .sidebar a {
-      color: #222;
-      text-decoration: none;
-    }
-
-    .sidebar a:hover {
-      text-decoration: underline;
-    }
     .home-tab {
       position: fixed;
       top: 20px;
@@ -61,15 +40,15 @@
 
 
     .main {
-      margin-left: 400px; /* Match sidebar width */
-      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;   /* Vertically center */
-      align-items: center;       /* Horizontally center */
+      justify-content: center;   /* vertical centering */
+      align-items: center;       /* horizontal centering */
       text-align: center;
-      height: 100vh;
+      height: 100vh;             /* full viewport height */
+      font-size: 30px;
     }
+
 
     .main h2 {
       margin-top: 0;
