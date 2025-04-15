@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
+
   <style>
-   
     * {
       margin: 0;
       padding: 0;
@@ -21,65 +20,63 @@
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
       position: relative;
     }
-    .left-links {
+
+    .name-block {
       position: absolute;
-      bottom: 5%;   
-      left: 5%;        /* Adjust spacing from left edge */
+      bottom: 20%;
+      right: 5%;
+      text-align: right;
       text-transform: uppercase;
-      font-weight: 700; 
-      font-size: 3rem; /* Adjust size as desired */
-      line-height: 1.3;
     }
-    .left-links a {
+
+    .name-block .mateo {
+      font-size: 3.2rem;
+      font-weight: 700;
+    }
+
+    .name-block .nyc {
+      font-size: 1.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .nav-links {
+      position: absolute;
+      bottom: 5%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5%;
+    }
+
+    .nav-links a {
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
       color: #12245e;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-    .left-links a:hover {
       text-decoration: none;
     }
 
-    .bottom-right {
-      position: absolute;
-      bottom: 5%;      /* Adjust spacing from bottom edge */
-      right: 5%;       /* Adjust spacing from right edge */
-      text-transform: uppercase;
-      font-weight: 700;
-      text-align: right; /* Align text to the right */
-    }
-    .bottom-right .mateo {
-      font-size: 4rem;  /* Biggest text for "Mateo" */
-      margin-bottom: 0.5rem;
-    }
-    .bottom-right .nyc {
-      font-size: 2rem;  /* Slightly smaller text for "New York City" */
-      margin-bottom: 2rem;
-    }
-    .bottom-right a {
-      font-size: 2rem; 
-      color: #12245e;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .bottom-right a:hover {
+    .nav-links a:hover {
       text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="left-links">
-    <a href="resume.html">Resume</a>
-    <a href="art.html">Artwork</a>
-  </div>
-
-  <div class="bottom-right">
+  <div class="name-block">
     <div class="mateo">Juliette Mangon</div>
     <div class="nyc">new york city</div>
-    <a href="index2.html">About Me</a>
-    <a href="contact.html">contact</a>
+  </div>
+
+  <div class="nav-links">
+    <div>
+      <a href="resume.html">Resume</a><br>
+      <a href="art.html">Artwork</a>
+    </div>
+    <div style="text-align: right;">
+      <a href="index2.html">About Me</a><br>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 
 </body>
