@@ -7,49 +7,49 @@
     body {
       background-color: #f8f8ff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
     }
 
     h1 {
       text-align: center;
       color: #12245e;
       font-size: 3rem;
+      margin-bottom: 40px;
     }
 
     .resume-container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
-    }
-    
-    iframe {
-      width: 100%;
-      height: 100vh;
-      border: none;
-      margin: 0;
-      padding: 0;
     }
 
+    iframe {
+      width: 80%;
+      height: 1000px;
+      border: none;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
     .home-tab {
       position: sticky;
       top: 0;
       background-color: #f8f8ff;
       padding: 12px 20px;
-      border-bottom: 2px solid #f8f8ff;
       font-size: 16px;
       font-weight: 600;
       z-index: 1000;
+      margin-bottom: 20px;
     }
 
     .home-tab a {
       color: #12245e;
       text-decoration: none;
     }
-    
+
     .home-tab a:hover {
       background-color: AliceBlue;
     }
-
   </style>
 </head>
 <body>
@@ -58,9 +58,9 @@
   </div>
 
   <h1>Juliette's Resume</h1>
-  <div class="resume-container">
-  <iframe src="JulietteMangonResume.pdf"></iframe>
-</div>
 
+  <div class="resume-container">
+    <iframe src="JulietteMangonResume.pdf"></iframe>
+  </div>
 </body>
 </html>
