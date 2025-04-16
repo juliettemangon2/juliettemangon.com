@@ -21,14 +21,20 @@
     .resume-container {
       display: flex;
       justify-content: center;
+      padding: 20px;
     }
 
-    iframe {
-      width: 80%;
-      height: 1000px;
-      border: none;
+    .resume-container img {
+      max-width: 100%;
+      height: auto;
       background-color: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      cursor: zoom-in;
+    }
+
+    .resume-container img:hover {
+      transform: scale(1.01);
     }
 
     .home-tab {
@@ -60,7 +66,9 @@
   <h1>Juliette's Resume</h1>
 
   <div class="resume-container">
-    <iframe src="JulietteMangonResume.pdf"></iframe>
+    <a href="JulietteMangonResume.png" target="_blank">
+      <img src="JulietteMangonResume.png" alt="Juliette's Resume">
+    </a>
   </div>
 </body>
 </html>
