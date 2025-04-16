@@ -8,11 +8,14 @@
     body {
       background-color: #f8f8ff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
     h1 {
       text-align: center;
       color: #12245e;
       font-size: 3rem;
+      margin-top: 20px;
     }
     .gallery {
       display: flex;
@@ -39,6 +42,11 @@
       height: auto;
       display: block;
       margin: 10px 0;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+    .art-item img:hover {
+      transform: scale(1.02);
     }
     .art-item p {
       margin-top: 10px;
@@ -62,6 +70,8 @@
     .home-tab a:hover {
       background-color: AliceBlue;
     }
+
+    /* Lightbox overlay */
     .lightbox {
       display: none;
       position: fixed;
@@ -81,59 +91,62 @@
   </style>
 </head>
 <body>
+
   <div class="home-tab">
     <a href="index.html">Back to Home</a>
   </div>
 
   <h1>Artwork</h1>
   <div class="gallery">
+    <!-- Repeat this block for each art-item -->
     <div class="art-item">
       <h3>Evening Cards</h3>
-      <img src="./images/cards.jpeg" alt="Cards">
+      <img src="./images/cards.jpeg" alt="Cards" data-full="./images/cards.jpeg">
       <p>Acrylic on 16" by 20" canvas</p>
     </div>
     <div class="art-item">
-      <h3>Italian Seaside</h3>
-      <img src="./images/mira.jpeg" alt="Italian Seaside">
+      <h3>Seaside, Cascais</h3>
+      <img src="./images/mira.jpeg" alt="Italian Seaside" data-full="./images/mira.jpeg">
       <p>Acrylic on 16" by 20" canvas</p>
     </div>
     <div class="art-item">
       <h3>Seaside Picnic</h3>
-      <img src="./images/picnic.jpeg" alt="Picnic">
+      <img src="./images/picnic.jpeg" alt="Picnic" data-full="./images/picnic.jpeg">
       <p>Acrylic on 16" by 20" canvas</p>
     </div>
     <div class="art-item">
-      <h3>Cliffs, South of France</h3>
-      <img src="./images/cliffs.jpeg" alt="Cliffs">
+      <h3>Seaside Cliffs</h3>
+      <img src="./images/cliffs.jpeg" alt="Cliffs" data-full="./images/cliffs.jpeg">
       <p>Acrylic on 12" by 16" canvas</p>
     </div>
     <div class="art-item">
       <h3>Water</h3>
-      <img src="./images/water.jpeg" alt="Water">
+      <img src="./images/water.jpeg" alt="Water" data-full="./images/water.jpeg">
       <p>Acrylic on 12" by 16" canvas</p>
     </div>
     <div class="art-item">
       <h3>House, South of France</h3>
-      <img src="./images/FullSizeRender.jpeg" alt="Home">
+      <img src="./images/FullSizeRender.jpeg" alt="Home" data-full="./images/FullSizeRender.jpeg">
       <p>Watercolor on 11.7" by 16.5" paper</p>
     </div>
     <div class="art-item">
       <h3>Fish</h3>
-      <img src="./images/fish.jpeg" alt="Fish">
+      <img src="./images/fish.jpeg" alt="Fish" data-full="./images/fish.jpeg">
       <p>Acrylic on 16" by 12" canvas</p>
     </div>
     <div class="art-item">
       <h3>Oranges</h3>
-      <img src="./images/oranges.jpeg" alt="Oranges">
+      <img src="./images/oranges.jpeg" alt="Oranges" data-full="./images/oranges.jpeg">
       <p>Acrylic on 12" by 8" canvas</p>
     </div>
     <div class="art-item">
       <h3>Roommates, NYC</h3>
-      <img src="./images/roomie.jpg" alt="Roommates">
+      <img src="./images/roomie.jpg" alt="Roommates" data-full="./images/roomie.jpg">
       <p>Acrylic on 16" by 20" canvas</p>
     </div>
   </div>
 
+  <!-- Lightbox overlay -->
   <div class="lightbox" id="lightbox">
     <img src="" alt="Enlarged artwork">
   </div>
@@ -162,5 +175,6 @@
       }
     });
   </script>
+
 </body>
 </html>
