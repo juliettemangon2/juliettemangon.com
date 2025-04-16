@@ -1,54 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Resume</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <title>Juliette Mangon – Resume</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
       background-color: #f8f8ff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 40px;
-    }
-
-    h1 {
-      text-align: center;
       color: #12245e;
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .resume-button {
-      text-align: center;
-      margin: 20px auto 40px auto;
-    }
-
-    .resume-button a {
-      background-color: #12245e;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 16px;
-      text-decoration: none;
-    }
-
-    .resume-button a:hover {
-      background-color: #1e3787;
-    }
-
-    .resume-container {
-      display: flex;
-      justify-content: center;
-      padding: 0 20px;
-    }
-
-    iframe {
-      width: 65%;
-      height: 850px;
-      border: none;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .home-tab {
@@ -70,23 +32,147 @@
     .home-tab a:hover {
       background-color: AliceBlue;
     }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .pdf-button {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .pdf-button a {
+      background-color: #12245e;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .pdf-button a:hover {
+      background-color: #1e3787;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .columns div {
+      width: 48%;
+    }
+
+    @media (max-width: 800px) {
+      .columns div {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-
   <div class="home-tab">
     <a href="index.html">Back to Home</a>
   </div>
 
-  <h1>Juliette's Resume</h1>
+  <h1>Juliette Mangon</h1>
 
-  <div class="resume-button">
+  <div class="pdf-button">
     <a href="JulietteMangonResume.pdf" target="_blank">View PDF Resume</a>
   </div>
 
-  <div class="resume-container">
-    <iframe src="JulietteMangonResume.pdf"></iframe>
+  <div class="section">
+    <p><strong>Ambitious Computer Science and Math major</strong> and Business of Entertainment, Media, and Technology minor at NYU. Seeking Summer 2025 internships in software engineering or tech-focused roles in media, entertainment, and business.</p>
   </div>
 
+  <div class="section">
+    <h2>Education</h2>
+    <p><strong>New York University, College of Arts & Sciences</strong> — B.A. in Computer Science and Mathematics<br>
+    <em>Sept 2023 – Dec 2025</em></p>
+    <p>Coursework: Algorithms, Operating Systems, Numerical Computing, Computer Systems Organization, Real Analysis, Numerical Analysis, Natural Language Processing, Discrete Structures, Theory of Probability, Topology</p>
+
+    <p><strong>Minor in Business of Entertainment, Media, and Technology</strong> — Stern, Steinhardt, Tisch</p>
+    <p>Coursework: Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games</p>
+  </div>
+
+  <div class="section">
+    <h2>Technical Skills</h2>
+    <p><strong>Languages & Frameworks:</strong> Java, C++, C, Python, MATLAB, JavaScript, HTML, Haskell, Assembly, BASIC</p>
+    <p><strong>Tools & Services:</strong> LaTeX, Unix/Linux, Excel, Google Suite</p>
+  </div>
+
+  <div class="section">
+    <h2>Work Experience</h2>
+
+    <p><strong>USA Mathematical Talent Search Grader</strong> — Art of Problem Solving<br>
+    <em>Oct 2023 – Present</em></p>
+    <ul>
+      <li>Evaluate student submissions to the USA Mathematical Talent Search, a national problem-solving contest for high school students.</li>
+      <li>Review solutions in depth, assess logical reasoning and mathematical rigor, and provide constructive written feedback to support learning and improvement.</li>
+    </ul>
+
+    <p><strong>Website Developer</strong> — Tryst Restaurant<br>
+    <em>Jan 2025 – Present</em></p>
+    <ul>
+      <li>Rebuilt the restaurant’s website from scratch using HTML, CSS, and JavaScript, transitioning from Wix to a fully customized and maintainable codebase.</li>
+      <li>Improved user experience through responsive layout design, added SEO optimizations, and enhanced accessibility and site performance across devices.</li>
+    </ul>
+
+    <p><strong>Photoville Intern</strong> — Regenerating Inc.<br>
+    <em>May – Aug 2024</em></p>
+    <ul>
+      <li>Developed a SwiftUI-based photo editing iOS app integrating AI-powered facial recognition tools using OpenCV (cv2), dlib, and NumPy.</li>
+      <li>Led UI design in Figma and conducted competitive analysis to guide pricing and feature strategy for potential launch.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Projects</h2>
+
+    <p><strong>Differential Geometry Online Resource</strong> — Present</p>
+    <ul>
+      <li>Designing and developing a comprehensive online learning platform for Differential Geometry, featuring structured lecture notes, visual aids, and interactive components to make abstract material more accessible. Inspired by educational models like Paul's Online Math Notes.</li>
+    </ul>
+
+    <p><strong>Plagiarism Detection Enhancement Project</strong> — Dec 2024 – Jan 2025</p>
+    <ul>
+      <li>Implemented a custom plagiarism detection system using NLP techniques including N-gram classification, TF-IDF, and Word2Vec embeddings. Focused on optimizing performance by analyzing scoring outputs and iteratively improving precision and recall through parameter tuning.</li>
+    </ul>
+
+    <p><strong>Ad Hoc Information Retrieval System</strong> — Oct – Nov 2024</p>
+    <ul>
+      <li>Built a TF-IDF-based ranking system to match 1,400 document abstracts to 225 custom queries. Used cosine similarity to determine relevance and evaluated system performance using Mean Average Precision (MAP) to guide algorithm refinements.</li>
+    </ul>
+
+    <p><strong>Temperature Checker</strong> — Dec 2023</p>
+    <ul>
+      <li>Created a contactless body temperature reader using motion sensors and an infrared camera. Designed and built an LED output that changes color depending on the temperature range detected, enabling quick visual feedback for public settings.</li>
+    </ul>
+
+    <p><strong>Graph Theory & Enumeration Research</strong> — Jan – May 2023</p>
+    <ul>
+      <li>Engaged in a semester-long independent reading and research project on graph theory under the mentorship of a graduate student. Explored enumeration techniques and theoretical graph properties, culminating in a final presentation to faculty and peers.</li>
+    </ul>
+  </div>
 </body>
 </html>
