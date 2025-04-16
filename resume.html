@@ -15,26 +15,40 @@
       text-align: center;
       color: #12245e;
       font-size: 3rem;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
+    }
+
+    .resume-button {
+      text-align: center;
+      margin: 20px auto 40px auto;
+    }
+
+    .resume-button a {
+      background-color: #12245e;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .resume-button a:hover {
+      background-color: #1e3787;
     }
 
     .resume-container {
       display: flex;
       justify-content: center;
-      padding: 20px;
+      padding: 0 20px;
     }
 
-    .resume-container img {
-      max-width: 100%;
-      height: auto;
+    iframe {
+      width: 65%;
+      height: 850px;
+      border: none;
       background-color: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-      cursor: zoom-in;
-    }
-
-    .resume-container img:hover {
-      transform: scale(1.01);
     }
 
     .home-tab {
@@ -59,16 +73,20 @@
   </style>
 </head>
 <body>
+
   <div class="home-tab">
     <a href="index.html">Back to Home</a>
   </div>
 
   <h1>Juliette's Resume</h1>
 
-  <div class="resume-container">
-    <a href="JulietteMangonResume.png" target="_blank">
-      <img src="JulietteMangonResume.png" alt="Juliette's Resume">
-    </a>
+  <div class="resume-button">
+    <a href="JulietteMangonResume.pdf" target="_blank">View PDF Resume</a>
   </div>
+
+  <div class="resume-container">
+    <iframe src="JulietteMangonResume.pdf"></iframe>
+  </div>
+
 </body>
 </html>
