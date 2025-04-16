@@ -114,6 +114,25 @@
     .skip-link:hover {
       background-color: AliceBlue;
     }
+    .home-tab {
+      position: sticky;
+      top: 0;
+      background-color: #f8f8ff;
+      padding: 12px 20px;
+      border-bottom: 2px solid #f8f8ff;
+      font-size: 16px;
+      font-weight: 600;
+      z-index: 1000;
+    }
+
+    .home-tab a {
+      color: #12245e;
+      text-decoration: none;
+    }
+    
+    .home-tab a:hover {
+      background-color: AliceBlue;
+    }
     /* Responsive: On smaller screens, stack the photo and text vertically */
     @media (max-width: 768px) {
       .about-container {
@@ -135,6 +154,9 @@
   </style>
 </head>
 <body>
+    <div class="home-tab">
+    <a href="index.html">Back to Home</a>
+  </div>
   <h1>
     <a href="index.html">Juliette Mangon</a>
   </h1>
