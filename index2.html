@@ -9,7 +9,35 @@
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
+      color: #12245e;
     }
+
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .top-buttons a {
+      background-color: #12245e;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .top-buttons a:hover {
+      background-color: AliceBlue;
+      color: #12245e;
+    }
+
     h1 {
       text-align: center;
       color: #12245e;
@@ -17,11 +45,12 @@
       margin-top: 20px;
       margin-bottom: 10px;
     }
+
     h1 a {
       color: #12245e;
       text-decoration: none;
     }
-    /* About Me Section */
+
     .about-container {
       display: flex;
       align-items: stretch;
@@ -29,11 +58,12 @@
       margin: 17px auto;
       box-sizing: border-box;
     }
-    /* Left column: Photo */
+
     .about-photo {
       flex: 0 0 auto;
       margin-right: 20px;
     }
+
     .about-photo img {
       max-height: 500px;
       max-width: 400px;
@@ -41,14 +71,14 @@
       height: auto;
       display: block;
     }
-    /* Right column: Contains Title and Text Box */
+
     .about-right {
       flex: 1;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
     }
-    /* "About Me" Title */
+
     .about-title {
       text-align: center;
       color: #12245e;
@@ -57,7 +87,7 @@
       padding: 9px;
       box-sizing: border-box;
     }
-    /* About text */
+
     .about-text {
       padding: 10px;
       background-color: #f8f8ff;
@@ -65,10 +95,10 @@
       box-sizing: border-box;
       font-size: 1.3rem;
     }
-    /* Educational Background Section */
+
     .educational-background {
       width: 60%;
-      margin: 20px auto;
+      margin: 0 auto 30px auto;
       padding: 15px;
       background-color: #f8f8ff;
       border: 1px solid #f8f8ff;
@@ -76,44 +106,16 @@
       font-size: 1.5rem;
       box-sizing: border-box;
     }
-    /* Educational Background Title with extra padding */
+
     .education-title {
       text-align: center;
       color: #12245e;
       font-size: 1.6rem;
-      margin-bottom: 10px;
-      padding: 7px; /* Added padding */
+      margin-bottom: 0;
+      padding: 7px;
       box-sizing: border-box;
     }
-    /* Navigation Links */
-    .links {
-      margin-top: 10px;
-      text-align: center;
-    }
-    .links a {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 20px;
-      font-size: 1.3rem;
-      color: #12245e;
-      background-color: #f8f8ff;
-      text-decoration: none;
-      border: 1px solid #f8f8ff;
-    }
-    .links a:hover {
-      background-color: AliceBlue;
-    }
-    .skip-link {
-      display: block;
-      text-align: center;
-      margin: 15px auto;
-      font-size: 1.3rem;
-      color: #12245e;
-      text-decoration: none;
-    }
-    .skip-link:hover {
-      background-color: AliceBlue;
-    }
+
     .home-tab {
       position: sticky;
       top: 0;
@@ -129,45 +131,50 @@
       color: #12245e;
       text-decoration: none;
     }
-    
+
     .home-tab a:hover {
       background-color: AliceBlue;
     }
-    /* Responsive: On smaller screens, stack the photo and text vertically */
+
     @media (max-width: 768px) {
       .about-container {
         flex-direction: column;
         width: 90%;
       }
+
       .about-photo {
         margin-right: 0;
         margin-bottom: 15px;
       }
+
       .about-photo img {
         width: 100%;
         height: auto;
       }
+
       .about-right {
         flex-direction: column;
+      }
+
+      .top-buttons {
+        position: static;
+        align-items: flex-start;
+        margin: 10px 20px;
       }
     }
   </style>
 </head>
 <body>
-    <div class="home-tab">
+
+  <div class="top-buttons">
     <a href="index.html">Back to Home</a>
+    <a href="resume.html">Check Out My Resume</a>
+    <a href="#edu">Skip to Educational Background</a>
+    <a href="art.html">See My Art</a>
   </div>
-  <h1>
-    <a href="index.html">Juliette Mangon</a>
-  </h1>
-  
-  <!-- Navigation Links -->
-  <div class="links">
-    <a href="resume.html">Check out my Resume</a>
-    <a href="art.html">Check out my Art</a>
-    <a class="skip-link" href="#edu">Skip to Educational Background</a>
-  </div>
- 
+
+  <h1><a href="index.html">Juliette Mangon</a></h1>
+
   <!-- About Me Section -->
   <div class="about-container">
     <div class="about-photo">
@@ -182,7 +189,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- Educational Background Section -->
   <h3 id="edu" class="education-title">Educational Background</h3>
   <div class="educational-background">
@@ -190,8 +197,9 @@
       I am currently a student at New York University, pursuing a Bachelor’s degree in Computer Science and Mathematics, with a minor in Business of Entertainment, Media, and Technology, and I am graduating in December 2025. My passion for mathematics naturally led me to computer science, a field that captured my interest during my first programming course in high school. While I have always been drawn to the analytical and problem-solving aspects of these disciplines, I initially found it challenging to define a specific career path amidst the diverse opportunities available.
     </p>
     <p>
-      Taking a course on media and entertainment last spring opened my eyes to the creative possibilities within the tech industry, and let me to adding my minor. In turn, I have become deeply interested in exploring the creative side of computer science, with a particular focus on forging a career in the media and entertainment industry. I am excited by the prospect of blending technical expertise with artistic creativity to innovate and redefine the way digital media is experienced and created. This experience not only broadened my academic perspective but also resonated with my passion for painting and creative expression. 
+      Taking a course on media and entertainment last spring opened my eyes to the creative possibilities within the tech industry, and led me to add the minor. In turn, I have become deeply interested in exploring the creative side of computer science, with a particular focus on forging a career in the media and entertainment industry. I am excited by the prospect of blending technical expertise with artistic creativity to innovate and redefine the way digital media is experienced and created. This experience not only broadened my academic perspective but also resonated with my passion for painting and creative expression.
     </p>
   </div>
+
 </body>
 </html>
