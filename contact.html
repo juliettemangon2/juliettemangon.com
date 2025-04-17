@@ -43,24 +43,30 @@
     a:hover {
       text-decoration: underline;
     }
-    .home-tab {
-      position: sticky;
-      top: 0;
-      background-color: #f8f8ff;
-      padding: 12px 20px;
-      border-bottom: 2px solid #f8f8ff;
-      font-size: 16px;
-      font-weight: 600;
-      z-index: 1000;
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .home-tab a {
-      color: #12245e;
+    .top-buttons a {
+      background-color: #12245e;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
       text-decoration: none;
+      text-align: center;
+      width: fit-content;
     }
-    
-    .home-tab a:hover {
-      background-color: AliceBlue;
+
+    .top-buttons a:hover {
+      background-color: Ivory;
+      color: #12245e;
     }
 
 
@@ -81,7 +87,7 @@
   </style>
 </head>
 <body>
-  <div class="home-tab">
+  <div class="top-buttons">
   <a href="index.html">Back to Home</a>
 </div>
 
