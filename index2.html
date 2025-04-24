@@ -136,32 +136,60 @@
       background-color: AliceBlue;
     }
 
-    @media (max-width: 768px) {
-      .about-container {
-        flex-direction: column;
-        width: 90%;
-      }
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
 
-      .about-photo {
-        margin-right: 0;
-        margin-bottom: 15px;
-      }
+  .about-photo {
+    flex: 0 1 40%;
+    margin: 0;
+  }
 
-      .about-photo img {
-        width: 100%;
-        height: auto;
-      }
+  .about-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
 
-      .about-right {
-        flex-direction: column;
-      }
+  .about-right {
+    flex: 0 1 55%;
+  }
 
-      .top-buttons {
-        position: static;
-        align-items: flex-start;
-        margin: 10px 20px;
-      }
-    }
+  .top-buttons {
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 10px 20px;
+  }
+
+  .top-buttons a {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .about-text, .educational-background {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 10px;
+  }
+
+  .about-title, .education-title {
+    font-size: 1.3rem;
+  }
+}
+
   </style>
 </head>
 <body>
