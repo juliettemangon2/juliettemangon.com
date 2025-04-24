@@ -48,18 +48,19 @@
       justify-content: space-between;
       padding: 0 5%;
     }
-
     .nav-links a {
       font-size: 2.2rem;
       font-weight: 600;
       text-transform: uppercase;
       color: #12245e;
       text-decoration: none;
+      transition: transform 0.2s ease-in-out; /* Smooth scaling effect */
+    }
+    
+    .nav-links a:hover {
+      transform: scale(1.05); /* Slightly larger on hover */
     }
 
-    .nav-links a:hover {
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
