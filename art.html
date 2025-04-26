@@ -66,34 +66,81 @@
 
   <h1>Recent Paintings</h1>
 
-  <!-- ---------- gallery ----------- -->
   <div class="gallery">
-    <!--  Example item (repeat as needed) -->
+
     <div class="art-item">
-      <img
-        src="./images/cards.jpeg"
-        alt="Evening Cards"
-        data-full="./images/cards.jpeg"
-        data-title="Evening Cards"
-        data-medium='Acrylic 16&quot; × 20&quot;'
-      >
+      <img src="./images/cards.jpeg"   alt="Evening Cards"
+           data-full="./images/cards.jpeg"
+           data-title="Evening Cards"
+           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
     </div>
 
     <div class="art-item">
-      <img
-        src="./images/mira.jpeg"
-        alt="Seaside, Cascais"
-        data-full="./images/mira.jpeg"
-        data-title="Seaside, Cascais"
-        data-medium='Acrylic 16&quot; × 20&quot;'
-      >
+      <img src="./images/mira.jpeg"    alt="Seaside, Cascais"
+           data-full="./images/mira.jpeg"
+           data-title="Seaside, Cascais"
+           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
     </div>
 
-    <!--  add remaining items the same way… -->
-    <!--  title = data-title , medium = data-medium                 -->
+    <div class="art-item">
+      <img src="./images/picnic.jpeg"  alt="Seaside Picnic"
+           data-full="./images/picnic.jpeg"
+           data-title="Seaside Picnic"
+           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/cliffs.jpeg"  alt="Seaside Cliffs"
+           data-full="./images/cliffs.jpeg"
+           data-title="Seaside Cliffs"
+           data-medium='Acrylic&nbsp;12&quot; × 16&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/poolside.jpeg" alt="Poolside"
+           data-full="./images/poolside.jpeg"
+           data-title="Poolside"
+           data-medium='Acrylic&nbsp;20&quot; × 16&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/water.jpeg"   alt="Water"
+           data-full="./images/water.jpeg"
+           data-title="Water"
+           data-medium='Acrylic&nbsp;12&quot; × 16&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/FullSizeRender.jpeg" alt="House, South of France"
+           data-full="./images/FullSizeRender.jpeg"
+           data-title="House, South of France"
+           data-medium='Watercolor&nbsp;11.7&quot; × 16.5&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/fish.jpeg"    alt="Fish"
+           data-full="./images/fish.jpeg"
+           data-title="Fish"
+           data-medium='Acrylic&nbsp;16&quot; × 12&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/oranges.jpeg" alt="Oranges"
+           data-full="./images/oranges.jpeg"
+           data-title="Oranges"
+           data-medium='Acrylic&nbsp;12&quot; × 8&quot;'>
+    </div>
+
+    <div class="art-item">
+      <img src="./images/roomie.jpg"   alt="Roommates, NYC"
+           data-full="./images/roomie.jpg"
+           data-title="Roommates, NYC"
+           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
+    </div>
+
   </div>
 
-  <!-- ---------- lightbox ---------- -->
+  <!-- lightbox ------------------------------------------------------- -->
   <div class="lightbox" id="lightbox">
     <div>
       <img src="" alt="Artwork" id="lightbox-img">
@@ -103,61 +150,43 @@
   </div>
 
   <script>
-    const galleryImgs  = [...document.querySelectorAll('.gallery img')];
-    const lightbox     = document.getElementById('lightbox');
-    const lbImg        = document.getElementById('lightbox-img');
-    const lbTitle      = document.getElementById('lightbox-title');
-    const lbMedium     = document.getElementById('lightbox-medium');
-    let index = -1;
+    const imgs   = [...document.querySelectorAll('.gallery img')];
+    const box    = document.getElementById('lightbox');
+    const lbImg  = document.getElementById('lightbox-img');
+    const title  = document.getElementById('lightbox-title');
+    const medium = document.getElementById('lightbox-medium');
+    let idx = -1;
 
-    /* open lightbox */
-    galleryImgs.forEach((img,i)=>{
-      img.addEventListener('click',()=>{
-        index=i; show();
-      });
-    });
+    imgs.forEach((img,i)=> img.addEventListener('click',()=>{ idx=i; show(); }));
 
     function show(){
-      const img = galleryImgs[index];
-      lbImg.src        = img.dataset.full;
-      lbTitle.textContent  = img.dataset.title;
-      lbMedium.textContent = img.dataset.medium;
-      lightbox.style.display='flex';
+      const img = imgs[idx];
+      lbImg.src = img.dataset.full;
+      title.innerHTML  = img.dataset.title;
+      medium.innerHTML = img.dataset.medium;
+      box.style.display='flex';
     }
+    function close(){ box.style.display='none'; idx=-1; }
+    function next(d){ idx=(idx+d+imgs.length)%imgs.length; show(); }
 
-    function close(){
-      lightbox.style.display='none';
-      index=-1;
-    }
+    box.addEventListener('click',e=>{ if(e.target===box) close(); });
 
-    function next(d){
-      index = (index + d + galleryImgs.length) % galleryImgs.length;
-      show();
-    }
-
-    /* click outside to close */
-    lightbox.addEventListener('click',e=>{
-      if(e.target===lightbox) close();
-    });
-
-    /* keyboard nav */
     document.addEventListener('keydown',e=>{
-      if(index===-1) return;
-      if(e.key==='Escape') return close();
-      if(e.key==='ArrowRight') return next(1);
-      if(e.key==='ArrowLeft')  return next(-1);
+      if(idx===-1) return;
+      if(e.key==='Escape') close();
+      if(e.key==='ArrowRight') next(1);
+      if(e.key==='ArrowLeft')  next(-1);
     });
 
-    /* swipe nav */
     let startX=0;
-    lightbox.addEventListener('touchstart',e=>{
+    box.addEventListener('touchstart',e=>{
       if(e.touches.length===1) startX=e.touches[0].clientX;
     });
-    lightbox.addEventListener('touchend',e=>{
-      if(index===-1||!startX) return;
+    box.addEventListener('touchend',e=>{
+      if(!startX||idx===-1) return;
       const dx=e.changedTouches[0].clientX-startX;
       const thr=40;
-      if(dx>thr)  next(-1);
+      if(dx> thr) next(-1);
       if(dx<-thr) next(1);
       startX=0;
     });
