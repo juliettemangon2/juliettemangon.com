@@ -1,222 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Artwork</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <title>Artwork – Juliette Mangon</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
-    body {
-      background-color: #f8f8ff;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    /* -------- base -------------------------------------------------- */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      background:#f8f8ff;color:#12245e;
+      font:400 16px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;
     }
-    h1 {
-      text-align: center;
-      color: #12245e;
-      font-size: 3rem;
-      margin-top: 20px;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .art-item {
-      width: 300px;
-      text-align: center;
-      background-color: #f8f8ff;
-      border: 1px solid #f8f8ff;
-      padding: 10px;
-      font-size: 1.2rem;
-    }
-    .art-item h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      color: #12245e;
-    }
-    .art-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 10px 0;
-      cursor: pointer;
-      transition: transform .2s;
-    }
-    .art-item img:hover {
-      transform: scale(1.02);
-    }
-    .art-item p {
-      margin-top: 10px;
-      color: #12245e;
-      font-size: 1rem;
-    }
-    .top-buttons {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    h1{
+      text-align:center;font-size:3rem;margin:20px 0;color:#12245e;
     }
 
-    .top-buttons a {
-      background-color: #12245e;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 14px;
-      text-decoration: none;
-      text-align: center;
-      width: fit-content;
+    /* -------- top button ------------------------------------------- */
+    .top-buttons{
+      position:absolute;top:20px;left:20px;
     }
+    .top-buttons a{
+      display:inline-block;padding:8px 16px;
+      background:#12245e;color:#fff;border-radius:5px;
+      font-weight:600;text-decoration:none;font-size:14px;
+    }
+    .top-buttons a:hover{background:Ivory;color:#12245e}
 
-    .top-buttons a:hover {
-      background-color: Ivory;
-      color: #12245e;
+    /* -------- gallery grid ----------------------------------------- */
+    .gallery{
+      display:grid;gap:20px;padding:20px;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      justify-content:center;
     }
+    @media(min-width:801px){ .gallery{grid-template-columns:repeat(4,1fr)} }
 
+    .gallery img{
+      width:100%;cursor:pointer;border:1px solid #ccc;
+      transition:transform .2s;
+    }
+    .gallery img:hover{transform:scale(1.02)}
 
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
+    /* hide captions in grid */
+    .gallery h3,.gallery p{display:none}
+
+    /* -------- lightbox --------------------------------------------- */
+    .lightbox{
+      display:none;position:fixed;inset:0;z-index:1000;
+      background:rgba(0,0,0,.8);justify-content:center;align-items:center;
+      color:#fff;text-transform:uppercase;text-align:center;
     }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      border: 0.5px solid ivory;
+    .lightbox img{
+      max-width:90%;max-height:80vh;
+      border:1px solid Ivory;box-shadow:0 0 20px rgba(0,0,0,.5);
     }
+    #lightbox-title{font-size:1.5rem;margin:.75rem 0 0}
+    #lightbox-medium{font-size:1rem;margin:0}
+
   </style>
 </head>
 <body>
 
-  <div class="top-buttons">
-    <a href="index.html">Back to Home</a>
-  </div>
+  <!-- back button -->
+  <div class="top-buttons"><a href="index.html">Back&nbsp;to&nbsp;Home</a></div>
 
   <h1>Recent Paintings</h1>
+
+  <!-- ---------- gallery ----------- -->
   <div class="gallery">
-    <!-- Repeat this block for each art-item -->
+    <!--  Example item (repeat as needed) -->
     <div class="art-item">
-      <h3>Evening Cards</h3>
-      <img src="./images/cards.jpeg" alt="Cards" data-full="./images/cards.jpeg">
-      <p>Acrylic on 16" by 20" canvas</p>
+      <img
+        src="./images/cards.jpeg"
+        alt="Evening Cards"
+        data-full="./images/cards.jpeg"
+        data-title="Evening Cards"
+        data-medium='Acrylic 16&quot; × 20&quot;'
+      >
     </div>
+
     <div class="art-item">
-      <h3>Seaside, Cascais</h3>
-      <img src="./images/mira.jpeg" alt="Italian Seaside" data-full="./images/mira.jpeg">
-      <p>Acrylic on 16" by 20" canvas</p>
+      <img
+        src="./images/mira.jpeg"
+        alt="Seaside, Cascais"
+        data-full="./images/mira.jpeg"
+        data-title="Seaside, Cascais"
+        data-medium='Acrylic 16&quot; × 20&quot;'
+      >
     </div>
-    <div class="art-item">
-      <h3>Seaside Picnic</h3>
-      <img src="./images/picnic.jpeg" alt="Picnic" data-full="./images/picnic.jpeg">
-      <p>Acrylic on 16" by 20" canvas</p>
-    </div>
-    <div class="art-item">
-      <h3>Seaside Cliffs</h3>
-      <img src="./images/cliffs.jpeg" alt="Cliffs" data-full="./images/cliffs.jpeg">
-      <p>Acrylic on 12" by 16" canvas</p>
-    </div>
-    <div class="art-item">
-      <h3>Poolside</h3>
-      <img src="./images/poolside.jpeg" alt="Cards" data-full="./images/poolside.jpeg">
-      <p>Acrylic on 20" by 16" canvas</p>
-    </div>
-    <div class="art-item">
-      <h3>Water</h3>
-      <img src="./images/water.jpeg" alt="Water" data-full="./images/water.jpeg">
-      <p>Acrylic on 12" by 16" canvas</p>
-    </div>
-    <div class="art-item">
-      <h3>House, South of France</h3>
-      <img src="./images/FullSizeRender.jpeg" alt="Home" data-full="./images/FullSizeRender.jpeg">
-      <p>Watercolor on 11.7" by 16.5" paper</p>
-    </div>
-    <div class="art-item">
-      <h3>Fish</h3>
-      <img src="./images/fish.jpeg" alt="Fish" data-full="./images/fish.jpeg">
-      <p>Acrylic on 16" by 12" canvas</p>
-    </div>
-    <div class="art-item">
-      <h3>Oranges</h3>
-      <img src="./images/oranges.jpeg" alt="Oranges" data-full="./images/oranges.jpeg">
-      <p>Acrylic on 12" by 8" canvas</p>
-    </div>
-    <div class="art-item">
-      <h3>Roommates, NYC</h3>
-      <img src="./images/roomie.jpg" alt="Roommates" data-full="./images/roomie.jpg">
-      <p>Acrylic on 16" by 20" canvas</p>
-    </div>
+
+    <!--  add remaining items the same way… -->
+    <!--  title = data-title , medium = data-medium                 -->
   </div>
 
-  <!-- Lightbox overlay -->
+  <!-- ---------- lightbox ---------- -->
   <div class="lightbox" id="lightbox">
-    <img src="" alt="Enlarged artwork">
+    <div>
+      <img src="" alt="Artwork" id="lightbox-img">
+      <h2 id="lightbox-title"></h2>
+      <p  id="lightbox-medium"></p>
+    </div>
   </div>
-<script>
-  const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
-  const lightbox      = document.getElementById('lightbox');
-  const lightboxImg   = lightbox.querySelector('img');
-  let currentIndex    = -1;
 
-  /* ─── 1. open lightbox ─── */
-  galleryImages.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      lightboxImg.src   = img.dataset.full;
-      lightbox.style.display = 'flex';
-      currentIndex      = i;
+  <script>
+    const galleryImgs  = [...document.querySelectorAll('.gallery img')];
+    const lightbox     = document.getElementById('lightbox');
+    const lbImg        = document.getElementById('lightbox-img');
+    const lbTitle      = document.getElementById('lightbox-title');
+    const lbMedium     = document.getElementById('lightbox-medium');
+    let index = -1;
+
+    /* open lightbox */
+    galleryImgs.forEach((img,i)=>{
+      img.addEventListener('click',()=>{
+        index=i; show();
+      });
     });
-  });
 
-  /* ─── 2. click outside to close ─── */
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) close();
-  });
+    function show(){
+      const img = galleryImgs[index];
+      lbImg.src        = img.dataset.full;
+      lbTitle.textContent  = img.dataset.title;
+      lbMedium.textContent = img.dataset.medium;
+      lightbox.style.display='flex';
+    }
 
-  /* ─── 3. keyboard nav ─── */
-  document.addEventListener('keydown', e => {
-    if (currentIndex === -1) return;     // lightbox not open
-    if (e.key === 'Escape')      return close();
-    if (e.key === 'ArrowRight')  return next(+1);
-    if (e.key === 'ArrowLeft')   return next(-1);
-  });
+    function close(){
+      lightbox.style.display='none';
+      index=-1;
+    }
 
-  /* ─── 4. swipe nav (touch) ─── */
-  let startX = 0;
-  lightbox.addEventListener('touchstart', e => {
-    if (e.touches.length === 1) startX = e.touches[0].clientX;
-  });
-  lightbox.addEventListener('touchend', e => {
-    if (startX === 0 || currentIndex === -1) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    const threshold = 40;                // px
-    if (dx >  threshold) next(-1);       // swipe right → prev
-    if (dx < -threshold) next(+1);       // swipe left  → next
-    startX = 0;
-  });
+    function next(d){
+      index = (index + d + galleryImgs.length) % galleryImgs.length;
+      show();
+    }
 
-  /* ─── helper functions ─── */
-  function next(delta){
-    currentIndex = (currentIndex + delta + galleryImages.length) % galleryImages.length;
-    lightboxImg.src = galleryImages[currentIndex].dataset.full;
-  }
-  function close(){
-    lightbox.style.display = 'none';
-    currentIndex = -1;
-  }
-</script>
+    /* click outside to close */
+    lightbox.addEventListener('click',e=>{
+      if(e.target===lightbox) close();
+    });
 
+    /* keyboard nav */
+    document.addEventListener('keydown',e=>{
+      if(index===-1) return;
+      if(e.key==='Escape') return close();
+      if(e.key==='ArrowRight') return next(1);
+      if(e.key==='ArrowLeft')  return next(-1);
+    });
 
-
+    /* swipe nav */
+    let startX=0;
+    lightbox.addEventListener('touchstart',e=>{
+      if(e.touches.length===1) startX=e.touches[0].clientX;
+    });
+    lightbox.addEventListener('touchend',e=>{
+      if(index===-1||!startX) return;
+      const dx=e.changedTouches[0].clientX-startX;
+      const thr=40;
+      if(dx>thr)  next(-1);
+      if(dx<-thr) next(1);
+      startX=0;
+    });
+  </script>
 </body>
 </html>
