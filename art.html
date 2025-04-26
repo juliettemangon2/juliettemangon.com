@@ -165,44 +165,57 @@
   </div>
 <script>
   const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
-  let currentIndex = -1;
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = lightbox.querySelector('img');
+  let currentIndex    = -1;
 
-  // Open image in lightbox and track index
-  galleryImages.forEach((img, index) => {
+  /* ─── 1. open lightbox ─── */
+  galleryImages.forEach((img, i) => {
     img.addEventListener('click', () => {
-      const fullSrc = img.getAttribute('data-full');
-      lightboxImg.src = fullSrc;
+      lightboxImg.src   = img.dataset.full;
       lightbox.style.display = 'flex';
-      currentIndex = index;
+      currentIndex      = i;
     });
   });
 
-  // Close lightbox when clicking outside the image
+  /* ─── 2. click outside to close ─── */
   lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) {
-      lightbox.style.display = 'none';
-      currentIndex = -1;
-    }
+    if (e.target === lightbox) close();
   });
 
-  // Keyboard navigation
+  /* ─── 3. keyboard nav ─── */
   document.addEventListener('keydown', e => {
-    if (lightbox.style.display === 'flex') {
-      if (e.key === 'Escape') {
-        lightbox.style.display = 'none';
-        currentIndex = -1;
-      } else if (e.key === 'ArrowRight') {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentIndex].getAttribute('data-full');
-      } else if (e.key === 'ArrowLeft') {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentIndex].getAttribute('data-full');
-      }
-    }
+    if (currentIndex === -1) return;     // lightbox not open
+    if (e.key === 'Escape')      return close();
+    if (e.key === 'ArrowRight')  return next(+1);
+    if (e.key === 'ArrowLeft')   return next(-1);
   });
+
+  /* ─── 4. swipe nav (touch) ─── */
+  let startX = 0;
+  lightbox.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) startX = e.touches[0].clientX;
+  });
+  lightbox.addEventListener('touchend', e => {
+    if (startX === 0 || currentIndex === -1) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    const threshold = 40;                // px
+    if (dx >  threshold) next(-1);       // swipe right → prev
+    if (dx < -threshold) next(+1);       // swipe left  → next
+    startX = 0;
+  });
+
+  /* ─── helper functions ─── */
+  function next(delta){
+    currentIndex = (currentIndex + delta + galleryImages.length) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].dataset.full;
+  }
+  function close(){
+    lightbox.style.display = 'none';
+    currentIndex = -1;
+  }
 </script>
+
 
 
 </body>
