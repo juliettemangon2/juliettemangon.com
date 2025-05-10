@@ -10,7 +10,7 @@
       --text: #12245e;
       --accent: #4a537b;
       --highlight: #fffff0;
-      --gradient: linear-gradient(to right, #b9c5e1, #12245e);
+      --gradient: linear-gradient(90deg, #a0eacb, #b9c5e1, #8298f3, #12245e);
     }
 
     * {
@@ -25,16 +25,14 @@
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.75;
-      padding: 60px 40px;
+      padding: 40px 40px 60px;
     }
 
     .top-buttons {
-      position: absolute;
-      top: 20px;
-      left: 20px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
     }
 
     .top-buttons a {
@@ -45,7 +43,6 @@
       border: 2px solid var(--text);
       border-radius: 30px;
       text-decoration: none;
-      text-align: center;
       transition: all 0.3s ease;
     }
 
@@ -58,11 +55,18 @@
     h1 {
       text-align: center;
       font-size: 3.2rem;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.5px;
+      margin: 1.5rem 0 0.5rem;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
     }
 
     .section {
@@ -127,6 +131,12 @@
         padding: 40px 20px;
       }
 
+      .top-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
       .entry {
         flex-direction: column;
         align-items: flex-start;
@@ -147,6 +157,7 @@
   </div>
 
   <h1>Juliette Mangon</h1>
+  <div class="subtitle">Resume</div>
 
   <div class="section">
     <h2>Education</h2>
@@ -163,7 +174,7 @@
 
     <div class="entry">
       <div>
-        <span class="entry-title">Minor in the Business of Entertainment, Media, and Technology</span>
+        <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>
         <span class="entry-subtitle"> | Stern School of Business, Steinhardt School of Culture, Education, Human Development, Tisch School of The Arts </span>
       </div>
     </div>
