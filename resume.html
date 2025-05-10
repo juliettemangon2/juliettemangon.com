@@ -10,7 +10,7 @@
       --text: #12245e;
       --accent: #4a537b;
       --highlight: #fffff0;
-      --gradient: linear-gradient(90deg, #a0eacb, #b9c5e1, #8298f3, #12245e);
+      --gradient: linear-gradient(90deg, #fbbd9c, #f9a8d4, #b9c5e1, #8298f3);
     }
 
     * {
@@ -25,14 +25,16 @@
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.75;
-      padding: 40px 40px 60px;
+      padding: 40px 30px 60px;
     }
 
     .top-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .top-buttons a {
@@ -43,6 +45,7 @@
       border: 2px solid var(--text);
       border-radius: 30px;
       text-decoration: none;
+      text-align: center;
       transition: all 0.3s ease;
     }
 
@@ -55,18 +58,11 @@
     h1 {
       text-align: center;
       font-size: 3.2rem;
-      margin: 1.5rem 0 0.5rem;
+      margin: 1.5rem 0 2.5rem;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: 0.5px;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 1rem;
-      color: var(--accent);
-      margin-bottom: 2.5rem;
     }
 
     .section {
@@ -132,8 +128,10 @@
       }
 
       .top-buttons {
-        flex-direction: column;
-        align-items: flex-start;
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
         gap: 10px;
       }
 
@@ -157,7 +155,6 @@
   </div>
 
   <h1>Juliette Mangon</h1>
-  <div class="subtitle">Resume</div>
 
   <div class="section">
     <h2>Education</h2>
