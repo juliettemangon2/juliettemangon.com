@@ -6,146 +6,158 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <style>
-    /* -------- base -------------------------------------------------- */
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      background:#f8f8ff;color:#12245e;
-      font:400 16px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;
+    :root {
+      --bg: #f8f8ff;
+      --text-dark: #12245e;
+      --accent1: #d6e0f5;
+      --accent2: #b9c5e1;
     }
-    h1{
-      text-align:center;font-size:3rem;margin:20px 0;color:#12245e;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
+                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
+                  var(--bg);
+      font: 400 16px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin: 3rem 0 1rem;
+      letter-spacing: 1px;
     }
 
     /* -------- top button ------------------------------------------- */
-    .top-buttons{
-      position:absolute;top:20px;left:20px;
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .top-buttons a{
-      display:inline-block;padding:8px 16px;
-      background:#12245e;color:#fff;border-radius:5px;
-      font-weight:600;text-decoration:none;font-size:14px;
+
+    .top-buttons a {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      color: var(--text-dark);
+      border: 2px solid var(--text-dark);
+      border-radius: 30px;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
     }
-    .top-buttons a:hover{background:Ivory;color:#12245e}
+
+    .top-buttons a:hover {
+      background-color: var(--text-dark);
+      color: #f8f8ff;
+      transform: scale(1.05);
+    }
 
     /* -------- gallery grid ----------------------------------------- */
-    .gallery{
-      display:grid;gap:20px;padding:20px;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      justify-content:center;
+    .gallery {
+      display: grid;
+      gap: 20px;
+      padding: 40px 20px 60px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      justify-content: center;
     }
-    @media(min-width:801px){ .gallery{grid-template-columns:repeat(4,1fr)} }
 
-    .gallery img{
-      width:100%;cursor:pointer;border:1px solid #ccc;
-      transition:transform .2s;
+    @media (min-width: 801px) {
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
-    .gallery img:hover{transform:scale(1.02)}
 
-    /* hide captions in grid */
-    .gallery h3,.gallery p{display:none}
+    .gallery img {
+      width: 100%;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.025);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .gallery h3, .gallery p {
+      display: none;
+    }
 
     /* -------- lightbox --------------------------------------------- */
-    .lightbox{
-      display:none;position:fixed;inset:0;z-index:1000;
-      background:rgba(0,0,0,.8);justify-content:center;align-items:center;
-      color:#fff;text-transform:uppercase;text-align:center;
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 2rem;
     }
-    .lightbox img{
-      max-width:90%;max-height:80vh;
-      border:1px solid Ivory;box-shadow:0 0 20px rgba(0,0,0,.5);
-    }
-    #lightbox-title{font-size:1.5rem;margin:.75rem 0 0}
-    #lightbox-medium{font-size:1rem;margin:0}
 
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border: 1px solid #fffff0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+    }
+
+    #lightbox-title {
+      font-size: 1.5rem;
+      margin: 0.75rem 0 0;
+    }
+
+    #lightbox-medium {
+      font-size: 1rem;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
 
-  <!-- back button -->
-  <div class="top-buttons"><a href="index.html">Back&nbsp;to&nbsp;Home</a></div>
+  <div class="top-buttons">
+    <a href="index.html">Back to Home</a>
+  </div>
 
   <h1>Recent Paintings</h1>
 
   <div class="gallery">
-
-    <div class="art-item">
-      <img src="./images/cards.jpeg"   alt="Evening Cards"
-           data-full="./images/cards.jpeg"
-           data-title="Evening Cards"
-           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/mira.jpeg"    alt="Seaside, Cascais"
-           data-full="./images/mira.jpeg"
-           data-title="Seaside, Cascais"
-           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/picnic.jpeg"  alt="Seaside Picnic"
-           data-full="./images/picnic.jpeg"
-           data-title="Seaside Picnic"
-           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/cliffs.jpeg"  alt="Seaside Cliffs"
-           data-full="./images/cliffs.jpeg"
-           data-title="Seaside Cliffs"
-           data-medium='Acrylic&nbsp;12&quot; × 16&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/poolside.jpeg" alt="Poolside"
-           data-full="./images/poolside.jpeg"
-           data-title="Poolside"
-           data-medium='Acrylic&nbsp;20&quot; × 16&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/water.jpeg"   alt="Water"
-           data-full="./images/water.jpeg"
-           data-title="Water"
-           data-medium='Acrylic&nbsp;12&quot; × 16&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/FullSizeRender.jpeg" alt="House, South of France"
-           data-full="./images/FullSizeRender.jpeg"
-           data-title="House, South of France"
-           data-medium='Watercolor&nbsp;11.7&quot; × 16.5&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/fish.jpeg"    alt="Fish"
-           data-full="./images/fish.jpeg"
-           data-title="Fish"
-           data-medium='Acrylic&nbsp;16&quot; × 12&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/oranges.jpeg" alt="Oranges"
-           data-full="./images/oranges.jpeg"
-           data-title="Oranges"
-           data-medium='Acrylic&nbsp;12&quot; × 8&quot;'>
-    </div>
-
-    <div class="art-item">
-      <img src="./images/roomie.jpg"   alt="Roommates, NYC"
-           data-full="./images/roomie.jpg"
-           data-title="Roommates, NYC"
-           data-medium='Acrylic&nbsp;16&quot; × 20&quot;'>
-    </div>
-
+    <!-- All your paintings stay unchanged -->
+    <div class="art-item"><img src="./images/cards.jpeg" alt="Evening Cards" data-full="./images/cards.jpeg" data-title="Evening Cards" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
+    <div class="art-item"><img src="./images/mira.jpeg" alt="Seaside, Cascais" data-full="./images/mira.jpeg" data-title="Seaside, Cascais" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
+    <div class="art-item"><img src="./images/picnic.jpeg" alt="Seaside Picnic" data-full="./images/picnic.jpeg" data-title="Seaside Picnic" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
+    <div class="art-item"><img src="./images/cliffs.jpeg" alt="Seaside Cliffs" data-full="./images/cliffs.jpeg" data-title="Seaside Cliffs" data-medium='Acrylic&nbsp;12&quot; × 16&quot;'></div>
+    <div class="art-item"><img src="./images/poolside.jpeg" alt="Poolside" data-full="./images/poolside.jpeg" data-title="Poolside" data-medium='Acrylic&nbsp;20&quot; × 16&quot;'></div>
+    <div class="art-item"><img src="./images/water.jpeg" alt="Water" data-full="./images/water.jpeg" data-title="Water" data-medium='Acrylic&nbsp;12&quot; × 16&quot;'></div>
+    <div class="art-item"><img src="./images/FullSizeRender.jpeg" alt="House, South of France" data-full="./images/FullSizeRender.jpeg" data-title="House, South of France" data-medium='Watercolor&nbsp;11.7&quot; × 16.5&quot;'></div>
+    <div class="art-item"><img src="./images/fish.jpeg" alt="Fish" data-full="./images/fish.jpeg" data-title="Fish" data-medium='Acrylic&nbsp;16&quot; × 12&quot;'></div>
+    <div class="art-item"><img src="./images/oranges.jpeg" alt="Oranges" data-full="./images/oranges.jpeg" data-title="Oranges" data-medium='Acrylic&nbsp;12&quot; × 8&quot;'></div>
+    <div class="art-item"><img src="./images/roomie.jpg" alt="Roommates, NYC" data-full="./images/roomie.jpg" data-title="Roommates, NYC" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
   </div>
 
-  <!-- lightbox ------------------------------------------------------- -->
+  <!-- lightbox -->
   <div class="lightbox" id="lightbox">
     <div>
       <img src="" alt="Artwork" id="lightbox-img">
       <h2 id="lightbox-title"></h2>
-      <p  id="lightbox-medium"></p>
+      <p id="lightbox-medium"></p>
     </div>
   </div>
 
