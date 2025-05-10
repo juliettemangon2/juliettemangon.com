@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact info</title>
+  <title>Contact</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
+    :root {
+      --text-dark: #12245e;
+      --bg: #f8f8ff;
+      --highlight: #fffff0;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,34 +22,11 @@
     html, body {
       width: 100%;
       height: 100%;
-      background-color: #f8f8ff;
-      color: #12245e;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-dark);
     }
 
-    .main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      height: 100vh;
-      font-size: 30px;
-    }
-
-    h2 {
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    a {
-      color: #12245e;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
     .top-buttons {
       position: absolute;
       top: 20px;
@@ -53,55 +37,93 @@
     }
 
     .top-buttons a {
-      background-color: #12245e;
+      background-color: var(--text-dark);
       color: white;
       padding: 8px 16px;
-      border-radius: 5px;
+      border-radius: 30px;
       font-weight: 600;
       font-size: 14px;
       text-decoration: none;
       text-align: center;
-      width: fit-content;
     }
 
     .top-buttons a:hover {
-      background-color: Ivory;
-      color: #12245e;
+      background-color: var(--highlight);
+      color: var(--text-dark);
+      transform: scale(1.05);
     }
-
 
     .main {
       display: flex;
       flex-direction: column;
-      justify-content: center;   /* vertical centering */
-      align-items: center;       /* horizontal centering */
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
       text-align: center;
-      height: 100vh;             /* full viewport height */
-      font-size: 30px;
     }
 
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
 
-    .main h2 {
-      margin-top: 0;
+    .contact-card {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .contact-card p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .contact-card a {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    .contact-card a:hover {
+      color: #4a537b;
+      transform: translateX(2px);
+    }
+
+    @media (max-width: 600px) {
+      .contact-card {
+        padding: 1.5rem 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .contact-card p {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
+
   <div class="top-buttons">
-  <a href="index.html">Back to Home</a>
-</div>
-
-
-  <div class="sidebar">
-    <!-- Optional sidebar content -->
+    <a href="index.html">Back to Home</a>
   </div>
 
   <div class="main">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a></p>
-    <p>Phone: <a href="tel:+17816288078">+1 (781) 628-8078</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/juliette-mangon/" target="_blank">linkedin.com/in/juliette-mangon/</a></p>
 
+    <div class="contact-card">
+      <p>Email: <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a></p>
+      <p>Phone: <a href="tel:+17816288078">+1 (781) 628-8078</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/juliette-mangon/" target="_blank">linkedin.com/in/juliette-mangon/</a></p>
+    </div>
   </div>
 
 </body>
