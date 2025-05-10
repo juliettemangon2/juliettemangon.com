@@ -5,12 +5,26 @@
   <title>Juliette Mangon – Resume</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    body {
-      background-color: #f8f8ff;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    :root {
+      --bg: #f8f8ff;
+      --text: #12245e;
+      --accent: #4a537b;
+      --highlight: #fffff0;
+    }
+
+    * {
       margin: 0;
-      padding: 40px;
-      color: #12245e;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 60px 40px;
     }
 
     .top-buttons {
@@ -23,49 +37,51 @@
     }
 
     .top-buttons a {
-      background-color: #12245e;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 5px;
+      font-size: 1rem;
       font-weight: 600;
-      font-size: 14px;
+      padding: 0.6rem 1.2rem;
+      color: var(--text);
+      border: 2px solid var(--text);
+      border-radius: 30px;
       text-decoration: none;
       text-align: center;
-      width: fit-content;
+      transition: all 0.3s ease;
     }
 
     .top-buttons a:hover {
-      background-color: Ivory;
-      color: #12245e;
+      background-color: var(--text);
+      color: var(--highlight);
+      transform: scale(1.05);
     }
 
     h1 {
       text-align: center;
       font-size: 2.5rem;
-      margin-top: 0;
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
     }
 
     .section {
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
     }
 
     h2 {
       font-size: 1.3rem;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #12245e;
-      padding-bottom: 4px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 5px;
     }
 
     ul {
-      padding-left: 20px;
+      padding-left: 1.2rem;
     }
 
     .entry {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .entry-title {
@@ -77,9 +93,9 @@
     }
 
     .entry-date {
-      color: #12245e;
       font-size: 0.95rem;
       text-align: right;
+      color: var(--accent);
     }
 
     .entry-date em {
@@ -89,23 +105,29 @@
     .entry-content {
       width: 100%;
       margin-top: 5px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
+
     .project-link {
-      color: inherit;
+      color: var(--text);
       text-decoration: none;
     }
-    
+
     .project-link:hover {
       text-decoration: underline;
+      color: var(--accent);
     }
 
-
     @media (max-width: 800px) {
+      html, body {
+        padding: 40px 20px;
+      }
+
       .entry {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .entry-date {
         margin-top: 4px;
         text-align: left;
@@ -126,7 +148,7 @@
     <h2>Education</h2>
     <div class="entry">
       <div>
-        <span class="entry-title">B.A. in Computer Science and Mathematics</span>  
+        <span class="entry-title">B.A. in Computer Science and Mathematics</span>
         <span class="entry-subtitle"> | New York University, College of Arts & Sciences</span>
       </div>
       <div class="entry-date">Sept 2023 – Dec 2025</div>
@@ -137,8 +159,8 @@
 
     <div class="entry">
       <div>
-        <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>  
-        <span class="entry-subtitle"> | Stern School of Business, Steinhardt School of Culture, Education, Human Development, Tisch School of The Arts </span>
+        <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>
+        <span class="entry-subtitle"> | Stern, Steinhardt, and Tisch Schools</span>
       </div>
     </div>
     <div class="entry-content">
@@ -148,8 +170,8 @@
 
   <div class="section">
     <h2>Technical Skills</h2>
-<p><strong>Languages & Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</p>
-<p><strong>Tools & Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</p>
+    <p><strong>Languages & Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</p>
+    <p><strong>Tools & Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</p>
   </div>
 
   <div class="section">
@@ -157,7 +179,7 @@
 
     <div class="entry">
       <div>
-        <span class="entry-title">USA Mathematical Talent Search Grader</span>  
+        <span class="entry-title">USA Mathematical Talent Search Grader</span>
         <span class="entry-subtitle"> | Art of Problem Solving</span>
       </div>
       <div class="entry-date">Oct 2023 – <em>Present</em></div>
@@ -168,7 +190,7 @@
 
     <div class="entry">
       <div>
-        <span class="entry-title">Website Developer</span>  
+        <span class="entry-title">Website Developer</span>
         <span class="entry-subtitle"> | Tryst Restaurant</span>
       </div>
       <div class="entry-date">Jan 2025 – <em>Present</em></div>
@@ -179,7 +201,7 @@
 
     <div class="entry">
       <div>
-        <span class="entry-title">Photoville Intern</span>  
+        <span class="entry-title">Photoville Intern</span>
         <span class="entry-subtitle"> | Regenerating Inc.</span>
       </div>
       <div class="entry-date">May – Aug 2024</div>
@@ -192,7 +214,7 @@
   <div class="section">
     <h2>Projects</h2>
 
-     <div class="entry">
+    <div class="entry">
       <div class="entry-title">Client Website Projects</div>
       <div class="entry-date"><em>Present</em></div>
     </div>
@@ -244,13 +266,6 @@
       Engaged in a semester-long independent reading and research project on graph theory under the mentorship of a graduate student. Explored enumeration techniques and theoretical graph properties, culminating in a final presentation to faculty and peers.
     </div>
 
-   
-
-
   </div>
-
-
-
-
 </body>
 </html>
