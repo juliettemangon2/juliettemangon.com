@@ -51,39 +51,40 @@
     .subtitle {
       font-size: 1.4rem;
       font-weight: 400;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       color: #4a537b;
     }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
+    .grid-nav {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 2rem;
     }
 
-    nav a {
+    .grid-nav a {
       text-decoration: none;
       font-size: 1.2rem;
       font-weight: 600;
-      padding: 0.6rem 1.2rem;
+      padding: 1rem 1.5rem;
       color: var(--text-dark);
       border: 2px solid var(--text-dark);
       border-radius: 30px;
-      transition: all 0.25s ease-in-out;
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     }
 
-    nav a:hover {
+    .grid-nav a:hover {
       background-color: var(--text-dark);
       color: var(--ivory);
+      transform: scale(1.12);
     }
 
     @media (max-width: 600px) {
       .title {
         font-size: 2.5rem;
       }
-      nav {
-        flex-direction: column;
+
+      .grid-nav {
+        grid-template-columns: 1fr;
         gap: 1rem;
       }
     }
@@ -95,12 +96,12 @@
     <div class="title">Juliette Mangon</div>
     <div class="subtitle">New York City, NY & Boston, MA</div>
 
-    <nav>
+    <div class="grid-nav">
       <a href="resume.html">Resume</a>
       <a href="art.html">Artwork</a>
       <a href="index2.html">About Me</a>
       <a href="contact.html">Contact</a>
-    </nav>
+    </div>
   </div>
 
 </body>
