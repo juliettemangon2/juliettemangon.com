@@ -23,11 +23,10 @@
     html, body {
       height: 100%;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: var(--text-dark);
       background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
                   radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
                   var(--ivory);
-      background-attachment: fixed;
+      color: var(--text-dark);
     }
 
     .container {
@@ -55,27 +54,28 @@
       color: #4a537b;
     }
 
-    .grid-nav {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem 2rem;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
     }
 
-    .grid-nav a {
+    nav a {
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1.4rem;
       color: var(--text-dark);
       border: 2px solid var(--text-dark);
       border-radius: 30px;
-      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .grid-nav a:hover {
+    nav a:hover {
       background-color: var(--text-dark);
       color: var(--ivory);
-      transform: scale(1.12);
+      transform: scale(1.08);
     }
 
     @media (max-width: 600px) {
@@ -83,9 +83,9 @@
         font-size: 2.5rem;
       }
 
-      .grid-nav {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      nav a {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
       }
     }
   </style>
@@ -96,12 +96,12 @@
     <div class="title">Juliette Mangon</div>
     <div class="subtitle">New York City, NY & Boston, MA</div>
 
-    <div class="grid-nav">
+    <nav>
       <a href="resume.html">Resume</a>
       <a href="art.html">Artwork</a>
       <a href="index2.html">About Me</a>
       <a href="contact.html">Contact</a>
-    </div>
+    </nav>
   </div>
 
 </body>
