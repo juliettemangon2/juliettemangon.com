@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
     :root {
       --text-dark: #12245e;
-      --bg: #f8f8ff;
-      --highlight: #fffff0;
+      --ivory: #fffff0;
+      --accent1: #d6e0f5;
+      --accent2: #b9c5e1;
     }
 
     * {
@@ -22,7 +24,9 @@
       width: 100%;
       height: 100%;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
+      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
+                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
+                  var(--ivory);
       color: var(--text-dark);
     }
 
@@ -49,7 +53,7 @@
 
     .top-buttons a:hover {
       background-color: var(--text-dark);
-      color: var(--highlight);
+      color: var(--ivory);
       transform: scale(1.05);
     }
 
@@ -77,12 +81,26 @@
       color: var(--text-dark);
       font-weight: 600;
       text-decoration: none;
-      transition: text-shadow 0.3s ease, color 0.3s ease;
+      position: relative;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-item a::before {
+      content: "→";
+      position: absolute;
+      left: -1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-item a:hover::before {
+      opacity: 1;
+      transform: translateX(-5px);
     }
 
     .contact-item a:hover {
-      text-shadow: 0 0 8px #b9c5e1;
       color: #4a537b;
+      transform: translateX(3px);
     }
 
     @media (max-width: 600px) {
