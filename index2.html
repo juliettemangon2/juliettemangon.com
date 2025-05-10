@@ -31,10 +31,12 @@
     }
 
     .top-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 1.5rem 2rem;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .top-buttons a {
@@ -46,24 +48,36 @@
       border-radius: 30px;
       text-decoration: none;
       transition: all 0.3s ease;
+      text-align: center;
     }
 
     .top-buttons a:hover {
       background-color: var(--text-dark);
       color: var(--ivory);
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     h1 {
       text-align: center;
       font-size: 3rem;
-      margin-top: 1rem;
+      margin-top: 2rem;
       letter-spacing: 1px;
     }
 
     h1 a {
       color: inherit;
       text-decoration: none;
+    }
+
+    .skip-link {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .skip-link a {
+      font-size: 1rem;
+      color: #4a537b;
+      text-decoration: underline;
     }
 
     .about-section {
@@ -76,16 +90,27 @@
       padding: 0 2rem;
     }
 
+    .about-photo {
+      overflow: hidden;
+      height: 500px;
+      object-fit: cover;
+    }
+
     .about-photo img {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     .about-text {
       font-size: 1.2rem;
       line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
     }
 
     .section-title {
@@ -103,6 +128,10 @@
       line-height: 1.8;
     }
 
+    .education-section p {
+      margin-bottom: 1.5rem;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 2.2rem;
@@ -113,11 +142,20 @@
         text-align: center;
       }
 
+      .about-photo {
+        height: 400px;
+      }
+
       .about-text {
         text-align: left;
       }
 
       .top-buttons {
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px 20px;
+        gap: 10px;
         justify-content: center;
       }
     }
@@ -132,22 +170,30 @@
   </div>
 
   <h1><a href="index.html">Juliette Mangon</a></h1>
+  <div class="skip-link"><a href="#edu">Skip to Educational Background</a></div>
 
   <div class="about-section">
     <div class="about-photo">
       <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
     </div>
     <div class="about-text">
-      <p>Hello, my name is Juliette Mangon. I am 20 years old, originally from Lexington, MA, and currently based in New York City, where I attend NYU.</p>
-      <p>I have a strong creative side—I love painting, drawing, and experimenting with different art forms, especially acrylics. Art allows me to approach challenges with imagination and perspective. I’m also passionate about sustainability and climate change, values that led me to adopt a vegetarian lifestyle back in seventh grade after learning about the environmental impact of the meat industry.</p>
+      <p>Hello, my name is Juliette Mangon. I am 20 years old, originally from Lexington, MA, and I currently reside in New York City where I attend NYU.</p>
+
+      <p>In addition to my academic pursuits, I have a creative side; I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
+
+      <p>I am also deeply passionate about sustainability and climate change—a commitment that inspired me to adopt a vegetarian lifestyle in the seventh grade after learning about the environmental impact of the meat industry.</p>
     </div>
   </div>
 
-  <h3 class="section-title">Educational Background</h3>
+  <h3 id="edu" class="section-title">Educational Background</h3>
 
   <div class="education-section">
-    <p>I’m currently pursuing a Bachelor’s degree in Computer Science and Mathematics at NYU, with a minor in the Business of Entertainment, Media, and Technology. I’m set to graduate in December 2025. My interest in mathematics naturally extended into computer science after taking my first programming course in high school.</p>
-    <p>Last spring, a media and entertainment course opened my eyes to how tech and creativity intersect. It inspired me to add my minor and shift my focus toward creative applications of CS—particularly in media and entertainment. I’m excited about the idea of combining technical skill with artistic vision to help shape the future of digital media.</p>
+    <p>
+      I am currently a student at New York University, pursuing a Bachelor’s degree in Computer Science and Mathematics, with a minor in Business of Entertainment, Media, and Technology, and I am graduating in December 2025. My passion for mathematics naturally led me to computer science, a field that captured my interest during my first programming course in high school. While I have always been drawn to the analytical and problem-solving aspects of these disciplines, I initially found it challenging to define a specific career path amidst the diverse opportunities available.
+    </p>
+    <p>
+      Taking a course on media and entertainment last spring opened my eyes to the creative possibilities within the tech industry, and led me to add the minor. In turn, I have become deeply interested in exploring the creative side of computer science, with a particular focus on forging a career in the media and entertainment industry. I am excited by the prospect of blending technical expertise with artistic creativity to innovate and redefine the way digital media is experienced and created. This experience not only broadened my academic perspective but also resonated with my passion for painting and creative expression.
+    </p>
   </div>
 
 </body>
