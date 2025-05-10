@@ -20,6 +20,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     html, body {
       width: 100%;
       min-height: 100%;
@@ -71,13 +75,36 @@
 
     .skip-link {
       text-align: center;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
     }
 
     .skip-link a {
-      font-size: 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
       color: #4a537b;
-      text-decoration: underline;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .skip-link a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 1px;
+      background-color: #4a537b;
+      transition: width 0.3s ease;
+    }
+
+    .skip-link a:hover {
+      color: #12245e;
+    }
+
+    .skip-link a:hover::after {
+      width: 100%;
     }
 
     .about-section {
@@ -172,7 +199,6 @@
 
   <div class="top-buttons">
     <a href="index.html">Home</a>
-    <a href="#edu">Educational Background</a>
     <a href="resume.html">Resume</a>
     <a href="art.html">Artwork</a>
   </div>
