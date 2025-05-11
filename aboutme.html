@@ -73,9 +73,17 @@
       text-decoration: none;
     }
 
+    /* No skip link on desktop */
     .skip-link {
-      text-align: center;
-      margin-top: 0.4rem;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .skip-link {
+        display: block;
+        text-align: center;
+        margin-top: 0.4rem;
+      }
     }
 
     .skip-link a {
@@ -151,7 +159,7 @@
     }
 
     .education-section {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto 4rem;
       padding: 0 2rem;
       font-size: 1.2rem;
@@ -198,9 +206,7 @@
 <body>
 
   <div class="top-buttons">
-    <a href="index.html">Home</a>
-    <a href="resume.html">Resume</a>
-    <a href="art.html">Artwork</a>
+    <a href="index.html">Back to Home</a>
   </div>
 
   <h1><a href="index.html">Juliette Mangon</a></h1>
@@ -223,7 +229,7 @@
 
   <div class="education-section">
     <p>
-      I am currently a student at New York University, pursuing a Bachelor’s degree in Computer Science and Mathematics, with a minor in Business of Entertainment, Media, and Technology, and I am graduating in December 2025. My passion for mathematics naturally led me to computer science, a field that captured my interest during my first programming course in high school. While I have always been drawn to the analytical and problem-solving aspects of these disciplines, I initially found it challenging to define a specific career path amidst the diverse opportunities available.
+      I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics, with a minor in Business of Entertainment, Media, and Technology, and I am graduating in December 2025. My passion for mathematics naturally led me to computer science, a field that captured my interest during my first programming course in high school. While I have always been drawn to the analytical and problem-solving aspects of these disciplines, I initially found it challenging to define a specific career path amidst the diverse opportunities available.
     </p>
     <p>
       Taking a course on media and entertainment last spring opened my eyes to the creative possibilities within the tech industry, and led me to add the minor. In turn, I have become deeply interested in exploring the creative side of computer science, with a particular focus on forging a career in the media and entertainment industry. I am excited by the prospect of blending technical expertise with artistic creativity to innovate and redefine the way digital media is experienced and created. This experience not only broadened my academic perspective but also resonated with my passion for painting and creative expression.
