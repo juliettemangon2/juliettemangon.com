@@ -4,14 +4,10 @@
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <style>
     :root {
-      --main-bg: #f8f8ff;
       --ivory: #fffff0;
       --text-dark: #12245e;
-      --accent1: #d6e0f5;
-      --accent2: #b9c5e1;
     }
 
     * {
@@ -23,10 +19,16 @@
     html, body {
       height: 100%;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
-                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
-                  var(--ivory);
+      background: linear-gradient(-45deg, #d6e0f5, #b9c5e1, #a0eacb, #ffd6d6);
+      background-size: 600% 600%;
+      animation: gradientShift 20s ease infinite;
       color: var(--text-dark);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
@@ -37,21 +39,43 @@
       align-items: center;
       text-align: center;
       padding: 2rem;
+      position: relative;
     }
 
-    .title {
-      font-size: 3.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+    svg {
+      width: 100%;
+      max-width: 700px;
+      height: 120px;
+      margin-bottom: 1rem;
     }
 
-    .subtitle {
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 2.5rem;
-      color: #4a537b;
+    text {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 64px;
+      font-weight: bold;
+      dominant-baseline: middle;
+      text-anchor: middle;
+      fill: transparent;
+      stroke-width: 1.5;
+    }
+
+    .outline {
+      stroke: #12245e;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 2s ease forwards;
+    }
+
+    .color {
+      stroke: url(#gradient);
+      mask: url(#cursor-mask);
+      opacity: 0.8;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
     }
 
     nav {
@@ -59,6 +83,7 @@
       flex-wrap: wrap;
       gap: 1.2rem;
       justify-content: center;
+      margin-top: 2.5rem;
     }
 
     nav a {
@@ -79,8 +104,8 @@
     }
 
     @media (max-width: 600px) {
-      .title {
-        font-size: 2.5rem;
+      text {
+        font-size: 40px;
       }
 
       nav a {
@@ -93,7 +118,29 @@
 <body>
 
   <div class="container">
-    <div class="title">Juliette Mangon</div>
+    <svg viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#fbbd9c" />
+          <stop offset="25%" stop-color="#f9a8d4" />
+          <stop offset="50%" stop-color="#b9c5e1" />
+          <stop offset="75%" stop-color="#8298f3" />
+          <stop offset="100%" stop-color="#06b6d4" />
+        </linearGradient>
+
+        <mask id="cursor-mask">
+          <radialGradient id="radial" cx="50%" cy="50%" r="20%">
+            <stop offset="0%" stop-color="white" />
+            <stop offset="100%" stop-color="black" />
+          </radialGradient>
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#radial)" />
+        </mask>
+      </defs>
+
+      <text x="50%" y="50%" class="outline">Juliette Mangon</text>
+      <text x="50%" y="50%" class="color">Juliette Mangon</text>
+    </svg>
+
     <div class="subtitle">New York City, NY & Boston, MA</div>
 
     <nav>
@@ -103,6 +150,19 @@
       <a href="contact.html">Contact</a>
     </nav>
   </div>
+
+  <script>
+    const svg = document.querySelector("svg");
+    const radial = document.querySelector("#radial");
+
+    svg.addEventListener("mousemove", (e) => {
+      const rect = svg.getBoundingClientRect();
+      const cx = ((e.clientX - rect.left) / rect.width) * 100;
+      const cy = ((e.clientY - rect.top) / rect.height) * 100;
+      radial.setAttribute("cx", `${cx}%`);
+      radial.setAttribute("cy", `${cy}%`);
+    });
+  </script>
 
 </body>
 </html>
