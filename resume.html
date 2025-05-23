@@ -63,7 +63,6 @@
       letter-spacing: 0.5px;
     }
 
-
     .section {
       margin-bottom: 3rem;
     }
@@ -81,9 +80,7 @@
       margin-top: 2rem;
       margin-bottom: 1rem;
       border-bottom: 1px solid #b9c5e1;
-
     }
-
 
     ul {
       padding-left: 1.2rem;
@@ -120,14 +117,19 @@
       margin-bottom: 24px;
     }
 
-    .project-link {
-      color: var(--text);
+    .project-link, .icon-link {
+      color: var(--accent);
       text-decoration: none;
     }
 
-    .project-link:hover {
+    .icon-link {
+      margin-left: 6px;
+      font-size: 0.95rem;
+      vertical-align: middle;
+    }
+
+    .icon-link:hover {
       text-decoration: underline;
-      color: var(--accent);
     }
 
     @media (max-width: 800px) {
@@ -141,7 +143,6 @@
         flex-wrap: wrap;
         margin-bottom: 2rem;
         gap: 10px;
-        
       }
 
       .entry {
@@ -238,18 +239,18 @@
 
   <h3>Technical Projects</h3>
 
-    <div class="entry">
-      <div class="entry-title">Creative Portfolio Websites</div>
-      <div class="entry-date"><em>Present</em></div>
-    </div>
-    <div class="entry-content">
-       Designed and developed websites for artists and creatives using React, Tailwind CSS, JavaScript, and HTML. Built responsive front-end interfaces, implemented interactive components, and deployed projects with GitHub Pages. Projects emphasize visual clarity, dynamic layout design, and accessible navigation. See examples:
-
-      <br>
-      <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank" class="project-link">Chris Fitzgerald Photography</a><br>
-      <a href="https://juliettemangon2.github.io/mateo/" target="_blank" class="project-link">Mateo Antonio Martinez Photography</a><br>
-      <a href="https://juliettemangon2.github.io/amandine/" target="_blank" class="project-link">Amandine Mangon Postcards</a>
-    </div>
+  <div class="entry">
+    <div class="entry-title">Creative Portfolio Websites</div>
+    <div class="entry-date"><em>Present</em></div>
+  </div>
+  <div class="entry-content">
+    Designed and developed responsive portfolio websites for photographers and visual artists using React, Tailwind CSS, and JavaScript. Each site was tailored to the client's creative vision, with a focus on clean layout, intuitive navigation, and smooth animations to showcase their work professionally.
+    <ul style="margin-top: 0.75rem; padding-left: 1rem;">
+      <li><strong>Chris Fitzgerald:</strong> Studio portraits, street photography, and editorial work <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank" class="icon-link" title="View Site">🔗</a></li>
+      <li><strong>Mateo Antonio Martinez:</strong> Personal photography site with exhibits, photo essays, and reflective written work <a href="https://juliettemangon2.github.io/mateo/" target="_blank" class="icon-link" title="View Site">🔗</a></li>
+      <li><strong>Amandine Mangon:</strong> Postcard-style gallery exploring archival and personal photography <a href="https://juliettemangon2.github.io/amandine/" target="_blank" class="icon-link" title="View Site">🔗</a></li>
+    </ul>
+  </div>
 
     <div class="entry">
       <div class="entry-title">Differential Geometry Online Resource</div>
@@ -260,12 +261,17 @@
     </div>
 
     <div class="entry">
-      <div class="entry-title">Plagiarism Detection Enhancement Project</div>
+      <div class="entry-title">
+        Plagiarism Detection Enhancement Project
+        <a href="https://github.com/juliettemangon2/NLP-Plagiarism-Detector" target="_blank" class="icon-link" title="GitHub Repository">🔗</a>
+        <a href="Group 11 NLP Final Paper (2).pdf" target="_blank" class="icon-link" title="Final Paper PDF">📄</a>
+      </div>
       <div class="entry-date">Dec 2024 - Jan 2025</div>
     </div>
     <div class="entry-content">
       Implemented a custom plagiarism detection system using NLP techniques including N-gram classification, TF-IDF, and Word2Vec embeddings. Focused on optimizing performance by analyzing scoring outputs and iteratively improving precision and recall through parameter tuning.
     </div>
+
 
     <div class="entry">
       <div class="entry-title">Ad Hoc Information Retrieval System</div>
@@ -290,34 +296,41 @@
     <div class="entry-content">
       Engaged in a semester-long independent reading and research project on graph theory under the mentorship of a graduate student. Explored enumeration techniques and theoretical graph properties, culminating in a final presentation to faculty and peers.
     </div>
-    <h3>Media & Entertainment Projects</h3>
+  <h3>Media & Entertainment Projects</h3>
 
   <div class="entry">
-    <div class="entry-title">Spotify Listening Behavior Case Study</div>
+    <div class="entry-title">
+      Spotify Listening Behavior Case Study
+      <a href="Spotify Case Study — Exploring Technology, User Experience, and the Future of Music Streaming.pdf" target="_blank" class="icon-link" title="PDF Report">(PDF)</a>
+    </div>
     <div class="entry-date">Apr 2025</div>
   </div>
   <div class="entry-content">
-    An in-depth study on how Spotify uses personalization, data, and product design to shape listener behavior.
-    <br><a href="Spotify Case Study — Exploring Technology, User Experience, and the Future of Music Streaming.pdf"class="project-link" target="_blank">View Project</a>
+    An in-depth exploration of how Spotify’s user interface design and data-driven recommendations shape listening patterns and music discovery. Analyzed the psychological and technical mechanisms behind playlisting, autoplay, and algorithmic curation in the streaming economy.
   </div>
 
   <div class="entry">
-    <div class="entry-title">Fashion in Video Games Proposal</div>
+    <div class="entry-title">
+      Fashion in Video Games Proposal
+      <a href="Businessof Video games final.pdf" target="_blank" class="icon-link" title="PDF Proposal">(PDF)</a>
+    </div>
     <div class="entry-date">May 2025</div>
   </div>
   <div class="entry-content">
-    A proposal for Kering to invest in digital fashion creation tools on gaming platforms like Roblox and Fortnite.
-    <br><a href="Businessof Video games final.pdf" class="project-link" target="_blank">View Project</a>
+    A strategic business proposal advocating for luxury conglomerate Kering to invest in digital fashion creation tools within user-generated content platforms such as Roblox and Fortnite. The report outlines how branded design templates and avatar styling assets can engage younger consumers and expand brand identity into virtual economies.
   </div>
 
   <div class="entry">
-    <div class="entry-title">AI in Music Creation Analysis</div>
+    <div class="entry-title">
+      AI in Music Creation Analysis
+      <a href="MUSIC AI.pdf" target="_blank" class="icon-link" title="PDF Analysis">(PDF)</a>
+    </div>
     <div class="entry-date">Mar 2025</div>
   </div>
   <div class="entry-content">
-    A detailed exploration of how AI is transforming music creation, cultural meaning, and copyright law.
-    <br><a href="MUSIC AI.pdf" class="project-link" target="_blank">View Project</a>
+    A critical analysis of how generative AI tools are reshaping music composition, cultural expression, and intellectual property rights. The paper balances innovation with ethical questions about authorship, artistic authenticity, and the evolving role of human creativity in music production.
   </div>
+
 
   </div>
 </body>
