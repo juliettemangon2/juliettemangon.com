@@ -10,7 +10,8 @@
       --text: #12245e;
       --accent: #4a537b;
       --highlight: #fffff0;
-      --gradient: linear-gradient(190deg,#fff9a6, #c4e4ff, #132654, #8298f3);
+      --softblue: #d6e0f5;
+      --softgray: #ebecf1;
     }
 
     * {
@@ -65,6 +66,9 @@
 
     .section {
       margin-bottom: 3rem;
+      padding: 1.5rem;
+      background-color: var(--softgray);
+      border-radius: 12px;
     }
 
     h2 {
@@ -72,14 +76,15 @@
       font-weight: 700;
       margin-bottom: 12px;
       padding-bottom: 6px;
-      border-bottom: 1.5px solid #b9c5e1;
+      border-bottom: 1.5px solid var(--softblue);
     }
+
     h3 {
       font-size: 1.2rem;
       font-weight: 600;
       margin-top: 2rem;
       margin-bottom: 1rem;
-      border-bottom: 1px solid #b9c5e1;
+      border-bottom: 1px solid var(--softblue);
     }
 
     ul {
