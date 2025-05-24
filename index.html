@@ -1,93 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Juliette Mangon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #fff8a6;
-      color: #e00b00;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+    :root {
+      --bg: #e1ffdb;
+      --accent1: #4db6c4;
+      --accent2: #542682;
+      --text: #2c2e8f;
+      --highlight: #fff2e2;
     }
 
-    .header-box {
-      background-color: #e00b00;
-      color: #fff8a6;
-      padding: 3rem 2rem 2rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       width: 100%;
-      max-width: 1000px;
-      clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
-      position: relative;
+      height: 100%;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
     }
 
-    .name {
-      font-size: 3.8rem;
-      font-weight: 800;
-      margin: 0;
-      line-height: 1.1;
+    header {
+      padding: 3rem 1.5rem;
+      background-color: var(--accent2);
+      color: var(--highlight);
+      text-align: center;
     }
 
-    .name-highlight {
-      color: #e00b00;
-      background-color: #fff8a6;
-      padding: 0 0.3rem;
-      display: inline-block;
-      position: relative;
-      top: 0.15rem;
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .location {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-top: 0.5rem;
+    header h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--highlight);
     }
 
-    .nav {
-      margin-top: 3rem;
+    nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 2rem;
+      background-color: var(--highlight);
+      border-bottom: 4px solid var(--accent1);
     }
 
-    .nav-link {
+    nav a {
       text-decoration: none;
-      font-weight: 600;
       font-size: 1.1rem;
-      padding: 0.6rem 1.4rem;
-      color: #e00b00;
-      border: 2px solid #e00b00;
-      background: transparent;
+      font-weight: 600;
+      color: var(--accent2);
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--accent2);
       border-radius: 0;
-      transition: 0.2s ease;
+      transition: 0.3s ease;
     }
 
-    .nav-link:hover {
-      background: #e00b00;
-      color: #fff36a;
+    nav a:hover {
+      background-color: var(--accent2);
+      color: var(--highlight);
     }
   </style>
 </head>
 <body>
 
-  <div class="header-box">
-    <h1 class="name">
-      Juliette <span class="name-highlight">Mangon</span>
-    </h1>
-    <p class="location">Lexington, MA / New York, NY</p>
-  </div>
+  <header>
+    <h1>Juliette Mangon</h1>
+    <h2>Boston, MA & New York, NY</h2>
+  </header>
 
-  <nav class="nav">
-    <a href="aboutme.html" class="nav-link">About Me</a>
-    <a href="resume.html" class="nav-link">Resume</a>
-    <a href="art.html" class="nav-link">Art</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+  <nav>
+    <a href="aboutme.html">About Me</a>
+    <a href="resume.html">Resume</a>
+    <a href="art.html">Art</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
 </body>
