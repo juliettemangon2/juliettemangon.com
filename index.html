@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
   <style>
     :root {
-      --bg: #f8f8ff;
+      --main-bg: #f8f8ff;
+      --ivory: #fffeee;
       --text-dark: #12245e;
-      --accent1: #d6e0f5;
+      --accent1: #e8eefa;
       --accent2: #b9c5e1;
     }
 
@@ -19,61 +21,88 @@
     }
 
     html, body {
-      width: 100%;
-      min-height: 100%;
+      height: 100%;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
                   radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
-                  var(--bg);
-      font: 400 16px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+                  var(--ivory);
       color: var(--text-dark);
     }
 
-    h1 {
+    .container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      font-size: 2.75rem;
-      margin: 2rem 0 0.5rem;
+      padding: 2rem;
     }
 
-    h2 {
-      text-align: center;
-      font-size: 1.15rem;
+    .title {
+      font-size: 3.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
       font-weight: 400;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      color: #4a537b;
     }
 
     nav {
-      text-align: center;
-      margin: 2rem 0 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
     }
 
     nav a {
-      margin: 0 1rem;
-      font-weight: 500;
-      font-size: 1.05rem;
       text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.8rem 1.4rem;
       color: var(--text-dark);
       border: 2px solid var(--text-dark);
-      padding: 0.4rem 0.8rem;
-      transition: background 0.3s ease;
+      border-radius: 30px;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
-      background: var(--text-dark);
-      color: white;
+      background-color: var(--text-dark);
+      color: var(--ivory);
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 2.5rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Juliette Mangon</h1>
-  <h2>Boston, MA & New York, NY</h2>
+  <div class="container">
+    <div class="title">Juliette Mangon</div>
+    <div class="subtitle">New York City, NY & Boston, MA</div>
 
-  <nav>
-    <a href="aboutme.html">About Me</a>
-    <a href="resume.html">Resume</a>
-    <a href="art.html">Art</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <nav>
+      <a href="aboutme.html">About Me</a>
+      <a href="resume.html">Resume</a>
+      <a href="art.html">Artwork</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
 </body>
 </html>
