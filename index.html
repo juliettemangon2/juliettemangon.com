@@ -2,108 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juliette Mangon</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+  <link rel="stylesheet" href="style.css" />
   <style>
-    :root {
-      --main-bg: #fff8e7;
-      --ivory: #fffff0;
-      --text-dark: #d41c1c;
-      --accent1: #fedec8;
-      --accent2: #fff0c7;
-
-    }
-
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
-                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
-                  var(--ivory);
-      color: var(--text-dark);
+      font-family: 'Inter', sans-serif;
+      background-color: #fff8dc;
+      color: #e63946;
     }
 
     .container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      max-width: 960px;
+      margin: 0 auto;
       padding: 2rem;
+      text-align: center;
     }
 
-    .title {
-      font-size: 3.8rem;
+    .hero {
+      padding: 5rem 2rem;
+      background-color: #e63946;
+      color: #fff8dc;
+    }
+
+    .hero-title {
+      font-size: 3rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
     }
 
-    .subtitle {
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 2.5rem;
-      color: #c72c2c;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      justify-content: center;
-    }
-
-    nav a {
-      text-decoration: none;
+    .city-line {
       font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
       font-weight: 600;
-      padding: 0.8rem 1.4rem;
-      color: var(--text-dark);
-      border: 2px solid var(--text-dark);
-      border-radius: 30px;
-      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #fff8dc;
+      padding: 0.5rem 1rem;
+      border: 2px solid #fff8dc;
+      border-radius: 0;
+      transition: background 0.3s ease;
     }
 
-    nav a:hover {
-      background-color: var(--text-dark);
-      color: var(--ivory);
-      transform: scale(1.08);
-    }
-
-    @media (max-width: 600px) {
-      .title {
-        font-size: 2.5rem;
-      }
-
-      nav a {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
-      }
+    .nav-link:hover {
+      background-color: #fff8dc;
+      color: #e63946;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="title">Juliette Mangon</div>
-    <div class="subtitle">New York City, NY & Boston, MA</div>
-
-    <nav>
-      <a href="aboutme.html">About Me</a>
-      <a href="resume.html">Resume</a>
-      <a href="art.html">Artwork</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero-title">Juliette Mangon</h1>
+      <p class="city-line"> New York, NY & Boston, MA</p>
+      <nav class="nav">
+        <a href="aboutme.html" class="nav-link">About Me</a>
+        <a href="resume.html" class="nav-link">Resume</a>
+        <a href="art.html" class="nav-link">Art</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
 
 </body>
 </html>
