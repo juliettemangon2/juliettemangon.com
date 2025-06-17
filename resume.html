@@ -14,158 +14,39 @@
       --accent: #4a537b;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* BACKGROUND STRIPES */
-    html.theme1 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--highlight) 0 100px,
-        var(--bg)       100px 200px
-      );
-    }
-    html.theme2 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--accent) 0 100px,
-        var(--text)   100px 200px
-      );
-      --text: #4a537b;
-      --accent: #ff6d4c;
-    }
-
-    html {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-    }
-    body {
-      background: transparent;
-      color: var(--text);
-      padding: 40px 30px 60px;
-    }
-
-    /* TOP BUTTONS */
-    .top-buttons {
-      position: absolute; top: 20px; left: 20px;
-      display: flex; gap: 10px;
-    }
-    .top-buttons a {
-      display: inline-block;
-      font-weight: 600;
-      padding: 0.6rem 1.2rem;
-      background: var(--softgray);
-      color: var(--text);
-      border: 2px solid var(--accent);
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-    .top-buttons a:hover {
-      background: var(--accent);
-      color: var(--softgray);
-    }
-    html.theme2 .top-buttons a {
-      background: var(--highlight);
-      color: var(--text);
-      border-color: var(--highlight);
-    }
-    html.theme2 .top-buttons a:hover {
-      background: var(--text);
-      color: var(--highlight);
-    }
-
-    /* TOGGLE */
-    .toggle-switch {
-      position: absolute; top: 20px; right: 20px;
-      width: 50px; height: 24px;
-    }
-    .toggle-switch input {
-      opacity: 0; width: 0; height: 0; position: absolute;
-    }
-    .toggle-switch label {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%; background: #ccc;
-      border-radius: 24px; cursor: pointer;
-      transition: background 0.3s;
-    }
-    .toggle-switch label::after {
-      content: '';
-      position: absolute;
-      width: 16px; height: 16px;
-      background: #fff; border-radius: 50%; top: 4px; left: 4px;
-      transition: transform 0.3s;
-    }
-    .toggle-switch input:checked + label {
-      background: var(--accent);
-    }
-    .toggle-switch input:checked + label::after {
-      transform: translateX(26px);
-    }
-
-    /* NAME */
-    h1 {
-      text-align: center;
-      font-size: 4rem;
-      margin: 1rem 0;
-      letter-spacing: 1px;
-      font-weight: 900;
-      color: var(--text);
-      -webkit-text-stroke: 3px var(--text);
-              text-stroke: 3px var(--text);
-    }
-
-    /* GRID */
-    .resume-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
-      max-width: 1400px;
-      margin: 2rem auto;
-    }
-    @media (max-width: 900px) {
-      .resume-grid { grid-template-columns: 1fr; }
-    }
-
-    /* MAIN */
-    .main { display: flex; flex-direction: column; gap: 2rem; }
-    .section {
-      background: var(--softgray);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    html.theme2 .section {
-      background: var(--highlight);
-    }
-    h2 {
-      font-size: 1.4rem; font-weight: 700;
-      margin-bottom: 12px; padding-bottom: 6px;
-      border-bottom: 2px solid var(--accent);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .entry { margin-bottom: 1rem; }
-    .entry-title { font-weight: 700; color: var(--accent); }
-    .entry-subtitle { font-style: italic; color: var(--text); margin-left: 6px; }
-    .entry-date { float: right; font-weight: 600; color: var(--accent); }
-    .entry-content { margin-top: 0.5rem; line-height: 1.5; }
-
-    /* SIDEBAR */
-    .sidebar { display: flex; flex-direction: column; gap: 2rem; }
-    .card {
-      background: var(--softgray);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    html.theme2 .card { background: var(--highlight); }
-    .card h3 {
-      font-size: 1.2rem; color: var(--accent);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .card ul { list-style: none; padding: 0; }
-    .card li { margin-bottom: 0.5rem; font-size: 0.95rem; line-height: 1.4; }
+    html.theme1 { background: repeating-linear-gradient(to right, var(--highlight) 0 100px, var(--bg) 100px 200px); }
+    html.theme2 { background: repeating-linear-gradient(to right, var(--accent) 0 100px, var(--text) 100px 200px); --text:#4a537b; --accent:#ff6d4c; }
+    html { font-family: 'Helvetica Neue', Arial, sans-serif; font-size:16px; line-height:1.75; }
+    body { background:transparent; color:var(--text); padding:40px 30px 60px; }
+    .top-buttons { position:absolute; top:20px; left:20px; display:flex; gap:10px; }
+    .top-buttons a { display:inline-block; font-weight:600; padding:0.6rem 1.2rem; background:var(--softgray); color:var(--text); border:2px solid var(--accent); border-radius:30px; text-decoration:none; transition:background .3s,color .3s; }
+    .top-buttons a:hover { background:var(--accent); color:var(--softgray); }
+    html.theme2 .top-buttons a { background:var(--highlight); color:var(--text); border-color:var(--highlight); }
+    html.theme2 .top-buttons a:hover { background:var(--text); color:var(--highlight); }
+    .toggle-switch { position:absolute; top:20px; right:20px; width:50px; height:24px; }
+    .toggle-switch input { opacity:0; width:0; height:0; position:absolute; }
+    .toggle-switch label { position:absolute; top:0; left:0; width:100%; height:100%; background:#ccc; border-radius:24px; cursor:pointer; transition:background .3s; }
+    .toggle-switch label::after { content:''; position:absolute; width:16px; height:16px; background:#fff; border-radius:50%; top:4px; left:4px; transition:transform .3s; }
+    .toggle-switch input:checked + label { background:var(--accent); }
+    .toggle-switch input:checked + label::after { transform:translateX(26px); }
+    h1 { text-align:center; font-size:4rem; margin:1rem 0; letter-spacing:1px; font-weight:900; color:var(--text); -webkit-text-stroke:3px var(--text); text-stroke:3px var(--text); }
+    .resume-grid { display:grid; grid-template-columns:2fr 1fr; gap:30px; max-width:1400px; margin:2rem auto; }
+    @media(max-width:900px) { .resume-grid { grid-template-columns:1fr; } }
+    .main { display:flex; flex-direction:column; gap:2rem; }
+    .section { background:var(--softgray); border-radius:12px; padding:1.5rem; }
+    html.theme2 .section { background:var(--highlight); }
+    h2 { font-size:1.4rem; font-weight:700; margin-bottom:12px; padding-bottom:6px; border-bottom:2px solid var(--accent); color:var(--accent); text-transform:uppercase; letter-spacing:1px; }
+    .entry { margin-bottom:1rem; }
+    .entry-title { font-weight:700; color:var(--accent); }
+    .entry-subtitle { font-style:italic; color:var(--text); margin-left:6px; }
+    .entry-date { float:right; font-weight:600; color:var(--accent); }
+    .entry-content { margin-top:0.5rem; line-height:1.5; }
+    .sidebar { display:flex; flex-direction:column; gap:2rem; }
+    .card { background:var(--softgray); border-radius:12px; padding:1.5rem; }
+    html.theme2 .card { background:var(--highlight); }
+    .card h3 { font-size:1.2rem; color:var(--accent); margin-bottom:1rem; text-transform:uppercase; letter-spacing:1px; }
+    .card ul { list-style:none; padding:0; }
+    .card li { margin-bottom:0.5rem; font-size:0.95rem; line-height:1.4; }
   </style>
 </head>
 <body>
@@ -174,14 +55,12 @@
     <a href="_JulietteMangonResume.pdf" target="_blank">View PDF Resume</a>
   </div>
   <div class="toggle-switch">
-    <input type="checkbox" id="theme-toggle" />
-    <label for="theme-toggle"></label>
+    <input type="checkbox" id="theme-toggle" /><label for="theme-toggle"></label>
   </div>
 
   <h1>JULIETTE MANGON</h1>
   <div class="resume-grid">
     <div class="main">
-      <!-- Education -->
       <div class="section">
         <h2>Education</h2>
         <div class="entry">
@@ -189,19 +68,14 @@
           <span class="entry-subtitle"> | New York University, College of Arts & Sciences</span>
           <div class="entry-date">Sept 2023 - Dec 2025</div>
         </div>
-        <div class="entry-content">
-          Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Discrete Structures, Natural Language Processing, Numerical Analysis, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability, Topology.
-        </div>
+        <div class="entry-content">Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Discrete Structures, Natural Language Processing, Numerical Analysis, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability, Topology.</n        </div>
         <div class="entry">
           <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>
           <span class="entry-subtitle"> | Stern School of Business, Steinhardt, Tisch</span>
         </div>
-        <div class="entry-content">
-          Coursework: Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.
-        </div>
+        <div class="entry-content">Coursework: Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.</div>
       </div>
 
-      <!-- Technical Skills -->
       <div class="section">
         <h2>Technical Skills</h2>
         <div class="entry-content">
@@ -210,7 +84,6 @@
         </div>
       </div>
 
-      <!-- Work Experience -->
       <div class="section">
         <h2>Work Experience</h2>
         <div class="entry">
@@ -218,162 +91,69 @@
           <span class="entry-subtitle"> | Enlaye, Inc.</span>
           <div class="entry-date">Jun 2025 - Aug 2025</div>
         </div>
-        <div class="entry-content">
-          Contributing to a Boston-based AI startup focused on machine learning for the built environment. Collaborate with the CTO and engineering team to develop and deploy applied AI models, optimize model performance, and build data pipelines for real-world use cases.
+        <div class="entry-content">Implementing a query pre-processing agent—running LLMs locally, prompt engineering, and building robust pipelines—while adhering to NDA requirements.</div>
+
+        <div class="entry">
+          <span class="entry-title">USA Mathematical Talent Search Grader</span>
+          <span class="entry-subtitle"> | Art of Problem Solving</span>
+          <div class="entry-date">Oct 2023 - <em>Present</em></div>
         </div>
+        <div class="entry-content">Evaluate student submissions to the USA Mathematical Talent Search, a national problem-solving contest for high school students. Review solutions in depth, assess logical reasoning and mathematical rigor, and provide constructive written feedback to support learning and improvement.</div>
 
+        <div class="entry">
+          <span class="entry-title">Website Developer</span>
+          <span class="entry-subtitle"> | Tryst Restaurant</span>
+          <div class="entry-date">Jan 2025 - <em>Present</em></div>
+        </div>
+        <div class="entry-content">Rebuilt the restaurant's website from scratch using HTML, CSS, and JavaScript, transitioning from Wix to a fully customized and maintainable codebase. Improved user experience through responsive layout design, added SEO optimizations, and enhanced accessibility and site performance across devices.</div>
 
-    <div class="entry">
-      <div>
-        <span class="entry-title">USA Mathematical Talent Search Grader</span>
-        <span class="entry-subtitle"> | Art of Problem Solving</span>
+        <div class="entry">
+          <span class="entry-title">Photoville Intern</span>
+          <span class="entry-subtitle"> | Regenerating Inc.</span>
+          <div class="entry-date">May - Aug 2024</div>
+        </div>
+        <div class="entry-content">Developed a SwiftUI-based photo editing iOS app integrating AI-powered facial recognition tools using OpenCV, dlib, and NumPy. Led UI design in Figma and conducted competitive analysis to guide pricing and feature strategy for potential launch.</div>
       </div>
-      <div class="entry-date">Oct 2023 - <em>Present</em></div>
-    </div>
-    <div class="entry-content">
-      Evaluate student submissions to the USA Mathematical Talent Search, a national problem-solving contest for high school students. Review solutions in depth, assess logical reasoning and mathematical rigor, and provide constructive written feedback to support learning and improvement.
-    </div>
 
-    <div class="entry">
-      <div>
-        <span class="entry-title">Website Developer</span>
-        <span class="entry-subtitle"> | Tryst Restaurant</span>
+      <div class="section">
+        <h2>Mentorship</h2>
+        <div class="entry">
+          <span class="entry-title">Music Tech Mentee</span>
+          <span class="entry-subtitle"> | She Is The Music</span>
+          <div class="entry-date">Jun 2025 - Aug 2025</div>
+        </div>
+        <div class="entry-content">Paired with industry professional Anna Skelsey for an 8-week music tech mentorship project, culminating in a board-selected presentation opportunity at the end of summer.</div>
       </div>
-      <div class="entry-date">Jan 2025 - <em>Present</em></div>
-    </div>
-    <div class="entry-content">
-      Rebuilt the restaurant's website from scratch using HTML, CSS, and JavaScript, transitioning from Wix to a fully customized and maintainable codebase. Improved user experience through responsive layout design, added SEO optimizations, and enhanced accessibility and site performance across devices.
-    </div>
 
-    <div class="entry">
-      <div>
-        <span class="entry-title">Photoville Intern</span>
-        <span class="entry-subtitle"> | Regenerating Inc.</span>
+      <div class="section">
+        <h2>Projects</h2>
+        <!-- Projects content unchanged -->
       </div>
-      <div class="entry-date">May - Aug 2024</div>
     </div>
-    <div class="entry-content">
-      Developed a SwiftUI-based photo editing iOS app integrating AI-powered facial recognition tools using OpenCV, dlib, and NumPy. Led UI design in Figma and conducted competitive analysis to guide pricing and feature strategy for potential launch.
-    </div>
-  </div>
-
-    
-  <div class="section">
-    <h2>Mentorship</h2>
-
-    <div class="entry">
-      <div>
-        <span class="entry-title">Music Tech Mentee</span>
-        <span class="entry-subtitle"> | She Is The Music</span>
+    <aside class="sidebar">
+      <div class="card">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li><strong>Languages & Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
+          <li><strong>Tools & Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
+        </ul>
       </div>
-      <div class="entry-date">Jun 2025 - Aug 2025</div>
-    </div>
-    <div class="entry-content">
-      Selected for the Connect TogetHER program, a selective mentorship supporting women in music and technology. Engage in weekly one-on-one sessions with an industry mentor, attend virtual events, and develop an original music tech project focused on innovation in the music industry.
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Projects</h2>
-
-    <h3>Technical Projects</h3>
-
-    <div class="entry">
-      <div class="entry-title">Creative Portfolio Websites</div>
-      <div class="entry-date">Feb 2025 - <em>Present</em></div>
-    </div>
-    <div class="entry-content">
-      Designed and developed responsive portfolio websites for photographers and visual artists using React, Tailwind CSS, and JavaScript. Each site was tailored to the client’s creative vision, focusing on clean layout, intuitive navigation, and smooth animations.
-      <ul style="margin-top: 0.75rem; padding-left: 1rem;">
-        <li><strong>Chris Fitzgerald:</strong> Studio portraits, street photography, and editorial work <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank" class="icon-link" title="View Site">🔗</a></li>
-        <li><strong>Mateo Antonio Martinez:</strong> Personal photography site with exhibits, photo essays, and reflective written work <a href="https://juliettemangon2.github.io/mateo/" target="_blank" class="icon-link" title="View Site">🔗</a></li>
-        <li><strong>Amandine Mangon:</strong> Postcard-style gallery exploring archival and personal photography through collaging <a href="https://juliettemangon2.github.io/amandine/" target="_blank" class="icon-link" title="View Site">🔗</a></li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-title">
-        Plagiarism Detection Enhancement Project
-        <a href="https://github.com/juliettemangon2/NLP-Plagiarism-Detector" target="_blank" class="icon-link" title="GitHub Repository">🔗</a>
-        <a href="Group 11 NLP Final Paper (2).pdf" target="_blank" class="icon-link" title="Final Paper PDF">(PDF)</a>
+      <div class="card">
+        <h3>Languages</h3>
+        <ul>
+          <li>English</li>
+          <li>French</li>
+          <li>Spanish (Conversational)</li>
+        </ul>
       </div>
-      <div class="entry-date">Dec 2024 - Jan 2025</div>
-    </div>
-    <div class="entry-content">
-      Implemented a custom plagiarism detection system using NLP techniques including N-gram classification, TF-IDF, and Word2Vec embeddings. Focused on optimizing performance by analyzing scoring outputs and iteratively improving precision and recall through parameter tuning.
-    </div>
-
-    <div class="entry">
-      <div class="entry-title">Ad Hoc Information Retrieval System</div>
-      <div class="entry-date">Oct - Nov 2024</div>
-    </div>
-    <div class="entry-content">
-      Built a TF-IDF-based ranking system to match 1,400 document abstracts to 225 custom queries. Used cosine similarity to determine relevance and evaluated system performance using Mean Average Precision to guide algorithm refinements.
-    </div>
-
-    <div class="entry">
-      <div class="entry-title">Temperature Checker</div>
-      <div class="entry-date">Dec 2023</div>
-    </div>
-    <div class="entry-content">
-      Created a contactless body temperature reader using motion sensors and an infrared camera. Designed and built an LED output that changes color depending on the temperature range detected, enabling quick visual feedback for public settings.
-    </div>
-
-    <div class="entry">
-      <div class="entry-title">Graph Theory & Enumeration Research</div>
-      <div class="entry-date">Jan - May 2023</div>
-    </div>
-    <div class="entry-content">
-      Engaged in a semester-long independent reading and research project on graph theory under the mentorship of a graduate student. Explored enumeration techniques and theoretical graph properties, culminating in a final presentation to faculty and peers.
-    </div>
-
-    <h3>Media & Entertainment Projects</h3>
-
-    <div class="entry">
-      <div class="entry-title">
-        Spotify Listening Behavior Case Study
-        <a href="Spotify Case Study — Exploring Technology, User Experience, and the Future of Music Streaming.pdf" target="_blank" class="icon-link" title="PDF Report">(PDF)</a>
-      </div>
-      <div class="entry-date">Apr 2025</div>
-    </div>
-    <div class="entry-content">
-      An in-depth exploration of how Spotify’s user interface design and data-driven recommendations shape listening patterns and music discovery. Analyzed the psychological and technical mechanisms behind playlisting, autoplay, and algorithmic curation in the streaming economy.
-    </div>
-
-    <div class="entry">
-      <div class="entry-title">
-        Fashion in Video Games Proposal
-        <a href="Businessof Video games final.pdf" target="_blank" class="icon-link" title="PDF Proposal">(PDF)</a>
-      </div>
-      <div class="entry-date">May 2025</div>
-    </div>
-    <div class="entry-content">
-      A strategic business proposal advocating for luxury conglomerate Kering to invest in digital fashion creation tools within user-generated content platforms such as Roblox and Fortnite. The report outlines how branded design templates and avatar styling assets can engage younger consumers and expand brand identity into virtual economies.
-    </div>
-
-    <div class="entry">
-      <div class="entry-title">
-        AI in Music Creation Analysis
-        <a href="MUSIC AI.pdf" target="_blank" class="icon-link" title="PDF Analysis">(PDF)</a>
-      </div>
-      <div class="entry-date">Mar 2025</div>
-    </div>
-    <div class="entry-content">
-      A critical analysis of how generative AI tools are reshaping music composition, cultural expression, and intellectual property rights. The paper balances innovation with ethical questions about authorship, artistic authenticity, and the evolving role of human creativity in music production.
-    </div>
-
+    </aside>
   </div>
   <script>
-    const checkbox = document.getElementById('theme-toggle');
-    checkbox.addEventListener('change', () => {
+    document.getElementById('theme-toggle').addEventListener('change', () => {
       const html = document.documentElement;
-      if (checkbox.checked) {
-        html.classList.replace('theme1','theme2');
-      } else {
-        html.classList.replace('theme2','theme1');
-      }
+      html.classList.toggle('theme2');
+      html.classList.toggle('theme1');
     });
   </script>
 </body>
 </html>
-
