@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
- <style>
+<style>
     :root {
       --bg: #fdffe1;        /* light yellow */
       --text: #ff6d4c;      /* tomato */
       --accent: #4a537b;    /* YInMn blue */
       --highlight: #d5eff5; /* light cyan */
-      --softgray: #e8eefa;  /* alice blue */
+      --softgray: #fffefa;  /* replaced alice blue */
     }
 
     * {
@@ -19,25 +19,29 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-      padding: 40px 30px 60px;
-      color: var(--text);
-      /* default to theme1 */
+    html {
+      /* full-viewport stripes */
       background: repeating-linear-gradient(
         to right,
         var(--highlight) 0 100px,
         var(--softgray) 100px 200px
       );
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
     }
-    body.theme2 {
+
+    html.theme2 {
       background: repeating-linear-gradient(
         to right,
         var(--highlight) 0 100px,
         var(--bg) 100px 200px
       );
+    }
+
+    body {
+      padding: 40px 30px 60px;
+      color: var(--text);
     }
 
     .top-buttons {
@@ -56,8 +60,8 @@
       color: var(--text);
       border: 2px solid var(--text);
       border-radius: 30px;
-      text-decoration: none;
       background: none;
+      text-decoration: none;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -75,20 +79,18 @@
       letter-spacing: 0.5px;
     }
 
-    /* sections */
     .section {
       margin-bottom: 3rem;
       padding: 1.5rem;
       border-radius: 12px;
     }
-    body.theme1 .section {
+    html.theme1 .section {
       background-color: var(--bg);
     }
-    body.theme2 .section {
+    html.theme2 .section {
       background-color: var(--softgray);
     }
 
-    /* headings */
     h2 {
       font-size: 1.4rem;
       font-weight: 700;
@@ -102,13 +104,11 @@
     h3 {
       font-size: 1.2rem;
       font-weight: 600;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      margin: 2rem 0 1rem;
       border-bottom: 1px solid var(--text);
       color: var(--accent);
     }
 
-    /* entries */
     .entry {
       display: flex;
       justify-content: space-between;
@@ -137,7 +137,7 @@
     .entry-content {
       width: 100%;
       margin: 5px 0 24px;
-      font-weight: 300;
+      font-weight: 400; /* bumped up from 300 */
     }
 
     .icon-link {
@@ -152,8 +152,8 @@
     }
 
     @media (max-width: 800px) {
-      html, body {
-        padding: 40px 20px;
+      body {
+        padding: 40px 20px 60px;
       }
       .top-buttons {
         position: relative;
