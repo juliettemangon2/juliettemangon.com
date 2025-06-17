@@ -2,304 +2,225 @@
 <html lang="en" class="theme1">
 <head>
   <meta charset="UTF-8" />
-  <title>Juliette Mangon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliette Mangon - Resume</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-<style>
-  :root {
-    --bg: #fdffe1;         /* light yellow */
-    --highlight: #d5eff5;  /* light cyan */
-    --softgray: #fffff7;   /* off-white for theme1 sections */
-    --text: #ff6d4c;       /* tomato body text */
-    --accent: #4a537b;     /* deep-blue highlights */
-    --sec2-bg: #d5eff5;    /* light cyan for theme2 sections */
-  }
+  <style>
+    :root {
+      --bg: #fdffe1;
+      --highlight: #d5eff5;
+      --softgray: #fffefa;
+      --text: #ff6d4c;
+      --accent: #4a537b;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    /* BACKGROUND STRIPES */
+    html.theme1 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0 100px,
+        var(--bg)       100px 200px
+      );
+    }
+    html.theme2 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent) 0 100px,
+        var(--text)   100px 200px
+      );
+      --text: #4a537b;
+      --accent: #ff6d4c;
+    }
 
-  /* THEME 1 STRIPES */
-  html.theme1 {
-    background: repeating-linear-gradient(
-      to right,
-      var(--highlight) 0   100px,
-      var(--bg)       100px 200px
-    );
-  }
-
-  /* THEME 2 STRIPES & COLOR SWAP */
-  html.theme2 {
-    background: repeating-linear-gradient(
-      to right,
-      var(--accent) 0   100px,
-      var(--text)   100px 200px
-    );
-    /* swap text & accent */
-    --text:   #4a537b;    /* deep-blue text */
-    --accent: #ff6d4c;    /* tomato highlights */
-  }
-
-  /* BASE PAGE TYPOGRAPHY */
-  html {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.75;
-  }
-  body {
-    padding: 40px 30px 60px;
-    color: var(--text);
-    background: transparent;
-  }
-
-  /* CENTERED, OPAQUE SECTIONS */
-  .section {
-    max-width: 1300px;
-    margin: 0 auto 3rem;
-    padding: 1.5rem;
-    border-radius: 12px;
-  }
-  html.theme1 .section {
-    background: var(--softgray);
-  }
-  html.theme2 .section {
-    background: var(--sec2-bg);
-  }
-
-  /* TOP-LEFT LINKS */
-  .top-buttons {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .top-buttons a {
-    font-weight: 600;
-    padding: 0.6rem 1.2rem;
-    color: var(--text);
-    border: 2px solid var(--text);
-    border-radius: 30px;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .top-buttons a:hover {
-    background: var(--text);
-    color: var(--highlight);
-    transform: scale(1.05);
-  }
-
-  /* THEME-2 BUTTON OVERRIDE */
-  html.theme2 .top-buttons a {
-    background: var(--highlight);
-    color: var(--text);
-    border-color: var(--highlight);
-  }
-  html.theme2 .top-buttons a:hover {
-    /* keep same on hover */
-    background: var(--text);
-    color: var(--highlight);
-    transform: scale(1.05);
-  }
-
-  /* TRUE TOGGLE SWITCH (upper right) */
-  .toggle-switch {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 24px;
-  }
-  .toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  .toggle-switch label {
-    position: absolute;
-    cursor: pointer;
-    background-color: #ccc;
-    border-radius: 24px;
-    width: 100%;
-    height: 100%;
-    transition: background-color 0.3s;
-  }
-  .toggle-switch label::after {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #fff;
-    top: 3px;
-    left: 3px;
-    transition: transform 0.3s;
-  }
-  .toggle-switch input:checked + label {
-    background: var(--accent);
-  }
-  .toggle-switch input:checked + label::after {
-    transform: translateX(26px);
-  }
-
-  /* HEADER */
-  h1 {
-    text-align: center;
-    font-size: 3.2rem;
-    margin: 1.5rem 0 2.5rem;
-    letter-spacing: 0.5px;
-  }
-  /* THEME-2: cyan outline on name */
-  html.theme2 h1 {
-    -webkit-text-stroke: 4px var(--highlight);
-            text-stroke: 4px var(--highlight);
-  }
-
-  /* SECTION TITLES */
-  h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--accent);
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  /* SUBHEADS */
-  h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 2rem 0 1rem;
-    border-bottom: 1px solid var(--text);
-    color: var(--accent);
-  }
-
-  /* ENTRIES */
-  .entry {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-  .entry-title {
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .entry-subtitle {
-    color: var(--text);
-    font-style: italic;
-    margin-left: 4px;
-  }
-  .entry-date {
-    font-size: 0.95rem;
-    text-align: right;
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .entry-date em {
-    font-style: italic;
-  }
-  .entry-content {
-    width: 100%;
-    margin: 5px 0 24px;
-    font-weight: 400;
-  }
-  .icon-link {
-    color: var(--accent);
-    text-decoration: none;
-    margin-left: 6px;
-    font-size: 0.95rem;
-    vertical-align: middle;
-  }
-  .icon-link:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 800px) {
+    html {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
     body {
-      padding: 40px 20px 60px;
+      background: transparent;
+      color: var(--text);
+      padding: 40px 30px 60px;
     }
+
+    /* TOP BUTTONS */
     .top-buttons {
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      position: relative;
+      position: absolute; top: 20px; left: 20px;
+      display: flex; gap: 10px;
     }
-    .entry {
-      flex-direction: column;
-      align-items: flex-start;
+    .top-buttons a {
+      display: inline-block;
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      background: var(--softgray);
+      color: var(--text);
+      border: 2px solid var(--accent);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
     }
-    .entry-date {
-      margin-top: 4px;
-      text-align: left;
+    .top-buttons a:hover {
+      background: var(--accent);
+      color: var(--softgray);
     }
-  }
-</style>
+    html.theme2 .top-buttons a {
+      background: var(--highlight);
+      color: var(--text);
+      border-color: var(--highlight);
+    }
+    html.theme2 .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+    }
 
+    /* TOGGLE */
+    .toggle-switch {
+      position: absolute; top: 20px; right: 20px;
+      width: 50px; height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0; width: 0; height: 0; position: absolute;
+    }
+    .toggle-switch label {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; background: #ccc;
+      border-radius: 24px; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .toggle-switch label::after {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      background: #fff; border-radius: 50%; top: 4px; left: 4px;
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked + label {
+      background: var(--accent);
+    }
+    .toggle-switch input:checked + label::after {
+      transform: translateX(26px);
+    }
 
+    /* NAME */
+    h1 {
+      text-align: center;
+      font-size: 4rem;
+      margin: 1rem 0;
+      letter-spacing: 1px;
+      font-weight: 900;
+      color: var(--text);
+      -webkit-text-stroke: 3px var(--text);
+              text-stroke: 3px var(--text);
+    }
+
+    /* GRID */
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      max-width: 1400px;
+      margin: 2rem auto;
+    }
+    @media (max-width: 900px) {
+      .resume-grid { grid-template-columns: 1fr; }
+    }
+
+    /* MAIN */
+    .main { display: flex; flex-direction: column; gap: 2rem; }
+    .section {
+      background: var(--softgray);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    html.theme2 .section {
+      background: var(--highlight);
+    }
+    h2 {
+      font-size: 1.4rem; font-weight: 700;
+      margin-bottom: 12px; padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .entry { margin-bottom: 1rem; }
+    .entry-title { font-weight: 700; color: var(--accent); }
+    .entry-subtitle { font-style: italic; color: var(--text); margin-left: 6px; }
+    .entry-date { float: right; font-weight: 600; color: var(--accent); }
+    .entry-content { margin-top: 0.5rem; line-height: 1.5; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 2rem; }
+    .card {
+      background: var(--softgray);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    html.theme2 .card { background: var(--highlight); }
+    .card h3 {
+      font-size: 1.2rem; color: var(--accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .card ul { list-style: none; padding: 0; }
+    .card li { margin-bottom: 0.5rem; font-size: 0.95rem; line-height: 1.4; }
+  </style>
 </head>
 <body>
   <div class="top-buttons">
     <a href="index.html">Home</a>
     <a href="_JulietteMangonResume.pdf" target="_blank">View PDF Resume</a>
-    <div class="toggle-switch">
-      <input type="checkbox" id="theme-toggle" />
-      <label for="theme-toggle"></label>
-    </div>
   </div>
-
+  <div class="toggle-switch">
+    <input type="checkbox" id="theme-toggle" />
+    <label for="theme-toggle"></label>
+  </div>
 
   <h1>JULIETTE MANGON</h1>
-
-  <div class="section">
-    <h2>Education</h2>
-    <div class="entry">
-      <div>
-        <span class="entry-title">B.A. in Computer Science and Mathematics</span>
-        <span class="entry-subtitle"> | New York University, College of Arts & Sciences</span>
+  <div class="resume-grid">
+    <div class="main">
+      <!-- Education -->
+      <div class="section">
+        <h2>Education</h2>
+        <div class="entry">
+          <span class="entry-title">B.A. in Computer Science and Mathematics</span>
+          <span class="entry-subtitle"> | New York University, College of Arts & Sciences</span>
+          <div class="entry-date">Sept 2023 - Dec 2025</div>
+        </div>
+        <div class="entry-content">
+          Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Discrete Structures, Natural Language Processing, Numerical Analysis, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability, Topology.
+        </div>
+        <div class="entry">
+          <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>
+          <span class="entry-subtitle"> | Stern School of Business, Steinhardt, Tisch</span>
+        </div>
+        <div class="entry-content">
+          Coursework: Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.
+        </div>
       </div>
-      <div class="entry-date">Sept 2023 - Dec 2025</div>
-    </div>
-    <div class="entry-content">
-      Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Discrete Structures, Natural Language Processing, Numerical Analysis, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability, Topology.
-    </div>
 
-    <div class="entry">
-      <div>
-        <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>
-        <span class="entry-subtitle"> | Stern School of Business, Steinhardt School of Culture, Education, Human Development, Tisch School of The Arts</span>
+      <!-- Technical Skills -->
+      <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="entry-content">
+          <strong>Languages & Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC<br>
+          <strong>Tools & Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite
+        </div>
       </div>
-    </div>
-    <div class="entry-content">
-      Coursework: Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.
-    </div>
-  </div>
 
-  <div class="section">
-    <h2>Technical Skills</h2>
-    <p><strong>Languages & Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</p>
-    <p><strong>Tools & Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</p>
-    <p><strong>Spoken Languages:</strong> English, French, Spanish (Conversational)</p>
-  </div>
-
-  <div class="section">
-    <h2>Work Experience</h2>
-    
-    <div class="entry">
-      <div>
-        <span class="entry-title">AI/ML Intern</span>
-        <span class="entry-subtitle"> | Enlaye, Inc.</span>
-      </div>
-      <div class="entry-date">Jun 2025 - Aug 2025</div>
-    </div>
-    <div class="entry-content">
-      Contributing to a Boston-based AI startup focused on machine learning for the built environment. Collaborate with the CTO and engineering team to develop and deploy applied AI models, optimize model performance, and build data pipelines for real-world use cases.
-    </div>
- 
+      <!-- Work Experience -->
+      <div class="section">
+        <h2>Work Experience</h2>
+        <div class="entry">
+          <span class="entry-title">AI/ML Intern</span>
+          <span class="entry-subtitle"> | Enlaye, Inc.</span>
+          <div class="entry-date">Jun 2025 - Aug 2025</div>
+        </div>
+        <div class="entry-content">
+          Contributing to a Boston-based AI startup focused on machine learning for the built environment. Collaborate with the CTO and engineering team to develop and deploy applied AI models, optimize model performance, and build data pipelines for real-world use cases.
+        </div>
 
 
     <div class="entry">
