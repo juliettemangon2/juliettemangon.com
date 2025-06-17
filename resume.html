@@ -5,172 +5,215 @@
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <style>
-    :root {
-      --bg: #fdffe1;        /* light yellow */
-      --text: #ff6d4c;      /* tomato */
-      --accent: #4a537b;    /* YInMn blue */
-      --highlight: #d5eff5; /* light cyan */
-      --softgray: #fffefa;  /* replaced alice blue */
-    }
+  :root {
+    --bg: #fdffe1;        /* light yellow */
+    --highlight: #d5eff5; /* light cyan */
+    --softgray: #fffefa;  /* off-white for sections */
+    --text: #ff6d4c;      /* tomato body text */
+    --accent: #4a537b;    /* deep-blue highlights */
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    html {
-      /* full-viewport stripes */
-      background: repeating-linear-gradient(
-        to right,
-        var(--highlight) 0 100px,
-        var(--softgray) 100px 200px
-      );
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-    }
+  /* FULL-PAGE STRIPES */
+  html {
+    background: repeating-linear-gradient(
+      to right,
+      var(--highlight) 0   100px,
+      var(--bg)       100px 200px
+    );
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  html.theme2 {
+    /* swap text & accent for theme2 */
+    --text:   #4a537b;
+    --accent: #ff6d4c;
 
-    html.theme2 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--highlight) 0 100px,
-        var(--bg) 100px 200px
-      );
-    }
+    /* stripes now use new vars */
+    background: repeating-linear-gradient(
+      to right,
+      var(--text)   0   100px,
+      var(--accent) 100px 200px
+    );
+  }
 
+  body {
+    padding: 40px 30px 60px;
+    color: var(--text);
+  }
+
+  /* TOP BUTTONS & TOGGLE SWITCH */
+  .top-buttons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .top-buttons a {
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    color: var(--text);
+    border: 2px solid var(--text);
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .top-buttons a:hover {
+    background: var(--text);
+    color: var(--highlight);
+    transform: scale(1.05);
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 24px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .toggle-switch label {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
+  }
+  .toggle-switch label::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s;
+  }
+  .toggle-switch input:checked + label {
+    background: var(--accent);
+  }
+  .toggle-switch input:checked + label::after {
+    transform: translateX(26px);
+  }
+
+  /* HEADER */
+  h1 {
+    text-align: center;
+    font-size: 3.2rem;
+    margin: 1.5rem 0 2.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* SECTIONS (centered, narrower) */
+  .section {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  html.theme1 .section {
+    background: var(--softgray);
+  }
+  html.theme2 .section {
+    background: var(--highlight);
+  }
+
+  /* TITLES */
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    border-bottom: 1px solid var(--text);
+    color: var(--accent);
+  }
+
+  /* ENTRIES */
+  .entry {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .entry-title {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .entry-subtitle {
+    color: var(--text);
+    font-style: italic;
+    margin-left: 4px;
+  }
+  .entry-date {
+    font-size: 0.95rem;
+    text-align: right;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .entry-date em {
+    font-style: normal;
+    opacity: 0.8;
+  }
+  .entry-content {
+    width: 100%;
+    margin: 5px 0 24px;
+    font-weight: 400;
+  }
+
+  .icon-link {
+    color: var(--accent);
+    text-decoration: none;
+    margin-left: 6px;
+    font-size: 0.95rem;
+    vertical-align: middle;
+  }
+  .icon-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 800px) {
     body {
-      padding: 40px 30px 60px;
-      color: var(--text);
+      padding: 40px 20px 60px;
     }
-
     .top-buttons {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .top-buttons a,
-    .top-buttons button {
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 0.6rem 1.2rem;
-      color: var(--text);
-      border: 2px solid var(--text);
-      border-radius: 30px;
-      background: none;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .top-buttons a:hover,
-    .top-buttons button:hover {
-      background-color: var(--text);
-      color: var(--highlight);
-      transform: scale(1.05);
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 3.2rem;
-      margin: 1.5rem 0 2.5rem;
-      letter-spacing: 0.5px;
-    }
-
-    .section {
-      margin-bottom: 3rem;
-      padding: 1.5rem;
-      border-radius: 12px;
-    }
-    html.theme1 .section {
-      background-color: var(--bg);
-    }
-    html.theme2 .section {
-      background-color: var(--softgray);
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--accent);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 2rem 0 1rem;
-      border-bottom: 1px solid var(--text);
-      color: var(--accent);
-    }
-
-    .entry {
-      display: flex;
-      justify-content: space-between;
+      flex-direction: row;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-bottom: 2rem;
+      position: relative;
     }
-    .entry-title {
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .entry-subtitle {
-      color: var(--text);
-      font-style: italic;
-      margin-left: 4px;
+    .entry {
+      flex-direction: column;
+      align-items: flex-start;
     }
     .entry-date {
-      font-size: 0.95rem;
-      text-align: right;
-      color: var(--accent);
-      font-weight: 600;
+      margin-top: 4px;
+      text-align: left;
     }
-    .entry-date em {
-      font-style: normal;
-      opacity: 0.8;
-    }
-    .entry-content {
-      width: 100%;
-      margin: 5px 0 24px;
-      font-weight: 400; /* bumped up from 300 */
-    }
+  }
+</style>
 
-    .icon-link {
-      color: var(--accent);
-      text-decoration: none;
-      margin-left: 6px;
-      font-size: 0.95rem;
-      vertical-align: middle;
-    }
-    .icon-link:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 800px) {
-      body {
-        padding: 40px 20px 60px;
-      }
-      .top-buttons {
-        position: relative;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-bottom: 2rem;
-      }
-      .entry {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .entry-date {
-        margin-top: 4px;
-        text-align: left;
-      }
-    }
-  </style>
 </head>
   <body class="theme1">
   <div class="top-buttons">
