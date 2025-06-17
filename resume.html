@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme1">
 <head>
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <style>
   :root {
-    --bg: #fdffe1;        /* light yellow */
-    --highlight: #d5eff5; /* light cyan */
-    --softgray: #fffefa;  /* off-white for sections */
-    --text: #ff6d4c;      /* tomato body text */
-    --accent: #4a537b;    /* deep-blue highlights */
+    --bg: #fdffe1;         /* light yellow */
+    --highlight: #d5eff5;  /* light cyan */
+    --softgray: #fffefa;   /* off-white for theme1 sections */
+    --text: #ff6d4c;       /* tomato body text */
+    --accent: #4a537b;     /* deep-blue highlights */
+    --sec2-bg: #d5eff5;    /* light cyan for theme2 sections */
   }
 
   * {
@@ -19,36 +20,58 @@
     box-sizing: border-box;
   }
 
-  /* FULL-PAGE STRIPES */
-  html {
+  /* THEME 1 STRIPES */
+  html.theme1 {
     background: repeating-linear-gradient(
       to right,
       var(--highlight) 0   100px,
       var(--bg)       100px 200px
     );
+  }
+
+  /* THEME 2 STRIPES */
+  html.theme2 {
+    background: repeating-linear-gradient(
+      to right,
+      var(--accent) 0   100px,
+      var(--text)   100px 200px
+    );
+
+    /* swap text & accent roles */
+    --text:   #4a537b;  /* deep-blue text */
+    --accent: #ff6d4c;  /* tomato highlights */
+  }
+
+  html {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.75;
-  }
-  html.theme2 {
-    /* swap text & accent for theme2 */
-    --text:   #4a537b;
-    --accent: #ff6d4c;
-
-    /* stripes now use new vars */
-    background: repeating-linear-gradient(
-      to right,
-      var(--text)   0   100px,
-      var(--accent) 100px 200px
-    );
+    /* no default background here—each theme handles it */
   }
 
   body {
     padding: 40px 30px 60px;
     color: var(--text);
+    background: transparent;
   }
 
-  /* TOP BUTTONS & TOGGLE SWITCH */
+  /* CENTERED, OPAQUE SECTIONS */
+  .section {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  /* theme1 sections = off-white */
+  html.theme1 .section {
+    background: var(--softgray);
+  }
+  /* theme2 sections = light cyan */
+  html.theme2 .section {
+    background: var(--sec2-bg);
+  }
+
+  /* TOP BUTTONS */
   .top-buttons {
     position: absolute;
     top: 20px;
@@ -72,6 +95,7 @@
     transform: scale(1.05);
   }
 
+  /* TRUE TOGGLE SWITCH */
   .toggle-switch {
     position: relative;
     width: 50px;
@@ -109,29 +133,13 @@
     transform: translateX(26px);
   }
 
-  /* HEADER */
+  /* HEADERS & TEXT */
   h1 {
     text-align: center;
     font-size: 3.2rem;
     margin: 1.5rem 0 2.5rem;
     letter-spacing: 0.5px;
   }
-
-  /* SECTIONS (centered, narrower) */
-  .section {
-    max-width: 900px;
-    margin: 0 auto 3rem;
-    padding: 1.5rem;
-    border-radius: 12px;
-  }
-  html.theme1 .section {
-    background: var(--softgray);
-  }
-  html.theme2 .section {
-    background: var(--highlight);
-  }
-
-  /* TITLES */
   h2 {
     font-size: 1.4rem;
     font-weight: 700;
@@ -181,7 +189,6 @@
     margin: 5px 0 24px;
     font-weight: 400;
   }
-
   .icon-link {
     color: var(--accent);
     text-decoration: none;
