@@ -9,7 +9,7 @@
     :root {
       --bg: #fdffe1;        /* light yellow */
       --highlight: #d5eff5; /* light cyan */
-      --softgray: #fffefa;  /* off-white */
+      --softgray: #fffff7;  /* off-white */
       --text: #ff6d4c;      /* tomato */
       --accent: #4a537b;    /* deep-blue */
     }
@@ -42,13 +42,12 @@
     }
 
     .title {
-      font-size: 4rem;
+      font-size: 6rem;            /* increased size */
       font-weight: 700;
+      text-transform: uppercase;  /* force all caps */
       letter-spacing: 1px;
       margin-bottom: 0.3rem;
-      /* subtle cyan outline for legibility */
-      -webkit-text-stroke: 1px var(--highlight);
-              text-stroke: 1px var(--highlight);
+      /* outline removed */
     }
 
     .subtitle {
@@ -85,7 +84,7 @@
 
     @media (max-width: 600px) {
       .title {
-        font-size: 2.8rem;
+        font-size: 4rem;
       }
       nav a {
         font-size: 1rem;
@@ -96,7 +95,7 @@
 </head>
 <body>
   <div>
-    <div class="title">Juliette Mangon</div>
+    <div class="title">JULIETTE MANGON</div>
     <div class="subtitle">New York City, NY & Boston, MA</div>
     <nav>
       <a href="aboutme.html">About Me</a>
