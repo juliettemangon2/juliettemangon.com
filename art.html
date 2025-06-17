@@ -9,13 +9,15 @@
     :root {
       --bg: #fdffe1;         /* light yellow */
       --highlight: #d5eff5;  /* light cyan */
-      --softgray: #fffff7;   /* off-white accents */
+      --softgray: #fffefa;   /* off-white accents */
       --text: #ff6d4c;       /* tomato text */
       --accent: #4a537b;     /* deep-blue accents */
     }
 
     *, *::before, *::after {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     /* THEME STRIPES */
@@ -32,7 +34,7 @@
         var(--accent) 0 100px,
         var(--text)   100px 200px
       );
-      /* swap colors */
+      /* swap text & accent */
       --text:   #4a537b;
       --accent: #ff6d4c;
     }
@@ -47,63 +49,116 @@
       background: transparent;
       color: var(--text);
       position: relative;
-      padding: 10px;             /* reduced padding */
+      padding: 20px; /* smaller margins */
     }
 
     /* NAVIGATION */
     .top-buttons {
-      position: absolute; top: 20px; left: 20px;
-      display: flex; flex-direction: column; gap: 8px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
     .top-buttons a {
-      font-weight: 600; padding: 0.5rem 1rem;
-      color: var(--text); border: 2px solid var(--text);
-      border-radius: 30px; text-decoration: none;
-      transition: background 0.3s, color 0.3s;
+      display: inline-block;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
       font-size: 0.9rem;
+      color: var(--text);
+      background: var(--softgray);
+      border: 2px solid var(--accent);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
     }
     .top-buttons a:hover {
-      background: var(--text); color: var(--highlight);
+      background: var(--accent);
+      color: var(--softgray);
+      transform: scale(1.05);
     }
     html.theme2 .top-buttons a {
-      background: var(--highlight); color: var(--text);
+      background: var(--highlight);
+      color: var(--text);
       border-color: var(--highlight);
     }
     html.theme2 .top-buttons a:hover {
-      background: var(--highlight); color: var(--text);
+      background: var(--text);
+      color: var(--highlight);
       transform: none;
     }
 
-    /* THEME TOGGLE */
+    /* THEME TOGGLE SWITCH */
     .toggle-switch {
-      position: absolute; top: 20px; right: 20px;
-      width: 44px; height: 20px;  /* slightly smaller */
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+    .toggle-switch label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ccc;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
     .toggle-switch label::after {
-      width: 16px; height: 16px; /* smaller knob */
-      top: 2px; left: 2px;
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      top: 4px;
+      left: 4px;
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked + label {
+      background: var(--accent);
     }
     .toggle-switch input:checked + label::after {
-      transform: translateX(24px);
+      transform: translateX(26px);
     }
 
     /* PAGE TITLE */
     h1 {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin: 1.5rem 0 0.5rem;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+    html.theme2 h1 {
+      color: var(--highlight);
+      -webkit-text-stroke: 2px var(--highlight);
+      font-weight: 900;
+    }
 
     /* GALLERY */
     .gallery {
       display: grid;
-      gap: 12px;                 /* tighter grid */
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      max-width: 100%;
+      gap: 12px;
+      grid-template-columns: repeat(4, 1fr); /* four images per row */
+      max-width: 1200px;
       margin: 0 auto 20px;
+    }
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     .art-item img {
@@ -114,37 +169,40 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .art-item img:hover {
-      transform: scale(1.04);   /* slightly larger hover */
+      transform: scale(1.04);
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
     /* LIGHTBOX */
     .lightbox {
       display: none;
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background: rgba(0,0,0,0.9);
-      justify-content: center; align-items: center;
       z-index: 1000;
-      padding: 1rem;              /* reduced padding */
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 1rem; /* reduced padding */
     }
     .lightbox img {
-      max-width: 95%; max-height: 85vh;
+      max-width: 95%;
+      max-height: 85vh;
       border: 2px solid var(--softgray);
       box-shadow: 0 0 24px rgba(0,0,0,0.6);
       border-radius: 0;
     }
     #lightbox-title {
       color: #fff;
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin: 1rem 0 0.5rem;
     }
     #lightbox-medium {
       color: #ddd;
       font-size: 1.1rem;
       margin: 0.5rem 0;
-      max-width: 90%;
-      line-height: 1.4;            /* improved readability */
+      line-height: 1.4; /* readability */
     }
   </style>
 </head>
@@ -153,76 +211,26 @@
     <a href="index.html">Home</a>
   </div>
   <div class="toggle-switch">
-    <input type="checkbox" id="theme-toggle"/>
+    <input type="checkbox" id="theme-toggle" />
     <label for="theme-toggle"></label>
   </div>
 
   <h1>Recent Works</h1>
   <div class="gallery">
-    <div class="art-item">
-      <img src="./images/cards.jpeg" alt="Evening Cards"
-           data-full="./images/cards.jpeg"
-           data-title="Evening Cards"
-           data-medium='Acrylic 16" × 20"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/mira.jpeg" alt="Seaside, Cascais"
-           data-full="./images/mira.jpeg"
-           data-title="Seaside, Cascais"
-           data-medium='Acrylic 16" × 20"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/picnic.jpeg" alt="Seaside Picnic"
-           data-full="./images/picnic.jpeg"
-           data-title="Seaside Picnic"
-           data-medium='Acrylic 16" × 20"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/cliffs.jpeg" alt="Seaside Cliffs"
-           data-full="./images/cliffs.jpeg"
-           data-title="Seaside Cliffs"
-           data-medium='Acrylic 12" × 16"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/poolside.jpeg" alt="Poolside"
-           data-full="./images/poolside.jpeg"
-           data-title="Poolside"
-           data-medium='Acrylic 20" × 16"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/water.jpeg" alt="Water"
-           data-full="./images/water.jpeg"
-           data-title="Water"
-           data-medium='Acrylic 12" × 16"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/FullSizeRender.jpeg" alt="House, South of France"
-           data-full="./images/FullSizeRender.jpeg"
-           data-title="House, South of France"
-           data-medium='Watercolor 11.7" × 16.5"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/fish.jpeg" alt="Fish"
-           data-full="./images/fish.jpeg"
-           data-title="Fish"
-           data-medium='Acrylic 16" × 12"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/oranges.jpeg" alt="Oranges"
-           data-full="./images/oranges.jpeg"
-           data-title="Oranges"
-           data-medium='Acrylic 12" × 8"'>
-    </div>
-    <div class="art-item">
-      <img src="./images/roomie.jpg" alt="Roommates, NYC"
-           data-full="./images/roomie.jpg"
-           data-title="Roommates, NYC"
-           data-medium='Acrylic 16" × 20"'>
-    </div>
+    <div class="art-item"><img src="./images/cards.jpeg" alt="Evening Cards" data-full="./images/cards.jpeg" data-title="Evening Cards" data-medium='Acrylic 16" × 20"'></div>
+    <div class="art-item"><img src="./images/mira.jpeg" alt="Seaside, Cascais" data-full="./images/mira.jpeg" data-title="Seaside, Cascais" data-medium='Acrylic 16" × 20"'></div>
+    <div class="art-item"><img src="./images/picnic.jpeg" alt="Seaside Picnic" data-full="./images/picnic.jpeg" data-title="Seaside Picnic" data-medium='Acrylic 16" × 20"'></div>
+    <div class="art-item"><img src="./images/cliffs.jpeg" alt="Seaside Cliffs" data-full="./images/cliffs.jpeg" data-title="Seaside Cliffs" data-medium='Acrylic 12" × 16"'></div>
+    <div class="art-item"><img src="./images/poolside.jpeg" alt="Poolside" data-full="./images/poolside.jpeg" data-title="Poolside" data-medium='Acrylic 20" × 16"'></div>
+    <div class="art-item"><img src="./images/water.jpeg" alt="Water" data-full="./images/water.jpeg" data-title="Water" data-medium='Acrylic 12" × 16"'></div>
+    <div class="art-item"><img src="./images/FullSizeRender.jpeg" alt="House, South of France" data-full="./images/FullSizeRender.jpeg" data-title="House, South of France" data-medium='Watercolor 11.7" × 16.5"'></div>
+    <div class="art-item"><img src="./images/fish.jpeg" alt="Fish" data-full="./images/fish.jpeg" data-title="Fish" data-medium='Acrylic 16" × 12"'></div>
+    <div class="art-item"><img src="./images/oranges.jpeg" alt="Oranges" data-full="./images/oranges.jpeg" data-title="Oranges" data-medium='Acrylic 12" × 8"'></div>
+    <div class="art-item"><img src="./images/roomie.jpg" alt="Roommates, NYC" data-full="./images/roomie.jpg" data-title="Roommates, NYC" data-medium='Acrylic 16" × 20"'></div>
   </div>
 
   <div class="lightbox" id="lightbox">
-    <img src="" alt="" id="lightbox-img">
+    <img id="lightbox-img" src="" alt="">
     <h2 id="lightbox-title"></h2>
     <p id="lightbox-medium"></p>
   </div>
