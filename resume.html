@@ -29,26 +29,24 @@
     );
   }
 
-  /* THEME 2 STRIPES */
+  /* THEME 2 STRIPES & COLOR SWAP */
   html.theme2 {
     background: repeating-linear-gradient(
       to right,
       var(--accent) 0   100px,
       var(--text)   100px 200px
     );
-
-    /* swap text & accent roles */
-    --text:   #4a537b;  /* deep-blue text */
-    --accent: #ff6d4c;  /* tomato highlights */
+    /* swap text & accent */
+    --text:   #4a537b;    /* deep-blue text */
+    --accent: #ff6d4c;    /* tomato highlights */
   }
 
+  /* BASE PAGE TYPOGRAPHY */
   html {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.75;
-    /* no default background here—each theme handles it */
   }
-
   body {
     padding: 40px 30px 60px;
     color: var(--text);
@@ -62,16 +60,14 @@
     padding: 1.5rem;
     border-radius: 12px;
   }
-  /* theme1 sections = off-white */
   html.theme1 .section {
     background: var(--softgray);
   }
-  /* theme2 sections = light cyan */
   html.theme2 .section {
     background: var(--sec2-bg);
   }
 
-  /* TOP BUTTONS */
+  /* TOP-LEFT LINKS */
   .top-buttons {
     position: absolute;
     top: 20px;
@@ -95,9 +91,24 @@
     transform: scale(1.05);
   }
 
-  /* TRUE TOGGLE SWITCH */
+  /* THEME-2 BUTTON OVERRIDE */
+  html.theme2 .top-buttons a {
+    background: var(--highlight);
+    color: var(--text);
+    border-color: var(--highlight);
+  }
+  html.theme2 .top-buttons a:hover {
+    /* keep same on hover */
+    background: var(--highlight);
+    color: var(--text);
+    transform: none;
+  }
+
+  /* TRUE TOGGLE SWITCH (upper right) */
   .toggle-switch {
-    position: relative;
+    position: fixed;
+    top: 20px;
+    right: 20px;
     width: 50px;
     height: 24px;
   }
@@ -133,13 +144,20 @@
     transform: translateX(26px);
   }
 
-  /* HEADERS & TEXT */
+  /* HEADER */
   h1 {
     text-align: center;
     font-size: 3.2rem;
     margin: 1.5rem 0 2.5rem;
     letter-spacing: 0.5px;
   }
+  /* THEME-2: cyan outline on name */
+  html.theme2 h1 {
+    -webkit-text-stroke: 2px var(--highlight);
+            text-stroke: 2px var(--highlight);
+  }
+
+  /* SECTION TITLES */
   h2 {
     font-size: 1.4rem;
     font-weight: 700;
@@ -150,6 +168,8 @@
     text-transform: uppercase;
     letter-spacing: 1px;
   }
+
+  /* SUBHEADS */
   h3 {
     font-size: 1.2rem;
     font-weight: 600;
@@ -220,6 +240,7 @@
     }
   }
 </style>
+
 
 </head>
 <body>
