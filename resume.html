@@ -15,9 +15,7 @@
     }
 
     *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
 
     /* themes */
@@ -41,11 +39,11 @@
     /* base typography & spacing */
     html {
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 16px; line-height: 1.75;
     }
     body {
-      padding: 40px 20px 60px; /* reduced side padding */
+      /* side padding reduced further */
+      padding: 40px 12px 60px;
       color: var(--text);
       background: transparent;
       position: relative;
@@ -185,8 +183,15 @@
       margin-top: 0.5rem;
     }
 
-    /* icons */
-    a.icon-link { text-decoration: none; }
+    /* override PDF/GitHub link color + add spacing */
+    .icon-link {
+      color: var(--accent) !important;
+      margin-left: 0.5rem;
+      text-decoration: none;
+    }
+    .icon-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -254,11 +259,10 @@
           </div>
         </div>
         <div class="entry-content">
-          <ul>
-            <li>Contributing to a Boston-based AI startup focused on machine learning for the built environment. Collaborate with the CTO and engineering team to develop and deploy applied AI models, optimize model performance, and build data pipelines for real-world use cases.</li>
-            <li>Designed and implemented an LLM-based query pre-processing agent to standardize and enrich user inputs, improving retrieval precision and reducing manual review time.</li>
-            <li>Conducted prompt-engineering experiments across local model deployments to evaluate latency-performance trade-offs and inform roadmap decisions.</li>
-          </ul>
+          Contributed to Enlaye’s AI-native risk management platform, developing internal tools to automate contract intelligence workflows.
+          Built an LLM-based query pre-processing agent to standardize and enrich user inputs, improving retrieval precision. 
+          Conducted prompt-engineering experiments across local model deployments to evaluate latency-performance trade-offs.
+
         </div>
 
         <!-- USA MTSS Grader -->
@@ -443,10 +447,11 @@
   </div>
 
   <script>
-    document.getElementById('theme-toggle').addEventListener('change', () => {
-      document.documentElement.classList.toggle('theme2');
-      document.documentElement.classList.toggle('theme1');
-    });
+    document.getElementById('theme-toggle')
+      .addEventListener('change', () => {
+        document.documentElement.classList.toggle('theme2');
+        document.documentElement.classList.toggle('theme1');
+      });
   </script>
 </body>
 </html>
