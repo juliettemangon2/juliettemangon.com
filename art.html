@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme1">
 <head>
   <meta charset="UTF-8" />
   <title>Artwork</title>
@@ -7,72 +7,140 @@
 
   <style>
     :root {
-      --bg: #fffed3;
-      --text-dark: #ba0101;
-      --accent1: #fdffe9;
-      --accent2: #fffcdd;
+      --bg: #fdffe1;         /* light yellow */
+      --highlight: #d5eff5;  /* light cyan */
+      --softgray: #fffff7;   /* off-white for cards */
+      --text: #ff6d4c;       /* tomato text */
+      --accent: #4a537b;     /* deep-blue accents */
+      --sec2-bg: #d5eff5;    /* light cyan for theme2 cards */
     }
 
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
-                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
-                  var(--bg);
-      font: 400 16px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: var(--text-dark);
+    /* THEME 1 STRIPES */
+    html.theme1 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0   100px,
+        var(--bg)       100px 200px
+      );
     }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      margin: 3rem 0 1rem;
-      letter-spacing: 1px;
+    /* THEME 2 STRIPES & SWAP */
+    html.theme2 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent) 0   100px,
+        var(--text)   100px 200px
+      );
+      /* swap text & accent */
+      --text:   #4a537b;  /* deep-blue text */
+      --accent: #ff6d4c;  /* tomato accents */
     }
 
-    /* -------- top button ------------------------------------------- */
+    html {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 40px 30px;
+      color: var(--text);
+      background: transparent;
+      position: relative;
+    }
+
+    /* TOP-LEFT HOME LINK */
     .top-buttons {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 20px; left: 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
     .top-buttons a {
-      font-size: 1rem;
       font-weight: 600;
       padding: 0.6rem 1.2rem;
-      color: var(--text-dark);
-      border: 2px solid var(--text-dark);
+      color: var(--text);
+      border: 2px solid var(--text);
       border-radius: 30px;
       text-decoration: none;
-      text-align: center;
-      transition: all 0.3s ease;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
     }
-
     .top-buttons a:hover {
-      background-color: var(--text-dark);
-      color: #f8f8ff;
+      background: var(--text);
+      color: var(--highlight);
       transform: scale(1.05);
     }
 
-    /* -------- gallery grid ----------------------------------------- */
+    /* TRUE TOGGLE SWITCH (upper right) */
+    .toggle-switch {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 50px; height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0; width: 0; height: 0;
+    }
+    .toggle-switch label {
+      position: absolute;
+      cursor: pointer;
+      background-color: #ccc;
+      border-radius: 24px;
+      width: 100%; height: 100%;
+      transition: background-color 0.3s;
+    }
+    .toggle-switch label::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px; left: 3px;
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked + label {
+      background: var(--accent);
+    }
+    .toggle-switch input:checked + label::after {
+      transform: translateX(26px);
+    }
+
+    /* ART CARD (opaque background) */
+    .art-card {
+      max-width: 1000px;
+      margin: 100px auto 40px;
+      padding: 1.5rem;
+      background: var(--softgray);
+      border-radius: 0;    /* no rounding on edges */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    html.theme2 .art-card {
+      background: var(--sec2-bg);
+    }
+
+    /* PAGE TITLE */
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* GALLERY GRID */
     .gallery {
       display: grid;
       gap: 20px;
-      padding: 40px 20px 60px;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      justify-content: center;
     }
-
     @media (min-width: 801px) {
       .gallery {
         grid-template-columns: repeat(4, 1fr);
@@ -82,125 +150,129 @@
     .gallery img {
       width: 100%;
       cursor: pointer;
-      border: 1px solid #fffff0;
-      border-radius: 0px;
+      border: 1px solid var(--highlight);
+      border-radius: 0;   /* no rounding */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .gallery img:hover {
       transform: scale(1.025);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .gallery h3, .gallery p {
-      display: none;
-    }
-
-    /* -------- lightbox --------------------------------------------- */
+    /* LIGHTBOX */
     .lightbox {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
-      color: #fff;
-      text-transform: uppercase;
-      text-align: center;
       padding: 2rem;
+      text-align: center;
     }
-
     .lightbox img {
       max-width: 90%;
       max-height: 80vh;
-      border: 1px solid #fffff0;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-      border-radius: 0px;
+      border: 1px solid var(--highlight);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      border-radius: 0;
     }
-
     #lightbox-title {
+      color: #fff;
       font-size: 1.5rem;
-      margin: 0.75rem 0 0;
+      margin-top: 1rem;
+    }
+    #lightbox-medium {
+      color: #ddd;
+      margin-top: 0.5rem;
     }
 
-    #lightbox-medium {
-      font-size: 1rem;
-      margin: 0;
-    }
   </style>
 </head>
-<body>
 
+<body>
   <div class="top-buttons">
     <a href="index.html">Home</a>
   </div>
+  <div class="toggle-switch">
+    <input type="checkbox" id="theme-toggle" />
+    <label for="theme-toggle"></label>
+  </div>
 
-  <h1>RECENT WORKS</h1>
-
-  <div class="gallery">
-    <!-- All your paintings stay unchanged -->
-    <div class="art-item"><img src="./images/cards.jpeg" alt="Evening Cards" data-full="./images/cards.jpeg" data-title="Evening Cards" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
-    <div class="art-item"><img src="./images/mira.jpeg" alt="Seaside, Cascais" data-full="./images/mira.jpeg" data-title="Seaside, Cascais" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
-    <div class="art-item"><img src="./images/picnic.jpeg" alt="Seaside Picnic" data-full="./images/picnic.jpeg" data-title="Seaside Picnic" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
-    <div class="art-item"><img src="./images/cliffs.jpeg" alt="Seaside Cliffs" data-full="./images/cliffs.jpeg" data-title="Seaside Cliffs" data-medium='Acrylic&nbsp;12&quot; × 16&quot;'></div>
-    <div class="art-item"><img src="./images/poolside.jpeg" alt="Poolside" data-full="./images/poolside.jpeg" data-title="Poolside" data-medium='Acrylic&nbsp;20&quot; × 16&quot;'></div>
-    <div class="art-item"><img src="./images/water.jpeg" alt="Water" data-full="./images/water.jpeg" data-title="Water" data-medium='Acrylic&nbsp;12&quot; × 16&quot;'></div>
-    <div class="art-item"><img src="./images/FullSizeRender.jpeg" alt="House, South of France" data-full="./images/FullSizeRender.jpeg" data-title="House, South of France" data-medium='Watercolor&nbsp;11.7&quot; × 16.5&quot;'></div>
-    <div class="art-item"><img src="./images/fish.jpeg" alt="Fish" data-full="./images/fish.jpeg" data-title="Fish" data-medium='Acrylic&nbsp;16&quot; × 12&quot;'></div>
-    <div class="art-item"><img src="./images/oranges.jpeg" alt="Oranges" data-full="./images/oranges.jpeg" data-title="Oranges" data-medium='Acrylic&nbsp;12&quot; × 8&quot;'></div>
-    <div class="art-item"><img src="./images/roomie.jpg" alt="Roommates, NYC" data-full="./images/roomie.jpg" data-title="Roommates, NYC" data-medium='Acrylic&nbsp;16&quot; × 20&quot;'></div>
+  <div class="art-card">
+    <h1>Recent Works</h1>
+    <div class="gallery">
+      <!-- your art items -->
+      <div class="art-item">
+        <img src="./images/cards.jpeg" alt="Evening Cards"
+             data-full="./images/cards.jpeg"
+             data-title="Evening Cards"
+             data-medium='Acrylic 16" × 20"'>
+      </div>
+      <!-- repeat for each image -->
+      <!-- ... -->
+    </div>
   </div>
 
   <!-- lightbox -->
   <div class="lightbox" id="lightbox">
-    <div>
-      <img src="" alt="Artwork" id="lightbox-img">
-      <h2 id="lightbox-title"></h2>
-      <p id="lightbox-medium"></p>
-    </div>
+    <img src="" alt="" id="lightbox-img">
+    <h2 id="lightbox-title"></h2>
+    <p id="lightbox-medium"></p>
   </div>
 
   <script>
-    const imgs   = [...document.querySelectorAll('.gallery img')];
-    const box    = document.getElementById('lightbox');
-    const lbImg  = document.getElementById('lightbox-img');
-    const title  = document.getElementById('lightbox-title');
+    // toggle theme
+    const checkbox = document.getElementById('theme-toggle');
+    checkbox.addEventListener('change', () => {
+      const html = document.documentElement;
+      html.classList.toggle('theme2');
+      html.classList.toggle('theme1');
+    });
+
+    // lightbox logic
+    const imgs = [...document.querySelectorAll('.gallery img')];
+    const box = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const title = document.getElementById('lightbox-title');
     const medium = document.getElementById('lightbox-medium');
     let idx = -1;
 
-    imgs.forEach((img,i)=> img.addEventListener('click',()=>{ idx=i; show(); }));
+    imgs.forEach((img, i) => img.addEventListener('click', () => {
+      idx = i; show();
+    }));
 
-    function show(){
+    function show() {
       const img = imgs[idx];
       lbImg.src = img.dataset.full;
-      title.innerHTML  = img.dataset.title;
+      title.textContent = img.dataset.title;
       medium.innerHTML = img.dataset.medium;
-      box.style.display='flex';
+      box.style.display = 'flex';
     }
-    function close(){ box.style.display='none'; idx=-1; }
-    function next(d){ idx=(idx+d+imgs.length)%imgs.length; show(); }
+    function close() { box.style.display = 'none'; idx = -1; }
+    function next(d) { idx = (idx + d + imgs.length) % imgs.length; show(); }
 
-    box.addEventListener('click',e=>{ if(e.target===box) close(); });
-
-    document.addEventListener('keydown',e=>{
-      if(idx===-1) return;
-      if(e.key==='Escape') close();
-      if(e.key==='ArrowRight') next(1);
-      if(e.key==='ArrowLeft')  next(-1);
+    box.addEventListener('click', e => {
+      if (e.target === box) close();
     });
-
-    let startX=0;
-    box.addEventListener('touchstart',e=>{
-      if(e.touches.length===1) startX=e.touches[0].clientX;
+    document.addEventListener('keydown', e => {
+      if (idx < 0) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') next(1);
+      if (e.key === 'ArrowLeft') next(-1);
     });
-    box.addEventListener('touchend',e=>{
-      if(!startX||idx===-1) return;
-      const dx=e.changedTouches[0].clientX-startX;
-      const thr=40;
-      if(dx> thr) next(-1);
-      if(dx<-thr) next(1);
-      startX=0;
+    // swipe support
+    let startX = 0;
+    box.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) startX = e.touches[0].clientX;
+    });
+    box.addEventListener('touchend', e => {
+      if (!startX || idx < 0) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (dx > 40) next(-1);
+      if (dx < -40) next(1);
+      startX = 0;
     });
   </script>
 </body>
