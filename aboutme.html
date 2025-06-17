@@ -42,7 +42,7 @@
     body {
       min-height: 100vh;
       color: var(--text);
-      padding: 30px 40px;
+      padding: 40px;
       position: relative;
     }
 
@@ -140,64 +140,51 @@
       -webkit-text-stroke: 2px var(--highlight);
     }
 
-    .card {
-      max-width: 900px;
-      margin: 0 auto 2rem;
-      background: var(--softgray);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    html.theme2 .card {
-      background: var(--sec2-bg);
-    }
-
-    .hero-section {
+    .content-grid {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 2rem;
+      gap: 3rem;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
       flex-wrap: wrap;
     }
 
-    .hero-photo {
-      flex: 0 0 220px;
+    .photo-col {
+      flex: 0 0 240px;
     }
 
-    .hero-photo img {
+    .photo-col img {
       width: 100%;
       height: auto;
       border: 2px solid var(--highlight);
       border-radius: 0;
     }
 
-    .hero-text {
-      flex: 1;
-      font-size: 1.9rem;
-      line-height: 1.8;
+    .text-col {
+      flex: 1 1 600px;
+      display: grid;
+      gap: 2rem;
     }
 
     .text-block {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1.5rem 2rem;
       background: var(--softgray);
+      padding: 1.5rem 2rem;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
       font-size: 1.2rem;
       line-height: 1.8;
     }
 
-    .edu-section {
+    .edu-grid {
       display: flex;
-      flex-wrap: wrap;
       gap: 2rem;
-      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto 3rem;
     }
 
-    .edu-box {
-      flex: 1 1 400px;
+    .edu-col {
+      flex: 1 1 450px;
       background: var(--softgray);
       padding: 1.5rem 2rem;
       border-radius: 16px;
@@ -207,23 +194,22 @@
     }
 
     @media (max-width: 768px) {
-      .top-buttons {
-        position: relative;
-        display: flex;
-        justify-content: center;
-      }
-
       body {
         padding: 20px;
       }
 
-      .hero-section {
+      .content-grid {
         flex-direction: column;
-        text-align: center;
+        gap: 2rem;
       }
 
-      .hero-text {
-        text-align: left;
+      .photo-col {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .text-col {
+        gap: 1.5rem;
       }
     }
   </style>
@@ -234,38 +220,35 @@
 
   <!-- ABOUT -->
   <h2 class="section-title">About Me</h2>
-  <div class="card">
-    <div class="hero-section">
-      <div class="hero-photo">
-        <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
-      </div>
-      <div class="hero-text">
+  <div class="content-grid">
+    <div class="photo-col">
+      <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
+    </div>
+    <div class="text-col">
+      <div class="text-block">
         <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
       </div>
+      <div class="text-block">
+        <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
+      </div>
+      <div class="text-block">
+        <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
+      </div>
+      <div class="text-block">
+        <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
+      </div>
     </div>
-  </div>
-
-  <div class="text-block">
-    <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
-  </div>
-
-  <div class="text-block">
-    <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
-  </div>
-
-  <div class="text-block">
-    <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
   </div>
 
   <!-- EDUCATION -->
   <h2 class="section-title" id="edu">Educational Background</h2>
-  <div class="edu-section">
-    <div class="edu-box">
+  <div class="edu-grid">
+    <div class="edu-col">
       <p>
         I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology. I’m set to graduate in December 2025. My interest in mathematics led me naturally to computer science, a field I first encountered in high school through a programming course. I was immediately drawn to its logic, structure, and creative potential, but with so many possible directions, it took time to discover where I wanted to focus.
       </p>
     </div>
-    <div class="edu-box">
+    <div class="edu-col">
       <p>
         A course on media and entertainment that I took last spring helped clarify that path. It revealed the creative possibilities at the intersection of technology and storytelling, which inspired me to add my minor and pursue work that blends technical knowledge with artistic thinking. I’m now especially interested in careers that merge computer science with media and cultural production, using code as a tool to design, build, and shape how digital experiences are created and shared. This direction aligns with my background in visual art and reflects my broader interest in creativity, communication, and innovation.
       </p>
