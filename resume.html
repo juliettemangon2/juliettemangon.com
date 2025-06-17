@@ -215,11 +215,14 @@
 </style>
 
 </head>
-  <body class="theme1">
+<body>
   <div class="top-buttons">
     <a href="index.html">Home</a>
     <a href="_JulietteMangonResume.pdf" target="_blank">View PDF Resume</a>
-    <button id="theme-toggle">Switch Theme</button>
+    <div class="toggle-switch">
+      <input type="checkbox" id="theme-toggle" />
+      <label for="theme-toggle"></label>
+    </div>
   </div>
 
 
@@ -413,11 +416,14 @@
 
   </div>
   <script>
-    const btn = document.getElementById('theme-toggle');
-    const body = document.body;
-    btn.addEventListener('click', () => {
-      body.classList.toggle('theme2');
-      body.classList.toggle('theme1');
+    const checkbox = document.getElementById('theme-toggle');
+    checkbox.addEventListener('change', () => {
+      const html = document.documentElement;
+      if (checkbox.checked) {
+        html.classList.replace('theme1','theme2');
+      } else {
+        html.classList.replace('theme2','theme1');
+      }
     });
   </script>
 </body>
