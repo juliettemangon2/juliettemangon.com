@@ -9,37 +9,32 @@
     :root {
       --bg: #fdffe1;         /* light yellow */
       --highlight: #d5eff5;  /* light cyan */
-      --softgray: #fffff7;   /* off-white for cards */
+      --softgray: #fffff7;   /* off-white accents */
       --text: #ff6d4c;       /* tomato text */
       --accent: #4a537b;     /* deep-blue accents */
-      --sec2-bg: #d5eff5;    /* light cyan for theme2 cards */
     }
 
     *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
 
-    /* THEME 1 STRIPES */
+    /* THEME STRIPES */
     html.theme1 {
       background: repeating-linear-gradient(
         to right,
-        var(--highlight) 0   100px,
+        var(--highlight) 0 100px,
         var(--bg)       100px 200px
       );
     }
-
-    /* THEME 2 STRIPES & SWAP */
     html.theme2 {
       background: repeating-linear-gradient(
         to right,
-        var(--accent) 0   100px,
+        var(--accent) 0 100px,
         var(--text)   100px 200px
       );
-      /* swap text & accent */
-      --text:   #4a537b;  /* deep-blue text */
-      --accent: #ff6d4c;  /* tomato accents */
+      /* swap colors */
+      --text:   #4a537b;
+      --accent: #ff6d4c;
     }
 
     html {
@@ -47,62 +42,54 @@
       font-size: 16px;
       line-height: 1.75;
     }
-
     body {
       min-height: 100vh;
-      padding: 40px 30px;
-      color: var(--text);
       background: transparent;
+      color: var(--text);
       position: relative;
+      padding: 20px;
     }
 
-    /* TOP-LEFT HOME LINK */
+    /* NAVIGATION */
     .top-buttons {
-      position: absolute;
-      top: 20px; left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      position: absolute; top: 20px; left: 20px;
+      display: flex; flex-direction: column; gap: 10px;
     }
     .top-buttons a {
-      font-weight: 600;
-      padding: 0.6rem 1.2rem;
-      color: var(--text);
-      border: 2px solid var(--text);
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
+      font-weight: 600; padding: 0.6rem 1.2rem;
+      color: var(--text); border: 2px solid var(--text);
+      border-radius: 30px; text-decoration: none;
+      transition: background 0.3s, color 0.3s;
     }
     .top-buttons a:hover {
-      background: var(--text);
-      color: var(--highlight);
-      transform: scale(1.05);
+      background: var(--text); color: var(--highlight);
+    }
+    html.theme2 .top-buttons a {
+      background: var(--highlight); color: var(--text);
+      border-color: var(--highlight);
+    }
+    html.theme2 .top-buttons a:hover {
+      background: var(--highlight); color: var(--text);
+      transform: none;
     }
 
-    /* TRUE TOGGLE SWITCH (upper right) */
+    /* THEME TOGGLE */
     .toggle-switch {
-      position: absolute;
-      top: 20px; right: 20px;
+      position: absolute; top: 20px; right: 20px;
       width: 50px; height: 24px;
     }
     .toggle-switch input {
       opacity: 0; width: 0; height: 0;
     }
     .toggle-switch label {
-      position: absolute;
-      cursor: pointer;
-      background-color: #ccc;
-      border-radius: 24px;
-      width: 100%; height: 100%;
-      transition: background-color 0.3s;
+      background: #ccc; border-radius: 24px;
+      width: 100%; height: 100%; display: block;
+      cursor: pointer; transition: background 0.3s;
     }
     .toggle-switch label::after {
-      content: '';
-      position: absolute;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #fff;
-      top: 3px; left: 3px;
+      content: ''; position: absolute;
+      width: 18px; height: 18px; background: #fff;
+      border-radius: 50%; top: 3px; left: 3px;
       transition: transform 0.3s;
     }
     .toggle-switch input:checked + label {
@@ -112,34 +99,23 @@
       transform: translateX(26px);
     }
 
-    /* ART CARD (opaque background) */
-    .art-card {
-      max-width: 1000px;
-      margin: 100px auto 40px;
-      padding: 1.5rem;
-      background: var(--softgray);
-      border-radius: 0;    /* no rounding on edges */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    html.theme2 .art-card {
-      background: var(--sec2-bg);
-    }
-
     /* PAGE TITLE */
     h1 {
       text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
+      font-size: 3rem;
+      margin: 2rem 0 1rem;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
-    /* GALLERY GRID */
+    /* GALLERY */
     .gallery {
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      max-width: 1000px;
+      margin: 0 auto 40px;
     }
     @media (min-width: 801px) {
       .gallery {
@@ -147,47 +123,40 @@
       }
     }
 
-    .gallery img {
+    .art-item img {
       width: 100%;
-      cursor: pointer;
-      border: 1px solid var(--highlight);
-      border-radius: 0;   /* no rounding */
+      display: block;
+      border: 2px solid var(--softgray);
+      border-radius: 0;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .gallery img:hover {
-      transform: scale(1.025);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    .art-item img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
 
     /* LIGHTBOX */
     .lightbox {
       display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
+      position: fixed; inset: 0;
       background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
+      justify-content: center; align-items: center;
+      z-index: 1000; text-align: center;
       padding: 2rem;
-      text-align: center;
     }
     .lightbox img {
-      max-width: 90%;
-      max-height: 80vh;
-      border: 1px solid var(--highlight);
+      max-width: 90%; max-height: 80vh;
+      border: 2px solid var(--softgray);
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       border-radius: 0;
     }
     #lightbox-title {
-      color: #fff;
+      color: #fff; margin-top: 1rem;
       font-size: 1.5rem;
-      margin-top: 1rem;
     }
     #lightbox-medium {
-      color: #ddd;
-      margin-top: 0.5rem;
+      color: #ddd; margin-top: 0.5rem;
     }
-
   </style>
 </head>
 
@@ -196,26 +165,74 @@
     <a href="index.html">Home</a>
   </div>
   <div class="toggle-switch">
-    <input type="checkbox" id="theme-toggle" />
+    <input type="checkbox" id="theme-toggle"/>
     <label for="theme-toggle"></label>
   </div>
 
-  <div class="art-card">
-    <h1>Recent Works</h1>
-    <div class="gallery">
-      <!-- your art items -->
-      <div class="art-item">
-        <img src="./images/cards.jpeg" alt="Evening Cards"
-             data-full="./images/cards.jpeg"
-             data-title="Evening Cards"
-             data-medium='Acrylic 16" × 20"'>
-      </div>
-      <!-- repeat for each image -->
-      <!-- ... -->
+  <h1>Recent Works</h1>
+  <div class="gallery">
+    <div class="art-item">
+      <img src="./images/cards.jpeg" alt="Evening Cards"
+           data-full="./images/cards.jpeg"
+           data-title="Evening Cards"
+           data-medium='Acrylic 16" × 20"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/mira.jpeg" alt="Seaside, Cascais"
+           data-full="./images/mira.jpeg"
+           data-title="Seaside, Cascais"
+           data-medium='Acrylic 16" × 20"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/picnic.jpeg" alt="Seaside Picnic"
+           data-full="./images/picnic.jpeg"
+           data-title="Seaside Picnic"
+           data-medium='Acrylic 16" × 20"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/cliffs.jpeg" alt="Seaside Cliffs"
+           data-full="./images/cliffs.jpeg"
+           data-title="Seaside Cliffs"
+           data-medium='Acrylic 12" × 16"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/poolside.jpeg" alt="Poolside"
+           data-full="./images/poolside.jpeg"
+           data-title="Poolside"
+           data-medium='Acrylic 20" × 16"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/water.jpeg" alt="Water"
+           data-full="./images/water.jpeg"
+           data-title="Water"
+           data-medium='Acrylic 12" × 16"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/FullSizeRender.jpeg" alt="House, South of France"
+           data-full="./images/FullSizeRender.jpeg"
+           data-title="House, South of France"
+           data-medium='Watercolor 11.7" × 16.5"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/fish.jpeg" alt="Fish"
+           data-full="./images/fish.jpeg"
+           data-title="Fish"
+           data-medium='Acrylic 16" × 12"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/oranges.jpeg" alt="Oranges"
+           data-full="./images/oranges.jpeg"
+           data-title="Oranges"
+           data-medium='Acrylic 12" × 8"'>
+    </div>
+    <div class="art-item">
+      <img src="./images/roomie.jpg" alt="Roommates, NYC"
+           data-full="./images/roomie.jpg"
+           data-title="Roommates, NYC"
+           data-medium='Acrylic 16" × 20"'>
     </div>
   </div>
 
-  <!-- lightbox -->
   <div class="lightbox" id="lightbox">
     <img src="" alt="" id="lightbox-img">
     <h2 id="lightbox-title"></h2>
@@ -223,15 +240,14 @@
   </div>
 
   <script>
-    // toggle theme
-    const checkbox = document.getElementById('theme-toggle');
-    checkbox.addEventListener('change', () => {
+    // theme toggle
+    document.getElementById('theme-toggle').addEventListener('change', e => {
       const html = document.documentElement;
       html.classList.toggle('theme2');
       html.classList.toggle('theme1');
     });
 
-    // lightbox logic
+    // lightbox functionality
     const imgs = [...document.querySelectorAll('.gallery img')];
     const box = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
@@ -239,9 +255,9 @@
     const medium = document.getElementById('lightbox-medium');
     let idx = -1;
 
-    imgs.forEach((img, i) => img.addEventListener('click', () => {
-      idx = i; show();
-    }));
+    imgs.forEach((img, i) =>
+      img.addEventListener('click', () => { idx = i; show(); })
+    );
 
     function show() {
       const img = imgs[idx];
@@ -253,22 +269,19 @@
     function close() { box.style.display = 'none'; idx = -1; }
     function next(d) { idx = (idx + d + imgs.length) % imgs.length; show(); }
 
-    box.addEventListener('click', e => {
-      if (e.target === box) close();
-    });
+    box.addEventListener('click', e => { if (e.target === box) close(); });
     document.addEventListener('keydown', e => {
       if (idx < 0) return;
       if (e.key === 'Escape') close();
       if (e.key === 'ArrowRight') next(1);
       if (e.key === 'ArrowLeft') next(-1);
     });
-    // swipe support
     let startX = 0;
     box.addEventListener('touchstart', e => {
       if (e.touches.length === 1) startX = e.touches[0].clientX;
     });
     box.addEventListener('touchend', e => {
-      if (!startX || idx < 0) return;
+      if (startX === 0 || idx < 0) return;
       const dx = e.changedTouches[0].clientX - startX;
       if (dx > 40) next(-1);
       if (dx < -40) next(1);
