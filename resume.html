@@ -5,88 +5,184 @@
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    :root{
-      --bg:#fdffe1;--highlight:#d5eff5;--softgray:#fffff7;--text:#ff6d4c;--accent:#4a537b;--sec2-bg:#d5eff5;
-    }
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-
-    /* ----- themes ------------------------------------------------------ */
-    html.theme1{background:repeating-linear-gradient(to right,var(--highlight)0 100px,var(--bg)100px 200px);}
-    html.theme2{
-      background:repeating-linear-gradient(to right,var(--accent)0 100px,var(--text)100px 200px);
-      --text:#4a537b;--accent:#ff6d4c;
+    :root {
+      --bg: #fdffe1;       /* light yellow */
+      --highlight: #d5eff5;/* light cyan */
+      --softgray: #fffff7; /* off-white for sections */
+      --text: #ff6d4c;     /* tomato text */
+      --accent: #4a537b;   /* deep-blue accents */
+      --sec2-bg: #d5eff5;  /* light cyan for theme2 */
     }
 
-    /* ----- base type --------------------------------------------------- */
-    html{font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.75;}
-    body{padding:40px 30px 60px;color:var(--text);background:transparent;position:relative;}
-
-    /* ----- top nav buttons -------------------------------------------- */
-    .top-buttons{position:absolute;top:20px;left:20px;display:flex;flex-direction:column;gap:10px;}
-    .top-buttons a{
-      font-weight:600;padding:0.6rem 1.2rem;color:var(--text);background:var(--softgray);
-      border:2px solid var(--text);border-radius:30px;text-decoration:none;transition:background .3s,color .3s;
-    }
-    .top-buttons a:hover{background:var(--text);color:var(--highlight);transform:scale(1.05);}
-    html.theme2 .top-buttons a{background:var(--highlight);color:var(--text);border-color:var(--highlight);}
-    html.theme2 .top-buttons a:hover{background:var(--text);color:var(--highlight);transform:scale(1.05);}
-
-    /* ----- theme toggle ------------------------------------------------ */
-    .toggle-switch{position:fixed;top:20px;right:20px;width:50px;height:24px;}
-    .toggle-switch input{opacity:0;width:0;height:0;}
-    .toggle-switch label{
-      position:absolute;cursor:pointer;width:100%;height:100%;background:#ccc;border-radius:24px;
-      transition:background-color .3s;
-    }
-    .toggle-switch label::after{
-      content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;
-      top:3px;left:3px;transition:transform .3s;
-    }
-    .toggle-switch input:checked+label{background:var(--accent);}
-    .toggle-switch input:checked+label::after{transform:translateX(26px);}
-
-    /* ----- headings ---------------------------------------------------- */
-    h1{
-      text-align:center;font-size:3.2rem;margin:1.5rem 0 2.5rem;letter-spacing:.5px;
-      -webkit-text-stroke:3px var(--text);
-    }
-    h2{
-      font-size:1.4rem;font-weight:700;margin-bottom:12px;padding-bottom:6px;
-      border-bottom:2px solid var(--accent);color:var(--accent);text-transform:uppercase;letter-spacing:1px;
-    }
-    h3{
-      font-size:1.2rem;font-weight:600;margin:2rem 0 1rem;
-      border-bottom:1px solid var(--text);color:var(--accent);
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* ----- layout ------------------------------------------------------ */
+    /* themes */
+    html.theme1 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0 100px,
+        var(--bg)       100px 200px
+      );
+    }
+    html.theme2 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent) 0 100px,
+        var(--text)   100px 200px
+      );
+      --text:   #4a537b;
+      --accent: #ff6d4c;
+    }
+
+    /* base typography & spacing */
+    html {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    body {
+      padding: 40px 20px 60px; /* reduced side padding */
+      color: var(--text);
+      background: transparent;
+      position: relative;
+    }
+
+    /* nav buttons */
+    .top-buttons {
+      position: absolute; top: 20px; left: 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .top-buttons a {
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      color: var(--text);
+      background: var(--softgray);
+      border: 2px solid var(--text);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+      transform: scale(1.05);
+    }
+    html.theme2 .top-buttons a {
+      background: var(--highlight);
+      color: var(--text);
+      border-color: var(--highlight);
+    }
+    html.theme2 .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+      transform: scale(1.05);
+    }
+
+    /* theme toggle */
+    .toggle-switch {
+      position: fixed; top: 20px; right: 20px;
+      width: 50px; height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0; width: 0; height: 0;
+    }
+    .toggle-switch label {
+      position: absolute; cursor: pointer;
+      width: 100%; height: 100%;
+      background: #ccc; border-radius: 24px;
+      transition: background-color 0.3s;
+    }
+    .toggle-switch label::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      background: #fff; border-radius: 50%;
+      top: 3px; left: 3px;
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked + label {
+      background: var(--accent);
+    }
+    .toggle-switch input:checked + label::after {
+      transform: translateX(26px);
+    }
+
+    /* headings */
+    h1 {
+      text-align: center;
+      font-size: 3.2rem;
+      margin: 1.5rem 0 2.5rem;
+      letter-spacing: 0.5px;
+      -webkit-text-stroke: 3px var(--text);
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      border-bottom: 1px solid var(--text);
+      color: var(--accent);
+    }
+
+    /* two-column layout */
     .container {
       display: grid;
-      gap: 2rem;
       grid-template-columns: 2fr 1fr;
+      gap: 2rem;
       max-width: 1300px;
       margin: 0 auto;
     }
-    @media(max-width:800px){.container{grid-template-columns:1fr;}}
-
-    /* ----- section box ------------------------------------------------- */
-    .section{
-      background:var(--softgray);border-radius:12px;padding:1.5rem;margin-bottom:3rem;
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
     }
-    html.theme2 .section{background:var(--sec2-bg);}
-    .span-2{grid-column:1/-1;}   /* full-width section */
 
-    /* ----- entry rows -------------------------------------------------- */
-    .entry-flex{
-      display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;
+    /* section styling */
+    .section {
+      background: var(--softgray);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
     }
-    .entry-title{font-weight:700;color:var(--accent);}
-    .entry-subtitle{font-style:italic;color:var(--text);}
-    .entry-date{font-size:.95rem;color:var(--accent);font-weight:600;margin-left:auto;}
-    .entry-content{margin-left:1rem;margin-top:.4rem;}
+    html.theme2 .section {
+      background: var(--sec2-bg);
+    }
 
-    /* ----- link styling ------------------------------------------------ */
-    a.icon-link{text-decoration:none;}
+    /* entries */
+    .entry-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .entry-title { font-weight: 700; color: var(--accent); }
+    .entry-subtitle { font-style: italic; color: var(--text); }
+    .entry-date {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-left: auto;
+    }
+    .entry-content {
+      margin-top: 0.5rem;
+    }
+
+    /* icons */
+    a.icon-link { text-decoration: none; }
   </style>
 </head>
 <body>
@@ -102,42 +198,40 @@
     <label for="theme-toggle"></label>
   </div>
 
-  <!-- Page title -->
+  <!-- Title -->
   <h1>JULIETTE MANGON</h1>
 
-  <!-- ============= TWO-COLUMN GRID ============= -->
+  <!-- Grid container -->
   <div class="container">
 
-    <!-- ====== COLUMN 1 ====== -->
+    <!-- COLUMN 1 -->
     <div>
 
       <!-- Education -->
       <div class="section">
         <h2>Education</h2>
 
-        <!-- Degree -->
+        <!-- B.A. -->
         <div class="entry">
           <div class="entry-flex">
             <span class="entry-title">B.A. in Computer Science and Mathematics</span>
-            <span class="entry-date">Sept&nbsp;2023&nbsp;–&nbsp;Dec&nbsp;2025</span>
+            <span class="entry-date">Sept 2023 – Dec 2025</span>
           </div>
-          <div class="entry-subtitle">New York University, College of Arts &amp; Sciences</div>
+          <div class="entry-subtitle">New York University, College of Arts & Sciences</div>
+        </div>
+        <div class="entry-content">
+          <strong>Coursework:</strong> Algorithms, Applied Internet Technology, Computer Systems Organization, Discrete Structures, Natural Language Processing, Numerical Analysis, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability, Topology.
         </div>
 
         <!-- Minor -->
-        <div class="entry">
+        <div class="entry" style="margin-top:1rem">
           <div class="entry-flex">
             <span class="entry-title">Minor in Business of Entertainment, Media, and Technology</span>
           </div>
           <div class="entry-subtitle">Stern School of Business, Steinhardt, Tisch</div>
         </div>
-
-        <!-- Coursework split -->
         <div class="entry-content">
-          <strong>Major Coursework:</strong> Algorithms, Applied Internet Technology, Computer Systems Organization, Discrete Structures, Natural Language Processing, Numerical Analysis, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability, Topology.
-        </div>
-        <div class="entry-content">
-          <strong>Minor Coursework:</strong> Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.
+          <strong>Coursework:</strong> Entertainment and Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.
         </div>
       </div>
 
@@ -145,83 +239,137 @@
       <div class="section">
         <h2>Work Experience</h2>
 
-        <!-- Enlaye -->
+        <!-- AI/ML Intern -->
         <div class="entry">
           <div class="entry-flex">
             <span>
               <span class="entry-title">AI/ML Intern</span>
               <span class="entry-subtitle"> | Enlaye, Inc.</span>
             </span>
-            <span class="entry-date">Jun&nbsp;–&nbsp;Aug&nbsp;2025</span>
+            <span class="entry-date">Jun 2025 – Aug 2025</span>
           </div>
         </div>
         <div class="entry-content">
           <ul>
-            <li>Worked on Enlaye’s AI-native platform for construction risk lifecycle management, contributing to the development of internal tools that streamline contract intelligence and decision workflows.</li>
-            <li>Designed and implemented an LLM-based query pre-processing agent to standardize and enrich user inputs, improving retrieval precision and reducing manual review time.</li>
-            <li>Conducted prompt-engineering experiments across local model deployments to evaluate latency-performance trade-offs and inform roadmap decisions.</li>
+            <li>Contributed to Enlaye’s AI-native risk management platform, developing internal tools to automate contract intelligence workflows.</li>
+            <li>Built an LLM-based query pre-processing agent to standardize and enrich user inputs, improving retrieval precision.</li>
+            <li>Executed prompt-engineering experiments on local model deployments to balance performance and latency.</li>
           </ul>
         </div>
 
-        <!-- AoPS -->
+        <!-- USA MTSS Grader -->
         <div class="entry">
           <div class="entry-flex">
             <span>
               <span class="entry-title">USA Mathematical Talent Search Grader</span>
               <span class="entry-subtitle"> | Art of Problem Solving</span>
             </span>
-            <span class="entry-date">Oct&nbsp;2023&nbsp;–&nbsp;<em>Present</em></span>
+            <span class="entry-date">Oct 2023 – <em>Present</em></span>
           </div>
         </div>
         <div class="entry-content">
-          Evaluate student submissions to the USA Mathematical Talent Search, a national problem-solving contest for high school students. Review solutions in depth, assess logical reasoning and mathematical rigor, and provide constructive written feedback to support learning and improvement.
+          Evaluate student submissions to the USA Mathematical Talent Search, a national problem-solving contest. Review solutions in depth, assess logical reasoning and rigor, and provide written feedback.
         </div>
 
-        <!-- Tryst -->
+        <!-- Website Developer -->
         <div class="entry">
           <div class="entry-flex">
             <span>
               <span class="entry-title">Website Developer</span>
               <span class="entry-subtitle"> | Tryst Restaurant</span>
             </span>
-            <span class="entry-date">Jan&nbsp;2025&nbsp;–&nbsp;<em>Present</em></span>
+            <span class="entry-date">Jan 2025 – <em>Present</em></span>
           </div>
         </div>
         <div class="entry-content">
-          Rebuilt the restaurant's website from scratch using HTML, CSS, and JavaScript, transitioning from Wix to a fully customized and maintainable codebase. Improved user experience through responsive layout design, added SEO optimizations, and enhanced accessibility and site performance across devices.
+          Rebuilt the restaurant’s website with custom HTML, CSS, and JavaScript; improved UX via responsive design, added SEO optimizations, and enhanced accessibility.
         </div>
 
-        <!-- Photoville -->
+        <!-- Photoville Intern -->
         <div class="entry">
           <div class="entry-flex">
             <span>
               <span class="entry-title">Photoville Intern</span>
               <span class="entry-subtitle"> | Regenerating Inc.</span>
             </span>
-            <span class="entry-date">May&nbsp;–&nbsp;Aug&nbsp;2024</span>
+            <span class="entry-date">May – Aug 2024</span>
           </div>
         </div>
         <div class="entry-content">
-          Developed a SwiftUI-based photo-editing iOS app integrating AI-powered facial recognition tools using OpenCV, dlib, and NumPy. Led UI design in Figma and conducted competitive analysis to guide pricing and feature strategy for potential launch.
+          Developed a SwiftUI photo-editing iOS app with AI-powered facial recognition (OpenCV, dlib, NumPy), led UI design in Figma, and performed competitive analysis.
+        </div>
+      </div>
+
+      <!-- Technical Projects -->
+      <div class="section">
+        <h2>Technical Projects</h2>
+
+        <div class="entry">
+          <div class="entry-flex">
+            <span class="entry-title">Creative Portfolio Websites</span>
+            <span class="entry-date">Feb 2025 – <em>Present</em></span>
+          </div>
+        </div>
+        <div class="entry-content">
+          Designed and developed responsive portfolio sites for photographers and visual artists using React, Tailwind CSS, and JavaScript—tailoring each to the client’s creative vision.
+        </div>
+        <ul class="entry-content" style="list-style:disc;margin-left:1.5rem;">
+          <li><strong>Chris Fitzgerald:</strong> Studio portraits, street photography, editorial work <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" class="icon-link" target="_blank">🔗</a></li>
+          <li><strong>Mateo Antonio Martinez:</strong> Exhibits, photo essays, reflective essays <a href="https://juliettemangon2.github.io/mateo/" class="icon-link" target="_blank">🔗</a></li>
+          <li><strong>Amandine Mangon:</strong> Postcard-style gallery collaging archival and personal photography <a href="https://juliettemangon2.github.io/amandine/" class="icon-link" target="_blank">🔗</a></li>
+        </ul>
+
+        <div class="entry">
+          <div class="entry-flex">
+            <span class="entry-title">Plagiarism Detection Enhancement Project</span>
+            <span class="entry-date">Dec 2024 – Jan 2025</span>
+          </div>
+        </div>
+        <div class="entry-content">
+          Built a custom NLP plagiarism-detector using N-gram classification, TF-IDF, and Word2Vec embeddings; tuned for optimal precision and recall.
+        </div>
+
+        <div class="entry">
+          <div class="entry-flex">
+            <span class="entry-title">Ad Hoc Information Retrieval System</span>
+            <span class="entry-date">Oct – Nov 2024</span>
+          </div>
+        </div>
+        <div class="entry-content">
+          Created a TF-IDF cosine-similarity ranking system for 1,400 abstracts against 225 queries; evaluated MAP to refine the algorithm.
+        </div>
+
+        <div class="entry">
+          <div class="entry-flex">
+            <span class="entry-title">Temperature Checker</span>
+            <span class="entry-date">Dec 2023</span>
+          </div>
+        </div>
+        <div class="entry-content">
+          Designed a contactless IR-sensor temperature reader with LED color alerts for quick public-health feedback.
+        </div>
+
+        <div class="entry">
+          <div class="entry-flex">
+            <span class="entry-title">Graph Theory &amp; Enumeration Research</span>
+            <span class="entry-date">Jan – May 2023</span>
+          </div>
+        </div>
+        <div class="entry-content">
+          Conducted independent reading and research on graph enumeration techniques under a graduate mentor, culminating in a faculty presentation.
         </div>
       </div>
     </div>
 
-    <!-- ====== COLUMN 2 ====== -->
+    <!-- COLUMN 2 -->
     <div>
 
       <!-- Technical Skills -->
       <div class="section">
         <h2>Technical Skills</h2>
-        <div class="entry-content">
-          <strong>Languages &amp; Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC
-        </div>
-        <div class="entry-content">
-          <strong>Tools &amp; Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite
-        </div>
-        <div class="entry-content">
-          <strong>Spoken Languages:</strong> English, French, Spanish (Conversational)
-        </div>
+        <div class="entry-content"><strong>Languages &amp; Frameworks:</strong> Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</div>
+        <div class="entry-content"><strong>Tools &amp; Services:</strong> Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</div>
+        <div class="entry-content"><strong>Spoken Languages:</strong> English, French, Spanish (Conversational)</div>
       </div>
 
       <!-- Mentorship -->
@@ -229,15 +377,13 @@
         <h2>Mentorship</h2>
         <div class="entry">
           <div class="entry-flex">
-            <span>
-              <span class="entry-title">Music Tech Mentee</span>
-              <span class="entry-subtitle"> | She Is The Music</span>
-            </span>
-            <span class="entry-date">Jun&nbsp;–&nbsp;Aug&nbsp;2025</span>
+            <span class="entry-title">Music Tech Mentee</span>
+            <span class="entry-subtitle"> | She Is The Music</span>
+            <span class="entry-date">Jun 2025 – Aug 2025</span>
           </div>
         </div>
         <div class="entry-content">
-          Selected from a competitive applicant pool into the Connect TogetHER program. Under the guidance of industry professional Anna Skelsey, I’m developing an original music-tech project and will present findings to a panel of industry experts at program conclusion.
+          Selected from a competitive pool into Connect TogetHER. Under Anna Skelsey’s mentorship, developing an original music-tech project with a final presentation to industry experts.
         </div>
       </div>
 
@@ -248,105 +394,39 @@
         <div class="entry">
           <div class="entry-flex">
             <span class="entry-title">Spotify Listening Behavior Case Study</span>
-            <span class="entry-date">Apr&nbsp;2025</span>
+            <span class="entry-date">Apr 2025</span>
           </div>
         </div>
         <div class="entry-content">
-          An in-depth exploration of how Spotify’s user-interface design and data-driven recommendations shape listening patterns and music discovery. Analyzed the psychological and technical mechanisms behind playlisting, autoplay, and algorithmic curation in the streaming economy.
+          Explored how Spotify’s UI and data-driven recommendations shape listening patterns and music discovery; analyzed playlist algorithms and user psychology.
         </div>
 
         <div class="entry">
           <div class="entry-flex">
             <span class="entry-title">Fashion in Video Games Proposal</span>
-            <span class="entry-date">May&nbsp;2025</span>
+            <span class="entry-date">May 2025</span>
           </div>
         </div>
         <div class="entry-content">
-          A strategic business proposal advocating for luxury conglomerate Kering to invest in digital-fashion creation tools within user-generated-content platforms such as Roblox and Fortnite. The report outlines how branded design templates and avatar-styling assets can engage younger consumers and expand brand identity into virtual economies.
+          Proposed a Kering investment in digital-fashion tools for platforms like Roblox and Fortnite, outlining branded templates and avatar styling strategies.
         </div>
 
         <div class="entry">
           <div class="entry-flex">
             <span class="entry-title">AI in Music Creation Analysis</span>
-            <span class="entry-date">Mar&nbsp;2025</span>
+            <span class="entry-date">Mar 2025</span>
           </div>
         </div>
         <div class="entry-content">
-          A critical analysis of how generative-AI tools are reshaping music composition, cultural expression, and intellectual-property rights. The paper balances innovation with ethical questions about authorship, artistic authenticity, and the evolving role of human creativity in music production.
+          Analyzed generative-AI’s impact on composition, authorship, and IP rights, balancing innovation with ethical considerations in music production.
         </div>
       </div>
+
     </div>
+  </div>
 
-    <!-- ====== FULL-WIDTH TECHNICAL PROJECTS ====== -->
-    <div class="section span-2">
-      <h2>Technical Projects</h2>
-
-      <!-- Portfolio Sites -->
-      <div class="entry">
-        <div class="entry-flex">
-          <span class="entry-title">Creative Portfolio Websites</span>
-          <span class="entry-date">Feb&nbsp;2025&nbsp;–&nbsp;<em>Present</em></span>
-        </div>
-      </div>
-      <div class="entry-content">
-        Designed and developed responsive portfolio websites for photographers and visual artists using React, Tailwind CSS, and JavaScript. Each site was tailored to the client’s creative vision, focusing on clean layout, intuitive navigation, and smooth animations.
-      </div>
-      <ul class="entry-content" style="list-style:disc;margin-left:1.5rem;">
-        <li><strong>Chris Fitzgerald:</strong> Studio portraits, street photography, and editorial work <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" class="icon-link" title="View Site" target="_blank">🔗</a></li>
-        <li><strong>Mateo Antonio Martinez:</strong> Personal photography site with exhibits, photo essays, and reflective written work <a href="https://juliettemangon2.github.io/mateo/" class="icon-link" title="View Site" target="_blank">🔗</a></li>
-        <li><strong>Amandine Mangon:</strong> Postcard-style gallery exploring archival and personal photography through collaging <a href="https://juliettemangon2.github.io/amandine/" class="icon-link" title="View Site" target="_blank">🔗</a></li>
-      </ul>
-
-      <!-- Plagiarism Detection -->
-      <div class="entry">
-        <div class="entry-flex">
-          <span class="entry-title">Plagiarism Detection Enhancement Project</span>
-          <span class="entry-date">Dec&nbsp;2024&nbsp;–&nbsp;Jan&nbsp;2025</span>
-        </div>
-      </div>
-      <div class="entry-content">
-        Implemented a custom plagiarism-detection system using NLP techniques including N-gram classification, TF-IDF, and Word2Vec embeddings. Focused on optimizing performance by analyzing scoring outputs and iteratively improving precision and recall through parameter tuning.
-      </div>
-
-      <!-- IR System -->
-      <div class="entry">
-        <div class="entry-flex">
-          <span class="entry-title">Ad Hoc Information Retrieval System</span>
-          <span class="entry-date">Oct&nbsp;–&nbsp;Nov&nbsp;2024</span>
-        </div>
-      </div>
-      <div class="entry-content">
-        Built a TF-IDF-based ranking system to match 1,400 document abstracts to 225 custom queries. Used cosine similarity to determine relevance and evaluated system performance using Mean Average Precision to guide algorithm refinements.
-      </div>
-
-      <!-- Temp Checker -->
-      <div class="entry">
-        <div class="entry-flex">
-          <span class="entry-title">Temperature Checker</span>
-          <span class="entry-date">Dec&nbsp;2023</span>
-        </div>
-      </div>
-      <div class="entry-content">
-        Created a contactless body-temperature reader using motion sensors and an infrared camera. Designed and built an LED output that changes color depending on the temperature range detected, enabling quick visual feedback for public settings.
-      </div>
-
-      <!-- Graph Theory -->
-      <div class="entry">
-        <div class="entry-flex">
-          <span class="entry-title">Graph Theory &amp; Enumeration Research</span>
-          <span class="entry-date">Jan&nbsp;–&nbsp;May&nbsp;2023</span>
-        </div>
-      </div>
-      <div class="entry-content">
-        Engaged in a semester-long independent reading and research project on graph theory under the mentorship of a graduate student. Explored enumeration techniques and theoretical graph properties, culminating in a final presentation to faculty and peers.
-      </div>
-    </div>
-
-  </div><!-- /container -->
-
-  <!-- Theme-toggle script -->
   <script>
-    document.getElementById('theme-toggle').addEventListener('change',()=>{
+    document.getElementById('theme-toggle').addEventListener('change', () => {
       document.documentElement.classList.toggle('theme2');
       document.documentElement.classList.toggle('theme1');
     });
