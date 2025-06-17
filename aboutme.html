@@ -28,46 +28,40 @@
         var(--bg)        100px 200px
       );
     }
-
-    /* THEME 2 STRIPES & COLOR SWAP */
+    /* THEME 2 STRIPES & COLORSWAP */
     html.theme2 {
       background: repeating-linear-gradient(
         to right,
         var(--accent) 0 100px,
         var(--text)   100px 200px
       );
-      /* swap variables */
       --text:   #4a537b;
       --accent: #ff6d4c;
     }
 
     html {
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 16px; line-height: 1.75;
       scroll-behavior: smooth;
     }
-
     body {
       min-height: 100vh;
       background: transparent;
       color: var(--text);
       position: relative;
-      padding: 40px 30px;
+      padding: 40px 20px;
     }
 
-    /* NAVIGATION LINKS */
+    /* NAVIGATION */
     .top-buttons {
-      position: absolute;
-      top: 20px; left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      position: absolute; top: 20px; left: 20px;
     }
     .top-buttons a {
+      display: inline-block;
       font-weight: 600;
       padding: 0.6rem 1.2rem;
       color: var(--text);
+      background: var(--softgray);
       border: 2px solid var(--text);
       border-radius: 30px;
       text-decoration: none;
@@ -89,30 +83,24 @@
       transform: none;
     }
 
-    /* THEME TOGGLE SWITCH */
+    /* TOGGLE SWITCH */
     .toggle-switch {
-      position: absolute;
-      top: 20px; right: 20px;
+      position: absolute; top: 20px; right: 20px;
       width: 50px; height: 24px;
     }
     .toggle-switch input {
       opacity: 0; width: 0; height: 0;
     }
     .toggle-switch label {
-      position: absolute;
-      cursor: pointer;
-      background-color: #ccc;
-      border-radius: 24px;
+      position: absolute; cursor: pointer;
+      background: #ccc; border-radius: 24px;
       width: 100%; height: 100%;
-      transition: background-color 0.3s;
+      transition: background 0.3s;
     }
     .toggle-switch label::after {
-      content: '';
-      position: absolute;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #fff;
-      top: 3px; left: 3px;
+      content: ''; position: absolute;
+      width: 18px; height: 18px; background: #fff;
+      border-radius: 50%; top: 3px; left: 3px;
       transition: transform 0.3s;
     }
     .toggle-switch input:checked + label {
@@ -122,47 +110,39 @@
       transform: translateX(26px);
     }
 
-    /* SKIP LINK */
-    .skip-link {
-      display: none;
-      text-align: center;
-      margin: 1rem 0;
-    }
-    @media (max-width: 768px) {
-      .skip-link { display: block; }
-    }
-    .skip-link a {
+    /* HEADINGS */
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
       color: var(--accent);
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent);
-      transition: border-width 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 2rem 0 1rem;
+      -webkit-text-stroke: 2px var(--accent);
     }
-    .skip-link a:hover {
-      border-bottom-width: 3px;
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 4px;
     }
 
-    /* ABOUT CARD */
-    .about-card {
+    /* CARD BASE */
+    .card {
       max-width: 900px;
-      margin: 100px auto 2rem;
-      padding: 2rem;
+      margin: 0 auto 2rem;
+      padding: 1.5rem;
       background: var(--softgray);
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    html.theme2 .about-card {
+    html.theme2 .card {
       background: var(--sec2-bg);
     }
-    .about-card h2 {
-      text-align: center;
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+
+    /* ABOUT SECTION */
     .intro-grid {
       display: flex;
       gap: 2rem;
@@ -174,7 +154,6 @@
     }
     .about-photo img {
       width: 100%;
-      height: auto;
       display: block;
       border: 2px solid var(--highlight);
       border-radius: 0;
@@ -184,35 +163,24 @@
       font-size: 1.2rem;
       line-height: 1.8;
     }
-    .about-text p {
-      margin-bottom: 1.5rem;
+    .about-text p + p {
+      margin-top: 1rem;
     }
 
-    /* EDUCATION CARD */
-    .education-card {
-      max-width: 900px;
-      margin: 2rem auto 100px;
-      padding: 2rem;
-      background: var(--softgray);
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    html.theme2 .education-card {
-      background: var(--sec2-bg);
-    }
-    .education-card h2 {
-      text-align: center;
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .education-card p {
+    /* INTERESTS */
+    .interests-list {
+      list-style: disc inside;
       font-size: 1.2rem;
       line-height: 1.8;
-      margin-bottom: 1.5rem;
+    }
+    .interests-list li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* EDUCATION */
+    .education-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
     }
 
     @media (max-width: 768px) {
@@ -225,8 +193,7 @@
       }
       .top-buttons {
         flex-direction: row;
-        position: relative;
-        justify-content: center;
+        gap: 1rem;
       }
     }
   </style>
@@ -234,45 +201,49 @@
 <body>
   <div class="top-buttons">
     <a href="index.html">Home</a>
-    <a href="resume.html">Resume</a>
-    <a href="art.html">Artwork</a>
-    <a href="contact.html">Contact</a>
   </div>
   <div class="toggle-switch">
     <input type="checkbox" id="theme-toggle"/>
     <label for="theme-toggle"></label>
   </div>
 
-  <div class="about-card">
-    <h2>About Me</h2>
-    <div class="skip-link">
-      <a href="#edu">Skip to Educational Background</a>
-    </div>
+  <!-- About Me -->
+  <h2>About Me</h2>
+  <div class="card">
     <div class="intro-grid">
       <div class="about-photo">
         <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
       </div>
       <div class="about-text">
         <p>Hello, my name is Juliette Mangon. I am 20 years old, originally from Lexington, MA, and I currently reside in New York City where I attend NYU.</p>
-        <p>In addition to my academic pursuits, I have a creative side; I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
-        <p>I am also deeply passionate about sustainability and climate change—a commitment that inspired me to adopt a vegetarian lifestyle in the seventh grade after learning about the environmental impact of the meat industry.</p>
       </div>
     </div>
   </div>
 
-  <div class="education-card" id="edu">
-    <h2>Educational Background</h2>
-    <p>I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics, with a minor in Business of Entertainment, Media, and Technology, and I am graduating in December 2025. My passion for mathematics naturally led me to computer science, a field that captured my interest during my first programming course in high school. While I have always been drawn to the analytical and problem-solving aspects of these disciplines, I initially found it challenging to define a specific career path amidst the diverse opportunities available.</p>
-    <p>Taking a course on media and entertainment last spring opened my eyes to the creative possibilities within the tech industry, and led me to add the minor. In turn, I have become deeply interested in exploring the creative side of computer science, with a particular focus on forging a career in the media and entertainment industry. I am excited by the prospect of blending technical expertise with artistic creativity to innovate and redefine the way digital media is experienced and created. This experience not only broadened my academic perspective but also resonated with my passion for painting and creative expression.</p>
+  <!-- Interests -->
+  <h2>Interests</h2>
+  <div class="card">
+    <ul class="interests-list">
+      <li>I enjoy painting, drawing, and exploring various art mediums, with acrylic painting as my favorite.</li>
+      <li>My creative pursuits encourage me to think imaginatively and approach challenges with fresh perspectives.</li>
+      <li>I’m passionate about sustainability and climate change—adopting a vegetarian lifestyle in seventh grade after learning about the environmental impact of the meat industry.</li>
+    </ul>
+  </div>
+
+  <!-- Educational Background -->
+  <h2>Educational Background</h2>
+  <div class="card">
+    <div class="education-text">
+      <p>I am currently a student at New York University, pursuing a Bachelor's in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology. I will graduate in December 2025. My passion for mathematics led me to computer science during my first programming course in high school, where I discovered the analytical and problem-solving aspects I love.</p>
+      <p>Last spring, a media and entertainment course revealed tech’s creative side and inspired my minor. I aim to blend technical expertise with artistic creativity to innovate how digital media is experienced and created—an intersection that perfectly merges my academic pursuits with my passion for painting and creative expression.</p>
+    </div>
   </div>
 
   <script>
-    // theme toggle
     const checkbox = document.getElementById('theme-toggle');
     checkbox.addEventListener('change', () => {
-      const html = document.documentElement;
-      html.classList.toggle('theme2');
-      html.classList.toggle('theme1');
+      document.documentElement.classList.toggle('theme2');
+      document.documentElement.classList.toggle('theme1');
     });
   </script>
 </body>
