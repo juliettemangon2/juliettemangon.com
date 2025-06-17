@@ -7,108 +7,224 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
   <style>
-    :root{
-      --bg:#fdffe1;--highlight:#d5eff5;--softgray:#fffefa;--text:#ff6d4c;--accent:#4a537b;--sec2-bg:#d5eff5;
-    }
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-
-    html.theme1{background:repeating-linear-gradient(to right,var(--highlight)0 100px,var(--bg)100px 200px);}
-    html.theme2{
-      background:repeating-linear-gradient(to right,var(--accent)0 100px,var(--text)100px 200px);
-      --text:#4a537b;--accent:#ff6d4c;
+    :root {
+      --bg: #fdffe1;
+      --highlight: #d5eff5;
+      --softgray: #fffefa;
+      --text: #ff6d4c;
+      --accent: #4a537b;
+      --sec2-bg: #d5eff5;
     }
 
-    html{font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.75;scroll-behavior:smooth;}
-    body{min-height:100vh;color:var(--text);padding:30px 40px;position:relative;}
-
-    .top-buttons{position:absolute;top:20px;left:20px;}
-    .top-buttons a{
-      font-weight:600;padding:0.5rem 1.1rem;color:var(--text);
-      border:2px solid var(--text);border-radius:30px;text-decoration:none;
-      transition:background .3s,color .3s;
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .top-buttons a:hover{background:var(--text);color:var(--highlight);transform:scale(1.05);}
-    html.theme2 .top-buttons a{background:var(--highlight);color:var(--text);border-color:var(--highlight);}
-    html.theme2 .top-buttons a:hover{background:var(--text);color:var(--highlight);}
 
-    .toggle-switch{position:absolute;top:20px;right:20px;width:50px;height:24px;}
-    .toggle-switch input{opacity:0;width:0;height:0;}
-    .toggle-switch label{
-      position:absolute;width:100%;height:100%;border-radius:24px;background:#ccc;cursor:pointer;
-      transition:background-color .3s;
+    html.theme1 {
+      background: repeating-linear-gradient(to right, var(--highlight) 0 100px, var(--bg) 100px 200px);
     }
-    .toggle-switch label::after{
-      content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;
-      transition:transform .3s;
-    }
-    .toggle-switch input:checked+label{background:var(--accent);}
-    .toggle-switch input:checked+label::after{transform:translateX(26px);}
 
-    .section-title{
-      text-align:center;font-size:2.4rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-      color:var(--accent);-webkit-text-stroke:2px var(--accent);margin:2.2rem auto 1rem;
-      max-width:1100px;
+    html.theme2 {
+      background: repeating-linear-gradient(to right, var(--accent) 0 100px, var(--text) 100px 200px);
+      --text: #4a537b;
+      --accent: #ff6d4c;
     }
-    html.theme2 .section-title{color:var(--highlight);-webkit-text-stroke:2px var(--highlight);}
 
-    .card{
-      max-width:1100px;margin:0 auto 2rem;background:var(--softgray);
-      padding:2rem;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1);
+    html {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      scroll-behavior: smooth;
     }
-    html.theme2 .card{background:var(--sec2-bg);}
 
-    .intro-grid{
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      padding: 30px 40px;
+      position: relative;
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .top-buttons a {
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      color: var(--text);
+      border: 2px solid var(--text);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+      transform: scale(1.05);
+    }
+
+    html.theme2 .top-buttons a {
+      background: var(--highlight);
+      color: var(--text);
+      border-color: var(--highlight);
+    }
+
+    html.theme2 .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+    }
+
+    .toggle-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-switch label {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background: #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-switch label::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s;
+    }
+
+    .toggle-switch input:checked + label {
+      background: var(--accent);
+    }
+
+    .toggle-switch input:checked + label::after {
+      transform: translateX(26px);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      -webkit-text-stroke: 2px var(--accent);
+      margin: 2.2rem auto 1rem;
+      max-width: 1000px;
+    }
+
+    html.theme2 .section-title {
+      color: var(--highlight);
+      -webkit-text-stroke: 2px var(--highlight);
+    }
+
+    .card {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      background: var(--softgray);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    html.theme2 .card {
+      background: var(--sec2-bg);
+    }
+
+    .hero-section {
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
+      align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
     }
 
-    .about-photo{
-      flex: 0 0 280px;
+    .hero-photo {
+      flex: 0 0 220px;
     }
 
-    .about-photo img{
-      width:100%;height:auto;border:2px solid var(--highlight);border-radius:0;
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      border: 2px solid var(--highlight);
+      border-radius: 0;
     }
 
-    .about-text{
+    .hero-text {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
       font-size: 1.2rem;
       line-height: 1.8;
     }
 
-    .about-text-columns {
+    .text-block {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem 2rem;
+      background: var(--softgray);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .edu-section {
       display: flex;
+      flex-wrap: wrap;
       gap: 2rem;
+      justify-content: center;
     }
 
-    .about-text-columns > div {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    .edu-box {
+      flex: 1 1 400px;
+      background: var(--softgray);
+      padding: 1.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      font-size: 1.2rem;
+      line-height: 1.8;
     }
 
-    .about-text p {
-      margin: 0;
-    }
+    @media (max-width: 768px) {
+      .top-buttons {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
 
-    .edu-grid{display:flex;gap:2rem;flex-wrap:wrap;}
-    .edu-col{flex:1 1 450px;font-size:1.2rem;line-height:1.8;}
+      body {
+        padding: 20px;
+      }
 
-    @media(max-width:900px){
-      .intro-grid{flex-direction:column;align-items:center;text-align:center;}
-      .about-text-columns{flex-direction:column;text-align:left;}
-      .about-photo{width:80%;max-width:300px;}
-    }
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+      }
 
-    @media(max-width:600px){
-      body{padding:20px;}
+      .hero-text {
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -119,44 +235,45 @@
   <!-- ABOUT -->
   <h2 class="section-title">About Me</h2>
   <div class="card">
-    <div class="intro-grid">
-      <div class="about-photo">
+    <div class="hero-section">
+      <div class="hero-photo">
         <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
       </div>
-      <div class="about-text">
-        <div class="about-text-columns">
-          <div>
-            <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
-            <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
-          </div>
-          <div>
-            <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
-            <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
-          </div>
-        </div>
+      <div class="hero-text">
+        <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
       </div>
     </div>
+  </div>
+
+  <div class="text-block">
+    <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
+  </div>
+
+  <div class="text-block">
+    <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
+  </div>
+
+  <div class="text-block">
+    <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
   </div>
 
   <!-- EDUCATION -->
   <h2 class="section-title" id="edu">Educational Background</h2>
-  <div class="card">
-    <div class="edu-grid">
-      <div class="edu-col">
-        <p>
-          I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology. I’m set to graduate in December 2025. My interest in mathematics led me naturally to computer science, a field I first encountered in high school through a programming course. I was immediately drawn to its logic, structure, and creative potential, but with so many possible directions, it took time to discover where I wanted to focus.
-        </p>
-      </div>
-      <div class="edu-col">
-        <p>
-          A course on media and entertainment that I took last spring helped clarify that path. It revealed the creative possibilities at the intersection of technology and storytelling, which inspired me to add my minor and pursue work that blends technical knowledge with artistic thinking. I’m now especially interested in careers that merge computer science with media and cultural production, using code as a tool to design, build, and shape how digital experiences are created and shared. This direction aligns with my background in visual art and reflects my broader interest in creativity, communication, and innovation.
-        </p>
-      </div>
+  <div class="edu-section">
+    <div class="edu-box">
+      <p>
+        I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology. I’m set to graduate in December 2025. My interest in mathematics led me naturally to computer science, a field I first encountered in high school through a programming course. I was immediately drawn to its logic, structure, and creative potential, but with so many possible directions, it took time to discover where I wanted to focus.
+      </p>
+    </div>
+    <div class="edu-box">
+      <p>
+        A course on media and entertainment that I took last spring helped clarify that path. It revealed the creative possibilities at the intersection of technology and storytelling, which inspired me to add my minor and pursue work that blends technical knowledge with artistic thinking. I’m now especially interested in careers that merge computer science with media and cultural production, using code as a tool to design, build, and shape how digital experiences are created and shared. This direction aligns with my background in visual art and reflects my broader interest in creativity, communication, and innovation.
+      </p>
     </div>
   </div>
 
   <script>
-    document.getElementById('theme-toggle').addEventListener('change',()=>{
+    document.getElementById('theme-toggle').addEventListener('change', () => {
       document.documentElement.classList.toggle('theme2');
       document.documentElement.classList.toggle('theme1');
     });
