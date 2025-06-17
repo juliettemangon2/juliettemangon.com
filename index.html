@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme1">
 <head>
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
@@ -7,82 +7,86 @@
 
   <style>
     :root {
-      --main-bg: #e6fff8;
-      --ivory: #d9faff;
-      --text-dark: #12245e;
-      --accent1: #ffe9fa;
-      --accent2: #ecffe6;
+      --bg: #fdffe1;        /* light yellow */
+      --highlight: #d5eff5; /* light cyan */
+      --softgray: #fffefa;  /* off-white */
+      --text: #ff6d4c;      /* tomato */
+      --accent: #4a537b;    /* deep-blue */
     }
 
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
+    /* full-page horizontal stripes */
+    html {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0   100px,
+        var(--bg)       100px 200px
+      );
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       height: 100%;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
-                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
-                  var(--ivory);
-      color: var(--text-dark);
     }
-
-    .container {
-      height: 100%;
+    body {
+      min-height: 100%;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      color: var(--text);
+      background: transparent;
       padding: 2rem;
+      text-align: center;
     }
 
     .title {
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 0.3rem;
+      /* subtle cyan outline for legibility */
+      -webkit-text-stroke: 1px var(--highlight);
+              text-stroke: 1px var(--highlight);
     }
 
     .subtitle {
       font-size: 1.4rem;
       font-weight: 500;
       margin-bottom: 2.5rem;
-      color: #158e9e;
+      color: var(--accent);
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.2rem;
+      gap: 1rem;
       justify-content: center;
     }
 
     nav a {
-      text-decoration: none;
+      display: inline-block;
       font-size: 1.1rem;
       font-weight: 600;
       padding: 0.8rem 1.4rem;
-      color: var(--text-dark);
-      border: 2px solid var(--text-dark);
+      color: var(--text);
+      background: var(--softgray);
+      border: 2px solid var(--accent);
       border-radius: 30px;
-      transition: all 0.3s ease;
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
     }
-
     nav a:hover {
-      background-color: var(--text-dark);
-      color: var(--ivory);
-      transform: scale(1.08);
+      background: var(--accent);
+      color: var(--softgray);
+      transform: scale(1.05);
     }
 
     @media (max-width: 600px) {
       .title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
-
       nav a {
         font-size: 1rem;
         padding: 0.6rem 1rem;
@@ -91,11 +95,9 @@
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <div>
     <div class="title">Juliette Mangon</div>
-    <div class="subtitle">New York City, NY & Boston, MA</div>
-
+    <div class="subtitle">New York City, NY & Boston, MA</div>
     <nav>
       <a href="aboutme.html">About Me</a>
       <a href="resume.html">Resume</a>
@@ -103,6 +105,5 @@
       <a href="contact.html">Contact</a>
     </nav>
   </div>
-
 </body>
 </html>
