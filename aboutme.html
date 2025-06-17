@@ -61,15 +61,31 @@
     .about-photo{flex:1 1 220px;}
     .about-photo img{width:100%;height:auto;border:2px solid var(--highlight);border-radius:0;}
 
-    .about-text{
-      flex:2 1 450px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1.5rem;
-      font-size:1.2rem;
-      line-height:1.8;
+    .about-text {
+      flex: 2 1 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      font-size: 1.2rem;
+      line-height: 1.8;
     }
-    .about-text p{margin:0;}
+    
+    .about-text-columns {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .about-text-columns > div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .about-text p {
+      margin: 0;
+    }
+
 
     .edu-grid{display:flex;gap:2rem;flex-wrap:wrap;}
     .edu-col{flex:1 1 450px;font-size:1.2rem;line-height:1.8;}
@@ -97,12 +113,17 @@
       <div class="about-photo">
         <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
       </div>
-      <div class="about-text">
-        <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
-        <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
-        <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
-        <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
+      <div class="about-text-columns">
+        <div>
+          <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
+          <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
+        </div>
+        <div>
+          <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
+          <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
+        </div>
       </div>
+
     </div>
   </div>
 
