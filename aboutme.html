@@ -19,7 +19,7 @@
     }
 
     html{font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.75;scroll-behavior:smooth;}
-    body{min-height:100vh;color:var(--text);padding:30px 20px;position:relative;}
+    body{min-height:100vh;color:var(--text);padding:30px 40px;position:relative;}
 
     .top-buttons{position:absolute;top:20px;left:20px;}
     .top-buttons a{
@@ -47,58 +47,68 @@
     .section-title{
       text-align:center;font-size:2.4rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
       color:var(--accent);-webkit-text-stroke:2px var(--accent);margin:2.2rem auto 1rem;
-      max-width:1000px;
+      max-width:1100px;
     }
     html.theme2 .section-title{color:var(--highlight);-webkit-text-stroke:2px var(--highlight);}
 
     .card{
-      max-width:1000px;margin:0 auto 2rem;background:var(--softgray);
-      padding:1.5rem;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1);
+      max-width:1100px;margin:0 auto 2rem;background:var(--softgray);
+      padding:2rem;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1);
     }
     html.theme2 .card{background:var(--sec2-bg);}
 
-    .intro-grid{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;}
-    .about-photo{flex:1 1 220px;}
-    .about-photo img{width:100%;height:auto;border:2px solid var(--highlight);border-radius:0;}
+    .intro-grid{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
 
-    .about-text {
-      flex: 2 1 450px;
+    .about-photo{
+      flex: 0 0 280px;
+    }
+
+    .about-photo img{
+      width:100%;height:auto;border:2px solid var(--highlight);border-radius:0;
+    }
+
+    .about-text{
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
       font-size: 1.2rem;
       line-height: 1.8;
     }
-    
+
     .about-text-columns {
       display: flex;
       gap: 2rem;
     }
-    
+
     .about-text-columns > div {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
-    
+
     .about-text p {
       margin: 0;
     }
 
-
     .edu-grid{display:flex;gap:2rem;flex-wrap:wrap;}
     .edu-col{flex:1 1 450px;font-size:1.2rem;line-height:1.8;}
 
-    @media(max-width:768px){
-      .intro-grid{flex-direction:column;text-align:center;}
-      .about-text{
-        grid-template-columns:1fr;
-        gap:1.2rem;
-        text-align:left;
-      }
-      .edu-grid{flex-direction:column;}
-      .top-buttons{position:relative;display:flex;justify-content:center;}
+    @media(max-width:900px){
+      .intro-grid{flex-direction:column;align-items:center;text-align:center;}
+      .about-text-columns{flex-direction:column;text-align:left;}
+      .about-photo{width:80%;max-width:300px;}
+    }
+
+    @media(max-width:600px){
+      body{padding:20px;}
     }
   </style>
 </head>
@@ -113,17 +123,18 @@
       <div class="about-photo">
         <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
       </div>
-      <div class="about-text-columns">
-        <div>
-          <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
-          <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
-        </div>
-        <div>
-          <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
-          <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
+      <div class="about-text">
+        <div class="about-text-columns">
+          <div>
+            <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
+            <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
+          </div>
+          <div>
+            <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
+            <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 
