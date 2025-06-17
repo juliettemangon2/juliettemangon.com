@@ -49,22 +49,17 @@
       background: transparent;
       color: var(--text);
       position: relative;
-      padding: 20px; /* smaller margins */
+      padding: 20px;
     }
 
     /* NAVIGATION */
     .top-buttons {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      top: 20px; left: 20px;
+      display: flex; flex-direction: column; gap: 8px;
     }
     .top-buttons a {
-      display: inline-block;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
+      font-weight: 600; padding: 0.5rem 1rem;
       font-size: 0.9rem;
       color: var(--text);
       background: var(--softgray);
@@ -76,7 +71,6 @@
     .top-buttons a:hover {
       background: var(--accent);
       color: var(--softgray);
-      transform: scale(1.05);
     }
     html.theme2 .top-buttons a {
       background: var(--highlight);
@@ -86,29 +80,20 @@
     html.theme2 .top-buttons a:hover {
       background: var(--text);
       color: var(--highlight);
-      transform: none;
     }
 
-    /* THEME TOGGLE SWITCH */
+    /* THEME TOGGLE */
     .toggle-switch {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 24px;
+      top: 20px; right: 20px;
+      width: 50px; height: 24px;
     }
     .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-      position: absolute;
+      opacity: 0; width: 0; height: 0; position: absolute;
     }
     .toggle-switch label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
       background: #ccc;
       border-radius: 24px;
       cursor: pointer;
@@ -117,12 +102,10 @@
     .toggle-switch label::after {
       content: '';
       position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
+      width: 16px; height: 16px;
       background: #fff;
-      top: 4px;
-      left: 4px;
+      border-radius: 50%;
+      top: 4px; left: 4px;
       transition: transform 0.3s;
     }
     .toggle-switch input:checked + label {
@@ -143,27 +126,24 @@
     }
     html.theme2 h1 {
       color: var(--highlight);
-      -webkit-text-stroke: 2px var(--highlight);
+      -webkit-text-stroke: 3px var(--highlight);
       font-weight: 900;
     }
 
-    /* GALLERY */
+    /* GALLERY: 4 PER ROW */
     .gallery {
       display: grid;
       gap: 12px;
-      grid-template-columns: repeat(4, 1fr); /* four images per row */
+      grid-template-columns: repeat(4, 1fr);
       max-width: 1200px;
       margin: 0 auto 20px;
     }
     @media (max-width: 800px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
     }
 
     .art-item img {
-      width: 100%;
-      display: block;
+      width: 100%; display: block;
       border: 2px solid var(--softgray);
       border-radius: 0;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -176,33 +156,37 @@
     /* LIGHTBOX */
     .lightbox {
       display: none;
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(0,0,0,0.9);
       z-index: 1000;
-      display: flex;
-      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox-content {
+      display: flex; flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 90%;
+      margin: auto;
       align-items: center;
-      text-align: center;
-      padding: 1rem; /* reduced padding */
+      justify-content: center;
     }
     .lightbox img {
-      max-width: 95%;
-      max-height: 85vh;
+      max-width: 60%; max-height: 80vh;
       border: 2px solid var(--softgray);
       box-shadow: 0 0 24px rgba(0,0,0,0.6);
       border-radius: 0;
     }
-    #lightbox-title {
+    .lightbox-text {
+      max-width: 35%;
       color: #fff;
+      text-align: left;
+    }
+    #lightbox-title {
       font-size: 2rem;
-      margin: 1rem 0 0.5rem;
+      margin-bottom: 1rem;
     }
     #lightbox-medium {
-      color: #ddd;
-      font-size: 1.1rem;
-      margin: 0.5rem 0;
-      line-height: 1.4; /* readability */
+      font-size: 1.2rem;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -230,9 +214,13 @@
   </div>
 
   <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="" alt="">
-    <h2 id="lightbox-title"></h2>
-    <p id="lightbox-medium"></p>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-text">
+        <h2 id="lightbox-title"></h2>
+        <p id="lightbox-medium"></p>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -273,9 +261,7 @@
       if (e.key === 'ArrowLeft') next(-1);
     });
     let startX = 0;
-    box.addEventListener('touchstart', e => {
-      if (e.touches.length === 1) startX = e.touches[0].clientX;
-    });
+    box.addEventListener('touchstart', e => { if (e.touches.length === 1) startX = e.touches[0].clientX; });
     box.addEventListener('touchend', e => {
       if (startX === 0 || idx < 0) return;
       const dx = e.changedTouches[0].clientX - startX;
