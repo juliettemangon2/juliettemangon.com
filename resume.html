@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <title>Juliette Mangon</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
+ <style>
     :root {
-      --bg: #fdffe1;
-      --text: #ff6d4c;
-      --accent: #4a537b;
-      --highlight: #dfeff5;
-      --softgray: #e8eefa;
+      --bg: #fdffe1;        /* light yellow */
+      --text: #ff6d4c;      /* tomato */
+      --accent: #4a537b;    /* YInMn blue */
+      --highlight: #d5eff5; /* light cyan */
+      --softgray: #e8eefa;  /* alice blue */
     }
 
     * {
@@ -20,12 +20,24 @@
     }
 
     html, body {
-      background-color: var(--bg);
-      color: var(--text);
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 16px;
       line-height: 1.75;
       padding: 40px 30px 60px;
+      color: var(--text);
+      /* default to theme1 */
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0 100px,
+        var(--softgray) 100px 200px
+      );
+    }
+    body.theme2 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0 100px,
+        var(--bg) 100px 200px
+      );
     }
 
     .top-buttons {
@@ -36,8 +48,8 @@
       flex-direction: column;
       gap: 10px;
     }
-
-    .top-buttons a {
+    .top-buttons a,
+    .top-buttons button {
       font-size: 1rem;
       font-weight: 600;
       padding: 0.6rem 1.2rem;
@@ -45,11 +57,12 @@
       border: 2px solid var(--text);
       border-radius: 30px;
       text-decoration: none;
-      text-align: center;
+      background: none;
+      cursor: pointer;
       transition: all 0.3s ease;
     }
-
-    .top-buttons a:hover {
+    .top-buttons a:hover,
+    .top-buttons button:hover {
       background-color: var(--text);
       color: var(--highlight);
       transform: scale(1.05);
@@ -59,79 +72,81 @@
       text-align: center;
       font-size: 3.2rem;
       margin: 1.5rem 0 2.5rem;
-      color: var(--text);
       letter-spacing: 0.5px;
     }
 
+    /* sections */
     .section {
       margin-bottom: 3rem;
       padding: 1.5rem;
-      background-color: var(--softgray);
       border-radius: 12px;
     }
+    body.theme1 .section {
+      background-color: var(--bg);
+    }
+    body.theme2 .section {
+      background-color: var(--softgray);
+    }
 
+    /* headings */
     h2 {
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 12px;
       padding-bottom: 6px;
-      border-bottom: 1.5px solid var(--text);
+      border-bottom: 2px solid var(--accent);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-
     h3 {
       font-size: 1.2rem;
       font-weight: 600;
       margin-top: 2rem;
       margin-bottom: 1rem;
       border-bottom: 1px solid var(--text);
+      color: var(--accent);
     }
 
-    ul {
-      padding-left: 1.2rem;
-    }
-
+    /* entries */
     .entry {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       margin-bottom: 10px;
     }
-
     .entry-title {
-      font-weight: 600;
+      color: var(--accent);
+      font-weight: 700;
     }
-
     .entry-subtitle {
-      font-weight: normal;
+      color: var(--text);
+      font-style: italic;
+      margin-left: 4px;
     }
-
     .entry-date {
       font-size: 0.95rem;
       text-align: right;
       color: var(--accent);
+      font-weight: 600;
     }
-
     .entry-date em {
-      font-style: italic;
+      font-style: normal;
+      opacity: 0.8;
     }
-
     .entry-content {
       width: 100%;
-      margin-top: 5px;
-      margin-bottom: 24px;
-    }
-
-    .project-link, .icon-link {
-      color: var(--accent);
-      text-decoration: none;
+      margin: 5px 0 24px;
+      font-weight: 300;
     }
 
     .icon-link {
+      color: var(--accent);
+      text-decoration: none;
       margin-left: 6px;
       font-size: 0.95rem;
       vertical-align: middle;
     }
-
     .icon-link:hover {
       text-decoration: underline;
     }
@@ -140,20 +155,16 @@
       html, body {
         padding: 40px 20px;
       }
-
       .top-buttons {
         position: relative;
         flex-direction: row;
         flex-wrap: wrap;
         margin-bottom: 2rem;
-        gap: 10px;
       }
-
       .entry {
         flex-direction: column;
         align-items: flex-start;
       }
-
       .entry-date {
         margin-top: 4px;
         text-align: left;
@@ -161,12 +172,13 @@
     }
   </style>
 </head>
-<body>
-
+  <body class="theme1">
   <div class="top-buttons">
     <a href="index.html">Home</a>
     <a href="_JulietteMangonResume.pdf" target="_blank">View PDF Resume</a>
+    <button id="theme-toggle">Switch Theme</button>
   </div>
+
 
   <h1>JULIETTE MANGON</h1>
 
@@ -357,6 +369,14 @@
     </div>
 
   </div>
+  <script>
+    const btn = document.getElementById('theme-toggle');
+    const body = document.body;
+    btn.addEventListener('click', () => {
+      body.classList.toggle('theme2');
+      body.classList.toggle('theme1');
+    });
+  </script>
 </body>
 </html>
 
