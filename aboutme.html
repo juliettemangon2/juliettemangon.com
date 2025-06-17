@@ -12,18 +12,15 @@
     }
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 
-    /* ── STRIPED THEMES ─────────────────────────────────────────── */
     html.theme1{background:repeating-linear-gradient(to right,var(--highlight)0 100px,var(--bg)100px 200px);}
     html.theme2{
       background:repeating-linear-gradient(to right,var(--accent)0 100px,var(--text)100px 200px);
       --text:#4a537b;--accent:#ff6d4c;
     }
 
-    /* ── BASE TYPE & LAYOUT ────────────────────────────────────── */
     html{font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.75;scroll-behavior:smooth;}
     body{min-height:100vh;color:var(--text);padding:30px 20px;position:relative;}
 
-    /* ── NAV BUTTON ───────────────────────────────────────────── */
     .top-buttons{position:absolute;top:20px;left:20px;}
     .top-buttons a{
       font-weight:600;padding:0.5rem 1.1rem;color:var(--text);
@@ -34,7 +31,6 @@
     html.theme2 .top-buttons a{background:var(--highlight);color:var(--text);border-color:var(--highlight);}
     html.theme2 .top-buttons a:hover{background:var(--text);color:var(--highlight);}
 
-    /* ── THEME TOGGLE ──────────────────────────────────────────── */
     .toggle-switch{position:absolute;top:20px;right:20px;width:50px;height:24px;}
     .toggle-switch input{opacity:0;width:0;height:0;}
     .toggle-switch label{
@@ -48,7 +44,6 @@
     .toggle-switch input:checked+label{background:var(--accent);}
     .toggle-switch input:checked+label::after{transform:translateX(26px);}
 
-    /* ── SECTION TITLES ───────────────────────────────────────── */
     .section-title{
       text-align:center;font-size:2.4rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
       color:var(--accent);-webkit-text-stroke:2px var(--accent);margin:2.2rem auto 1rem;
@@ -56,38 +51,42 @@
     }
     html.theme2 .section-title{color:var(--highlight);-webkit-text-stroke:2px var(--highlight);}
 
-    /* ── GENERAL CARD STYLE ───────────────────────────────────── */
     .card{
       max-width:1000px;margin:0 auto 2rem;background:var(--softgray);
       padding:1.5rem;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.1);
     }
     html.theme2 .card{background:var(--sec2-bg);}
 
-    /* ── ABOUT GRID ───────────────────────────────────────────── */
     .intro-grid{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;}
     .about-photo{flex:1 1 220px;}
     .about-photo img{width:100%;height:auto;border:2px solid var(--highlight);border-radius:0;}
-    .about-text{
-      flex:2 1 450px;font-size:1.2rem;line-height:1.8;
-      column-count:2;column-gap:2rem;
-    }
-    .about-text p{break-inside:avoid;margin-bottom:1.2rem;}
 
-    /* ── EDUCATION GRID ───────────────────────────────────────── */
+    .about-text{
+      flex:2 1 450px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.5rem;
+      font-size:1.2rem;
+      line-height:1.8;
+    }
+    .about-text p{margin:0;}
+
     .edu-grid{display:flex;gap:2rem;flex-wrap:wrap;}
     .edu-col{flex:1 1 450px;font-size:1.2rem;line-height:1.8;}
 
-    /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media(max-width:768px){
       .intro-grid{flex-direction:column;text-align:center;}
-      .about-text{column-count:1;text-align:left;}
+      .about-text{
+        grid-template-columns:1fr;
+        gap:1.2rem;
+        text-align:left;
+      }
       .edu-grid{flex-direction:column;}
       .top-buttons{position:relative;display:flex;justify-content:center;}
     }
   </style>
 </head>
 <body>
-  <!-- NAV -->
   <div class="top-buttons"><a href="index.html">Home</a></div>
   <div class="toggle-switch"><input type="checkbox" id="theme-toggle"/><label for="theme-toggle"></label></div>
 
@@ -99,7 +98,7 @@
         <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
       </div>
       <div class="about-text">
-        <p>Hello, my name is Juliette Mangon. I am 20 years old, originally from Lexington, MA, and I currently reside in New York City where I attend NYU.</p>
+        <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
         <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
         <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
         <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m bilingual in English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
@@ -113,12 +112,12 @@
     <div class="edu-grid">
       <div class="edu-col">
         <p>
-          I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology. I’m set to graduate in December 2025. My interest in mathematics led me naturally to computer science, a field I first encountered in high school through a programming course. I was immediately drawn to its logic, structure, and creative potential—but with so many possible directions, it took time to discover where I wanted to focus.
+          I am currently a student at New York University, pursuing a Bachelor's degree in Computer Science and Mathematics with a minor in Business of Entertainment, Media, and Technology. I’m set to graduate in December 2025. My interest in mathematics led me naturally to computer science, a field I first encountered in high school through a programming course. I was immediately drawn to its logic, structure, and creative potential, but with so many possible directions, it took time to discover where I wanted to focus.
         </p>
       </div>
       <div class="edu-col">
         <p>
-          A course on media and entertainment that I took last spring helped clarify that path. It revealed the creative possibilities at the intersection of technology and storytelling, which inspired me to add my minor and pursue work that blends technical knowledge with artistic thinking. I’m now especially interested in careers that merge computer science with media and cultural production—using code as a tool to design, build, and shape how digital experiences are created and shared. This direction aligns with my background in visual art and reflects my broader interest in creativity, communication, and innovation.
+          A course on media and entertainment that I took last spring helped clarify that path. It revealed the creative possibilities at the intersection of technology and storytelling, which inspired me to add my minor and pursue work that blends technical knowledge with artistic thinking. I’m now especially interested in careers that merge computer science with media and cultural production, using code as a tool to design, build, and shape how digital experiences are created and shared. This direction aligns with my background in visual art and reflects my broader interest in creativity, communication, and innovation.
         </p>
       </div>
     </div>
