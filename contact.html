@@ -1,135 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme1">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Let’s Connect!</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
   <style>
     :root {
-      --text-dark: #12245e;
-      --ivory:#e6fff8;
-      --accent1: #ffe9fa;
-      --accent2: #ecffe6;
-
-
+      --bg: #fdffe1;         /* light yellow */
+      --highlight: #d5eff5;  /* light cyan */
+      --softgray: #fffff7;   /* off-white for cards */
+      --text: #ff6d4c;       /* tomato text */
+      --accent: #4a537b;     /* deep-blue accents */
     }
 
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background: radial-gradient(at 20% 30%, var(--accent1), transparent 60%),
-                  radial-gradient(at 80% 70%, var(--accent2), transparent 60%),
-                  var(--ivory);
-      color: var(--text-dark);
+    /* THEME 1 STRIPES */
+    html.theme1 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0   100px,
+        var(--bg)        100px 200px
+      );
     }
 
+    /* THEME 2 STRIPES & SWAP */
+    html.theme2 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent) 0   100px,
+        var(--text)   100px 200px
+      );
+      --text:   #4a537b;  /* swap to deep-blue text */
+      --accent: #ff6d4c;  /* swap to tomato accents */
+    }
+
+    html {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 40px 30px;
+      color: var(--text);
+      background: transparent;
+      position: relative;
+    }
+
+    /* TOP-LEFT HOME & TOP-RIGHT THEME SWITCH */
     .top-buttons {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 20px; left: 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
     .top-buttons a {
-      font-size: 1rem;
       font-weight: 600;
       padding: 0.6rem 1.2rem;
-      color: var(--text-dark);
-      border: 2px solid var(--text-dark);
+      color: var(--text);
+      border: 2px solid var(--text);
       border-radius: 30px;
       text-decoration: none;
-      text-align: center;
-      transition: all 0.3s ease;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
     }
-
     .top-buttons a:hover {
-      background-color: var(--text-dark);
-      color: var(--ivory);
+      background: var(--text);
+      color: var(--highlight);
       transform: scale(1.05);
     }
 
-    .main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 100vh;
-      padding: 2rem;
+    .toggle-switch {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 50px; height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0; width: 0; height: 0;
+    }
+    .toggle-switch label {
+      position: absolute;
+      cursor: pointer;
+      background-color: #ccc;
+      border-radius: 24px;
+      width: 100%; height: 100%;
+      transition: background-color 0.3s;
+    }
+    .toggle-switch label::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px; left: 3px;
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked + label {
+      background: var(--accent);
+    }
+    .toggle-switch input:checked + label::after {
+      transform: translateX(26px);
     }
 
-    h2 {
+    /* MAIN CARD */
+    .contact-card {
+      max-width: 600px;
+      margin: 120px auto 0; /* push below header controls */
+      padding: 2rem;
+      border-radius: 16px;
+      background: var(--softgray);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    html.theme2 .contact-card {
+      background: var(--highlight);
+    }
+
+    .contact-card h2 {
       font-size: 2.6rem;
-      margin-bottom: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
     }
 
     .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
       font-size: 1.4rem;
       margin: 1rem 0;
+      position: relative;
     }
+    .contact-item::before {
+      font-size: 1.6rem;
+      color: var(--accent);
+    }
+    .email::before    { content: '📧'; }
+    .phone::before    { content: '📞'; }
+    .linkedin::before { content: '🔗'; }
+    .github::before   { content: '💻'; }
 
     .contact-item a {
-      color: var(--text-dark);
+      color: var(--text);
       font-weight: 600;
       text-decoration: none;
-      position: relative;
-      transition: color 0.3s ease, transform 0.3s ease;
+      padding-bottom: 2px;
+      border-bottom: 2px dashed var(--accent);
+      transition: color 0.3s, transform 0.3s;
     }
-
-    .contact-item a::before {
-      position: absolute;
-      left: -1.5rem;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .contact-item a:hover::before {
-      opacity: 1;
-      transform: translateX(-5px);
-    }
-
     .contact-item a:hover {
-      color: #3a6bff;
-      transform: translateX(3px);
+      color: var(--accent);
+      transform: translateX(4px);
     }
 
     @media (max-width: 600px) {
-      h2 {
+      .contact-card {
+        margin: 80px 1rem 0;
+        padding: 1.5rem;
+      }
+      .contact-card h2 {
         font-size: 2rem;
       }
-
       .contact-item {
         font-size: 1.1rem;
       }
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="top-buttons">
     <a href="index.html">Home</a>
   </div>
-
-  <div class="main">
-    <h2>Let’s Connect!</h2>
-
-    <p class="contact-item">Email: <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a></p>
-    <p class="contact-item">Phone: <a href="tel:+17816288078">+1 (781) 628-8078</a></p>
-    <p class="contact-item">LinkedIn: <a href="https://www.linkedin.com/in/juliette-mangon/" target="_blank">linkedin.com/in/juliette-mangon</a></p>
-    <p class="contact-item">GitHub: <a href="https://github.com/juliettemangon2" target="_blank">https://github.com/juliettemangon2</a></p>
-
+  <div class="toggle-switch">
+    <input type="checkbox" id="theme-toggle"/>
+    <label for="theme-toggle"></label>
   </div>
 
+  <div class="contact-card">
+    <h2>Let’s Connect!</h2>
+
+    <div class="contact-item email">
+      <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a>
+    </div>
+    <div class="contact-item phone">
+      <a href="tel:+17816288078">+1 (781) 628-8078</a>
+    </div>
+    <div class="contact-item linkedin">
+      <a href="https://www.linkedin.com/in/juliette-mangon/" target="_blank">
+        linkedin.com/in/juliette-mangon
+      </a>
+    </div>
+    <div class="contact-item github">
+      <a href="https://github.com/juliettemangon2" target="_blank">
+        github.com/juliettemangon2
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('theme-toggle');
+    checkbox.addEventListener('change', () => {
+      const html = document.documentElement;
+      if (checkbox.checked) {
+        html.classList.replace('theme1','theme2');
+      } else {
+        html.classList.replace('theme2','theme1');
+      }
+    });
+  </script>
 </body>
 </html>
