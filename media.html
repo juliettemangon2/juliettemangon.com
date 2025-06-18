@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="theme1">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Media I'm Consuming</title>
+  <title>Media I Enjoy</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
   <style>
@@ -28,6 +28,7 @@
         var(--bg)       100px 200px
       );
     }
+
     html.theme2 {
       background: repeating-linear-gradient(
         to right,
@@ -49,7 +50,7 @@
       overflow: hidden;
     }
 
-    /* -- Navigation (Home + Theme Toggle) -- */
+    /* -- Navigation (Home + Theme Toggle) pinned at very top -- */
     .top-buttons,
     .toggle-switch {
       position: absolute;
@@ -114,16 +115,16 @@
       transform: translateX(26px);
     }
 
-    /* -- Wrapper that holds titles + panels -- */
+    /* -- Wrapper that holds titles + panels; wider side margins -- */
     .media-container {
       position: relative;
-      margin: 120px 20px 20px;           /* stripes visible top/sides/bottom */
+      margin: 120px 60px 20px;      /* more stripes at left/right */
       display: flex;
       flex-direction: column;
       height: calc(100vh - 140px);
     }
 
-    /* -- Section titles centered over each panel -- */
+    /* -- Section titles, equal widths, centered text -- */
     .media-titles {
       display: flex;
       padding: 0 2rem;
@@ -139,12 +140,17 @@
       -webkit-text-stroke: 2px var(--accent);
       background: transparent;
     }
+    /* theme2 titles switch to light cyan */
+    html.theme2 .media-titles h2 {
+      color: var(--highlight);
+      -webkit-text-stroke: 2px var(--highlight);
+    }
 
-    /* -- The two big panels -- */
+    /* -- Two big panels side by side -- */
     .media-sections {
       flex: 1 1 auto;
       display: flex;
-      gap: 1rem;
+      gap: 1rem;                   /* small stripe between panels */
       overflow: hidden;
     }
     .section {
@@ -158,13 +164,15 @@
       background: var(--highlight);
     }
 
-    /* -- Numbered lists -- */
+    /* -- Bigger, bolder numbered lists -- */
     .section ol {
       list-style-position: inside;
-      font-size: 1.2rem;
+      font-size: 1.5rem;           /* larger text */
+      font-weight: 500;            /* a bit thicker */
+      line-height: 1.4;            /* good spacing */
     }
     .section ol li {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     .section ol li a {
       color: var(--text);
@@ -176,10 +184,10 @@
       color: var(--accent);
     }
 
-    /* -- Mobile stacking -- */
+    /* -- Mobile stacking with adjusted margins -- */
     @media (max-width: 800px) {
       .media-container {
-        margin: 100px 10px 10px;
+        margin: 100px 20px 10px;
         height: auto;
       }
       .media-titles {
@@ -217,7 +225,7 @@
           <li><a href="#">Kid A by Radiohead</a></li>
           <li><a href="#">Random Access Memories by Daft Punk</a></li>
           <li><a href="#">Punisher by Phoebe Bridgers</a></li>
-          <li><a href="#">Folklore by Taylor Swift</a></li>
+          <li><a href="#">333 by Bladee</a></li>
         </ol>
       </div>
 
@@ -236,9 +244,8 @@
   <script>
     const checkbox = document.getElementById('theme-toggle');
     checkbox.addEventListener('change', () => {
-      const html = document.documentElement;
-      html.classList.toggle('theme1');
-      html.classList.toggle('theme2');
+      document.documentElement.classList.toggle('theme1');
+      document.documentElement.classList.toggle('theme2');
     });
   </script>
 </body>
