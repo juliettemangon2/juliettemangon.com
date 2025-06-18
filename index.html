@@ -55,17 +55,23 @@
       color: var(--accent);
     }
 
-    /* switch nav to a centered grid */
+    /* inline-flex so nav just wraps its content */
     nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.5rem 2rem;             /* row-gap | column-gap */
-      max-width: 700px;             /* restrict overall width */
-      margin: 0 auto;               /* center in the page */
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    /* invisible full-width break to start a new row */
+    nav .break {
+      flex-basis: 100%;
+      height: 0;
     }
 
+    /* buttons flex horizontally but keep natural height */
     nav a {
-      display: inline-block;
+      flex: 1 1 180px;   /* min-width:180px, share remaining space */
+      height: auto;      /* never stretch taller */
       font-size: 1.1rem;
       font-weight: 600;
       padding: 0.8rem 1.4rem;
@@ -85,13 +91,10 @@
     }
 
     @media (max-width: 600px) {
-      .title {
-        font-size: 4rem;
-      }
-      nav {
-        gap: 1rem;
-      }
+      .title { font-size: 4rem; }
+      nav { gap: 0.75rem; }
       nav a {
+        flex: 1 1 120px;
         font-size: 1rem;
         padding: 0.6rem 1rem;
       }
@@ -106,6 +109,7 @@
       <a href="aboutme.html">About Me</a>
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
+      <div class="break"></div>
       <a href="art.html">My Artwork</a>
       <a href="media.html">Media I’m Consuming</a>
     </nav>
