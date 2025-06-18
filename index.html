@@ -55,16 +55,13 @@
       color: var(--accent);
     }
 
+    /* switch nav to a centered grid */
     nav {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    nav .row {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem 2rem;             /* row-gap | column-gap */
+      max-width: 700px;             /* restrict overall width */
+      margin: 0 auto;               /* center in the page */
     }
 
     nav a {
@@ -79,6 +76,7 @@
       text-decoration: none;
       transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
       box-shadow: 0 0 0 2px var(--accent);
+      text-align: center;
     }
     nav a:hover {
       background: var(--accent);
@@ -90,15 +88,12 @@
       .title {
         font-size: 4rem;
       }
+      nav {
+        gap: 1rem;
+      }
       nav a {
         font-size: 1rem;
         padding: 0.6rem 1rem;
-      }
-      nav {
-        gap: 0.5rem;
-      }
-      nav .row {
-        gap: 0.5rem;
       }
     }
   </style>
@@ -108,15 +103,11 @@
     <div class="title">JULIETTE MANGON</div>
     <div class="subtitle">New York City, NY & Boston, MA</div>
     <nav>
-      <div class="row">
-        <a href="aboutme.html">About Me</a>
-        <a href="resume.html">Resume</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="row">
-        <a href="art.html">My Artwork</a>
-        <a href="media.html">Media I’m Consuming</a>
-      </div>
+      <a href="aboutme.html">About Me</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+      <a href="art.html">My Artwork</a>
+      <a href="media.html">Media I’m Consuming</a>
     </nav>
   </div>
 </body>
