@@ -69,6 +69,28 @@
     }
 
     /*—— Theme toggle ——*/
+    .top-buttons {
+      position: absolute;
+      top: 20px; left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .top-buttons a {
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      color: var(--text);
+      border: 2px solid var(--text);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+    .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+      transform: scale(1.05);
+    }
+
     .toggle-switch {
       position: absolute;
       top: 20px; right: 20px;
@@ -183,7 +205,7 @@
 </head>
 
 <body>
-  <div class="top-buttons">
+ <div class="top-buttons">
     <a href="index.html">Home</a>
   </div>
   <div class="toggle-switch">
