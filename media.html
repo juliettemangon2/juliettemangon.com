@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="theme1">
+<head>
+  <meta charset="UTF-8" />
+  <title>Juliette Mangon</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    :root {
+      --bg: #fdffe1;        /* light yellow */
+      --highlight: #d5eff5; /* light cyan */
+      --softgray: #fffff7;  /* off-white */
+      --text: #ff6d4c;      /* tomato */
+      --accent: #4a537b;    /* deep-blue */
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* full-page horizontal stripes */
+    html {
+      background: repeating-linear-gradient(
+        to right,
+        var(--highlight) 0   100px,
+        var(--bg)       100px 200px
+      );
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      height: 100%;
+    }
+    body {
+      min-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text);
+      background: transparent;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 6rem;            /* increased size */
+      font-weight: 700;
+      text-transform: uppercase;  /* force all caps */
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+      /* outline removed */
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    nav a {
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.8rem 1.4rem;
+      color: var(--text);
+      background: var(--softgray);
+      border: 3px solid var(--highlight);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+      box-shadow: 0 0 0 2px var(--accent); 
+    }
+    nav a:hover {
+      background: var(--accent);
+      color: var(--softgray);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 4rem;
+      }
+      nav a {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="title">MEDIA I ENJOY</div>
+  </div>
+</body>
+</html>
