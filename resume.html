@@ -12,6 +12,9 @@
       --text: #ff6d4c;     /* tomato text */
       --accent: #4a537b;   /* deep-blue accents */
       --sec2-bg: #d5eff5;  /* light cyan for theme2 */
+      --darkblue: #001531;
+      --red: #ba2200
+      
     }
 
     *, *::before, *::after {
@@ -29,11 +32,11 @@
     html.theme2 {
       background: repeating-linear-gradient(
         to right,
-        var(--accent) 0 100px,
-        var(--text)   100px 200px
+        var(--darkblue) 0 100px,
+        var(--red)   100px 200px
       );
-      --text:   #4a537b;
-      --accent: #ff6d4c;
+      --text:   #001531;
+      --accent: #ba2200;
     }
 
     /* base typography & spacing */
@@ -115,11 +118,11 @@
       font-size: 3.2rem;
       margin: 1.5rem 0 2.5rem;
       letter-spacing: 0.5px;
-      -webkit-text-stroke: 3px var(--text);
+      -webkit-text-stroke: 2.5px var(--text);
     }
     html.theme2 h1 {
-      color: var(--highlight);
-      -webkit-text-stroke: 3px var(--highlight);
+      color: var(--softgray);
+      -webkit-text-stroke: 2.5px var(--softgray);
     }
     h2 {
       font-size: 1.4rem;
@@ -161,7 +164,7 @@
       margin-bottom: 3rem;
     }
     html.theme2 .section {
-      background: var(--sec2-bg);
+      background: var(--softgray);
     }
 
     /* entries */
