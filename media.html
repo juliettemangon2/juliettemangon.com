@@ -25,7 +25,7 @@
       background: repeating-linear-gradient(
         to right,
         var(--highlight) 0   100px,
-        var(--bg)        100px 200px
+        var(--bg)       100px 200px
       );
     }
     html.theme2 {
@@ -34,8 +34,8 @@
         var(--accent) 0   100px,
         var(--text)   100px 200px
       );
-      --text:   #4a537b;  /* swap text */
-      --accent: #ff6d4c;  /* swap accent */
+      --text:   #4a537b;
+      --accent: #ff6d4c;
     }
 
     html, body {
@@ -49,7 +49,7 @@
       overflow: hidden;
     }
 
-    /* Home & Theme Switch */
+    /*—— Home button ——*/
     .top-buttons {
       position: absolute;
       top: 20px; left: 20px;
@@ -68,6 +68,7 @@
       color: var(--highlight);
     }
 
+    /*—— Theme toggle ——*/
     .toggle-switch {
       position: absolute;
       top: 20px; right: 20px;
@@ -100,50 +101,54 @@
       transform: translateX(26px);
     }
 
-    /* Two Full-Height Columns */
-    .media-sections {
-      display: flex;
-      height: 100%;
-    }
-    .section {
-      flex: 1;
-      background: var(--softgray);
-      border-radius: 0;           /* no rounding */
-      padding: 3rem 2rem;
+    /*—— Wrapper that holds titles + panels ——*/
+    .media-container {
       position: relative;
-      overflow-y: auto;
-    }
-    html.theme2 .section {
-      background: var(--highlight);
+      margin: 120px 20px 20px;           /* stripes visible top/sides/bottom */
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 140px);       /* account for top (120px) + bottom (20px) */
     }
 
-    /* Overlayed Titles */
-    .section h2 {
-      position: absolute;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
+    /*—— Section titles over the stripes ——*/
+    .media-titles {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+      margin-bottom: 1rem;
+      pointer-events: none;              /* clicks pass through */
+    }
+    .media-titles h2 {
       font-size: 2.4rem;
       font-weight: 700;
       color: var(--accent);
       -webkit-text-stroke: 2px var(--accent);
       background: transparent;
-      padding: 0 0.5rem;
-      pointer-events: none;
-    }
-    /* position each title over its half */
-    .section:nth-child(1) h2 {
-      left: 25%;
-    }
-    .section:nth-child(2) h2 {
-      left: 75%;
     }
 
-    /* Numbered lists */
+    /*—— The two big panels ——*/
+    .media-sections {
+      flex: 1 1 auto;
+      display: flex;
+      gap: 1rem;                         /* small stripe shows in between */
+      overflow: hidden;
+    }
+    .section {
+      flex: 1 1 0;
+      background: var(--softgray);
+      padding: 3rem 2rem;
+      border-radius: 0;                  /* no rounding */
+      overflow-y: auto;                  /* allow scrolling if it overflows */
+    }
+    html.theme2 .section {
+      background: var(--highlight);
+    }
+
+    /*—— Numbered lists ——*/
     .section ol {
-      margin-top: 4rem; /* clear the overlay */
-      font-size: 1.2rem;
       list-style-position: inside;
+      font-size: 1.2rem;
     }
     .section ol li {
       margin-bottom: 1rem;
@@ -157,6 +162,23 @@
     .section ol li a:hover {
       color: var(--accent);
     }
+
+    /*—— Mobile stacking ——*/
+    @media (max-width: 800px) {
+      .media-container {
+        margin: 100px 10px 10px;
+        height: auto;
+      }
+      .media-titles {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1rem;
+        gap: 1rem;
+      }
+      .media-sections {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
@@ -169,27 +191,32 @@
     <label for="theme-toggle"></label>
   </div>
 
-  <div class="media-sections">
-    <div class="section">
+  <div class="media-container">
+    <div class="media-titles">
       <h2>WHAT I’M LISTENING TO</h2>
-      <ol>
-        <li><a href="#">Abbey Road by The Beatles</a></li>
-        <li><a href="#">Kid A by Radiohead</a></li>
-        <li><a href="#">Random Access Memories by Daft Punk</a></li>
-        <li><a href="#">Punisher by Phoebe Bridgers</a></li>
-        <li><a href="#">Folklore by Taylor Swift</a></li>
-      </ol>
+      <h2>WHAT I’M WATCHING</h2>
     </div>
 
-    <div class="section">
-      <h2>WHAT I’M WATCHING</h2>
-      <ol>
-        <li><a href="#">Inception (2010)</a></li>
-        <li><a href="#">Parasite (2019)</a></li>
-        <li><a href="#">The Godfather (1972)</a></li>
-        <li><a href="#">Love Lies Bleeding (2023)</a></li>
-        <li><a href="#">Everything Everywhere All at Once (2022)</a></li>
-      </ol>
+    <div class="media-sections">
+      <div class="section">
+        <ol>
+          <li><a href="#">Abbey Road by The Beatles</a></li>
+          <li><a href="#">Kid A by Radiohead</a></li>
+          <li><a href="#">Random Access Memories by Daft Punk</a></li>
+          <li><a href="#">Punisher by Phoebe Bridgers</a></li>
+          <li><a href="#">Folklore by Taylor Swift</a></li>
+        </ol>
+      </div>
+
+      <div class="section">
+        <ol>
+          <li><a href="#">Inception (2010)</a></li>
+          <li><a href="#">Parasite (2019)</a></li>
+          <li><a href="#">The Godfather (1972)</a></li>
+          <li><a href="#">Love Lies Bleeding (2023)</a></li>
+          <li><a href="#">Everything Everywhere All at Once (2022)</a></li>
+        </ol>
+      </div>
     </div>
   </div>
 
