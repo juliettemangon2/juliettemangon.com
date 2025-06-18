@@ -2,16 +2,17 @@
 <html lang="en" class="theme1">
 <head>
   <meta charset="UTF-8" />
-  <title>Juliette Mangon</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Media I Enjoy</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
   <style>
     :root {
-      --bg: #fdffe1;        /* light yellow */
-      --highlight: #d5eff5; /* light cyan */
-      --softgray: #fffff7;  /* off-white */
-      --text: #ff6d4c;      /* tomato */
-      --accent: #4a537b;    /* deep-blue */
+      --bg: #fdffe1;         /* light yellow */
+      --highlight: #d5eff5;  /* light cyan */
+      --softgray: #fffff7;   /* off-white for cards */
+      --text: #ff6d4c;       /* tomato text */
+      --accent: #4a537b;     /* deep-blue accents */
     }
 
     *, *::before, *::after {
@@ -20,83 +21,215 @@
       box-sizing: border-box;
     }
 
-    /* full-page horizontal stripes */
-    html {
+    /* THEME 1 STRIPES */
+    html.theme1 {
       background: repeating-linear-gradient(
         to right,
         var(--highlight) 0   100px,
-        var(--bg)       100px 200px
+        var(--bg)        100px 200px
       );
+    }
+
+    /* THEME 2 STRIPES & COLOR SWAP */
+    html.theme2 {
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent) 0   100px,
+        var(--text)   100px 200px
+      );
+      --text:   #4a537b;  /* deep-blue text */
+      --accent: #ff6d4c;  /* tomato accents */
+    }
+
+    html {
       font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
       height: 100%;
     }
     body {
-      min-height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      padding: 2rem 1rem 4rem;
       color: var(--text);
       background: transparent;
-      padding: 2rem;
       text-align: center;
     }
 
-    .title {
-      font-size: 6rem;            /* increased size */
-      font-weight: 700;
-      text-transform: uppercase;  /* force all caps */
-      letter-spacing: 1px;
-      margin-bottom: 0.3rem;
-      /* outline removed */
+    /* HOME BUTTON */
+    .top-buttons {
+      position: absolute;
+      top: 20px; left: 20px;
+    }
+    .top-buttons a {
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      color: var(--text);
+      border: 2px solid var(--text);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+    .top-buttons a:hover {
+      background: var(--text);
+      color: var(--highlight);
+      transform: scale(1.05);
     }
 
-    .subtitle {
-      font-size: 1.4rem;
-      font-weight: 500;
-      margin-bottom: 2.5rem;
+    /* THEME TOGGLE */
+    .toggle-switch {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 50px; height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0; width: 0; height: 0;
+    }
+    .toggle-switch label {
+      position: absolute;
+      cursor: pointer;
+      background-color: #ccc;
+      border-radius: 24px;
+      width: 100%; height: 100%;
+      transition: background-color 0.3s;
+    }
+    .toggle-switch label::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px; left: 3px;
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked + label {
+      background: var(--accent);
+    }
+    .toggle-switch input:checked + label::after {
+      transform: translateX(26px);
+    }
+
+    /* MEDIA CARDS CONTAINER */
+    .media-container {
+      max-width: 1000px;
+      margin: 120px auto 0;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .media-card {
+      flex: 1 1 300px;
+      background: var(--softgray);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: left;
+    }
+    html.theme2 .media-card {
+      background: var(--highlight);
+    }
+
+    .media-card h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      -webkit-text-stroke: 2px var(--accent);
+    }
+
+    .media-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      background: #ddd;  /* placeholder bg */
+      height: 0;
+      padding-top: 56.25%; /* 16:9 ratio box */
+      position: relative;
+    }
+    .media-image img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .media-info {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .media-info a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px dashed var(--accent);
+      transition: color 0.3s;
+    }
+    .media-info a:hover {
       color: var(--accent);
     }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    nav a {
-      display: inline-block;
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 0.8rem 1.4rem;
-      color: var(--text);
-      background: var(--softgray);
-      border: 3px solid var(--highlight);
-      border-radius: 30px;
-      text-decoration: none;
-      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-      box-shadow: 0 0 0 2px var(--accent); 
-    }
-    nav a:hover {
-      background: var(--accent);
-      color: var(--softgray);
-      transform: scale(1.1);
-    }
-
-    @media (max-width: 600px) {
-      .title {
-        font-size: 4rem;
-      }
-      nav a {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
+    @media (max-width: 800px) {
+      .media-container {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
+
 <body>
-  <div>
-    <div class="title">MEDIA I ENJOY</div>
+  <div class="top-buttons">
+    <a href="index.html">Home</a>
   </div>
+  <div class="toggle-switch">
+    <input type="checkbox" id="theme-toggle"/>
+    <label for="theme-toggle"></label>
+  </div>
+
+  <div class="media-container">
+    <!-- Listening Card -->
+    <div class="media-card">
+      <h2>WHAT I’M LISTENING TO</h2>
+      <div class="media-image">
+        <!-- replace with your album cover -->
+        <!-- <img src="punisher-cover.jpg" alt="Punisher by Phoebe Bridgers"> -->
+      </div>
+      <div class="media-info">
+        <p>“Punisher” by Phoebe Bridgers</p>
+        <!-- optional link to Spotify -->
+        <!-- <a href="https://open.spotify.com/track/…" target="_blank">Listen on Spotify</a> -->
+      </div>
+    </div>
+
+    <!-- Watching Card -->
+    <div class="media-card">
+      <h2>WHAT I’M WATCHING</h2>
+      <div class="media-image">
+        <!-- replace with your movie poster -->
+        <!-- <img src="love-lies-bleeding-poster.jpg" alt="Love Lies Bleeding poster"> -->
+      </div>
+      <div class="media-info">
+        <p>“Love Lies Bleeding” (2023)</p>
+        <!-- optional link to trailer -->
+        <!-- <a href="https://…” target="_blank">Watch Trailer</a> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('theme-toggle');
+    checkbox.addEventListener('change', () => {
+      const html = document.documentElement;
+      if (checkbox.checked) {
+        html.classList.replace('theme1','theme2');
+      } else {
+        html.classList.replace('theme2','theme1');
+      }
+    });
+  </script>
 </body>
 </html>
