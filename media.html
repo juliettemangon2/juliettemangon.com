@@ -21,6 +21,7 @@
       box-sizing: border-box;
     }
 
+    /* theme stripes */
     html.theme1 {
       background: repeating-linear-gradient(
         to right,
@@ -28,7 +29,6 @@
         var(--bg)       100px 200px
       );
     }
-
     html.theme2 {
       background: repeating-linear-gradient(
         to right,
@@ -39,29 +39,28 @@
       --accent: #ff6d4c;
     }
 
-    html, body {
-      height: 100%;
+    html {
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: var(--text);
-      background: transparent;
+      font-size: 16px;
     }
     body {
+      min-height: 100vh;
+      background: transparent;
+      color: var(--text);
       position: relative;
-      overflow: hidden;
+      /* optional page padding if you want stripes inset */
+      /* padding: 40px 30px; */
     }
 
-    /* -- Navigation (Home + Theme Toggle) pinned at very top -- */
-    .top-buttons,
-    .toggle-switch {
-      position: absolute;
-      top: 10px;
-      z-index: 999;
-    }
+    /* TOP-LEFT HOME & TOP-RIGHT TOGGLE, pinned above everything */
     .top-buttons {
+      position: absolute;
+      top: 20px;
       left: 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      z-index: 999;
     }
     .top-buttons a {
       font-weight: 600;
@@ -79,9 +78,12 @@
     }
 
     .toggle-switch {
+      position: absolute;
+      top: 20px;
       right: 20px;
       width: 50px;
       height: 24px;
+      z-index: 999;
     }
     .toggle-switch input {
       opacity: 0;
@@ -90,22 +92,19 @@
     }
     .toggle-switch label {
       position: absolute;
-      cursor: pointer;
-      background-color: #ccc;
+      width: 100%; height: 100%;
+      background: #ccc;
       border-radius: 24px;
-      width: 100%;
-      height: 100%;
-      transition: background-color 0.3s;
+      cursor: pointer;
+      transition: background 0.3s;
     }
     .toggle-switch label::after {
       content: '';
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border-radius: 50%;
       background: #fff;
-      top: 3px;
-      left: 3px;
+      top: 3px; left: 3px;
       transition: transform 0.3s;
     }
     .toggle-switch input:checked + label {
@@ -115,18 +114,18 @@
       transform: translateX(26px);
     }
 
-    /* -- Wrapper that holds titles + panels; wider side margins -- */
+    /* WRAPPER FOR TITLES + PANELS */
     .media-container {
-      position: relative;
-      margin: 120px 60px 20px;      /* more stripes at left/right */
+      margin: 120px 60px 20px;    /* push content below controls & show more stripes at sides */
       display: flex;
       flex-direction: column;
       height: calc(100vh - 140px);
     }
 
-    /* -- Section titles, equal widths, centered text -- */
+    /* TITLES, one above each panel */
     .media-titles {
       display: flex;
+      justify-content: space-between;
       padding: 0 2rem;
       margin-bottom: 1rem;
       pointer-events: none;
@@ -138,23 +137,22 @@
       font-weight: 700;
       color: var(--accent);
       -webkit-text-stroke: 2px var(--accent);
-      background: transparent;
     }
-    /* theme2 titles switch to light cyan */
+    /* on theme2, titles turn light cyan */
     html.theme2 .media-titles h2 {
       color: var(--highlight);
       -webkit-text-stroke: 2px var(--highlight);
     }
 
-    /* -- Two big panels side by side -- */
+    /* PANELS SIDE BY SIDE */
     .media-sections {
-      flex: 1 1 auto;
+      flex: 1;
       display: flex;
-      gap: 1rem;                   /* small stripe between panels */
+      gap: 1rem;
       overflow: hidden;
     }
     .section {
-      flex: 1 1 0;
+      flex: 1;
       background: var(--softgray);
       padding: 3rem 2rem;
       border-radius: 0;
@@ -164,12 +162,12 @@
       background: var(--highlight);
     }
 
-    /* -- Bigger, bolder numbered lists -- */
+    /* BIGGER, BOLDER LIST ITEMS */
     .section ol {
       list-style-position: inside;
-      font-size: 1.5rem;           /* larger text */
-      font-weight: 500;            /* a bit thicker */
-      line-height: 1.4;            /* good spacing */
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.4;
     }
     .section ol li {
       margin-bottom: 1.5rem;
@@ -184,7 +182,7 @@
       color: var(--accent);
     }
 
-    /* -- Mobile stacking with adjusted margins -- */
+    /* MOBILE FALLBACK */
     @media (max-width: 800px) {
       .media-container {
         margin: 100px 20px 10px;
@@ -204,25 +202,28 @@
 </head>
 
 <body>
+  <!-- header controls up top -->
   <div class="top-buttons">
     <a href="index.html">Home</a>
   </div>
+
   <div class="toggle-switch">
     <input type="checkbox" id="theme-toggle"/>
     <label for="theme-toggle"></label>
   </div>
 
+  <!-- main media panels -->
   <div class="media-container">
     <div class="media-titles">
-      <h2>WHAT I’M LISTENING TO</h2>
-      <h2>WHAT I’M WATCHING</h2>
+      <h2>Current Favorite Albums</h2>
+      <h2>Current Favorite Movies</h2>
     </div>
 
     <div class="media-sections">
       <div class="section">
         <ol>
-          <li><a href="#">Abbey Road by The Beatles</a></li>
-          <li><a href="#">Kid A by Radiohead</a></li>
+          <li><a href="#">Five Dice, All Threes by Bright Eyes</a></li>
+          <li><a href="#">The Bends by Radiohead</a></li>
           <li><a href="#">Random Access Memories by Daft Punk</a></li>
           <li><a href="#">Punisher by Phoebe Bridgers</a></li>
           <li><a href="#">333 by Bladee</a></li>
@@ -231,22 +232,24 @@
 
       <div class="section">
         <ol>
-          <li><a href="#">Inception (2010)</a></li>
+          <li><a href="#">Call Me by Your Name (2017)</a></li>
           <li><a href="#">Parasite (2019)</a></li>
-          <li><a href="#">The Godfather (1972)</a></li>
+          <li><a href="#">Léon: The Professional (1994)</a></li>
           <li><a href="#">Love Lies Bleeding (2023)</a></li>
-          <li><a href="#">Everything Everywhere All at Once (2022)</a></li>
+          <li><a href="#">Gone Girl (2014)</a></li>
         </ol>
       </div>
     </div>
   </div>
 
   <script>
-    const checkbox = document.getElementById('theme-toggle');
-    checkbox.addEventListener('change', () => {
-      document.documentElement.classList.toggle('theme1');
-      document.documentElement.classList.toggle('theme2');
-    });
+    document
+      .getElementById('theme-toggle')
+      .addEventListener('change', ({ target }) => {
+        document.documentElement.classList.toggle('theme1');
+        document.documentElement.classList.toggle('theme2');
+      });
   </script>
 </body>
 </html>
+
