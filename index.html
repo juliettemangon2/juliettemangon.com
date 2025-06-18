@@ -20,7 +20,6 @@
       box-sizing: border-box;
     }
 
-    /* full-page horizontal stripes */
     html {
       background: repeating-linear-gradient(
         to right,
@@ -42,12 +41,11 @@
     }
 
     .title {
-      font-size: 6rem;            /* increased size */
+      font-size: 6rem;
       font-weight: 700;
-      text-transform: uppercase;  /* force all caps */
+      text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 0.3rem;
-      /* outline removed */
     }
 
     .subtitle {
@@ -59,12 +57,14 @@
 
     nav {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    nav .row {
+      display: flex;
       gap: 1rem;
       justify-content: center;
-    }
-    nav a.break {
-      flex-basis: 100%;
     }
 
     nav a {
@@ -78,7 +78,7 @@
       border-radius: 30px;
       text-decoration: none;
       transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-      box-shadow: 0 0 0 2px var(--accent); 
+      box-shadow: 0 0 0 2px var(--accent);
     }
     nav a:hover {
       background: var(--accent);
@@ -94,6 +94,12 @@
         font-size: 1rem;
         padding: 0.6rem 1rem;
       }
+      nav {
+        gap: 0.5rem;
+      }
+      nav .row {
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -102,12 +108,15 @@
     <div class="title">JULIETTE MANGON</div>
     <div class="subtitle">New York City, NY & Boston, MA</div>
     <nav>
-      <a href="aboutme.html">About Me</a>
-      <a href="resume.html">Resume</a>
-      <a href="contact.html">Contact</a>
-      <a href="art.html">My Artwork</a>
-      <a href="media.html">Media I'm Consuming</a>
-
+      <div class="row">
+        <a href="aboutme.html">About Me</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="row">
+        <a href="art.html">My Artwork</a>
+        <a href="media.html">Media I’m Consuming</a>
+      </div>
     </nav>
   </div>
 </body>
