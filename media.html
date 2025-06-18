@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Media I Enjoy</title>
+  <title>Media I'm consuming</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 
   <style>
@@ -49,29 +49,15 @@
       overflow: hidden;
     }
 
-    /*—— Home button ——*/
-    .top-buttons {
+    /* ——— Home + toggle on top ——— */
+    .top-buttons,
+    .toggle-switch {
       position: absolute;
-      top: 20px; left: 20px;
+      z-index: 999;
     }
-    .top-buttons a {
-      font-weight: 600;
-      padding: 0.6rem 1.2rem;
-      color: var(--text);
-      border: 2px solid var(--text);
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-    .top-buttons a:hover {
-      background: var(--text);
-      color: var(--highlight);
-    }
-
-    /*—— Theme toggle ——*/
     .top-buttons {
-      position: absolute;
-      top: 20px; left: 20px;
+      top: 20px;
+      left: 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -91,29 +77,36 @@
       transform: scale(1.05);
     }
 
+    /* ——— Theme toggle ——— */
     .toggle-switch {
-      position: absolute;
-      top: 20px; right: 20px;
-      width: 50px; height: 24px;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 24px;
     }
     .toggle-switch input {
-      opacity: 0; width: 0; height: 0;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
     .toggle-switch label {
       position: absolute;
       cursor: pointer;
       background-color: #ccc;
       border-radius: 24px;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       transition: background-color 0.3s;
     }
     .toggle-switch label::after {
       content: '';
       position: absolute;
-      width: 18px; height: 18px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: #fff;
-      top: 3px; left: 3px;
+      top: 3px;
+      left: 3px;
       transition: transform 0.3s;
     }
     .toggle-switch input:checked + label {
@@ -123,7 +116,7 @@
       transform: translateX(26px);
     }
 
-    /*—— Wrapper that holds titles + panels ——*/
+    /* ——— Wrapper that holds titles + panels ——— */
     .media-container {
       position: relative;
       margin: 120px 20px 20px;           /* stripes visible top/sides/bottom */
@@ -132,14 +125,14 @@
       height: calc(100vh - 140px);       /* account for top (120px) + bottom (20px) */
     }
 
-    /*—— Section titles over the stripes ——*/
+    /* ——— Section titles over the stripes ——— */
     .media-titles {
       flex: 0 0 auto;
       display: flex;
       justify-content: space-between;
       padding: 0 2rem;
       margin-bottom: 1rem;
-      pointer-events: none;              /* clicks pass through */
+      pointer-events: none;              /* allow clicks through */
     }
     .media-titles h2 {
       font-size: 2.4rem;
@@ -149,7 +142,7 @@
       background: transparent;
     }
 
-    /*—— The two big panels ——*/
+    /* ——— The two big panels ——— */
     .media-sections {
       flex: 1 1 auto;
       display: flex;
@@ -167,7 +160,7 @@
       background: var(--highlight);
     }
 
-    /*—— Numbered lists ——*/
+    /* ——— Numbered lists ——— */
     .section ol {
       list-style-position: inside;
       font-size: 1.2rem;
@@ -185,7 +178,7 @@
       color: var(--accent);
     }
 
-    /*—— Mobile stacking ——*/
+    /* ——— Mobile stacking ——— */
     @media (max-width: 800px) {
       .media-container {
         margin: 100px 10px 10px;
@@ -205,7 +198,7 @@
 </head>
 
 <body>
- <div class="top-buttons">
+  <div class="top-buttons">
     <a href="index.html">Home</a>
   </div>
   <div class="toggle-switch">
