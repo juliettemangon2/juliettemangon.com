@@ -141,17 +141,18 @@
       -webkit-text-stroke: 2px var(--highlight);
     }
 
+    /* First section grid: larger photo */
     .content-grid {
       display: flex;
       gap: 3rem;
-      align-items: center;
+      align-items: start;
       max-width: 1200px;
       margin: 0 auto 3rem;
       flex-wrap: wrap;
     }
 
     .photo-col {
-      flex: 0 0 250px;
+      flex: 0 0 35%;
     }
     .photo-col img {
       width: 100%;
@@ -161,9 +162,7 @@
     }
 
     .text-col {
-      flex: 1 1 600px;
-      display: grid;
-      gap: 2rem;
+      flex: 1 1 60%;
     }
 
     .text-block {
@@ -175,12 +174,18 @@
       line-height: 1.8;
     }
 
+    /* Full-width second section */
+    .full-width {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
     .edu-grid {
       display: flex;
       gap: 2rem;
       flex-wrap: wrap;
       max-width: 1200px;   
-      margin: 0 auto 3rem; /* centered with bottom space */
+      margin: 0 auto 3rem;
     }
     .edu-col {
       flex: 1 1 450px;
@@ -203,12 +208,11 @@
       }
 
       .photo-col {
-        max-width: 200px;
-        margin: 0 auto;
+        max-width: 100%;
       }
 
       .text-col {
-        gap: 1.5rem;
+        width: 100%;
       }
     }
   </style>
@@ -219,6 +223,8 @@
 
   <!-- ABOUT -->
   <h2 class="section-title">About Me</h2>
+
+  <!-- First section: photo + first text block -->
   <div class="content-grid">
     <div class="photo-col">
       <img src="IMG_3336.jpeg" alt="Photo of Juliette">
@@ -228,12 +234,14 @@
         <p>Hi, I’m Juliette Mangon. I grew up in Lexington, Massachusetts and now live in New York City, where I study Computer Science and Mathematics at NYU.</p>
         <p>In addition to my academic pursuits, I am drawn to visual arts. I enjoy painting, drawing, and exploring various art mediums, with acrylic painting being my favorite. My artistic interests not only provide a creative outlet but also encourage me to think more imaginatively and approach challenges with different perspectives.</p>
       </div>
-    
-      <div class="text-block">
-        <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
-        <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m French and fluent in both English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
-      </div>
+    </div>
+  </div>
 
+  <!-- Second section: full-width under first -->
+  <div class="full-width">
+    <div class="text-block">
+      <p>I care deeply about sustainability and climate justice. After learning about the environmental impact of the meat industry in middle school, I chose to go vegetarian and have remained committed ever since. This awareness continues to shape how I think about technology’s role in building a better future.</p>
+      <p>I’m especially interested in the intersection of technology, media, and culture, and I’ve explored that space through internships, coursework, and personal projects. I’ve built custom portfolio websites for artists and photographers, designed with an eye toward clean interaction and storytelling. I’m French and fluent in both English and French, and my background helps me move fluidly between technical, creative, and global perspectives.</p>
     </div>
   </div>
 
