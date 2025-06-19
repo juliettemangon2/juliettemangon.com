@@ -14,6 +14,8 @@
       --sec2-bg: #d5eff5;  /* light cyan for theme2 */
       --darkblue: #00285d;
       --red: #ba2200;
+      --blue: #185ab0;
+      --azure: #eefcff;
       
     }
 
@@ -33,7 +35,7 @@
       background: repeating-linear-gradient(
         to right,
         var(--darkblue) 0 100px,
-        var(--bg)   100px 200px
+        var(--blue)   100px 200px
       );
       --text:   #001531;
       --accent: #ba2200;
@@ -118,12 +120,12 @@
       text-align: center;
       font-size: 3.2rem;
       margin: 1.5rem 0 2.5rem;
-      letter-spacing: 0.5px;
-      -webkit-text-stroke: 2.5px var(--text);
+      letter-spacing: 0.1em;
+      -webkit-text-stroke: 3px var(--text);
     }
     html.theme2 h1 {
-      color: var(--red);
-      -webkit-text-stroke: 2.5px var(--highlight);
+      color: var(--azure);
+      -webkit-text-stroke: 3px var(--azure);
     }
     h2 {
       font-size: 1.4rem;
@@ -165,7 +167,7 @@
       margin-bottom: 3rem;
     }
     html.theme2 .section {
-      background: var(--highlight);
+      background: var(--azure);
     }
 
     /* entries */
