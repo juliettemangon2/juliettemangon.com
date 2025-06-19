@@ -54,17 +54,18 @@
 
     .top-buttons a {
       font-weight: 600;
-      padding: 0.5rem 1.1rem;
+      padding: 0.6rem 1.2rem;
       color: var(--text);
-      border: 2px solid var(--text);
+      background: var(--softgray);
+      border: 3px solid var(--highlight);
       border-radius: 30px;
       text-decoration: none;
-      transition: background 0.3s, color 0.3s;
+      box-shadow: 0 0 0 2px var(--accent);
+      transition: background 0.3s, color 0.3s, transform 0.3s;
     }
-
     .top-buttons a:hover {
-      background: var(--text);
-      color: var(--highlight);
+      background: var(--accent);
+      color: var(--softgray);
       transform: scale(1.05);
     }
 
@@ -220,7 +221,7 @@
   <h2 class="section-title">About Me</h2>
   <div class="content-grid">
     <div class="photo-col">
-      <img src="julietteheadshot-1.jpeg" alt="Photo of Juliette">
+      <img src="juliette.jpeg" alt="Photo of Juliette">
     </div>
     <div class="text-col">
       <div class="text-block">
