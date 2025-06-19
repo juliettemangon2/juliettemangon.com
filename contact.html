@@ -54,7 +54,6 @@
       background: transparent;
       position: relative;
     }
-
     /* TOP-LEFT HOME & TOP-RIGHT THEME SWITCH */
     .top-buttons {
       position: absolute;
@@ -67,14 +66,16 @@
       font-weight: 600;
       padding: 0.6rem 1.2rem;
       color: var(--text);
-      border: 2px solid var(--text);
+      background: var(--softgray);
+      border: 3px solid var(--highlight);
       border-radius: 30px;
       text-decoration: none;
+      box-shadow: 0 0 0 2px var(--accent);
       transition: background 0.3s, color 0.3s, transform 0.3s;
     }
     .top-buttons a:hover {
-      background: var(--text);
-      color: var(--highlight);
+      background: var(--accent);
+      color: var(--softgray);
       transform: scale(1.05);
     }
 
