@@ -8,11 +8,14 @@
 
   <style>
     :root {
-      --bg: #fdffe1;         /* light yellow */
-      --highlight: #d5eff5;  /* light cyan */
+      --yellow: #fdffe1;         /* light yellow */
+      --cyan: #d5eff5;  /* light cyan */
       --softgray: #fffff7;   /* off-white for cards */
-      --text: #ff6d4c;       /* tomato text */
+      --tomato: #ff6d4c;       /* tomato text */
       --accent: #4a537b;     /* deep-blue accents */
+      --darkblue: #00285d;
+      --blue: #185ab0;
+      --azure: #eefcff;
     }
 
     *, *::before, *::after {
@@ -25,8 +28,8 @@
     html.theme1 {
       background: repeating-linear-gradient(
         to right,
-        var(--highlight) 0   100px,
-        var(--bg)        100px 200px
+        var(--cyan) 0   100px,
+        var(--yellow)        100px 200px
       );
     }
 
@@ -34,11 +37,11 @@
     html.theme2 {
       background: repeating-linear-gradient(
         to right,
-        var(--accent) 0   100px,
-        var(--text)   100px 200px
+        var(--darkblue) 0   100px,
+        var(--blue)   100px 200px
       );
-      --text:   #4a537b;  /* swap to deep-blue text */
-      --accent: #ff6d4c;  /* swap to tomato accents */
+      --tomato:   #00285d;  /* swap to deep-blue text */
+      --accent: #185ab0;  /* swap to tomato accents */
     }
 
     html {
@@ -50,7 +53,7 @@
     body {
       min-height: 100vh;
       padding: 40px 30px;
-      color: var(--text);
+      color: var(--tomato);
       background: transparent;
       position: relative;
     }
@@ -65,9 +68,9 @@
     .top-buttons a {
       font-weight: 600;
       padding: 0.6rem 1.2rem;
-      color: var(--text);
+      color: var(--tomato);
       background: var(--softgray);
-      border: 3px solid var(--highlight);
+      border: 3px solid var(--cyan);
       border-radius: 30px;
       text-decoration: none;
       box-shadow: 0 0 0 2px var(--accent);
@@ -122,7 +125,7 @@
       text-align: left;
     }
     html.theme2 .contact-card {
-      background: var(--highlight);
+      background: var(--azure);
     }
 
     .contact-card h2 {
@@ -154,7 +157,7 @@
     .sheisthemusic::before   { content: '🎶'; }
 
     .contact-item a {
-      color: var(--text);
+      color: var(--tomato);
       font-weight: 600;
       text-decoration: none;
       padding-bottom: 2px;
