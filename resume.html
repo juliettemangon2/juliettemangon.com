@@ -33,7 +33,7 @@
       background: repeating-linear-gradient(
         to right,
         var(--darkblue) 0 100px,
-        var(--softgray)   100px 200px
+        var(--bg)   100px 200px
       );
       --text:   #001531;
       --accent: #ba2200;
@@ -62,14 +62,15 @@
       padding: 0.6rem 1.2rem;
       color: var(--text);
       background: var(--softgray);
-      border: 2px solid var(--text);
+      border: 3px solid var(--highlight);
       border-radius: 30px;
       text-decoration: none;
-      transition: background 0.3s, color 0.3s;
+      box-shadow: 0 0 0 2px var(--accent);
+      transition: background 0.3s, color 0.3s, transform 0.3s;
     }
     .top-buttons a:hover {
-      background: var(--text);
-      color: var(--highlight);
+      background: var(--accent);
+      color: var(--softgray);
       transform: scale(1.05);
     }
     html.theme2 .top-buttons a {
@@ -122,7 +123,7 @@
     }
     html.theme2 h1 {
       color: var(--red);
-      -webkit-text-stroke: 2.5px var(--red);
+      -webkit-text-stroke: 2.5px var(--highlight);
     }
     h2 {
       font-size: 1.4rem;
