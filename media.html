@@ -1,250 +1,190 @@
 <!DOCTYPE html>
 <html lang="en" class="theme1">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Juliette Mangon</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliette Mangon | Media Picks</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
-      --bg: #fdffe1;         /* light yellow */
-      --highlight: #d5eff5;  /* light cyan */
-      --softgray: #fffff7;   /* off-white panels */
-      --text: #ff6d4c;       /* tomato text */
-      --accent: #4a537b;     /* deep-blue accents */
+      --bg: #fdffe1;
+      --highlight: #d5eff5;
+      --softgray: #fffff7;
+      --text: #ff6d4c;
+      --accent: #4a537b;
     }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html.theme1 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--highlight) 0   100px,
-        var(--bg)       100px 200px
-      );
-    }
-    html.theme2 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--accent) 0   100px,
-        var(--text)   100px 200px
-      );
-      --text:   #4a537b;
-      --accent: #ff6d4c;
-    }
-
-    html {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-    }
     body {
-      min-height: 100vh;
-      background: transparent;
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: repeating-linear-gradient(to right, var(--highlight) 0 100px, var(--bg) 100px 200px);
       color: var(--text);
     }
 
-    /* FIXED HOME & TOGGLE */
     .top-buttons {
       position: fixed;
       top: 20px;
       left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
       z-index: 999;
     }
+
     .top-buttons a {
-      font-weight: 600;
       padding: 0.6rem 1.2rem;
       color: var(--text);
       background: var(--softgray);
       border: 3px solid var(--highlight);
       border-radius: 30px;
       text-decoration: none;
+      font-weight: 600;
       box-shadow: 0 0 0 2px var(--accent);
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
-    .top-buttons a:hover {
-      background: var(--accent);
-      color: var(--softgray);
-      transform: scale(1.05);
     }
 
-    .toggle-switch {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 24px;
-      z-index: 999;
-    }
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .toggle-switch label {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #ccc;
-      border-radius: 24px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .toggle-switch label::after {
-      content: '';
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #fff;
-      top: 3px;
-      left: 3px;
-      transition: transform 0.3s;
-    }
-    .toggle-switch input:checked + label {
-      background: var(--accent);
-    }
-    .toggle-switch input:checked + label::after {
-      transform: translateX(26px);
-    }
-
-    /* PUSH MAIN CONTENT BELOW CONTROLS */
-    .media-container {
-      margin: 100px 60px 20px;    /* top margin ≥ toggle-height + space */
-      display: flex;
-      flex-direction: column;
-      height: calc(100vh - 120px);
-    }
-
-    .media-titles {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 2rem;
-      margin-bottom: 1rem;
-      pointer-events: none;
-    }
-    .media-titles h2 {
-      flex: 1;
+    h1 {
       text-align: center;
-      font-size: 2.4rem;
-      font-weight: 700;
+      font-size: 3rem;
+      margin-top: 100px;
+      letter-spacing: 1px;
       color: var(--accent);
-      -webkit-text-stroke: 2px var(--accent);
-    }
-    html.theme2 .media-titles h2 {
-      color: var(--highlight);
-      -webkit-text-stroke: 2px var(--highlight);
     }
 
-    .media-sections {
-      flex: 1;
+    .media-container {
       display: flex;
-      gap: 1rem;
-      overflow: hidden;
-    }
-    .section {
-      flex: 1;
-      background: var(--softgray);
-      padding: 3rem 2rem;
-      overflow-y: auto;
-    }
-    html.theme2 .section {
-      background: var(--highlight);
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 2rem;
     }
 
-    .section ol {
-      list-style-position: inside;
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 1.4;
+    .media-column {
+      flex: 1;
+      min-width: 300px;
+      background: var(--softgray);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
-    .section ol li {
+
+    .media-column h2 {
+      font-size: 1.8rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .media-item {
       margin-bottom: 1.5rem;
     }
-    .section ol li a {
+
+    .media-item strong {
+      display: block;
+      font-size: 1.1rem;
       color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px dashed var(--accent);
-      transition: color 0.3s;
     }
-    .section ol li a:hover {
+
+    .media-item small {
+      display: block;
+      font-style: italic;
       color: var(--accent);
-      transform: translateX(4px);
+      margin-bottom: 0.3rem;
+    }
+
+    .media-item a {
+      display: inline-block;
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+      text-decoration: none;
+      background: var(--accent);
+      color: var(--softgray);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .media-item a:hover {
+      background: var(--text);
     }
 
     @media (max-width: 800px) {
+      h1 {
+        font-size: 2.2rem;
+      }
       .media-container {
-        margin: 100px 20px 10px;
-        height: auto;
-      }
-      .media-titles {
         flex-direction: column;
-        align-items: center;
-        padding: 0 1rem;
-        gap: 1rem;
-      }
-      .media-sections {
-        flex-direction: column;
+        padding: 1rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- fixed header controls -->
   <div class="top-buttons">
     <a href="index.html">Home</a>
   </div>
 
-  <div class="toggle-switch">
-    <input type="checkbox" id="theme-toggle"/>
-    <label for="theme-toggle"></label>
-  </div>
-
-  <!-- main media panels -->
+  <h1>Current Favorites</h1>
   <div class="media-container">
-    <div class="media-titles">
-      <h2>Current Favorite Albums</h2>
-      <h2>Current Favorite Movies</h2>
+
+    <!-- ALBUMS -->
+    <div class="media-column">
+      <h2>Albums</h2>
+      <div class="media-item">
+        <strong>Five Dice, All Threes</strong>
+        <small>Bright Eyes</small>
+        <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Listen on Spotify</a>
+      </div>
+      <div class="media-item">
+        <strong>The Bends</strong>
+        <small>Radiohead</small>
+        <a href="https://open.spotify.com/album/7dxKtc08dYeRVHt3p9CZJn" target="_blank">Listen on Spotify</a>
+      </div>
+      <div class="media-item">
+        <strong>Random Access Memories</strong>
+        <small>Daft Punk</small>
+        <a href="https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa" target="_blank">Listen on Spotify</a>
+      </div>
+      <div class="media-item">
+        <strong>Punisher</strong>
+        <small>Phoebe Bridgers</small>
+        <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Listen on Spotify</a>
+      </div>
+      <div class="media-item">
+        <strong>333</strong>
+        <small>Bladee</small>
+        <a href="https://open.spotify.com/album/7sfeK1tLLo5GpL2mGeAYuQ" target="_blank">Listen on Spotify</a>
+      </div>
     </div>
 
-    <div class="media-sections">
-      <div class="section">
-        <ol>
-          <li><a href="#">Five Dice, All Threes by Bright Eyes</a></li>
-          <li><a href="#">The Bends by Radiohead</a></li>
-          <li><a href="#">Random Access Memories by Daft Punk</a></li>
-          <li><a href="#">Punisher by Phoebe Bridgers</a></li>
-          <li><a href="#">333 by Bladee</a></li>
-        </ol>
+    <!-- MOVIES -->
+    <div class="media-column">
+      <h2>Movies</h2>
+      <div class="media-item">
+        <strong>Call Me by Your Name</strong>
+        <small>(2017)</small>
+        <a href="https://www.imdb.com/title/tt5726616/" target="_blank">View on IMDb</a>
       </div>
-
-      <div class="section">
-        <ol>
-          <li><a href="#">Call Me by Your Name (2017)</a></li>
-          <li><a href="#">Parasite (2019)</a></li>
-          <li><a href="#">Léon: The Professional (1994)</a></li>
-          <li><a href="#">Love Lies Bleeding (2023)</a></li>
-          <li><a href="#">Gone Girl (2014)</a></li>
-        </ol>
+      <div class="media-item">
+        <strong>Parasite</strong>
+        <small>(2019)</small>
+        <a href="https://www.imdb.com/title/tt6751668/" target="_blank">View on IMDb</a>
+      </div>
+      <div class="media-item">
+        <strong>Léon: The Professional</strong>
+        <small>(1994)</small>
+        <a href="https://www.imdb.com/title/tt0110413/" target="_blank">View on IMDb</a>
+      </div>
+      <div class="media-item">
+        <strong>Love Lies Bleeding</strong>
+        <small>(2023)</small>
+        <a href="https://www.imdb.com/title/tt26470688/" target="_blank">View on IMDb</a>
+      </div>
+      <div class="media-item">
+        <strong>Gone Girl</strong>
+        <small>(2014)</small>
+        <a href="https://www.imdb.com/title/tt2267998/" target="_blank">View on IMDb</a>
       </div>
     </div>
+
   </div>
-
-  <script>
-    document
-      .getElementById('theme-toggle')
-      .addEventListener('change', ({ target }) => {
-        document.documentElement.classList.toggle('theme1');
-        document.documentElement.classList.toggle('theme2');
-      });
-  </script>
 </body>
 </html>
