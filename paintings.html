@@ -27,15 +27,6 @@
       padding: 2rem;
     }
 
-    header {
-      margin-bottom: 3rem;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
-
     a {
       color: var(--text);
       text-decoration: none;
@@ -46,11 +37,16 @@
       color: var(--highlight);
     }
 
+    .container {
+      display: flex;
+      gap: 4rem;
+    }
+
     .gallery {
       display: flex;
       flex-direction: column;
       gap: 3rem;
-      max-width: 900px;
+      max-width: 500px;
     }
 
     .item {
@@ -58,20 +54,11 @@
       gap: 1.5rem;
       align-items: flex-start;
       cursor: pointer;
-      transition: all 0.5s ease;
     }
 
     .item img {
       width: 240px;
       height: auto;
-      transition: width 0.5s ease, transform 0.5s ease, opacity 0.4s ease;
-      opacity: 0.85;
-    }
-
-    .item.expanded img {
-      width: 500px;
-      transform: scale(1.05);
-      opacity: 1;
     }
 
     .item h2 {
@@ -85,91 +72,123 @@
 
     .text-block {
       max-width: 600px;
-      transition: transform 0.5s ease;
     }
 
-    .item.expanded .text-block {
-      transform: translateX(10px);
+    .preview {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .preview img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid var(--text);
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .preview {
+        justify-content: flex-start;
+        margin-top: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
+  <header style="margin-bottom: 2rem;">
     <a href="index.html">Back</a>
   </header>
 
-  <main class="gallery">
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/cards.jpeg" alt="Evening Cards (2025)">
-      <div class="text-block">
-        <h2>Evening Cards (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+  <div class="container">
+    <!-- LEFT SIDE: GALLERY -->
+    <main class="gallery">
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/cards.jpeg" alt="Evening Cards (2025)">
+        <div class="text-block">
+          <h2>Evening Cards (2025)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/mira.jpeg" alt="Seaside, Cascais (2024)">
-      <div class="text-block">
-        <h2>Seaside, Cascais (2024)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/mira.jpeg" alt="Seaside, Cascais (2024)">
+        <div class="text-block">
+          <h2>Seaside, Cascais (2024)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/picnic.jpeg" alt="Seaside Picnic (2025)">
-      <div class="text-block">
-        <h2>Seaside Picnic (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/picnic.jpeg" alt="Seaside Picnic (2025)">
+        <div class="text-block">
+          <h2>Seaside Picnic (2025)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/cliffs.jpeg" alt="Seaside Cliffs (2024)">
-      <div class="text-block">
-        <h2>Seaside Cliffs (2024)</h2>
-        <p>Acrylic 12&quot; × 16&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/cliffs.jpeg" alt="Seaside Cliffs (2024)">
+        <div class="text-block">
+          <h2>Seaside Cliffs (2024)</h2>
+          <p>Acrylic 12&quot; × 16&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/poolside.jpeg" alt="Poolside (2023)">
-      <div class="text-block">
-        <h2>Poolside (2023)</h2>
-        <p>Acrylic 20&quot; × 16&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/poolside.jpeg" alt="Poolside (2023)">
+        <div class="text-block">
+          <h2>Poolside (2023)</h2>
+          <p>Acrylic 20&quot; × 16&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/water.jpeg" alt="Water (2023)">
-      <div class="text-block">
-        <h2>Water (2023)</h2>
-        <p>Acrylic 12&quot; × 16&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/water.jpeg" alt="Water (2023)">
+        <div class="text-block">
+          <h2>Water (2023)</h2>
+          <p>Acrylic 12&quot; × 16&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/fish.jpeg" alt="Fish (2024)">
-      <div class="text-block">
-        <h2>Fish (2024)</h2>
-        <p>Acrylic 16&quot; × 12&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/fish.jpeg" alt="Fish (2024)">
+        <div class="text-block">
+          <h2>Fish (2024)</h2>
+          <p>Acrylic 16&quot; × 12&quot;</p>
+        </div>
       </div>
-    </div>
 
-    <div class="item" onclick="toggleExpand(this)">
-      <img src="./images/roomie.jpg" alt="Roommates, NYC (2025)">
-      <div class="text-block">
-        <h2>Roommates, NYC (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/roomie.jpg" alt="Roommates, NYC (2025)">
+        <div class="text-block">
+          <h2>Roommates, NYC (2025)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+
+    <!-- RIGHT SIDE: PREVIEW -->
+    <div class="preview" id="previewContainer"></div>
+  </div>
 
   <script>
-    function toggleExpand(item) {
-      const alreadyExpanded = item.classList.contains('expanded');
-      document.querySelectorAll('.item.expanded').forEach(el => el.classList.remove('expanded'));
-      if (!alreadyExpanded) {
-        item.classList.add('expanded');
+    let currentSrc = null;
+
+    function togglePreview(item) {
+      const img = item.querySelector("img");
+      const previewContainer = document.getElementById("previewContainer");
+
+      if (currentSrc === img.src) {
+        previewContainer.innerHTML = "";
+        currentSrc = null;
+      } else {
+        previewContainer.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+        currentSrc = img.src;
       }
     }
   </script>
