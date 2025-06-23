@@ -330,7 +330,9 @@
     function close() { box.style.display = 'none'; idx = -1; }
     function next(d) { idx = (idx + d + imgs.length) % imgs.length; show(); }
 
-    box.addEventListener('click', e => { if (e.target === box) close(); });
+   box.addEventListener('click', e => {
+      if (e.target !== lbImg) close();
+    });
     document.addEventListener('keydown', e => {
       if (idx < 0) return;
       if (e.key === 'Escape') close();
