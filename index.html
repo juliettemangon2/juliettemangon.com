@@ -32,19 +32,8 @@
       margin-bottom: 0.75rem;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      right: 0;
-      background: var(--bg);
-      padding: 2rem;
-      text-align: right;
-      font-size: 2.6rem;
-      font-weight: 700;
-      z-index: 1000;
-    }
-
     main {
+      margin-top: 4rem;
       padding: 1rem 5vw 3rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -71,6 +60,17 @@
       font-size: 1.15rem;
       cursor: pointer;
       margin-bottom: 0.5rem;
+    }
+
+    details.details-inline {
+      margin-bottom: 0.5rem;
+    }
+
+    summary.inline-summary {
+      font-weight: normal;
+      font-size: 1.05rem;
+      margin-left: 0;
+      padding-left: 0;
     }
 
     a {
@@ -122,15 +122,10 @@
       .contact-columns {
         grid-template-columns: 1fr;
       }
-      header {
-        font-size: 2rem;
-        padding: 1.5rem;
-      }
     }
   </style>
 </head>
 <body>
-  
   <main>
     <!-- LEFT COLUMN: ABOUT + MEDIA -->
     <div class="left-col">
@@ -142,11 +137,10 @@
 
       <section class="media-section">
         <h2>Current Favorite Media</h2>
-        <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>,</strong> <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>,<a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
+        <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>, <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>, <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
         <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
       </section>
     </div>
-    
 
     <!-- RIGHT COLUMN: RESUME + CONTACT -->
     <section>
@@ -168,12 +162,12 @@
         <summary>Projects</summary>
         <ul>
           <li>
-            <details>
-              <summary style="font-weight: normal; margin-left: -1rem;">Custom Portfolio Websites</summary>
+            <details class="details-inline">
+              <summary class="inline-summary">Custom Portfolio Websites</summary>
               <ul class="sublist">
-                <li style="margin-left: -0.5rem;"><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging</a></li>
-                <li style="margin-left: -0.5rem;"><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing</a></li>
-                <li style="margin-left: -0.5rem;"><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris Fitzgerald: Studio portraits, street photography, and editorial work</a></li>
+                <li><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging</a></li>
+                <li><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing</a></li>
+                <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris Fitzgerald: Studio portraits, street photography, and editorial work</a></li>
               </ul>
             </details>
           </li>
