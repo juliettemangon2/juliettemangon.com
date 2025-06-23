@@ -12,15 +12,28 @@
       --highlight: #BFFF00;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
-      margin: 0;
-      padding: 2rem 5vw;
-      overflow-x: hidden;
+      padding: 2rem;
+    }
+
+    header {
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
     }
 
     a {
@@ -33,64 +46,50 @@
       color: var(--highlight);
     }
 
-    header {
-      margin-bottom: 2rem;
-    }
-
     .gallery {
       display: flex;
       flex-direction: column;
       gap: 3rem;
-      max-width: 1200px;
+      max-width: 900px;
     }
 
     .item {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: flex-start;
       cursor: pointer;
+      transition: all 0.5s ease;
     }
 
     .item img {
       width: 240px;
       height: auto;
-      transition: all 0.3s ease;
-    }
-
-    .item.expanded {
-      flex-direction: row;
-      align-items: flex-start;
+      transition: width 0.5s ease, transform 0.5s ease, opacity 0.4s ease;
+      opacity: 0.85;
     }
 
     .item.expanded img {
       width: 500px;
-      max-width: 50vw;
-    }
-
-    .text-block {
-      max-width: 500px;
+      transform: scale(1.05);
+      opacity: 1;
     }
 
     .item h2 {
       font-size: 1.3rem;
       font-weight: 700;
-      margin: 0;
     }
 
     .item p {
-      margin: 0.25rem 0 0;
+      margin-top: 0.2rem;
     }
 
-    @media (max-width: 768px) {
-      .item.expanded {
-        flex-direction: column;
-        align-items: center;
-      }
+    .text-block {
+      max-width: 600px;
+      transition: transform 0.5s ease;
+    }
 
-      .item.expanded img {
-        width: 100%;
-        max-width: 100%;
-      }
+    .item.expanded .text-block {
+      transform: translateX(10px);
     }
   </style>
 </head>
@@ -166,29 +165,12 @@
   </main>
 
   <script>
-    const altTheme = {
-      '--bg': '#FAFF78',
-      '--text': '#FF9100',
-      '--highlight': '#961E96'
-    };
-
-    const defaultTheme = {
-      '--bg': '#FF9FD5',
-      '--text': '#D10000',
-      '--highlight': '#BFFF00'
-    };
-
-    function applyTheme(theme) {
-      for (let key in theme) {
-        document.documentElement.style.setProperty(key, theme[key]);
+    function toggleExpand(item) {
+      const alreadyExpanded = item.classList.contains('expanded');
+      document.querySelectorAll('.item.expanded').forEach(el => el.classList.remove('expanded'));
+      if (!alreadyExpanded) {
+        item.classList.add('expanded');
       }
-    }
-
-    const stored = localStorage.getItem('theme');
-    if (stored === 'alt') applyTheme(altTheme);
-
-    function toggleExpand(element) {
-      element.classList.toggle("expanded");
     }
   </script>
 </body>
