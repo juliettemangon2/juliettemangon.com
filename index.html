@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juliette Mangon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #FF9FD5;
       --text: #D10000;
-      --card: #ffffff;
-      --accent: #D10000;
     }
 
     * {
@@ -21,128 +20,115 @@
     html, body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      padding: 2rem;
+      font-size: 1.05rem;
+      height: 100%;
+      overflow-x: hidden;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 2rem;
+    header {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 2.6rem;
+      font-weight: 700;
     }
 
-    .section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1.5rem;
-      background: var(--card);
-      color: var(--text);
-      border: 2px solid var(--text);
+    main {
+      padding: 6rem 5vw 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 5rem;
     }
 
-    summary {
-      font-weight: bold;
-      font-size: 1.2rem;
-      cursor: pointer;
+    section {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
     details {
-      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    summary {
+      font-weight: 600;
+      font-size: 1.15rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
     }
 
     a {
-      color: var(--accent);
+      color: var(--text);
       text-decoration: underline;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
+    ul {
+      list-style: none;
+      padding-left: 0;
     }
 
-    nav a {
-      font-weight: 600;
-      text-decoration: none;
-      color: var(--text);
-      border: 2px solid var(--text);
-      padding: 0.5rem 1rem;
-      background: var(--card);
-    }
-
-    nav a:hover {
-      background: var(--text);
-      color: var(--card);
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9rem;
+    ul li {
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
 <body>
-  <h1>Juliette Mangon</h1>
+  <header>Juliette Mangon</header>
+  <main>
+    <section>
+      <h2>About</h2>
+      <p>Hi, I’m Juliette. I’m a CS and Math major at NYU interested in the intersection of technology, media, and culture. I build clean, expressive digital experiences—from creative coding to research tools—and care deeply about design, storytelling, and how tech can support creativity.</p>
+    </section>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#resume">Resume</a>
-    <a href="#media">Media</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <section>
+      <h2>Resume</h2>
+      <details open>
+        <summary>Education</summary>
+        <p>NYU, B.A. Computer Science and Mathematics (2023–2025)<br>Minor in Business of Entertainment, Media, and Technology</p>
+      </details>
+      <details>
+        <summary>Work Experience</summary>
+        <ul>
+          <li><strong>AI/ML Intern</strong>, Enlaye (2025)</li>
+          <li><strong>Website Developer</strong>, Tryst (2025)</li>
+          <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)</li>
+          <li><strong>Math Grader</strong>, Art of Problem Solving (2023–)</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Technical Projects</summary>
+        <ul>
+          <li>Custom Portfolio Websites (React, Tailwind)</li>
+          <li>Plagiarism Detection (TF-IDF, Word2Vec)</li>
+          <li>TF-IDF Query Ranking System</li>
+          <li>Temperature Sensor Object</li>
+        </ul>
+      </details>
+      <details>
+        <summary>PDF Version</summary>
+        <p><a href="_JulietteMangonResume.pdf" target="_blank">View Full Resume (PDF)</a></p>
+      </details>
+    </section>
 
-  <section class="section" id="about">
-    <h2>About</h2>
-    <p>Hi, I’m Juliette. I’m a CS and Math major at NYU interested in the intersection of technology, media, and culture. I build clean, expressive digital experiences—from creative coding to research tools—and care deeply about design, storytelling, and how tech can support creativity.</p>
-  </section>
+    <section>
+      <h2>Media</h2>
+      <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
+      <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
+    </section>
 
-  <section class="section" id="resume">
-    <h2>Resume</h2>
-    <details open>
-      <summary>Education</summary>
-      <p>NYU, B.A. Computer Science and Mathematics (2023–2025)<br>Minor in Business of Entertainment, Media, and Technology</p>
-    </details>
-    <details>
-      <summary>Work Experience</summary>
-      <ul>
-        <li><strong>AI/ML Intern</strong>, Enlaye (2025)</li>
-        <li><strong>Website Developer</strong>, Tryst (2025)</li>
-        <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)</li>
-        <li><strong>Math Grader</strong>, Art of Problem Solving (2023–)</li>
-      </ul>
-    </details>
-    <details>
-      <summary>Technical Projects</summary>
-      <ul>
-        <li>Custom Portfolio Websites (React, Tailwind)</li>
-        <li>Plagiarism Detection (TF-IDF, Word2Vec)</li>
-        <li>TF-IDF Query Ranking System</li>
-        <li>Temperature Sensor Object</li>
-      </ul>
-    </details>
-    <details>
-      <summary>PDF Version</summary>
-      <p><a href="_JulietteMangonResume.pdf" target="_blank">View Full Resume (PDF)</a></p>
-    </details>
-  </section>
-
-  <section class="section" id="media">
-    <h2>Media Favorites</h2>
-    <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
-    <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
-  </section>
-
-  <section class="section" id="contact">
-    <h2>Contact</h2>
-    <p><a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a><br>
-    <a href="tel:+17816288078">(781) 628‑8078</a><br>
-    <a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a><br>
-    <a href="https://github.com/juliettemangon2" target="_blank">GitHub</a></p>
-  </section>
-
-  <div class="footer">© 2025 Juliette Mangon</div>
+    <section>
+      <h2>Contact</h2>
+      <p><a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a><br>
+      <a href="tel:+17816288078">(781) 628‑8078</a><br>
+      <a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a><br>
+      <a href="https://github.com/juliettemangon2" target="_blank">GitHub</a></p>
+    </section>
+  </main>
 </body>
 </html>
