@@ -269,15 +269,17 @@
   <!-- Work in Progress gallery -->
   <h1>Work in Progress</h1>
   <div class="gallery">
-    <div class="art-item">
-      <img src="./images/IMG_0515.jpeg" alt="Album cover work in progress"
-           data-full="./images/IMG_0515.jpeg"
-           data-title="Album cover work in progress"
-           data-medium="Acrylic on square canvas">
+    <div class="art-item" id="wip-item">
+      <img
+        src="./images/IMG_0515.jpeg"
+        alt="Album cover work in progress"
+        data-full="./images/IMG_0515.jpeg"
+        data-title="Album cover work in progress"
+        data-medium="Acrylic on square canvas"
+      >
     </div>
   </div>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
       <img id="lightbox-img" src="" alt="">
@@ -289,7 +291,7 @@
   </div>
 
   <script>
-    // theme toggle
+    // theme toggle (unchanged)
     document.getElementById('theme-toggle').addEventListener('change', e => {
       const html = document.documentElement;
       html.classList.toggle('theme2');
@@ -326,13 +328,27 @@
       if (e.key === 'ArrowLeft') next(-1);
     });
     let startX = 0;
-    box.addEventListener('touchstart', e => { if (e.touches.length === 1) startX = e.touches[0].clientX; });
+    box.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) startX = e.touches[0].clientX;
+    });
     box.addEventListener('touchend', e => {
       if (startX === 0 || idx < 0) return;
       const dx = e.changedTouches[0].clientX - startX;
       if (dx > 40) next(-1);
       if (dx < -40) next(1);
       startX = 0;
+    });
+
+    // *** new: auto-open WIP lightbox if URL ends in "#wip" ***
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash === '#wip') {
+        const wipImg = document.querySelector('#wip-item img');
+        const wipIndex = imgs.indexOf(wipImg);
+        if (wipIndex > -1) {
+          idx = wipIndex;
+          show();
+        }
+      }
     });
   </script>
 </body>
