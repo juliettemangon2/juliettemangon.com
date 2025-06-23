@@ -12,31 +12,15 @@
       --highlight: #BFFF00;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
-      padding: 2rem;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 3rem;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
+      margin: 0;
+      padding: 2rem 5vw;
+      overflow-x: hidden;
     }
 
     a {
@@ -49,38 +33,64 @@
       color: var(--highlight);
     }
 
+    header {
+      margin-bottom: 2rem;
+    }
+
     .gallery {
       display: flex;
       flex-direction: column;
       gap: 3rem;
-      max-width: 900px;
+      max-width: 1200px;
     }
 
     .item {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       align-items: flex-start;
-      border-left: 3px solid var(--text);
-      padding-left: 1.5rem;
+      cursor: pointer;
     }
 
     .item img {
       width: 240px;
       height: auto;
-      border: 2px solid var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .item.expanded {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .item.expanded img {
+      width: 500px;
+      max-width: 50vw;
+    }
+
+    .text-block {
+      max-width: 500px;
     }
 
     .item h2 {
       font-size: 1.3rem;
       font-weight: 700;
+      margin: 0;
     }
 
     .item p {
-      margin-top: 0.2rem;
+      margin: 0.25rem 0 0;
     }
 
-    .text-block {
-      max-width: 600px;
+    @media (max-width: 768px) {
+      .item.expanded {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .item.expanded img {
+        width: 100%;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -90,73 +100,96 @@
   </header>
 
   <main class="gallery">
-    <div class="item">
+    <div class="item" onclick="toggleExpand(this)">
       <img src="./images/cards.jpeg" alt="Evening Cards (2025)">
       <div class="text-block">
         <h2>Evening Cards (2025)</h2>
-        <p>Acrylic 16" × 20"</p>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
     </div>
 
-    <div class="item">
+    <div class="item" onclick="toggleExpand(this)">
       <img src="./images/mira.jpeg" alt="Seaside, Cascais (2024)">
       <div class="text-block">
         <h2>Seaside, Cascais (2024)</h2>
-        <p>Acrylic 16" × 20"</p>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
     </div>
 
-    <div class="item">
-      <img src="./images/picnic.jpeg" alt="Seaside Picnic (2024)">
+    <div class="item" onclick="toggleExpand(this)">
+      <img src="./images/picnic.jpeg" alt="Seaside Picnic (2025)">
       <div class="text-block">
         <h2>Seaside Picnic (2025)</h2>
-        <p>Acrylic 16" × 20"</p>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
     </div>
 
-    <div class="item">
+    <div class="item" onclick="toggleExpand(this)">
       <img src="./images/cliffs.jpeg" alt="Seaside Cliffs (2024)">
       <div class="text-block">
         <h2>Seaside Cliffs (2024)</h2>
-        <p>Acrylic 12" × 16"</p>
+        <p>Acrylic 12&quot; × 16&quot;</p>
       </div>
     </div>
 
-    <div class="item">
-      <img src="./images/poolside.jpeg" alt="Poolside (2024)">
+    <div class="item" onclick="toggleExpand(this)">
+      <img src="./images/poolside.jpeg" alt="Poolside (2023)">
       <div class="text-block">
         <h2>Poolside (2023)</h2>
-        <p>Acrylic 20" × 16"</p>
+        <p>Acrylic 20&quot; × 16&quot;</p>
       </div>
     </div>
 
-    <div class="item">
-      <img src="./images/water.jpeg" alt="Water">
+    <div class="item" onclick="toggleExpand(this)">
+      <img src="./images/water.jpeg" alt="Water (2023)">
       <div class="text-block">
         <h2>Water (2023)</h2>
-        <p>Acrylic 12" × 16"</p>
+        <p>Acrylic 12&quot; × 16&quot;</p>
       </div>
     </div>
 
-
-    <div class="item">
-      <img src="./images/fish.jpeg" alt="Fish">
+    <div class="item" onclick="toggleExpand(this)">
+      <img src="./images/fish.jpeg" alt="Fish (2024)">
       <div class="text-block">
-        <h2>Fish (2024) </h2>
-        <p>Acrylic 16" × 12"</p>
+        <h2>Fish (2024)</h2>
+        <p>Acrylic 16&quot; × 12&quot;</p>
       </div>
     </div>
 
-
-    <div class="item">
+    <div class="item" onclick="toggleExpand(this)">
       <img src="./images/roomie.jpg" alt="Roommates, NYC (2025)">
       <div class="text-block">
         <h2>Roommates, NYC (2025)</h2>
-        <p>Acrylic 16" × 20"</p>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
     </div>
-
-    </div>
   </main>
+
+  <script>
+    const altTheme = {
+      '--bg': '#FAFF78',
+      '--text': '#FF9100',
+      '--highlight': '#961E96'
+    };
+
+    const defaultTheme = {
+      '--bg': '#FF9FD5',
+      '--text': '#D10000',
+      '--highlight': '#BFFF00'
+    };
+
+    function applyTheme(theme) {
+      for (let key in theme) {
+        document.documentElement.style.setProperty(key, theme[key]);
+      }
+    }
+
+    const stored = localStorage.getItem('theme');
+    if (stored === 'alt') applyTheme(altTheme);
+
+    function toggleExpand(element) {
+      element.classList.toggle("expanded");
+    }
+  </script>
 </body>
 </html>
