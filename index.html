@@ -66,11 +66,26 @@
       margin-bottom: 0.5rem;
     }
 
-    summary.inline-summary {
+    summary.inline-summary,
+    summary.hoverable-title {
       font-weight: normal;
       font-size: 1.05rem;
-      margin-left: 0;
-      padding-left: 0;
+      cursor: pointer;
+      transition: color 0.2s;
+      list-style: none;
+    }
+
+    summary.hoverable-title:hover {
+      color: var(--highlight);
+    }
+
+    /* Remove triangle icon from details summary */
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::marker {
+      display: none;
     }
 
     a {
@@ -113,23 +128,13 @@
     .media-section {
       margin-top: 1rem;
     }
-    .hoverable-title {
-      font-weight: normal;
-      font-size: 1.05rem;
-      cursor: pointer;
-      padding-left: 0;
-      transition: color 0.2s;
-    }
-    .hoverable-title:hover {
-      color: var(--highlight);
-    }
-
 
     @media (max-width: 768px) {
       main {
         grid-template-columns: 1fr;
         gap: 3rem;
       }
+
       .contact-columns {
         grid-template-columns: 1fr;
       }
@@ -185,7 +190,6 @@
                 <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris Fitzgerald: Studio portraits, street photography, and editorial work</a></li>
               </ul>
             </details>
-
           </li>
           <li><a href="Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank">Plagiarism Detection Enhancement Project</a></li>
           <li><a href="Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank">Spotify Listening Behavior Case Study</a></li>
@@ -200,7 +204,7 @@
         <p>Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite</p>
         <p> English, French, Spanish (Conversational)</p>
       </details>
-      
+
       <h2>Contact</h2>
       <div class="contact-columns">
         <div>
