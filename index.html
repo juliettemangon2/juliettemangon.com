@@ -33,15 +33,19 @@
     }
 
     header {
-      position: fixed;
-      top: 2rem;
-      right: 2rem;
+      position: sticky;
+      top: 0;
+      right: 0;
+      background: var(--bg);
+      padding: 2rem;
+      text-align: right;
       font-size: 2.6rem;
       font-weight: 700;
+      z-index: 1000;
     }
 
     main {
-      padding: 6rem 5vw 4rem;
+      padding: 2rem 5vw 4rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 5rem;
@@ -92,6 +96,12 @@
       margin-top: 0.3rem;
       font-size: 0.95rem;
     }
+
+    .contact-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -104,8 +114,14 @@
     </section>
 
     <section>
-      <h2>Resume</h2>
-      <details open>
+      <h2>Media</h2>
+      <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
+      <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
+    </section>
+
+    <section>
+     <h2><a href="Juliette_Mangon_Resume.pdf" target="_blank">Resume</a></h2>
+      <details>
         <summary>Education</summary>
         <p><strong>NYU</strong>, B.A. Computer Science and Mathematics (2023–2025)<br>Minor in Business of Entertainment, Media, and Technology</p>
       </details>
@@ -122,29 +138,26 @@
         <summary>Projects</summary>
         <ul>
           <li>
-            Custom Portfolio Websites
-            <ul class="sublist">
-              <li><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine</a></li>
-              <li><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo</a></li>
-              <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris</a></li>
-            </ul>
+            <details>
+              <summary>Custom Portfolio Websites</summary>
+              <ul class="sublist">
+                <li><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine</a></li>
+                <li><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo</a></li>
+                <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris</a></li>
+              </ul>
+            </details>
           </li>
           <li><a href="Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank">Plagiarism Detection Enhancement Project</a></li>
           <li><a href="Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank">Spotify Listening Behavior Case Study</a></li>
           <li><a href="Businessof%20Video%20games%20final.pdf" target="_blank">Fashion in Video Games Proposal</a></li>
           <li><a href="MUSIC%20AI.pdf" target="_blank">AI in Music Creation Analysis</a></li>
-          <li>
-            <a href="https://github.com/juliettemangon2/adhoc-retrieval-system" target="_blank">
-              TF-IDF Query Ranking System
-            </a>
-          </li>
-          <li>Temperature Sensor Object</li>
+          <li><a href="https://github.com/juliettemangon2/adhoc-retrieval-system" target="_blank">TF-IDF Query Ranking System</a></li>
         </ul>
-      </details>
+      </details>  
       <details>
         <summary>Skills</summary>
-        <p><strong>Languages & Frameworks:</strong> Java, Python, C, C++, JavaScript, React, HTML, CSS, MATLAB</p>
-        <p><strong>Tools:</strong> Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite</p>
+        <p>Java, Python, C, C++, JavaScript, React, HTML, CSS, MATLAB, Assembly</p>
+        <p>Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite</p>
         <p><strong>Spoken Languages:</strong> English, French, Spanish (Conversational)</p>
       </details>
       <details>
@@ -154,18 +167,18 @@
     </section>
 
     <section>
-      <h2>Media</h2>
-      <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
-      <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
-    </section>
-
-    <section>
       <h2>Contact</h2>
-      <p><a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a><br>
-      <a href="tel:+17816288078">(781) 628‑8078</a><br>
-      <a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a><br>
-      <a href="https://github.com/juliettemangon2" target="_blank">GitHub</a><br>
-      <a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">She Is The Music</a></p>
+      <div class="contact-columns">
+        <div>
+          <p><a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a></p>
+          <p><a href="tel:+17816288078">(781) 628‑8078</a></p>
+        </div>
+        <div>
+          <p><a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a></p>
+          <p><a href="https://github.com/juliettemangon2" target="_blank">GitHub</a></p>
+          <p><a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">She Is The Music</a></p>
+        </div>
+      </div>
     </section>
   </main>
 </body>
