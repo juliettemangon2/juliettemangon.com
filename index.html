@@ -28,8 +28,12 @@
       overflow-x: hidden;
     }
 
+    p {
+      margin-bottom: 1.5rem;
+    }
+
     header {
-      position: absolute;
+      position: fixed;
       top: 2rem;
       right: 2rem;
       font-size: 2.6rem;
@@ -82,6 +86,12 @@
     ul li {
       margin-bottom: 0.5rem;
     }
+
+    .sublist {
+      margin-left: 1rem;
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -89,15 +99,15 @@
   <main>
     <section>
       <h2>About</h2>
-      <p>I’m a Computer Science and Mathematics student at NYU passionate about building technology that supports storytelling, expression, and cultural participation. I care about clean design, intuitive tools, and the way technical systems shape creative experience.</p>
-      <p>Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to <a href="paintings.html">paint</a> in my free time.</p>
+      <p>I’m a Computer Science and Mathematics student at <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a> passionate about building technology that supports storytelling, expression, and cultural participation. I care about clean design, intuitive tools, and the way technical systems shape creative experience.</p>
+      <p>Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to <a href="paintings.html"><strong>paint</strong></a> in my free time.</p>
     </section>
 
     <section>
       <h2>Resume</h2>
       <details open>
         <summary>Education</summary>
-        <p>NYU, B.A. Computer Science and Mathematics (2023–2025)<br>Minor in Business of Entertainment, Media, and Technology</p>
+        <p><strong>NYU</strong>, B.A. Computer Science and Mathematics (2023–2025)<br>Minor in Business of Entertainment, Media, and Technology</p>
       </details>
       <details>
         <summary>Work Experience</summary>
@@ -105,27 +115,30 @@
           <li><strong>AI/ML Intern</strong>, Enlaye (2025)</li>
           <li><strong>Website Developer</strong>, Tryst (2025)</li>
           <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)</li>
-          <li><strong>Math Grader</strong>, Art of Problem Solving (2023–)</li>
+          <li><strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)</li>
         </ul>
       </details>
       <details>
-        <summary>Technical Projects</summary>
+        <summary>Projects</summary>
         <ul>
-          <li>Custom Portfolio Websites (React, Tailwind)</li>
+          <li>
+            Custom Portfolio Websites
+            <ul class="sublist">
+              <li><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine</a></li>
+              <li><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo</a></li>
+              <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris</a></li>
+            </ul>
+          </li>
           <li><a href="Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank">Plagiarism Detection Enhancement Project</a></li>
           <li><a href="Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank">Spotify Listening Behavior Case Study</a></li>
           <li><a href="Businessof%20Video%20games%20final.pdf" target="_blank">Fashion in Video Games Proposal</a></li>
           <li><a href="MUSIC%20AI.pdf" target="_blank">AI in Music Creation Analysis</a></li>
-          <li>TF-IDF Query Ranking System</li>
+          <li>
+            <a href="https://github.com/juliettemangon2/adhoc-retrieval-system" target="_blank">
+              TF-IDF Query Ranking System
+            </a>
+          </li>
           <li>Temperature Sensor Object</li>
-        </ul>
-      </details>
-      <details>
-        <summary>Entertainment & Media Projects</summary>
-        <ul>
-          <li><a href="Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank">Spotify Listening Behavior Case Study</a></li>
-          <li><a href="Businessof%20Video%20games%20final.pdf" target="_blank">Fashion in Video Games Proposal</a></li>
-          <li><a href="MUSIC%20AI.pdf" target="_blank">AI in Music Creation Analysis</a></li>
         </ul>
       </details>
       <details>
