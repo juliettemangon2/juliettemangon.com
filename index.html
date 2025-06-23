@@ -129,6 +129,22 @@
     .media-section {
       margin-top: 1rem;
     }
+    #themeToggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 20px;
+      height: 20px;
+      background-color: var(--text);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color 0.3s;
+    }
+    
+    #themeToggle:hover {
+      background-color: var(--highlight);
+    }
+
 
     @media (max-width: 768px) {
       main {
@@ -142,14 +158,18 @@
     }
   </style>
 </head>
+  
 <body>
+  <div id="themeToggle" title="Switch Theme"></div>
   <main>
     <!-- LEFT COLUMN: ABOUT + MEDIA -->
     <div class="left-col">
       <section style="margin-bottom: 3rem;">
         <h2>About</h2>
         <p>My name is Juliette Mangon. I’m a Computer Science and Mathematics student at <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a> passionate about how technology can support creative expression and connect people working across media-driven fields. I’m especially interested in building systems — interfaces, platforms, or algorithms — that are intuitive and thoughtful in how they shape user experience.</p>
-        <p>Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to <a href="paintings.html"><strong>paint</strong></a> in my free time.</p>
+        <p>Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme') || 'alt')"
+)"><strong>paint</strong></a>
+ in my free time.</p>
       </section>
 
       <section class="media-section">
@@ -223,5 +243,40 @@
       </div>
     </section>
   </main>
+  <script>
+  const altTheme = {
+    '--bg': '#FAFF78',
+    '--text': '#FF9100',
+    '--highlight': '#961E96'
+  };
+
+  const defaultTheme = {
+    '--bg': '#FF9FD5',
+    '--text': '#D10000',
+    '--highlight': '#BFFF00'
+  };
+
+  function applyTheme(theme) {
+    for (let key in theme) {
+      document.documentElement.style.setProperty(key, theme[key]);
+    }
+  }
+
+  // Set theme from localStorage if it exists
+  const stored = localStorage.getItem('theme');
+  if (stored === 'alt') applyTheme(altTheme);
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = localStorage.getItem('theme');
+    if (current === 'alt') {
+      applyTheme(defaultTheme);
+      localStorage.setItem('theme', 'default');
+    } else {
+      applyTheme(altTheme);
+      localStorage.setItem('theme', 'alt');
+    }
+  });
+</script>
+
 </body>
 </html>
