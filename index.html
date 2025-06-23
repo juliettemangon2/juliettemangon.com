@@ -54,12 +54,13 @@
     details {
       margin-bottom: 1.5rem;
     }
+    
 
     summary {
       font-weight: 600;
       font-size: 1.15rem;
       cursor: pointer;
-      margin-bottom: 0.5rem;
+      margin: 0; /* removes extra bottom space */
     }
 
     details.details-inline {
@@ -73,6 +74,7 @@
       cursor: pointer;
       transition: color 0.2s;
       list-style: none;
+      margin-bottom: 0; /* added */
     }
 
     summary.hoverable-title:hover {
