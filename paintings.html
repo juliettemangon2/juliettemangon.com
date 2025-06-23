@@ -27,6 +27,10 @@
       padding: 2rem;
     }
 
+    header {
+      margin-bottom: 2rem;
+    }
+
     a {
       color: var(--text);
       text-decoration: none;
@@ -37,16 +41,12 @@
       color: var(--highlight);
     }
 
-    .container {
-      display: flex;
-      gap: 4rem;
-    }
-
     .gallery {
       display: flex;
       flex-direction: column;
       gap: 3rem;
-      max-width: 500px;
+      max-width: 900px;
+      position: relative;
     }
 
     .item {
@@ -57,7 +57,7 @@
     }
 
     .item img {
-      width: 240px;
+      width: 200px;
       height: auto;
     }
 
@@ -75,121 +75,142 @@
     }
 
     .preview {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      position: absolute;
+      left: calc(100% + 2rem);
+      max-width: 400px;
+      z-index: 10;
     }
 
     .preview img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border: 2px solid var(--text);
     }
 
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
+    @media (max-width: 1000px) {
       .preview {
-        justify-content: flex-start;
-        margin-top: 2rem;
+        display: none;
       }
     }
   </style>
 </head>
 <body>
-  <header style="margin-bottom: 2rem;">
+  <header>
     <a href="index.html">Back</a>
   </header>
 
-  <div class="container">
-    <!-- LEFT SIDE: GALLERY -->
-    <main class="gallery">
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/cards.jpeg" alt="Evening Cards (2025)">
-        <div class="text-block">
-          <h2>Evening Cards (2025)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+  <main class="gallery" id="gallery">
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/cards.jpeg" alt="Evening Cards">
+      <div class="text-block">
+        <h2>Evening Cards (2025)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/mira.jpeg" alt="Seaside, Cascais (2024)">
-        <div class="text-block">
-          <h2>Seaside, Cascais (2024)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/mira.jpeg" alt="Seaside, Cascais">
+      <div class="text-block">
+        <h2>Seaside, Cascais (2024)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/picnic.jpeg" alt="Seaside Picnic (2025)">
-        <div class="text-block">
-          <h2>Seaside Picnic (2025)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/picnic.jpeg" alt="Seaside Picnic">
+      <div class="text-block">
+        <h2>Seaside Picnic (2025)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/cliffs.jpeg" alt="Seaside Cliffs (2024)">
-        <div class="text-block">
-          <h2>Seaside Cliffs (2024)</h2>
-          <p>Acrylic 12&quot; × 16&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/cliffs.jpeg" alt="Seaside Cliffs">
+      <div class="text-block">
+        <h2>Seaside Cliffs (2024)</h2>
+        <p>Acrylic 12&quot; × 16&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/poolside.jpeg" alt="Poolside (2023)">
-        <div class="text-block">
-          <h2>Poolside (2023)</h2>
-          <p>Acrylic 20&quot; × 16&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/poolside.jpeg" alt="Poolside">
+      <div class="text-block">
+        <h2>Poolside (2023)</h2>
+        <p>Acrylic 20&quot; × 16&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/water.jpeg" alt="Water (2023)">
-        <div class="text-block">
-          <h2>Water (2023)</h2>
-          <p>Acrylic 12&quot; × 16&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/water.jpeg" alt="Water">
+      <div class="text-block">
+        <h2>Water (2023)</h2>
+        <p>Acrylic 12&quot; × 16&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/fish.jpeg" alt="Fish (2024)">
-        <div class="text-block">
-          <h2>Fish (2024)</h2>
-          <p>Acrylic 16&quot; × 12&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/fish.jpeg" alt="Fish">
+      <div class="text-block">
+        <h2>Fish (2024)</h2>
+        <p>Acrylic 16&quot; × 12&quot;</p>
       </div>
-
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/roomie.jpg" alt="Roommates, NYC (2025)">
-        <div class="text-block">
-          <h2>Roommates, NYC (2025)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/roomie.jpg" alt="Roommates, NYC">
+      <div class="text-block">
+        <h2>Roommates, NYC (2025)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-    </main>
-
-    <!-- RIGHT SIDE: PREVIEW -->
-    <div class="preview" id="previewContainer"></div>
-  </div>
+    </div>
+  </main>
 
   <script>
-    let currentSrc = null;
+    const altTheme = {
+      '--bg': '#84EAFF',
+      '--text': '#0080F0',
+      '--highlight': '#FF9DFF'
+    };
 
-    function togglePreview(item) {
-      const img = item.querySelector("img");
-      const previewContainer = document.getElementById("previewContainer");
+    const defaultTheme = {
+      '--bg': '#FF9FD5',
+      '--text': '#D10000',
+      '--highlight': '#BFFF00'
+    };
 
-      if (currentSrc === img.src) {
-        previewContainer.innerHTML = "";
-        currentSrc = null;
-      } else {
-        previewContainer.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
-        currentSrc = img.src;
+    const stored = localStorage.getItem('theme');
+    if (stored === 'alt') {
+      for (let key in altTheme) {
+        document.documentElement.style.setProperty(key, altTheme[key]);
       }
+    }
+
+    let current = null;
+
+    function togglePreview(element) {
+      const imgSrc = element.querySelector("img").src;
+      const gallery = document.getElementById("gallery");
+
+      if (current && current.getAttribute("data-src") === imgSrc) {
+        current.remove();
+        current = null;
+        return;
+      }
+
+      if (current) current.remove();
+
+      const preview = document.createElement("div");
+      preview.className = "preview";
+      preview.setAttribute("data-src", imgSrc);
+
+      const big = document.createElement("img");
+      big.src = imgSrc;
+
+      preview.appendChild(big);
+      gallery.appendChild(preview);
+
+      const itemRect = element.getBoundingClientRect();
+      const galleryRect = gallery.getBoundingClientRect();
+      const scrollTop = window.scrollY;
+      const previewTop = itemRect.top + scrollTop - galleryRect.top;
+
+      const maxTop = document.body.offsetHeight - 400;
+      preview.style.top = `${Math.min(previewTop, maxTop)}px`;
+
+      current = preview;
     }
   </script>
 </body>
