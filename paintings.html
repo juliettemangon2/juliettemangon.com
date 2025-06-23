@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paintings by Juliette</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FF9FD5;
+      --text: #D10000;
+      --highlight: #BFFF00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      padding: 2rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--highlight);
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 900px;
+    }
+
+    .item {
+      border-left: 3px solid var(--text);
+      padding-left: 1.5rem;
+    }
+
+    .item h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .item p {
+      margin-top: 0.2rem;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paintings</h1>
+    <a href="index.html">Back</a>
+  </header>
+
+  <main class="gallery">
+    <div class="item">
+      <h2>Evening Cards</h2>
+      <p>Acrylic 16" × 20"</p>
+    </div>
+    <div class="item">
+      <h2>Seaside, Cascais</h2>
+      <p>Acrylic 16" × 20"</p>
+    </div>
+    <div class="item">
+      <h2>Seaside Picnic</h2>
+      <p>Acrylic 16" × 20"</p>
+    </div>
+    <div class="item">
+      <h2>Seaside Cliffs</h2>
+      <p>Acrylic 12" × 16"</p>
+    </div>
+    <div class="item">
+      <h2>Poolside</h2>
+      <p>Acrylic 20" × 16"</p>
+    </div>
+    <div class="item">
+      <h2>Water</h2>
+      <p>Acrylic 12" × 16"</p>
+    </div>
+    <div class="item">
+      <h2>House, South of France</h2>
+      <p>Watercolor 11.7" × 16.5"</p>
+    </div>
+    <div class="item">
+      <h2>Fish</h2>
+      <p>Acrylic 16" × 12"</p>
+    </div>
+    <div class="item">
+      <h2>Oranges</h2>
+      <p>Acrylic 12" × 8"</p>
+    </div>
+    <div class="item">
+      <h2>Roommates, NYC</h2>
+      <p>Acrylic 16" × 20"</p>
+    </div>
+
+    <div class="item">
+      <h2>Album cover work in progress</h2>
+      <p>Acrylic on square canvas</p>
+    </div>
+    <div class="item">
+      <h2>Seaside, Cascais 2</h2>
+      <p>Acrylic 16" × 20"</p>
+    </div>
+  </main>
+</body>
+</html>
