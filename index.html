@@ -1,116 +1,148 @@
 <!DOCTYPE html>
-<html lang="en" class="theme1">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juliette Mangon</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     :root {
-      --bg: #fdffe1;        /* light yellow */
-      --highlight: #d5eff5; /* light cyan */
-      --softgray: #fffff7;  /* off-white */
-      --text: #ff6d4c;      /* tomato */
-      --accent: #4a537b;    /* deep-blue */
+      --bg: #FF9FD5;
+      --text: #D10000;
+      --card: #ffffff;
+      --accent: #D10000;
     }
 
-    *, *::before, *::after {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html {
-      background: repeating-linear-gradient(
-        to right,
-        var(--highlight) 0   100px,
-        var(--bg)       100px 200px
-      );
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      height: 100%;
-    }
-    body {
-      min-height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    html, body {
+      background: var(--bg);
       color: var(--text);
-      background: transparent;
-      padding: 0.5rem;                /* tighter around the whole card */
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    h1 {
       text-align: center;
+      font-size: 3rem;
+      margin-bottom: 2rem;
     }
 
-    .title {
-      font-size: 6rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 3rem;
+    .section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: var(--card);
+      color: var(--text);
+      border: 2px solid var(--text);
     }
 
-    .subtitle {
-      font-size: 1.4rem;
-      font-weight: 500;
-      display: block;
-      margin: 0 auto;
-      text-align: right;
-      margin-bottom: 5px;
-      width: 625px; /* adjust this to match width of your name in px */
+    summary {
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    details {
+      margin-top: 1rem;
+    }
+
+    a {
       color: var(--accent);
+      text-decoration: underline;
     }
 
     nav {
-      display: inline-flex;         /* shrink‐to‐fit content */
-      flex-wrap: wrap;
+      display: flex;
       justify-content: center;
-      gap: 1.3rem;                  /* smaller gap between buttons */
-    }
-    nav .break {
-      flex-basis: 100%;
-      height: 0;
+      gap: 1rem;
+      margin-bottom: 3rem;
     }
 
     nav a {
-      flex: 0 1 auto;              /* narrower min-width so they don’t spread too far */
-      height: auto;
-      font-size: 1.1rem;
       font-weight: 600;
-      padding: 0.6rem 0.7rem;         /* less vertical padding */
-      color: var(--text);
-     /* background: var(--softgray); */
-      /* border: 3px solid var(--highlight); */
-      border-radius: 0px;
       text-decoration: none;
-      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-      /* box-shadow: 0 0 0 2px var(--accent); */
-      text-align: center;
-    }
-    nav a:hover {
-      background: var(--accent);
-      color: var(--softgray);
-      transform: scale(1.05);
+      color: var(--text);
+      border: 2px solid var(--text);
+      padding: 0.5rem 1rem;
+      background: var(--card);
     }
 
-    @media (max-width: 600px) {
-      .title { font-size: 4rem; }
-      nav { gap: 0.4rem; }
-      nav a {
-        flex: 1 1 100px;
-        font-size: 1rem;
-        padding: 0.5rem 0.8rem;
-      }
+    nav a:hover {
+      background: var(--text);
+      color: var(--card);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <div>
-    <div class="title">JULIETTE MANGON</div>
-    <nav>
-      <a href="aboutme.html">About Me</a>
-      <a href="resume.html">Resume</a>
-      <a href="art.html">My Artwork</a>
-      <a href="contact.html">Contact</a>
-      <!-- <a href="media.html">My Favorite Media</a> -->
-    </nav>
-  </div>
+  <h1>Juliette Mangon</h1>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#resume">Resume</a>
+    <a href="#media">Media</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="section" id="about">
+    <h2>About</h2>
+    <p>Hi, I’m Juliette. I’m a CS and Math major at NYU interested in the intersection of technology, media, and culture. I build clean, expressive digital experiences—from creative coding to research tools—and care deeply about design, storytelling, and how tech can support creativity.</p>
+  </section>
+
+  <section class="section" id="resume">
+    <h2>Resume</h2>
+    <details open>
+      <summary>Education</summary>
+      <p>NYU, B.A. Computer Science and Mathematics (2023–2025)<br>Minor in Business of Entertainment, Media, and Technology</p>
+    </details>
+    <details>
+      <summary>Work Experience</summary>
+      <ul>
+        <li><strong>AI/ML Intern</strong>, Enlaye (2025)</li>
+        <li><strong>Website Developer</strong>, Tryst (2025)</li>
+        <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)</li>
+        <li><strong>Math Grader</strong>, Art of Problem Solving (2023–)</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Technical Projects</summary>
+      <ul>
+        <li>Custom Portfolio Websites (React, Tailwind)</li>
+        <li>Plagiarism Detection (TF-IDF, Word2Vec)</li>
+        <li>TF-IDF Query Ranking System</li>
+        <li>Temperature Sensor Object</li>
+      </ul>
+    </details>
+    <details>
+      <summary>PDF Version</summary>
+      <p><a href="_JulietteMangonResume.pdf" target="_blank">View Full Resume (PDF)</a></p>
+    </details>
+  </section>
+
+  <section class="section" id="media">
+    <h2>Media Favorites</h2>
+    <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/3nvKSejIoWc3JU1Me5M03y" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
+    <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <p><a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a><br>
+    <a href="tel:+17816288078">(781) 628‑8078</a><br>
+    <a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a><br>
+    <a href="https://github.com/juliettemangon2" target="_blank">GitHub</a></p>
+  </section>
+
+  <div class="footer">© 2025 Juliette Mangon</div>
 </body>
 </html>
