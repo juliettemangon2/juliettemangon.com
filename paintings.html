@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paintings by Juliette</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -22,13 +22,9 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
       font-size: 1.05rem;
+      line-height: 1.6;
       padding: 2rem;
-    }
-
-    header {
-      margin-bottom: 2rem;
     }
 
     a {
@@ -41,19 +37,28 @@
       color: var(--highlight);
     }
 
+    header {
+      margin-bottom: 2rem;
+    }
+
+    .gallery-container {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      max-width: 100%;
+    }
+
     .gallery {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      max-width: 900px;
-      position: relative;
-      min-height: 100vh; /* Optional: ensures space for the preview */
+      gap: 2rem;
+      max-width: 600px;
+      flex-shrink: 0;
     }
-
 
     .item {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.25rem;
       align-items: flex-start;
       cursor: pointer;
     }
@@ -61,39 +66,39 @@
     .item img {
       width: 200px;
       height: auto;
-      pointer-events: auto;
     }
 
-    .item h2 {
+    .text-block h2 {
       font-size: 1.3rem;
       font-weight: 700;
     }
 
-    .item p {
+    .text-block p {
       margin-top: 0.2rem;
     }
 
-    .text-block {
-      max-width: 600px;
+    .preview-box {
+      flex-grow: 1;
+      max-width: 500px;
+      min-width: 300px;
     }
 
-    .preview {
-      position: absolute;
-      left: calc(100% + 2rem);
-      max-width: 400px;
-      z-index: 10;
-    }
-
-    .preview img {
+    .preview-box img {
       width: 100%;
       height: auto;
+      max-height: 600px;
+      object-fit: contain;
       border: 2px solid var(--text);
-      pointer-events: none;
     }
 
     @media (max-width: 1000px) {
-      .preview {
-        display: none;
+      .gallery-container {
+        flex-direction: column;
+      }
+
+      .preview-box {
+        max-width: 100%;
+        margin-top: 2rem;
       }
     }
   </style>
@@ -103,118 +108,121 @@
     <a href="index.html">Back</a>
   </header>
 
-  <main class="gallery" id="gallery">
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/cards.jpeg" alt="Evening Cards">
-      <div class="text-block">
-        <h2>Evening Cards (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+  <div class="gallery-container">
+    <main class="gallery" id="gallery">
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/cards.jpeg" alt="Evening Cards">
+        <div class="text-block">
+          <h2>Evening Cards (2025)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/mira.jpeg" alt="Seaside, Cascais">
-      <div class="text-block">
-        <h2>Seaside, Cascais (2024)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/mira.jpeg" alt="Seaside, Cascais">
+        <div class="text-block">
+          <h2>Seaside, Cascais (2024)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/picnic.jpeg" alt="Seaside Picnic">
-      <div class="text-block">
-        <h2>Seaside Picnic (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/picnic.jpeg" alt="Seaside Picnic">
+        <div class="text-block">
+          <h2>Seaside Picnic (2025)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/cliffs.jpeg" alt="Seaside Cliffs">
-      <div class="text-block">
-        <h2>Seaside Cliffs (2024)</h2>
-        <p>Acrylic 12&quot; × 16&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/cliffs.jpeg" alt="Seaside Cliffs">
+        <div class="text-block">
+          <h2>Seaside Cliffs (2024)</h2>
+          <p>Acrylic 12&quot; × 16&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/poolside.jpeg" alt="Poolside">
-      <div class="text-block">
-        <h2>Poolside (2023)</h2>
-        <p>Acrylic 20&quot; × 16&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/poolside.jpeg" alt="Poolside">
+        <div class="text-block">
+          <h2>Poolside (2023)</h2>
+          <p>Acrylic 20&quot; × 16&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/water.jpeg" alt="Water">
-      <div class="text-block">
-        <h2>Water (2023)</h2>
-        <p>Acrylic 12&quot; × 16&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/water.jpeg" alt="Water">
+        <div class="text-block">
+          <h2>Water (2023)</h2>
+          <p>Acrylic 12&quot; × 16&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/fish.jpeg" alt="Fish">
-      <div class="text-block">
-        <h2>Fish (2024)</h2>
-        <p>Acrylic 16&quot; × 12&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/fish.jpeg" alt="Fish">
+        <div class="text-block">
+          <h2>Fish (2024)</h2>
+          <p>Acrylic 16&quot; × 12&quot;</p>
+        </div>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
-      <img src="./images/roomie.jpg" alt="Roommates, NYC">
-      <div class="text-block">
-        <h2>Roommates, NYC (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+      <div class="item" onclick="togglePreview(this)">
+        <img src="./images/roomie.jpg" alt="Roommates, NYC">
+        <div class="text-block">
+          <h2>Roommates, NYC (2025)</h2>
+          <p>Acrylic 16&quot; × 20&quot;</p>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+
+    <div class="preview-box" id="previewBox" style="display: none;"></div>
+  </div>
 
   <script>
-    const altTheme = {
-      '--bg': '#FAFF78',
-      '--text': '#FF9100',
-      '--highlight': '#961E96'
-    };
-
-    const defaultTheme = {
+    const firstTheme = {
       '--bg': '#FF9FD5',
       '--text': '#D10000',
       '--highlight': '#BFFF00'
     };
+    const secondTheme = {
+      '--bg': '#B8F3FF',
+      '--text': '#0080F0',
+      '--highlight': '#FF9DFF'
+    };
+    const thirdTheme = {
+      '--bg': '#BBFF76',
+      '--text': '#00652C',
+      '--highlight': '#6E0049'
+    };
+    const fourthTheme = {
+      '--bg': '#FBFF94',
+      '--text': '#FFBC1F',
+      '--highlight': '#A3C700'
+    };
 
-    const stored = localStorage.getItem('theme');
-    if (stored === 'alt') {
-      for (let key in altTheme) {
-        document.documentElement.style.setProperty(key, altTheme[key]);
+    const themes = {
+      'first': firstTheme,
+      'second': secondTheme,
+      'third': thirdTheme,
+      'fourth': fourthTheme
+    };
+
+    const themeKey = localStorage.getItem('theme');
+    if (themeKey && themes[themeKey]) {
+      for (let key in themes[themeKey]) {
+        document.documentElement.style.setProperty(key, themes[themeKey][key]);
       }
     }
 
-    let current = null;
+    let currentImgSrc = null;
 
-    function togglePreview(element) {
-      const imgSrc = element.querySelector("img").src;
-      const gallery = document.getElementById("gallery");
+    function togglePreview(el) {
+      const imgSrc = el.querySelector("img").src;
+      const previewBox = document.getElementById("previewBox");
 
-      if (current && current.getAttribute("data-src") === imgSrc) {
-        current.remove();
-        current = null;
+      if (currentImgSrc === imgSrc) {
+        previewBox.innerHTML = "";
+        previewBox.style.display = "none";
+        currentImgSrc = null;
         return;
       }
 
-      if (current) current.remove();
-
-      const preview = document.createElement("div");
-      preview.className = "preview";
-      preview.setAttribute("data-src", imgSrc);
-
-      const big = document.createElement("img");
-      big.src = imgSrc;
-
-      preview.appendChild(big);
-      gallery.appendChild(preview);
-
-      const itemRect = element.getBoundingClientRect();
-      const galleryRect = gallery.getBoundingClientRect();
-      const scrollTop = window.scrollY;
-      const previewTop = itemRect.top + scrollTop - galleryRect.top;
-
-      const maxTop = document.body.offsetHeight - 400;
-      preview.style.top = `${Math.min(previewTop, maxTop)}px`;
-
-      current = preview;
+      previewBox.innerHTML = `<img src="${imgSrc}" alt="Preview">`;
+      previewBox.style.display = "block";
+      currentImgSrc = imgSrc;
     }
   </script>
 </body>
