@@ -76,7 +76,7 @@
 
     .preview {
       position: absolute;
-      left: calc(100% + 4rem); /* more space from thumbnails */
+      left: calc(100% + 4rem);
       max-width: 360px;
       z-index: 10;
     }
@@ -158,67 +158,69 @@
   </main>
   
   <script>
+    // mirror index.html's theme names
     const themes = {
-      first: {
+      default: {
         '--bg': '#FF9FD5',
         '--text': '#D10000',
         '--highlight': '#BFFF00'
       },
-      second: {
+      alt: {
         '--bg': '#B8F3FF',
         '--text': '#0080F0',
         '--highlight': '#FF9DFF'
       },
-      third: {
+      green: {
         '--bg': '#D9F16A',
         '--text': '#F64C54',
         '--highlight': '#FFA703'
       },
-      fourth: {
+      yellow: {
         '--bg': '#FBFF8E',
         '--text': '#BC7DE2',
         '--highlight': '#FFBC1F'
       }
     };
 
-
-    const currentTheme = localStorage.getItem('theme') || 'first';
+    // apply the saved theme
+    const currentTheme = localStorage.getItem('theme') || 'default';
     if (themes[currentTheme]) {
-      for (let key in themes[currentTheme]) {
-        document.documentElement.style.setProperty(key, themes[currentTheme][key]);
-      }
+      Object.entries(themes[currentTheme]).forEach(([varName, varValue]) => {
+        document.documentElement.style.setProperty(varName, varValue);
+      });
     }
 
-    let current = null;
+    let currentPreview = null;
 
     function togglePreview(element) {
-      const imgSrc = element.querySelector("img").src;
-      const gallery = document.getElementById("gallery");
+      const imgSrc = element.querySelector('img').src;
 
-      if (current && current.getAttribute("data-src") === imgSrc) {
-        current.remove();
-        current = null;
+      // if clicking the same image, remove preview
+      if (currentPreview && currentPreview.getAttribute('data-src') === imgSrc) {
+        currentPreview.remove();
+        currentPreview = null;
         return;
       }
 
-      if (current) current.remove();
+      // remove any existing preview
+      if (currentPreview) {
+        currentPreview.remove();
+      }
 
-      const preview = document.createElement("div");
-      preview.className = "preview";
-      preview.setAttribute("data-src", imgSrc);
+      // create new preview
+      const preview = document.createElement('div');
+      preview.className = 'preview';
+      preview.setAttribute('data-src', imgSrc);
 
-      const big = document.createElement("img");
-      big.src = imgSrc;
-      preview.appendChild(big);
-      gallery.appendChild(preview);
+      const bigImg = document.createElement('img');
+      bigImg.src = imgSrc;
+      preview.appendChild(bigImg);
 
-      const itemRect = element.getBoundingClientRect();
-      const galleryRect = gallery.getBoundingClientRect();
-      const scrollTop = window.scrollY;
-      const previewTop = itemRect.top + scrollTop - galleryRect.top;
+      // position vertically next to the clicked item
+      preview.style.top = element.offsetTop + 'px';
 
-      preview.style.top = `${previewTop}px`;
-      current = preview;
+      document.getElementById('gallery').appendChild(preview);
+      currentPreview = preview;
     }
   </script>
 </body>
