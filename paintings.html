@@ -41,24 +41,17 @@
       margin-bottom: 2rem;
     }
 
-    .gallery-container {
-      display: flex;
-      gap: 3rem;
-      align-items: flex-start;
-      max-width: 100%;
-    }
-
     .gallery {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      max-width: 600px;
-      flex-shrink: 0;
+      gap: 3rem;
+      max-width: 900px;
+      position: relative;
     }
 
     .item {
       display: flex;
-      gap: 1.25rem;
+      gap: 1.5rem;
       align-items: flex-start;
       cursor: pointer;
     }
@@ -68,37 +61,34 @@
       height: auto;
     }
 
-    .text-block h2 {
+    .item h2 {
       font-size: 1.3rem;
       font-weight: 700;
     }
 
-    .text-block p {
+    .item p {
       margin-top: 0.2rem;
     }
 
-    .preview-box {
-      flex-grow: 1;
-      max-width: 500px;
-      min-width: 300px;
+    .text-block {
+      max-width: 600px;
     }
 
-    .preview-box img {
+    .preview {
+      position: absolute;
+      left: calc(100% + 4rem); /* more space from thumbnails */
+      max-width: 360px;
+      z-index: 10;
+    }
+
+    .preview img {
       width: 100%;
       height: auto;
-      max-height: 600px;
-      object-fit: contain;
-      border: 2px solid var(--text);
     }
 
     @media (max-width: 1000px) {
-      .gallery-container {
-        flex-direction: column;
-      }
-
-      .preview-box {
-        max-width: 100%;
-        margin-top: 2rem;
+      .preview {
+        display: none;
       }
     }
   </style>
@@ -108,121 +98,127 @@
     <a href="index.html">Back</a>
   </header>
 
-  <div class="gallery-container">
-    <main class="gallery" id="gallery">
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/cards.jpeg" alt="Evening Cards">
-        <div class="text-block">
-          <h2>Evening Cards (2025)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+  <main class="gallery" id="gallery">
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/cards.jpeg" alt="Evening Cards">
+      <div class="text-block">
+        <h2>Evening Cards (2025)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/mira.jpeg" alt="Seaside, Cascais">
-        <div class="text-block">
-          <h2>Seaside, Cascais (2024)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/mira.jpeg" alt="Seaside, Cascais">
+      <div class="text-block">
+        <h2>Seaside, Cascais (2024)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/picnic.jpeg" alt="Seaside Picnic">
-        <div class="text-block">
-          <h2>Seaside Picnic (2025)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/picnic.jpeg" alt="Seaside Picnic">
+      <div class="text-block">
+        <h2>Seaside Picnic (2025)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/cliffs.jpeg" alt="Seaside Cliffs">
-        <div class="text-block">
-          <h2>Seaside Cliffs (2024)</h2>
-          <p>Acrylic 12&quot; × 16&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/cliffs.jpeg" alt="Seaside Cliffs">
+      <div class="text-block">
+        <h2>Seaside Cliffs (2024)</h2>
+        <p>Acrylic 12&quot; × 16&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/poolside.jpeg" alt="Poolside">
-        <div class="text-block">
-          <h2>Poolside (2023)</h2>
-          <p>Acrylic 20&quot; × 16&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/poolside.jpeg" alt="Poolside">
+      <div class="text-block">
+        <h2>Poolside (2023)</h2>
+        <p>Acrylic 20&quot; × 16&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/water.jpeg" alt="Water">
-        <div class="text-block">
-          <h2>Water (2023)</h2>
-          <p>Acrylic 12&quot; × 16&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/water.jpeg" alt="Water">
+      <div class="text-block">
+        <h2>Water (2023)</h2>
+        <p>Acrylic 12&quot; × 16&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/fish.jpeg" alt="Fish">
-        <div class="text-block">
-          <h2>Fish (2024)</h2>
-          <p>Acrylic 16&quot; × 12&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/fish.jpeg" alt="Fish">
+      <div class="text-block">
+        <h2>Fish (2024)</h2>
+        <p>Acrylic 16&quot; × 12&quot;</p>
       </div>
-      <div class="item" onclick="togglePreview(this)">
-        <img src="./images/roomie.jpg" alt="Roommates, NYC">
-        <div class="text-block">
-          <h2>Roommates, NYC (2025)</h2>
-          <p>Acrylic 16&quot; × 20&quot;</p>
-        </div>
+    </div>
+    <div class="item" onclick="togglePreview(this)">
+      <img src="./images/roomie.jpg" alt="Roommates, NYC">
+      <div class="text-block">
+        <h2>Roommates, NYC (2025)</h2>
+        <p>Acrylic 16&quot; × 20&quot;</p>
       </div>
-    </main>
-
-    <div class="preview-box" id="previewBox" style="display: none;"></div>
-  </div>
-
+    </div>
+  </main>
+  
   <script>
-    const firstTheme = {
-      '--bg': '#FF9FD5',
-      '--text': '#D10000',
-      '--highlight': '#BFFF00'
-    };
-    const secondTheme = {
-      '--bg': '#B8F3FF',
-      '--text': '#0080F0',
-      '--highlight': '#FF9DFF'
-    };
-    const thirdTheme = {
-      '--bg': '#D9F16A',
-      '--text': '#F64C54',
-      '--highlight': '#FFA703'
-    };
-    const fourthTheme = {
-      '--bg': '#FBFF8E',
-      '--text': '#BC7DE2',
-      '--highlight': '#FFBC1F'
-    };
-
     const themes = {
-      'first': firstTheme,
-      'second': secondTheme,
-      'third': thirdTheme,
-      'fourth': fourthTheme
+      first: {
+        '--bg': '#FF9FD5',
+        '--text': '#D10000',
+        '--highlight': '#BFFF00'
+      },
+      second: {
+        '--bg': '#B8F3FF',
+        '--text': '#0080F0',
+        '--highlight': '#FF9DFF'
+      },
+      third: {
+        '--bg': '#D9F16A',
+        '--text': '#F64C54',
+        '--highlight': '#FFA703'
+      },
+      fourth: {
+        '--bg': '#FBFF8E',
+        '--text': '#BC7DE2',
+        '--highlight': '#FFBC1F'
+      }
     };
 
-    const themeKey = localStorage.getItem('theme');
-    if (themeKey && themes[themeKey]) {
-      for (let key in themes[themeKey]) {
-        document.documentElement.style.setProperty(key, themes[themeKey][key]);
+
+    const currentTheme = localStorage.getItem('theme') || 'first';
+    if (themes[currentTheme]) {
+      for (let key in themes[currentTheme]) {
+        document.documentElement.style.setProperty(key, themes[currentTheme][key]);
       }
     }
 
-    let currentImgSrc = null;
+    let current = null;
 
-    function togglePreview(el) {
-      const imgSrc = el.querySelector("img").src;
-      const previewBox = document.getElementById("previewBox");
+    function togglePreview(element) {
+      const imgSrc = element.querySelector("img").src;
+      const gallery = document.getElementById("gallery");
 
-      if (currentImgSrc === imgSrc) {
-        previewBox.innerHTML = "";
-        previewBox.style.display = "none";
-        currentImgSrc = null;
+      if (current && current.getAttribute("data-src") === imgSrc) {
+        current.remove();
+        current = null;
         return;
       }
 
-      previewBox.innerHTML = `<img src="${imgSrc}" alt="Preview">`;
-      previewBox.style.display = "block";
-      currentImgSrc = imgSrc;
+      if (current) current.remove();
+
+      const preview = document.createElement("div");
+      preview.className = "preview";
+      preview.setAttribute("data-src", imgSrc);
+
+      const big = document.createElement("img");
+      big.src = imgSrc;
+      preview.appendChild(big);
+      gallery.appendChild(preview);
+
+      const itemRect = element.getBoundingClientRect();
+      const galleryRect = gallery.getBoundingClientRect();
+      const scrollTop = window.scrollY;
+      const previewTop = itemRect.top + scrollTop - galleryRect.top;
+
+      preview.style.top = `${previewTop}px`;
+      current = preview;
     }
   </script>
 </body>
