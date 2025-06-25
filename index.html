@@ -38,51 +38,51 @@
 
     /* Summary toggles */
     details {
-      margin-bottom:0rem;
+      margin-bottom: 0;              /* collapsed gap under toggles */
     }
     details > summary {
-      list-style: none;        /* remove any built-in list style */
-      padding-left: 1.2rem;    /* room for your custom arrow */
+      list-style: none;              /* remove any built-in list style */
+      padding-left: 1.2rem;          /* room for custom arrow */
       position: relative;
-      font-size: 1.3rem;
+      font-size: 1.15rem;            /* slightly smaller than before */
+      cursor: pointer;
+      font-weight: 600;
     }
-    
-    /* 1) Hide native markers */
+    /* hide native markers */
     summary::-webkit-details-marker { display: none; }
     summary::-moz-list-bullet     { display: none; }
     summary::marker               { content: none; }
-    
-    /* 2) Add your single custom arrow */
+    /* custom arrow */
     summary::before {
       content: "▶";
       position: absolute;
       left: 0; top: 0.1rem;
       transition: transform .2s;
     }
-    
-    /* Rotate when open */
     details[open] > summary::before {
       transform: rotate(90deg);
     }
 
     /* Lists of titles always visible, no indentation */
     .section-list {
-      list-style:none;
-      margin-top:0rem;
-      padding-left:0;
+      list-style: none;
+      margin-top: 0;                /* no gap above lists */
+      padding-left: 0;
     }
     .section-list > li {
-      margin-bottom:.3rem;
+      margin-bottom: .3rem;         /* tight spacing between items */
     }
-    /* item titles slightly smaller */
+    /* item titles slightly smaller and bold */
     .section-list > li > strong {
-      font-size:1.1rem;
+      font-size: 1.1rem;
+      font-weight: 700;             /* ensure full bold */
     }
+
     /* hide all descriptions by default */
     .description {
-      display:none;
-      margin: .25rem 0 0.6rem;
-      font-size:.95rem;
+      display: none;
+      margin: .25rem 0 .6rem;
+      font-size: .95rem;
     }
     /* reveal descriptions when that section is open */
     details#edu-toggle[open] ~ #edu-list .description,
@@ -90,26 +90,27 @@
     details#ms-toggle[open]  ~ #ms-list .description,
     details#tp-toggle[open]  ~ #tp-list .description,
     details#sk-toggle[open]  ~ #sk-list .description {
-      display:block;
+      display: block;
     }
 
     /* Contact grid */
     .contact-columns {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1rem;
-      margin-top:1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
     }
 
     /* Theme toggle button */
     #themeToggle {
-      position:fixed; top:1.5rem; right:1.5rem;
-      width:30px; height:30px;
-      background-color:var(--text);
-      cursor:pointer; z-index:2000;
-      transition:background-color .3s;
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      width: 30px; height: 30px;
+      background-color: var(--text);
+      cursor: pointer; z-index: 2000;
+      transition: background-color .3s;
     }
-    #themeToggle:hover { background-color:var(--highlight); }
+    #themeToggle:hover { background-color: var(--highlight); }
 
     @media (max-width:768px) {
       main { grid-template-columns:1fr; gap:3rem; }
@@ -214,7 +215,7 @@
       </details>
       <ul id="sk-list" class="section-list">
         <li>Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
-        <li>Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
+        <li>Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
         <li>English, French, Spanish (Conversational)</li>
       </ul>
 
@@ -236,21 +237,21 @@
 
   <script>
     const themes = {
-      default:{'--bg':'#FF9FD5','--text':'#D10000','--highlight':'#BFFF00'},
-      alt:    {'--bg':'#B8F3FF','--text':'#017BE6','--highlight':'#FF9DFF'},
-      green:  {'--bg':'#AFBDD6','--text':'#F6FA63','--highlight':'#AB005B'},
-      yellow: {'--bg':'#FBFF8E','--text':'#A272BF','--highlight':'#FFBC1F'}
+      default: { '--bg': '#FF9FD5', '--text': '#D10000', '--highlight': '#BFFF00' },
+      alt:     { '--bg': '#B8F3FF', '--text': '#017BE6', '--highlight': '#FF9DFF' },
+      green:   { '--bg': '#AFBDD6', '--text': '#F6FA63', '--highlight': '#AB005B' },
+      yellow:  { '--bg': '#FBFF8E', '--text': '#A272BF', '--highlight': '#FFBC1F' }
     };
-    const order=['default','alt','green','yellow'];
-    function applyTheme(name){
-      Object.entries(themes[name]).forEach(([k,v])=>
-        document.documentElement.style.setProperty(k,v)
-      );
+    const order = ['default','alt','green','yellow'];
+    function applyTheme(name) {
+      Object.entries(themes[name]).forEach(([k,v])=>{
+        document.documentElement.style.setProperty(k,v);
+      });
       localStorage.setItem('theme',name);
     }
     applyTheme(localStorage.getItem('theme')||'default');
-    document.getElementById('themeToggle').addEventListener('click',()=>{
-      const idx=(order.indexOf(localStorage.getItem('theme'))+1)%order.length;
+    document.getElementById('themeToggle').addEventListener('click', ()=>{
+      const idx = (order.indexOf(localStorage.getItem('theme'))+1)%order.length;
       applyTheme(order[idx]);
     });
   </script>
