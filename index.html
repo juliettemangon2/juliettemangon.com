@@ -25,34 +25,40 @@
       margin-top: 4rem;
       padding: 1rem 5vw 3rem;
       display: grid;
-      grid-template-columns: 35% 65%;
+      grid-template-columns: 40% 60%;
       gap: 4rem;
       align-items: start;
     }
-    .left-col { display: flex; flex-direction: column; gap: 2rem; }
-    h2 { font-size: 2rem; font-weight:700; margin-bottom:1rem; }
-    section { width:100%; }
-    .media-section { margin-top:1rem; }
-    a { color: var(--text); text-decoration:none; transition:color .2s; }
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    section { width: 100%; }
+    .media-section { margin-top: 1rem; }
+    a { color: var(--text); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--highlight); }
 
     /* Summary toggles */
     details {
-      margin-bottom: 0; /* remove gap under each toggle */
+      margin-bottom: 0;
     }
     details > summary {
       list-style: none;
-      padding-left: 1.2rem; /* space for arrow */
+      padding-left: 1.2rem;        /* space for arrow */
       position: relative;
-      font-size: 1.2rem;     /* slightly bigger section titles */
+      font-size: 1.3rem;           /* bigger section titles */
       cursor: pointer;
-      font-weight: 700;      /* bold section titles */
+      font-weight: 700;
     }
-    /* hide native markers */
     summary::-webkit-details-marker { display: none; }
     summary::-moz-list-bullet     { display: none; }
     summary::marker               { content: none; }
-    /* custom arrow */
     summary::before {
       content: "▶";
       position: absolute;
@@ -63,28 +69,27 @@
       transform: rotate(90deg);
     }
 
-    /* Lists of titles always visible, no indentation */
+    /* Lists of titles with indentation */
     .section-list {
       list-style: none;
-      margin-top: 0;    /* no gap above lists */
-      padding-left: 0;
+      margin-top: 0;
+      padding-left: 1.5rem;        /* indent items */
     }
     .section-list > li {
-      margin-bottom: .3rem; /* tight spacing */
+      margin-bottom: 0.2rem;       /* tighter space between items */
     }
-    /* item titles slightly less bold than summary */
     .section-list > li > strong {
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: 600;            /* slightly less bold */
     }
 
     /* hide descriptions by default */
     .description {
       display: none;
-      margin: .25rem 0 .6rem;
+      margin: .25rem 0 .4rem;      /* reduced bottom margin */
       font-size: .95rem;
     }
-    /* reveal descriptions when open */
+    /* reveal descriptions on open */
     details#edu-toggle[open]  ~ #edu-list .description,
     details#we-toggle[open]   ~ #we-list .description,
     details#tp-toggle[open]   ~ #tp-list .description {
@@ -96,16 +101,16 @@
       display: none;
       list-style: none;
       margin-top: .5rem;
-      padding-left: 0;
+      padding-left: 1.5rem;        /* indent skills */
     }
     details#sk-toggle[open] ~ #sk-list {
       display: block;
     }
 
-    /* Mentorship description reveal */
+    /* Mentorship as single toggle with inline description */
     details#ms-toggle > .description {
       display: none;
-      margin: .25rem 0 .6rem;
+      margin: .25rem 0 .4rem;
       font-size: .95rem;
     }
     details#ms-toggle[open] > .description {
@@ -122,10 +127,12 @@
 
     /* Theme toggle button */
     #themeToggle {
-      position: fixed; top: 1.5rem; right: 1.5rem;
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
       width: 30px; height: 30px;
       background-color: var(--text);
-      cursor: pointer; z-index: 2000;
+      cursor: pointer;
+      z-index: 2000;
       transition: background-color .3s;
     }
     #themeToggle:hover { background-color: var(--highlight); }
