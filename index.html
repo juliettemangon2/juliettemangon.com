@@ -64,7 +64,7 @@
     /* Lists of titles always visible, no indentation */
     .section-list {
       list-style:none;
-      margin-top:.2rem;
+      margin-top:0rem;
       padding-left:0;
     }
     .section-list > li {
@@ -79,6 +79,9 @@
       display:none;
       margin: .25rem 0 0.6rem;
       font-size:.95rem;
+    }
+    details {
+      margin-bottom: 0;    /* was 1.5rem (or whatever you had before) */
     }
     /* reveal descriptions when that section is open */
     details#edu-toggle[open] ~ #edu-list .description,
@@ -157,19 +160,19 @@
       </details>
       <ul id="we-list" class="section-list">
         <li>
-          <strong>AI/ML Intern</strong>, Enlaye (Jun–Aug 2025)
+          <strong>AI/ML Intern</strong>, Enlaye (2025)
           <p class="description">Built an LLM-based query preprocessor for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.</p>
         </li>
         <li>
-          <strong>Website Developer</strong>, Tryst Restaurant (Jan 2025–Present)
+          <strong>Website Developer</strong>, Tryst Restaurant (2025)
           <p class="description">Rebuilt the restaurant’s site with HTML/CSS/JS, boosting load speed, mobile UX, and SEO rankings.</p>
         </li>
         <li>
-          <strong>Photoville Intern</strong>, Regenerating Inc. (May–Aug 2024)
+          <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
           <p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; led Figma UI design and competitive feature analysis.</p>
         </li>
         <li>
-          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (Oct 2023–Present)
+          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (Oct 2023–)
           <p class="description">Graded national math contest entries, evaluating rigor and providing detailed feedback to students.</p>
         </li>
       </ul>
@@ -180,7 +183,7 @@
       </details>
       <ul id="ms-list" class="section-list">
         <li>
-          <strong>Connect TogetHER</strong> — Summer 2025
+          <strong>Connect TogetHER</strong>
           <p class="description">Selected for She Is The Music’s program under Anna Skelsey, developing a music-tech project for an industry panel.</p>
         </li>
       </ul>
