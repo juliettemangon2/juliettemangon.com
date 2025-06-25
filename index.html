@@ -38,27 +38,31 @@
 
     /* Summary toggles */
     details {
-      margin-bottom:1.5rem;
+      margin-bottom:0rem;
     }
     details > summary {
+      list-style: none;        /* remove any built-in list style */
+      padding-left: 1.2rem;    /* room for your custom arrow */
       position: relative;
-      cursor: pointer;
-      font-weight:600;
-      font-size:1.3rem;           /* slightly larger section titles */
-      padding-left:1.2rem;        /* make space for triangle */
+      font-size: 1.3rem;
     }
-    summary::marker,
-    summary::-webkit-details-marker {
-      display:none;
-    }
+    
+    /* 1) Hide native markers */
+    summary::-webkit-details-marker { display: none; }
+    summary::-moz-list-bullet     { display: none; }
+    summary::marker               { content: none; }
+    
+    /* 2) Add your single custom arrow */
     summary::before {
-      content:"▶";
-      position:absolute;
-      left:0; top:0.1rem;
-      transition:transform .2s;
+      content: "▶";
+      position: absolute;
+      left: 0; top: 0.1rem;
+      transition: transform .2s;
     }
+    
+    /* Rotate when open */
     details[open] > summary::before {
-      transform:rotate(90deg);
+      transform: rotate(90deg);
     }
 
     /* Lists of titles always visible, no indentation */
@@ -79,9 +83,6 @@
       display:none;
       margin: .25rem 0 0.6rem;
       font-size:.95rem;
-    }
-    details {
-      margin-bottom: 0;    /* was 1.5rem (or whatever you had before) */
     }
     /* reveal descriptions when that section is open */
     details#edu-toggle[open] ~ #edu-list .description,
@@ -145,7 +146,7 @@
       </details>
       <ul id="edu-list" class="section-list">
         <li>
-          <strong>B.A. in Computer Science and Mathematics</strong> — NYU (2023–2025)
+          <strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)
           <p class="description">Coursework: Natural Language Processing, Operating Systems, Real Analysis, Topology.</p>
         </li>
         <li>
@@ -172,7 +173,7 @@
           <p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; led Figma UI design and competitive feature analysis.</p>
         </li>
         <li>
-          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (Oct 2023–)
+          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)
           <p class="description">Graded national math contest entries, evaluating rigor and providing detailed feedback to students.</p>
         </li>
       </ul>
