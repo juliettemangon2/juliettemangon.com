@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Juliette Mangon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg: #FF9FD5;
@@ -41,6 +41,12 @@
       align-items: start;
     }
 
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
     section {
       width: 100%;
     }
@@ -51,10 +57,8 @@
       margin-bottom: 1rem;
     }
 
-    h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 1.5rem 0 1rem;
+    .media-section {
+      margin-top: 1rem;
     }
 
     details {
@@ -111,20 +115,19 @@
       color: var(--highlight);
     }
 
+    /* Larger section titles */
+    details > summary {
+      font-size: 1.3rem;
+    }
+    /* Slightly smaller item titles */
+    details ul li strong {
+      font-size: 1.1rem;
+    }
+
     .contact-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .left-col {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .media-section {
       margin-top: 1rem;
     }
 
@@ -175,91 +178,90 @@
     <section>
       <h2><a href="_JulietteMangonResume.pdf" target="_blank">Resume</a></h2>
 
-      <h3>Education</h3>
       <details>
-        <summary>B.A. in Computer Science and Mathematics — NYU (2023–2025)</summary>
+        <summary>Education</summary>
         <ul>
-          <li>Natural Language Processing</li>
-          <li>Operating Systems</li>
-          <li>Discrete Structures</li>
-          <li>Real Analysis</li>
-        </ul>
-      </details>
-      <details>
-        <summary>Minor in Business of Entertainment, Media, and Technology</summary>
-        <ul>
-          <li>Entertainment and Media Industries</li>
-          <li>Business of Film</li>
-          <li>Business of Video Games</li>
-          <li>Globalization of the Entertainment Industry</li>
+          <li>
+            <strong>B.A. in Computer Science and Mathematics</strong> — NYU (2023–2025)
+            <p>Coursework includes: Natural Language Processing, Operating Systems, Real Analysis, Topology.</p>
+          </li>
+          <li>
+            <strong>Minor in Business of Entertainment, Media, and Technology</strong>
+            <p>Coursework includes: Entertainment and Media Industries; Business of Film; Business of Video Games; Globalization of the Entertainment Industry.</p>
+          </li>
         </ul>
       </details>
 
-      <h3>Work Experience</h3>
       <details>
-        <summary>AI/ML Intern, Enlaye (Jun–Aug 2025)</summary>
-        <p>Contributed to Enlaye’s AI-native risk management platform by building an LLM-based query preprocessor and running prompt-engineering experiments to optimize contract automation workflows.</p>
-      </details>
-      <details>
-        <summary>Website Developer, Tryst Restaurant (Jan 2025–Present)</summary>
-        <p>Redesigned and rebuilt the restaurant’s website using HTML, CSS, and JavaScript, improving load times, mobile responsiveness, and SEO performance.</p>
-      </details>
-      <details>
-        <summary>Photoville Intern, Regenerating Inc. (May–Aug 2024)</summary>
-        <p>Built an AI-powered iOS photo editing app with SwiftUI and OpenCV; led UI design in Figma and conducted competitive analysis for feature strategy.</p>
-      </details>
-      <details>
-        <summary>USA Mathematical Talent Search Grader, Art of Problem Solving (Oct 2023–Present)</summary>
-        <p>Reviewed national math contest submissions, assessing solution rigor and providing detailed feedback to support student learning.</p>
-      </details>
-
-      <h3>She Is The Music Mentorship</h3>
-      <details>
-        <summary>Connect TogetHER — Summer 2025</summary>
-        <p>Selected into She Is The Music’s Connect TogetHER program under Anna Skelsey; developing a music-tech project to present to industry experts.</p>
+        <summary>Work Experience</summary>
+        <ul>
+          <li>
+            <strong>AI/ML Intern</strong>, Enlaye (Jun–Aug 2025)
+            <p>Contributed to Enlaye’s AI-native risk management platform by building an LLM-based query preprocessor and running prompt-engineering experiments to optimize contract automation workflows.</p>
+          </li>
+          <li>
+            <strong>Website Developer</strong>, Tryst Restaurant (Jan 2025–Present)
+            <p>Redesigned and rebuilt the restaurant’s website using HTML, CSS, and JavaScript, improving load times, mobile responsiveness, and SEO performance.</p>
+          </li>
+          <li>
+            <strong>Photoville Intern</strong>, Regenerating Inc. (May–Aug 2024)
+            <p>Built an AI-powered iOS photo editing app with SwiftUI and OpenCV; led UI design in Figma and conducted competitive analysis for feature strategy.</p>
+          </li>
+          <li>
+            <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (Oct 2023–Present)
+            <p>Reviewed national math contest submissions, assessing solution rigor and providing detailed feedback to support student learning.</p>
+          </li>
+        </ul>
       </details>
 
-      <h3>Technical Projects</h3>
       <details>
-        <summary>Custom Portfolio Websites</summary>
-        <p>Designed and developed portfolio sites for photographers and artists using React and Tailwind CSS, focusing on interactive layouts and clean storytelling.</p>
-      </details>
-      <details>
-        <summary>Plagiarism Detection Enhancement Project</summary>
-        <p>Implemented an NLP-based plagiarism detector using TF-IDF and Word2Vec; improved precision and recall through iterative parameter tuning.</p>
-      </details>
-      <details>
-        <summary>Ad Hoc Information Retrieval System</summary>
-        <p>Built a TF-IDF ranking engine to match 225 queries with 1,400 abstracts, refining performance using Mean Average Precision metrics.</p>
-      </details>
-      <details>
-        <summary>Spotify Listening Behavior Case Study</summary>
-        <p>Analyzed Spotify’s UI and recommendation algorithms to explore how design and data-driven features shape user listening patterns.</p>
-      </details>
-      <details>
-        <summary>Fashion in Video Games Proposal</summary>
-        <p>Authored a strategic proposal for Kering to integrate digital fashion tools in UGC platforms, outlining virtual branding and economic opportunities.</p>
-      </details>
-      <details>
-        <summary>AI in Music Creation Analysis</summary>
-        <p>Critically examined generative AI for music composition, focusing on cultural impact, intellectual property, and artistic authenticity.</p>
-      </details>
-      <details>
-        <summary>TF-IDF Query Ranking System</summary>
-        <p>Developed a cosine similarity–based TF-IDF system to rank search queries across a document corpus with strong relevance scores.</p>
+        <summary>She Is The Music Mentorship</summary>
+        <ul>
+          <li>
+            <strong>Connect TogetHER</strong> — Summer 2025
+            <p>Selected into She Is The Music’s Connect TogetHER program under Anna Skelsey; developing a music-tech project to present to industry experts.</p>
+          </li>
+        </ul>
       </details>
 
-      <h3>Skills</h3>
       <details>
-        <summary>Languages & Frameworks</summary>
-        <p>Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</p>
+        <summary>Technical Projects</summary>
+        <ul>
+          <li>
+            <strong>Custom Portfolio Websites</strong>
+            <p>Designed and developed portfolio sites for photographers and artists using React and Tailwind CSS, focusing on interactive layouts and clean storytelling.</p>
+          </li>
+          <li>
+            <strong>Plagiarism Detection Enhancement Project</strong>
+            <p>Implemented an NLP-based plagiarism detector using TF-IDF and Word2Vec; improved precision and recall through iterative parameter tuning.</p>
+          </li>
+          <li>
+            <strong>Ad Hoc Information Retrieval System</strong>
+            <p>Built a TF-IDF ranking engine to match 225 queries with 1,400 abstracts, refining performance using Mean Average Precision metrics.</p>
+          </li>
+          <li>
+            <strong>Spotify Listening Behavior Case Study</strong>
+            <p>Analyzed Spotify’s UI and recommendation algorithms to explore how design and data-driven features shape user listening patterns.</p>
+          </li>
+          <li>
+            <strong>Fashion in Video Games Proposal</strong>
+            <p>Authored a strategic proposal for Kering to integrate digital fashion tools in UGC platforms, outlining virtual branding and economic opportunities.</p>
+          </li>
+          <li>
+            <strong>AI in Music Creation Analysis</strong>
+            <p>Critically examined generative AI for music composition, focusing on cultural impact, intellectual property, and artistic authenticity.</p>
+          </li>
+          <li>
+            <strong>TF-IDF Query Ranking System</strong>
+            <p>Developed a cosine similarity–based TF-IDF system to rank search queries across a document corpus with strong relevance scores.</p>
+          </li>
+        </ul>
       </details>
+
       <details>
-        <summary>Tools & Services</summary>
-        <p>Git, GitHub, Docker, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</p>
-      </details>
-      <details>
-        <summary>Spoken Languages</summary>
+        <summary>Skills</summary>
+        <p>Java, Python, C, C++, JavaScript, React, HTML, CSS, MATLAB, Assembly</p>
+        <p>Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite</p>
         <p>English, French, Spanish (Conversational)</p>
       </details>
 
