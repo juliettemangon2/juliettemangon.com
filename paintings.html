@@ -37,11 +37,12 @@
       color: var(--highlight);
     }
     #themeToggle {
-      width: 24px;
-      height: 24px;
+      top: 1.5rem; right: 1.5rem;
+      width: 30px;
+      height: 30px;
       background: var(--text);
       cursor: pointer;
-      border-radius: 4px;
+      z-index: 2000;
       transition: background .3s;
     }
     #themeToggle:hover {
@@ -63,7 +64,7 @@
     .item img {
       width: 100%;
       border: 2px solid var(--border);
-      border-radius: 4px;
+      border-radius: 0px;
       transition: transform .3s, border-color .3s;
     }
     .item:hover img {
@@ -80,7 +81,7 @@
     }
     .text-block p {
       font-size: 1rem;
-      color: rgba(0,0,0,0.75);
+      color: var(--text);
     }
     @media (max-width: 600px) {
       header {
@@ -162,7 +163,7 @@
     const themes = {
       default: { '--bg':'#FF9FD5','--text':'#D10000','--highlight':'#BFFF00' },
       alt:     { '--bg':'#B8F3FF','--text':'#0080F0','--highlight':'#FF9DFF' },
-      green:   { '--bg':'#D9F16A','--text':'#F64C54','--highlight':'#FFA703' },
+      green:   { '--bg':'#AFBDD6','--text':'#F6FA63','--highlight':'#AB005B' },
       yellow:  { '--bg':'#FBFF8E','--text':'#BC7DE2','--highlight':'#FFBC1F' }
     };
     const order = ['default','alt','green','yellow'];
