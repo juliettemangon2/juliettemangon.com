@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Juliette Mangon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg: #FF9FD5;
@@ -16,49 +16,45 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.8;
+      line-height: 1.6;
       font-size: 1.05rem;
       height: 100%;
+      overflow-x: hidden;
     }
     main {
-      margin: 4rem auto 2rem;
-      padding: 0 5vw;
-      max-width: 1200px;
+      margin-top: 4rem;
+      padding: 1rem 5vw 3rem;
       display: grid;
       grid-template-columns: 40% 60%;
       gap: 4rem;
+      align-items: start;
     }
     .left-col {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-    }
-    section {
-      margin-bottom: 2.5rem;
+      gap: 2rem;
     }
     h2 {
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
-    a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color .2s;
-    }
+    section { width: 100%; }
+    .media-section { margin-top: 1rem; }
+    a { color: var(--text); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--highlight); }
 
     /* Summary toggles */
     details {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
     details > summary {
       list-style: none;
-      padding: 0.75rem 1rem;
+      padding-left: 1.2rem;        /* space for arrow */
       position: relative;
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-size: 1.3rem;           /* bigger section titles */
       cursor: pointer;
+      font-weight: 700;
     }
     summary::-webkit-details-marker { display: none; }
     summary::-moz-list-bullet     { display: none; }
@@ -66,75 +62,70 @@
     summary::before {
       content: "▶";
       position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 0; top: 0.1rem;
       transition: transform .2s;
     }
     details[open] > summary::before {
-      transform: translateY(-50%) rotate(90deg);
+      transform: rotate(90deg);
     }
 
     /* Lists of titles with indentation */
     .section-list {
       list-style: none;
-      padding-left: 2rem;
-      margin-bottom: 1.5rem;
+      margin-top: 0;
+      padding-left: 1.5rem;        /* indent items */
     }
     .section-list > li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.2rem;       /* tighter space between items */
     }
     .section-list > li > strong {
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 600;            /* slightly less bold */
     }
 
-    /* Descriptions */
+    /* hide descriptions by default */
     .description {
       display: none;
-      margin: 0.5rem 0 1rem 2rem;
-      font-size: 0.95rem;
+      margin: .25rem 0 .4rem;      /* reduced bottom margin */
+      font-size: .95rem;
     }
-    details#edu-toggle[open] ~ #edu-list .description,
-    details#we-toggle[open]  ~ #we-list .description,
-    details#tp-toggle[open]  ~ #tp-list .description {
+    /* reveal descriptions on open */
+    details#edu-toggle[open]  ~ #edu-list .description,
+    details#we-toggle[open]   ~ #we-list .description,
+    details#tp-toggle[open]   ~ #tp-list .description {
       display: block;
     }
 
-    /* Skills */
+    /* Skills hidden until toggle */
     #sk-list {
       display: none;
       list-style: none;
-      padding-left: 2rem;
-      margin-top: 0.5rem;
+      margin-top: .5rem;
+      padding-left: 1.5rem;        /* indent skills */
     }
     details#sk-toggle[open] ~ #sk-list {
       display: block;
     }
 
-    /* Mentorship */
+    /* Mentorship as single toggle with inline description */
     details#ms-toggle > .description {
       display: none;
-      margin: 0.5rem 1rem;
-      font-size: 0.95rem;
+      margin: .25rem 0 .4rem;
+      font-size: .95rem;
     }
     details#ms-toggle[open] > .description {
       display: block;
     }
 
-    /* Contact */
+    /* Contact grid */
     .contact-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       margin-top: 1rem;
     }
-    .contact-columns p {
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-    }
 
-    /* Theme toggle */
+    /* Theme toggle button */
     #themeToggle {
       position: fixed;
       top: 1.5rem; right: 1.5rem;
@@ -165,9 +156,9 @@
 
       <section class="media-section">
         <h2>Current Favorite Media</h2>
-        <p><strong>Albums:</strong> 333 · This Is Happening · Five Dice, All Threes · Punisher</p>
-        <p><strong>Movies:</strong> Léon · Call Me by Your Name · Parasite</p>
-        <p><strong>TV:</strong> Money Heist · Killing Eve · Girls</p>
+        <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>, <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>, <a href="https://open.spotify.com/album/7fA59NGyyUumdoTH3HmWav" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
+        <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a>, <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
+        <p><strong>TV:</strong> <a href="https://www.imdb.com/title/tt6468322/" target="_blank">Money Heist</a>, <a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a>, <a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a></p>
       </section>
 
       <section>
@@ -190,93 +181,98 @@
     <section>
       <h2><a href="_JulietteMangonResume.pdf" target="_blank">Resume</a></h2>
 
+      <!-- Education -->
       <details id="edu-toggle" open>
         <summary>Education</summary>
       </details>
       <ul id="edu-list" class="section-list">
         <li>
           <strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)
-          <p class="description">Coursework: Natural Language Processing · Operating Systems · Real Analysis · Topology</p>
+          <p class="description">Coursework: Natural Language Processing, Operating Systems, Real Analysis, Topology.</p>
         </li>
         <li>
-          <strong>Minor in Entertainment, Media, & Technology</strong>
-          <p class="description">Coursework: Global Media Industries · Music Business · Film & Gaming Business</p>
+          <strong>Minor in Business of Entertainment, Media, and Technology</strong>
+          <p class="description">Coursework: Entertainment & Media Industries; Business of Film; Video Games; Globalization of Media.</p>
         </li>
       </ul>
 
+      <!-- Work Experience -->
       <details id="we-toggle" open>
         <summary>Work Experience</summary>
       </details>
       <ul id="we-list" class="section-list">
         <li>
           <strong>AI/ML Intern</strong>, Enlaye (2025)
-          <p class="description">Built an LLM-based query preprocessor for contract intelligence, improving speed & accuracy.</p>
+          <p class="description">Built an LLM-based query preprocessor for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.</p>
         </li>
         <li>
           <strong>Website Developer</strong>, Tryst Restaurant (2025)
-          <p class="description">Rebuilt site in HTML/CSS/JS, boosting mobile UX, performance, and SEO visibility.</p>
+          <p class="description">Rebuilt the restaurant’s site with HTML/CSS/JS, boosting load speed, mobile UX, and SEO rankings.</p>
         </li>
         <li>
           <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
-          <p class="description">Developed AI-powered SwiftUI photo editor; led UI design & feature strategy.</p>
+          <p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; led Figma UI design and competitive feature analysis.</p>
         </li>
         <li>
-          <strong>USA Math Talent Search Grader</strong>, Art of Problem Solving (2023–)
-          <p class="description">Evaluated contest solutions, providing detailed feedback to support learning.</p>
+          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)
+          <p class="description">Graded national math contest entries, evaluating rigor and providing detailed feedback to students.</p>
         </li>
       </ul>
 
+      <!-- She Is The Music Mentorship -->
       <details id="ms-toggle" open>
         <summary>She Is The Music Mentorship</summary>
-        <p class="description">Selected for Connect TogetHER under Anna Skelsey, building a music-tech project for industry showcase.</p>
+        <p class="description">Selected for She Is The Music’s program under Anna Skelsey, developing a music-tech project for an industry panel.</p>
       </details>
 
+      <!-- Technical Projects -->
       <details id="tp-toggle" open>
         <summary>Technical Projects</summary>
       </details>
       <ul id="tp-list" class="section-list">
         <li>
           <strong>Custom Portfolio Websites</strong>
-          <p class="description">Crafted responsive React/Tailwind sites for artists—focus on clarity and storytelling.</p>
+          <p class="description">Built responsive React/Tailwind portfolio sites for artists, focusing on interactivity and clean storytelling.</p>
         </li>
         <li>
-          <strong>Plagiarism Detector</strong>
-          <p class="description">Engineered NLP system with TF-IDF & Word2Vec, boosting detection precision.</p>
+          <strong>Plagiarism Detection Enhancement Project</strong>
+          <p class="description">Engineered an NLP plagiarism detector with TF-IDF & Word2Vec; improved precision via iterative tuning.</p>
         </li>
         <li>
-          <strong>Information Retrieval System</strong>
-          <p class="description">Built TF-IDF/cosine-sim engine matching 225 queries to 1,400 abstracts; tracked MAP.</p>
+          <strong>Ad Hoc Information Retrieval System</strong>
+          <p class="description">Created a TF-IDF/cosine-sim engine to match 225 queries against 1,400 abstracts; measured with MAP scores.</p>
         </li>
       </ul>
 
+      <!-- Skills -->
       <details id="sk-toggle" open>
         <summary>Skills</summary>
       </details>
       <ul id="sk-list">
-        <li>Java · C++ · Python · JavaScript · React · HTML/CSS · MATLAB · Haskell</li>
-        <li>Git · Docker · LaTeX · Unix/Linux · Excel · Node.js · Figma</li>
-        <li>English · French · Spanish (Conversational)</li>
+        <li>Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
+        <li>Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
+        <li>English, French, Spanish (Conversational)</li>
       </ul>
     </section>
   </main>
 
   <script>
     const themes = {
-      default: { '--bg':'#FF9FD5','--text':'#D10000','--highlight':'#BFFF00' },
-      alt:     { '--bg':'#B8F3FF','--text':'#017BE6','--highlight':'#FF9DFF' },
-      green:   { '--bg':'#AFBDD6','--text':'#F6FA63','--highlight':'#AB005B' },
-      yellow:  { '--bg':'#FBFF8E','--text':'#A272BF','--highlight':'#FFBC1F' }
+      default: { '--bg': '#FF9FD5', '--text': '#D10000', '--highlight': '#BFFF00' },
+      alt:     { '--bg': '#B8F3FF', '--text': '#017BE6', '--highlight': '#FF9DFF' },
+      green:   { '--bg': '#AFBDD6', '--text': '#F6FA63', '--highlight': '#AB005B' },
+      yellow:  { '--bg': '#FBFF8E', '--text': '#A272BF', '--highlight': '#FFBC1F' }
     };
     const order = ['default','alt','green','yellow'];
-    function applyTheme(name){
-      Object.entries(themes[name]).forEach(([k,v])=>
-        document.documentElement.style.setProperty(k,v)
-      );
+    function applyTheme(name) {
+      Object.entries(themes[name]).forEach(([k,v])=>{
+        document.documentElement.style.setProperty(k,v);
+      });
       localStorage.setItem('theme',name);
     }
     applyTheme(localStorage.getItem('theme')||'default');
     document.getElementById('themeToggle').addEventListener('click', ()=>{
-      const idx=(order.indexOf(localStorage.getItem('theme'))+1)%order.length;
+      const idx = (order.indexOf(localStorage.getItem('theme'))+1)%order.length;
       applyTheme(order[idx]);
     });
   </script>
