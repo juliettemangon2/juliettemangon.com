@@ -4,224 +4,179 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paintings by Juliette</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg: #FF9FD5;
       --text: #D10000;
       --highlight: #BFFF00;
+      --border: rgba(0,0,0,0.1);
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       font-size: 1.05rem;
       line-height: 1.6;
-      padding: 2rem;
+      min-height: 100vh;
     }
-
-    a {
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    header a {
       color: var(--text);
       text-decoration: none;
-      transition: color 0.2s;
+      font-weight: 600;
+      transition: color .2s;
     }
-
-    a:hover {
+    header a:hover {
       color: var(--highlight);
     }
-
-    header {
-      margin-bottom: 2rem;
-    }
-
-    .gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      max-width: 900px;
-      position: relative;
-    }
-
-    .item {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
+    #themeToggle {
+      width: 24px;
+      height: 24px;
+      background: var(--text);
       cursor: pointer;
+      border-radius: 4px;
+      transition: background .3s;
     }
-
+    #themeToggle:hover {
+      background: var(--highlight);
+    }
+    main.gallery {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      padding: 0 2rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .item {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
     .item img {
-      width: 200px;
-      height: auto;
-    }
-
-    .item h2 {
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-
-    .item p {
-      margin-top: 0.2rem;
-    }
-
-    .text-block {
-      max-width: 600px;
-    }
-
-    .preview {
-      position: absolute;
-      left: calc(100% + 4rem);
-      max-width: 360px;
-      z-index: 10;
-    }
-
-    .preview img {
       width: 100%;
-      height: auto;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      transition: transform .3s, border-color .3s;
     }
-
-    @media (max-width: 1000px) {
-      .preview {
-        display: none;
+    .item:hover img {
+      transform: scale(1.02);
+      border-color: var(--highlight);
+    }
+    .text-block {
+      margin-top: 0.5rem;
+    }
+    .text-block h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .text-block p {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.75);
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      main.gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html">Back</a>
+    <a href="index.html">&larr; Back</a>
+    <div id="themeToggle" title="Switch Theme"></div>
   </header>
 
-  <main class="gallery" id="gallery">
-    <div class="item" onclick="togglePreview(this)">
+  <main class="gallery">
+    <a class="item" href="./images/cards.jpeg" target="_blank">
       <img src="./images/cards.jpeg" alt="Evening Cards">
       <div class="text-block">
         <h2>Evening Cards (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+        <p>Acrylic &ndash; 16&quot; × 20&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/mira.jpeg" target="_blank">
       <img src="./images/mira.jpeg" alt="Seaside, Cascais">
       <div class="text-block">
         <h2>Seaside, Cascais (2024)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+        <p>Acrylic &ndash; 16&quot; × 20&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/picnic.jpeg" target="_blank">
       <img src="./images/picnic.jpeg" alt="Seaside Picnic">
       <div class="text-block">
         <h2>Seaside Picnic (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+        <p>Acrylic &ndash; 16&quot; × 20&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/cliffs.jpeg" target="_blank">
       <img src="./images/cliffs.jpeg" alt="Seaside Cliffs">
       <div class="text-block">
         <h2>Seaside Cliffs (2024)</h2>
-        <p>Acrylic 12&quot; × 16&quot;</p>
+        <p>Acrylic &ndash; 12&quot; × 16&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/poolside.jpeg" target="_blank">
       <img src="./images/poolside.jpeg" alt="Poolside">
       <div class="text-block">
         <h2>Poolside (2023)</h2>
-        <p>Acrylic 20&quot; × 16&quot;</p>
+        <p>Acrylic &ndash; 20&quot; × 16&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/water.jpeg" target="_blank">
       <img src="./images/water.jpeg" alt="Water">
       <div class="text-block">
         <h2>Water (2023)</h2>
-        <p>Acrylic 12&quot; × 16&quot;</p>
+        <p>Acrylic &ndash; 12&quot; × 16&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/fish.jpeg" target="_blank">
       <img src="./images/fish.jpeg" alt="Fish">
       <div class="text-block">
         <h2>Fish (2024)</h2>
-        <p>Acrylic 16&quot; × 12&quot;</p>
+        <p>Acrylic &ndash; 16&quot; × 12&quot;</p>
       </div>
-    </div>
-    <div class="item" onclick="togglePreview(this)">
+    </a>
+    <a class="item" href="./images/roomie.jpg" target="_blank">
       <img src="./images/roomie.jpg" alt="Roommates, NYC">
       <div class="text-block">
         <h2>Roommates, NYC (2025)</h2>
-        <p>Acrylic 16&quot; × 20&quot;</p>
+        <p>Acrylic &ndash; 16&quot; × 20&quot;</p>
       </div>
-    </div>
+    </a>
   </main>
-  
+
   <script>
-    // mirror index.html's theme names
     const themes = {
-      default: {
-        '--bg': '#FF9FD5',
-        '--text': '#D10000',
-        '--highlight': '#BFFF00'
-      },
-      alt: {
-        '--bg': '#B8F3FF',
-        '--text': '#0080F0',
-        '--highlight': '#FF9DFF'
-      },
-      green: {
-        '--bg': '#D9F16A',
-        '--text': '#F64C54',
-        '--highlight': '#FFA703'
-      },
-      yellow: {
-        '--bg': '#FBFF8E',
-        '--text': '#BC7DE2',
-        '--highlight': '#FFBC1F'
-      }
+      default: { '--bg':'#FF9FD5','--text':'#D10000','--highlight':'#BFFF00' },
+      alt:     { '--bg':'#B8F3FF','--text':'#0080F0','--highlight':'#FF9DFF' },
+      green:   { '--bg':'#D9F16A','--text':'#F64C54','--highlight':'#FFA703' },
+      yellow:  { '--bg':'#FBFF8E','--text':'#BC7DE2','--highlight':'#FFBC1F' }
     };
-
-    // apply the saved theme
-    const currentTheme = localStorage.getItem('theme') || 'default';
-    if (themes[currentTheme]) {
-      Object.entries(themes[currentTheme]).forEach(([varName, varValue]) => {
-        document.documentElement.style.setProperty(varName, varValue);
-      });
+    const order = ['default','alt','green','yellow'];
+    function applyTheme(name) {
+      Object.entries(themes[name]).forEach(([k,v])=>
+        document.documentElement.style.setProperty(k,v)
+      );
+      localStorage.setItem('theme', name);
     }
-
-    let currentPreview = null;
-
-    function togglePreview(element) {
-      const imgSrc = element.querySelector('img').src;
-
-      // if clicking the same image, remove preview
-      if (currentPreview && currentPreview.getAttribute('data-src') === imgSrc) {
-        currentPreview.remove();
-        currentPreview = null;
-        return;
-      }
-
-      // remove any existing preview
-      if (currentPreview) {
-        currentPreview.remove();
-      }
-
-      // create new preview
-      const preview = document.createElement('div');
-      preview.className = 'preview';
-      preview.setAttribute('data-src', imgSrc);
-
-      const bigImg = document.createElement('img');
-      bigImg.src = imgSrc;
-      preview.appendChild(bigImg);
-
-      // position vertically next to the clicked item
-      preview.style.top = element.offsetTop + 'px';
-
-      document.getElementById('gallery').appendChild(preview);
-      currentPreview = preview;
-    }
+    applyTheme(localStorage.getItem('theme') || 'default');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const idx = (order.indexOf(localStorage.getItem('theme')) + 1) % order.length;
+      applyTheme(order[idx]);
+    });
   </script>
 </body>
 </html>
