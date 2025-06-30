@@ -4,29 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Juliette Mangon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    /*====================================
-      Root color variables
-    ====================================*/
     :root {
-      --bg: #FF9FD5;       /* background color */
-      --text: #D10000;     /* primary text color */
-      --highlight: #BFFF00;/* link hover / accent color */
+      --bg: #FF9FD5;
+      --text: #D10000;
+      --highlight: #BFFF00;
     }
 
-    /*====================================
-      Global reset + box-sizing
-    ====================================*/
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /*====================================
-      Base HTML & Body styles
-    ====================================*/
     html, body {
       background: var(--bg);
       color: var(--text);
@@ -37,81 +28,68 @@
       overflow-x: hidden;
     }
 
-    /*====================================
-      Main layout: two-column grid
-    ====================================*/
     main {
       margin-top: 4rem;
       padding: 1rem 5vw 3rem;
       display: grid;
-      grid-template-columns: 40% 60%;  /* left 40%, right 60% */
-      gap: 4rem;                       /* gutter */
+      grid-template-columns: 38% 62%;
+      gap: 5rem;
       align-items: start;
     }
 
-    /*====================================
-      Left column container (About/Media/Contact)
-    ====================================*/
     .left-col {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 3rem;
     }
 
-    /*====================================
-      Section headings (<h2>)
-    ====================================*/
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    /*====================================
-      Generic section wrapper
-    ====================================*/
     section {
       width: 100%;
     }
 
-    /*====================================
-      Media section spacing
-    ====================================*/
-    .media-section {
-      margin-top: 1rem;
+    h2 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
-    /*====================================
-      Link styling
-    ====================================*/
+    .media-section {
+      margin-top: 0.5rem;
+    }
+
     a {
       color: var(--text);
       text-decoration: none;
       transition: color .2s;
     }
+
     a:hover {
       color: var(--highlight);
     }
 
-    /*====================================
-      Summary / details toggle (Resume)
-    ====================================*/
+    /* Summary toggles */
     details {
-      margin-bottom: 0; /* remove default gap under toggles */
+      margin-bottom: 0;
     }
+
     details > summary {
-      list-style: none;        /* remove native bullets */
-      padding-left: 1.2rem;    /* space for custom arrow */
+      list-style: none;
+      padding-left: 1.2rem;
       position: relative;
-      font-size: 1.3rem;       /* section title size */
+      font-size: 1.25rem;
       cursor: pointer;
       font-weight: 700;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
     }
-    /* hide browser default markers */
-    summary::-webkit-details-marker { display: none; }
-    summary::-moz-list-bullet     { display: none; }
-    summary::marker               { content: none; }
-    /* custom triangle arrow */
+
+    summary::-webkit-details-marker,
+    summary::-moz-list-bullet,
+    summary::marker {
+      display: none;
+      content: none;
+    }
+
     summary::before {
       content: "▶";
       position: absolute;
@@ -119,71 +97,61 @@
       top: 0.1rem;
       transition: transform .2s;
     }
-    /* rotate arrow when open */
+
     details[open] > summary::before {
       transform: rotate(90deg);
     }
 
-    /*====================================
-      Resume item list indentation
-    ====================================*/
     .section-list {
       list-style: none;
       margin-top: 0;
-      padding-left: 1.5rem; /* indent all items */
-    }
-    .section-list > li {
-      margin-bottom: 0.2rem;   /* reduce gap between items */
-    }
-    .section-list > li > strong {
-      font-size: 1.1rem;       /* item title size */
-      font-weight: 600;        /* slightly lighter bold */
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    /*====================================
-      Description text: hidden by default
-    ====================================*/
+    .section-list > li {
+      margin-bottom: 0.4rem;
+    }
+
+    .section-list > li > strong {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
     .description {
       display: none;
-      margin: .25rem 0 .4rem;  /* top/bottom spacing */
-      font-size: .95rem;       /* slightly smaller */
+      margin: 0.2rem 0 1rem;
+      font-size: 0.95rem;
     }
-    /* reveal descriptions when parent toggle is open */
-    details#edu-toggle[open]  ~ #edu-list .description,
-    details#we-toggle[open]   ~ #we-list .description,
-    details#tp-toggle[open]   ~ #tp-list .description {
+
+    details#edu-toggle[open] ~ #edu-list .description,
+    details#we-toggle[open] ~ #we-list .description,
+    details#tp-toggle[open] ~ #tp-list .description {
       display: block;
     }
 
-    /*====================================
-      Skills list hidden until toggle
-    ====================================*/
     #sk-list {
       display: none;
       list-style: none;
-      margin-top: .5rem;
-      padding-left: 1.5rem;    /* same indent as other lists */
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
     }
+
     details#sk-toggle[open] ~ #sk-list {
       display: block;
     }
 
-    /*====================================
-      Mentorship description indentation
-    ====================================*/
     details#ms-toggle > .description {
       display: none;
-      padding-left: 1.5rem;    /* indent to match list */
-      margin: .25rem 0 .4rem;
-      font-size: .95rem;
+      padding-left: 1.5rem;
+      margin: 0.3rem 0 1rem;
+      font-size: 0.95rem;
     }
+
     details#ms-toggle[open] > .description {
       display: block;
     }
 
-    /*====================================
-      Contact section grid
-    ====================================*/
     .contact-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -191,9 +159,6 @@
       margin-top: 1rem;
     }
 
-    /*====================================
-      Theme switch button
-    ====================================*/
     #themeToggle {
       position: fixed;
       top: 1.5rem;
@@ -205,18 +170,17 @@
       z-index: 2000;
       transition: background-color .3s;
     }
+
     #themeToggle:hover {
       background-color: var(--highlight);
     }
 
-    /*====================================
-      Responsive adjustments
-    ====================================*/
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       main {
-        grid-template-columns: 1fr; /* stack columns on small */
+        grid-template-columns: 1fr;
         gap: 3rem;
       }
+
       .contact-columns {
         grid-template-columns: 1fr;
       }
@@ -226,21 +190,20 @@
 <body>
   <div id="themeToggle" title="Switch Theme"></div>
   <main>
-    <!-- Left column: About, Media & Contact -->
     <div class="left-col">
       <section>
         <h2>About</h2>
         <p>My name is Juliette Mangon. I’m a Computer Science and Mathematics student at <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a> passionate about how technology can support creative expression and connect people working across media-driven fields. I’m especially interested in building systems — interfaces, platforms, or algorithms — that are intuitive and thoughtful in how they shape user experience.</p>
         <p>Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>paint</strong></a> in my free time.</p>
       </section>
+
       <section class="media-section">
         <h2>Current Favorite Media</h2>
         <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>, <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>, <a href="https://open.spotify.com/album/7fA59NGyyUumdoTH3HmWav" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
         <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a>, <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
         <p><strong>TV:</strong> <a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a>, <a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a></p>
-
-
       </section>
+
       <section>
         <h2>Contact</h2>
         <div class="contact-columns">
@@ -257,36 +220,39 @@
       </section>
     </div>
 
-    <!-- Right column: Resume -->
     <section>
-      <h2><a href="_JulietteMangonResume.pdf" target="_blank">Resume</a></h2>
+      <h2>
+        Resume
+        <a href="_JulietteMangonResume.pdf" target="_blank" style="font-size: 1rem; font-weight: 400; margin-left: 0.5rem;">(PDF)</a>
+      </h2>
+
+
       <details id="edu-toggle" open><summary>Education</summary></details>
       <ul id="edu-list" class="section-list">
-        <li>
-          <strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)
-          <p class="description">Coursework: Natural Language Processing, Operating Systems, Real Analysis, Topology.</p>
-        </li>
-        <li>
-          <strong>Minor in Business of Entertainment, Media, and Technology</strong>
-          <p class="description">Coursework: Entertainment & Media Industries; Business of Film; Video Games; Globalization of Media.</p>
-        </li>
+        <li><strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)<p class="description">Coursework: Natural Language Processing, Operating Systems, Real Analysis, Topology.</p></li>
+        <li><strong>Minor in Business of Entertainment, Media, and Technology</strong><p class="description">Coursework: Entertainment & Media Industries; Business of Film; Video Games; Globalization of Media.</p></li>
       </ul>
+
       <details id="we-toggle" open><summary>Work Experience</summary></details>
       <ul id="we-list" class="section-list">
         <li><strong>AI/ML Intern</strong>, Enlaye (2025)<p class="description">Built an LLM-based query preprocessor for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.</p></li>
         <li><strong>Website Developer</strong>, Tryst Restaurant (2025)<p class="description">Rebuilt the restaurant’s site with HTML/CSS/JS, boosting load speed, mobile UX, and SEO rankings.</p></li>
-        <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)<p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; led Figma UI design and competitive feature analysis.</p></li>
+        <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)<p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; assisted Figma UI design and competitive feature analysis.</p></li>
         <li><strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)<p class="description">Graded national math contest entries, evaluating rigor and providing detailed feedback to students.</p></li>
       </ul>
-      <details id="ms-toggle" open><summary>She Is The Music Mentorship</summary>
+
+      <details id="ms-toggle" open>
+        <summary>She Is The Music Mentorship</summary>
         <p class="description">Selected for She Is The Music’s program under Anna Skelsey, developing a music-tech project for an industry panel.</p>
       </details>
+
       <details id="tp-toggle" open><summary>Technical Projects</summary></details>
       <ul id="tp-list" class="section-list">
         <li><strong>Custom Portfolio Websites</strong><p class="description">Built responsive React/Tailwind portfolio sites for artists, focusing on interactivity and clean storytelling.</p></li>
         <li><strong>Plagiarism Detection Enhancement Project</strong><p class="description">Engineered an NLP plagiarism detector with TF-IDF & Word2Vec; improved precision via iterative tuning.</p></li>
         <li><strong>Ad Hoc Information Retrieval System</strong><p class="description">Created a TF-IDF/cosine-sim engine to match 225 queries against 1,400 abstracts; measured with MAP scores.</p></li>
       </ul>
+
       <details id="sk-toggle" open><summary>Skills</summary></details>
       <ul id="sk-list">
         <li>Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
