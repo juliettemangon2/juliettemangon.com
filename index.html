@@ -26,15 +26,21 @@
       font-size: 1.05rem;
       height: 100%;
       overflow-x: hidden;
+      word-wrap: break-word;
+      max-width: 100%;
     }
 
     main {
       margin-top: 4rem;
       padding: 1rem 5vw 3rem;
       display: grid;
-      grid-template-columns: 38% 62%;
+      grid-template-columns: 1fr 1.25fr;
       gap: 5rem;
       align-items: start;
+    }
+
+    main > * {
+      min-width: 0;
     }
 
     .left-col {
@@ -67,7 +73,6 @@
       color: var(--highlight);
     }
 
-    /* Summary toggles */
     details {
       margin-bottom: 0;
     }
@@ -226,16 +231,15 @@
         <a href="_JulietteMangonResume.pdf" target="_blank" style="font-size: 1rem; font-weight: 400; margin-left: 0.5rem;">(PDF)</a>
       </h2>
 
-
       <details id="edu-toggle" open><summary>Education</summary></details>
       <ul id="edu-list" class="section-list">
-        <li><strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)<p class="description">Coursework: Natural Language Processing, Operating Systems, Real Analysis, Topology.</p></li>
-        <li><strong>Minor in Business of Entertainment, Media, and Technology</strong><p class="description">Coursework: Entertainment & Media Industries; Business of Film; Video Games; Globalization of Media.</p></li>
+        <li><strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)<p class="description">Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Natural Language Processing, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability.</p></li>
+        <li><strong>Minor in Business of Entertainment, Media, and Technology</strong><p class="description">Coursework: Entertainment & Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.</p></li>
       </ul>
 
       <details id="we-toggle" open><summary>Work Experience</summary></details>
       <ul id="we-list" class="section-list">
-        <li><strong>AI/ML Intern</strong>, Enlaye (2025)<p class="description">Built an LLM-based query preprocessor for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.</p></li>
+        <li><strong>AI/ML Intern</strong>, Enlaye (2025)<p class="description">Building an LLM-based query preprocessor for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.</p></li>
         <li><strong>Website Developer</strong>, Tryst Restaurant (2025)<p class="description">Rebuilt the restaurant’s site with HTML/CSS/JS, boosting load speed, mobile UX, and SEO rankings.</p></li>
         <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)<p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; assisted Figma UI design and competitive feature analysis.</p></li>
         <li><strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)<p class="description">Graded national math contest entries, evaluating rigor and providing detailed feedback to students.</p></li>
@@ -255,8 +259,8 @@
 
       <details id="sk-toggle" open><summary>Skills</summary></details>
       <ul id="sk-list">
-        <li>Java, C++, C, Python, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
-        <li>Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
+        <li>Python, Java, C++, C, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
+        <li>AWS, Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
         <li>English, French, Spanish (Conversational)</li>
       </ul>
     </section>
