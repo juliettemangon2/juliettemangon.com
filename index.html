@@ -87,7 +87,7 @@
       font-size: 1.25rem;
       cursor: pointer;
       font-weight: 700;
-      margin-top: 1.5rem;
+      margin-top: 0.9rem;
       margin-bottom: 0.5rem;
     }
 
@@ -157,6 +157,17 @@
     }
 
     details#ms-toggle[open] > .description {
+      display: block;
+    }
+    .sublist {
+      display: none;
+      list-style: none;
+      margin-top: 0.3rem;
+      padding-left: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .details-inline[open] > .sublist {
       display: block;
     }
 
@@ -256,11 +267,11 @@
       <details id="tp-toggle" open><summary>Projects</summary></details>
 <ul id="tp-list" class="section-list">
   <li>
-    <a href="https://juliettemangon2.github.io/amandine/" target="_blank"><strong>Custom Portfolio Websites</strong></a>
+    <a><strong>Custom Portfolio Websites</strong></a>
     <p class="description">
       Built responsive React/Tailwind portfolio sites for artists, focusing on interactivity and clean storytelling.
       Featured projects:
-      <ul class="section-list">
+      <ul class="sublist">
         <li><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging</a></li>
         <li><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing</a></li>
         <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris Fitzgerald: Studio portraits, street photography, and editorial work</a></li>
