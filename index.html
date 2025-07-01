@@ -11,13 +11,11 @@
       --text: #D10000;
       --highlight: #BFFF00;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     html, body {
       background: var(--bg);
       color: var(--text);
@@ -29,7 +27,6 @@
       word-wrap: break-word;
       max-width: 100%;
     }
-
     main {
       margin-top: 4rem;
       padding: 1rem 5vw 3rem;
@@ -38,48 +35,27 @@
       gap: 5rem;
       align-items: start;
     }
-
-    main > * {
-      min-width: 0;
-    }
-
+    main > * { min-width: 0; }
     .left-col {
       display: flex;
       flex-direction: column;
       gap: 3rem;
     }
-    .left-col section:first-of-type p {
-      margin-bottom: 1rem;
-    }
-
-    section {
-      width: 100%;
-    }
-
+    .left-col section:first-of-type p { margin-bottom: 1rem; }
+    section { width: 100%; }
     h2 {
       font-size: 2.1rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
-
-    .media-section {
-      margin-top: 0.5rem;
-    }
-
+    .media-section { margin-top: 0.5rem; }
     a {
       color: var(--text);
       text-decoration: none;
       transition: color .2s;
     }
-
-    a:hover {
-      color: var(--highlight);
-    }
-
-    details {
-      margin-bottom: 0;
-    }
-
+    a:hover { color: var(--highlight); }
+    details { margin-bottom: 0; }
     details > summary {
       list-style: none;
       padding-left: 1.2rem;
@@ -87,97 +63,78 @@
       font-size: 1.25rem;
       cursor: pointer;
       font-weight: 700;
-      margin-top: 0.9rem;
-      margin-bottom: 0.5rem;
+      margin: .9rem 0 .5rem;
     }
-
     summary::-webkit-details-marker,
     summary::-moz-list-bullet,
     summary::marker {
       display: none;
       content: none;
     }
-
     summary::before {
       content: "▶";
       position: absolute;
       left: 0;
-      top: 0.1rem;
+      top: .1rem;
       transition: transform .2s;
     }
-
     details[open] > summary::before {
       transform: rotate(90deg);
     }
-
     .section-list {
       list-style: none;
-      margin-top: 0;
       padding-left: 1.5rem;
-      margin-bottom: 1.5rem;
+      margin: 0 0 1.5rem;
     }
-
-    .section-list > li {
-      margin-bottom: 0.4rem;
-    }
-
+    .section-list > li { margin-bottom: .4rem; }
     .section-list > li > strong {
       font-size: 1.05rem;
       font-weight: 600;
     }
-
     .description {
       display: none;
-      margin: 0.2rem 0 1rem;
-      font-size: 0.95rem;
+      margin: .2rem 0 1rem;
+      font-size: .95rem;
     }
-
     details#edu-toggle[open] ~ #edu-list .description,
     details#we-toggle[open] ~ #we-list .description,
     details#tp-toggle[open] ~ #tp-list .description {
       display: block;
     }
-
     #sk-list {
       display: none;
       list-style: none;
-      margin-top: 0.5rem;
+      margin-top: .5rem;
       padding-left: 1.5rem;
     }
-
     details#sk-toggle[open] ~ #sk-list {
       display: block;
     }
-
     details#ms-toggle > .description {
       display: none;
       padding-left: 1.5rem;
-      margin: 0.3rem 0 1rem;
-      font-size: 0.95rem;
+      margin: .3rem 0 1rem;
+      font-size: .95rem;
     }
-
     details#ms-toggle[open] > .description {
       display: block;
     }
     .sublist {
       display: none;
       list-style: none;
-      margin-top: 0.3rem;
+      margin-top: .3rem;
       padding-left: 1rem;
-      font-size: 0.95rem;
+      font-size: .95rem;
     }
-    
     .details-inline[open] > .sublist {
       display: block;
     }
-
     .contact-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       margin-top: 1rem;
     }
-
     #themeToggle {
       position: fixed;
       top: 1.5rem;
@@ -189,20 +146,10 @@
       z-index: 2000;
       transition: background-color .3s;
     }
-
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
+    #themeToggle:hover { background-color: var(--highlight); }
     @media (max-width: 768px) {
-      main {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .contact-columns {
-        grid-template-columns: 1fr;
-      }
+      main { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-columns { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -212,15 +159,38 @@
     <div class="left-col">
       <section>
         <h2>About</h2>
-        <p>My name is Juliette Mangon. I’m a Computer Science and Mathematics student at <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a> passionate about how technology can support creative expression and connect people working across media-driven fields. I’m especially interested in building systems — interfaces, platforms, or algorithms — that are intuitive and thoughtful in how they shape user experience.</p>
-        <p>Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>paint</strong></a> in my free time.</p>
+        <p>
+          My name is Juliette Mangon. I’m a Computer Science and Mathematics student at
+          <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a> passionate about how technology can support creative expression and
+          connect people working across media-driven fields. I’m especially interested in building systems—interfaces, platforms, or algorithms—that
+          are intuitive and thoughtful in how they shape user experience.
+        </p>
+        <p>
+          Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to
+          <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>paint</strong></a> in my free time.
+        </p>
       </section>
 
       <section class="media-section">
         <h2>Current Favorite Media</h2>
-        <p><strong>Albums:</strong> <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>, <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>, <a href="https://open.spotify.com/album/7fA59NGyyUumdoTH3HmWav" target="_blank">Five Dice, All Threes</a>, <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
-        <p><strong>Movies:</strong> <a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a>, <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>, <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
-        <p><strong>TV:</strong> <a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a>, <a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a></p>
+        <p>
+          <strong>Albums:</strong>
+          <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>,
+          <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>,
+          <a href="https://open.spotify.com/album/7fA59NGyyUumdoTH3HmWav" target="_blank">Five Dice, All Threes</a>,
+          <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a>
+        </p>
+        <p>
+          <strong>Movies:</strong>
+          <a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a>,
+          <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>,
+          <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a>
+        </p>
+        <p>
+          <strong>TV:</strong>
+          <a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a>,
+          <a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a>
+        </p>
       </section>
 
       <section>
@@ -242,60 +212,123 @@
     <section>
       <h2>
         Resume
-        <a href="_JulietteMangonResume.pdf" target="_blank" style="font-size: 1rem; font-weight: 400; margin-left: 0.5rem;">(PDF)</a>
+        <a href="_JulietteMangonResume.pdf" target="_blank" style="font-size: 1rem; font-weight: 400; margin-left: .5rem;">(PDF)</a>
       </h2>
 
       <details id="edu-toggle" open><summary>Education</summary></details>
       <ul id="edu-list" class="section-list">
-        <li><strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)<p class="description">Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Natural Language Processing, Numerical Computing, Operating Systems, Real Analysis, Theory of Probability.</p></li>
-        <li><strong>Minor in Business of Entertainment, Media, and Technology</strong><p class="description">Coursework: Entertainment & Media Industries, Globalization of the Entertainment Industry, Business Structure of the Music Industry, Business of Film, Business of Video Games.</p></li>
+        <li>
+          <strong>B.A. in Computer Science and Mathematics</strong>, NYU (2023–2025)
+          <p class="description">
+            Coursework: Algorithms, Applied Internet Technology, Computer Systems Organization, Natural Language Processing,
+            Numerical Computing, Operating Systems, Real Analysis, Theory of Probability.
+          </p>
+        </li>
+        <li>
+          <strong>Minor in Business of Entertainment, Media, and Technology</strong>
+          <p class="description">
+            Coursework: Entertainment & Media Industries, Globalization of the Entertainment Industry,
+            Business Structure of the Music Industry, Business of Film, Business of Video Games.
+          </p>
+        </li>
       </ul>
 
       <details id="we-toggle" open><summary>Work Experience</summary></details>
       <ul id="we-list" class="section-list">
-        <li><strong>AI/ML Intern</strong>, Enlaye (2025)<p class="description">Building an query preprocessing agent for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.</p></li>
-        <li><strong>Website Developer</strong>, Tryst Restaurant (2025)<p class="description">Rebuilt the restaurant’s site with HTML/CSS/JS. Improved user experience through responsive layout design, added SEO optimizations, and enhanced accessibility and site performance across devices.</p></li>
-        <li><strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)<p class="description">Graded national proof based math contest entries, evaluating rigor and providing detailed feedback to students.</p></li>
-        <li><strong>Photoville Intern</strong>, Regenerating Inc. (2024)<p class="description">Developed an AI-powered SwiftUI photo editor using OpenCV; assisted Figma UI design and competitive feature analysis.</p></li>
+        <li>
+          <strong>AI/ML Intern</strong>, Enlaye (2025)
+          <p class="description">
+            Building a query preprocessing agent for Enlaye’s contract AI platform, optimizing performance via prompt-engineering tests.
+          </p>
+        </li>
+        <li>
+          <strong>Website Developer</strong>, Tryst Restaurant (2025)
+          <p class="description">
+            Rebuilt the restaurant’s site with HTML/CSS/JS. Improved UX through responsive layouts, added SEO optimizations,
+            and enhanced accessibility and performance.
+          </p>
+        </li>
+        <li>
+          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)
+          <p class="description">
+            Graded national proof-based math contest entries, evaluating rigor and providing detailed feedback.
+          </p>
+        </li>
+        <li>
+          <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
+          <p class="description">
+            Developed an AI-powered SwiftUI photo editor using OpenCV; assisted Figma UI design and competitive feature analysis.
+          </p>
+        </li>
       </ul>
 
       <details id="ms-toggle" open>
         <summary>Connect TogetHER Music Tech Mentorship</summary>
-        <p class="description">Selected for <a href="https://sheisthemusic.org/" target="_blank"><strong>She Is The Music</strong></a>’s mentorship program under Anna Skelsey, developing a music-tech project.</p>
+        <p class="description">
+          Selected for <a href="https://sheisthemusic.org/" target="_blank"><strong>She Is The Music</strong></a>’s mentorship program under Anna Skelsey,
+          developing a music-tech project.
+        </p>
       </details>
 
       <details id="tp-toggle" open><summary>Projects</summary></details>
-<ul id="tp-list" class="section-list">
-  <li>
-    <a><strong>Custom Portfolio Websites</strong></a>
-    <p class="description">
-      Built responsive custom portfolio websites for photographers and visual artists using React, Tailwind CSS, and JavaScript. Emphasized interactive UI components and distinctive visual layouts tailored to each client's brand.
-      Featured projects:
-    </p>
-    <ul class="sublist">
-      <li><a href="https://juliettemangon2.github.io/amandine/" target="_blank">Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging</a></li>
-      <li><a href="https://mateoantoniomartinez.com/" target="_blank">Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing</a></li>
-      <li><a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">Chris Fitzgerald: Studio portraits, street photography, and editorial work</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank"><strong>Plagiarism Detection Enhancement Project</strong></a>
-    <p class="description">Engineered an NLP plagiarism detector with TF-IDF & Word2Vec; improved precision via iterative tuning.</p>
-  </li>
-  <li>
-    <a href="Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank"><strong>Spotify Listening Behavior Case Study</strong></a>
-    <p class="description">Explored how Spotify’s interface and recommendation algorithms influence listening habits and music discovery, analyzing the psychological and technical dynamics of playlisting, autoplay, and algorithmic curation.</p>
-  </li>
-  <li>
-    <a href="Businessof%20Video%20games%20final.pdf" target="_blank"><strong>Fashion in Video Games Proposal</strong></a>
-    <p class="description">A proposal for Kering to invest in digital fashion tools for UGC platforms to engage younger audiences and extend brand identity into virtual economies through branded templates and avatar assets.</p>
-  </li>
-  <li>
-    <a href="MUSIC%20AI.pdf" target="_blank"><strong>AI in Music Creation Analysis</strong></a>
-    <p class="description">Explored the creative, ethical, and copyright implications of generative AI models in music composition.</p>
-  </li>
-</ul>
-
+      <ul id="tp-list" class="section-list">
+        <li>
+          <a><strong>Custom Portfolio Websites</strong></a>
+          <p class="description">
+            Built responsive portfolio sites for photographers and visual artists using React, Tailwind CSS, and JavaScript.
+            Emphasized interactive UI components and tailored visual layouts.
+          </p>
+          <ul class="sublist">
+            <li>
+              <a href="https://juliettemangon2.github.io/amandine/" target="_blank">
+                Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging
+              </a>
+            </li>
+            <li>
+              <a href="https://mateoantoniomartinez.com/" target="_blank">
+                Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing
+              </a>
+            </li>
+            <li>
+              <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">
+                Chris Fitzgerald: Studio portraits, street photography, and editorial work
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank">
+            <strong>Plagiarism Detection Enhancement Project</strong>
+          </a>
+          <p class="description">
+            Engineered an NLP plagiarism detector with TF-IDF & Word2Vec; improved precision via iterative tuning.
+          </p>
+        </li>
+        <li>
+          <a href="Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank">
+            <strong>Spotify Listening Behavior Case Study</strong>
+          </a>
+          <p class="description">
+            Explored how Spotify’s interface and recommendation algorithms influence listening habits and music discovery,
+            analyzing the psychological and technical dynamics of playlisting, autoplay, and algorithmic curation.
+          </p>
+        </li>
+        <li>
+          <a href="Businessof%20Video%20games%20final.pdf" target="_blank">
+            <strong>Fashion in Video Games Proposal</strong>
+          </a>
+          <p class="description">
+            Proposed that Kering invest in digital fashion tools for UGC platforms like Roblox and Fortnite to engage younger audiences
+            and extend brand identity into virtual economies through branded templates and avatar assets.
+          </p>
+        </li>
+        <li>
+          <a href="MUSIC%20AI.pdf" target="_blank"><strong>AI in Music Creation Analysis</strong></a>
+          <p class="description">
+            Explored the creative, ethical, and copyright implications of generative AI models in music composition.
+          </p>
+        </li>
+      </ul>
 
       <details id="sk-toggle" open><summary>Skills</summary></details>
       <ul id="sk-list">
@@ -315,14 +348,14 @@
     };
     const order = ['default','alt','green','yellow'];
     function applyTheme(name) {
-      Object.entries(themes[name]).forEach(([k,v])=>{
-        document.documentElement.style.setProperty(k,v);
+      Object.entries(themes[name]).forEach(([k,v]) => {
+        document.documentElement.style.setProperty(k, v);
       });
-      localStorage.setItem('theme',name);
+      localStorage.setItem('theme', name);
     }
-    applyTheme(localStorage.getItem('theme')||'default');
-    document.getElementById('themeToggle').addEventListener('click', ()=>{
-      const idx = (order.indexOf(localStorage.getItem('theme'))+1)%order.length;
+    applyTheme(localStorage.getItem('theme') || 'default');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const idx = (order.indexOf(localStorage.getItem('theme')) + 1) % order.length;
       applyTheme(order[idx]);
     });
   </script>
