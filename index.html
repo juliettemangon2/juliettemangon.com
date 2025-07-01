@@ -65,6 +65,12 @@
       font-weight: 700;
       margin: .9rem 0 .5rem;
     }
+    b {
+      color: var(--text);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    b:hover { text-decoration: none; }
     summary::-webkit-details-marker,
     summary::-moz-list-bullet,
     summary::marker {
@@ -275,7 +281,7 @@
       <details id="tp-toggle" open><summary>Projects</summary></details>
       <ul id="tp-list" class="section-list">
         <li>
-          <a><strong>Custom Portfolio Websites</strong></a>
+          <b><strong>Custom Portfolio Websites</strong></b>
           <p class="description">
             Built responsive portfolio sites for photographers and visual artists using React, Tailwind CSS, and JavaScript.
             Emphasized interactive UI components and tailored visual layouts.
