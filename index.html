@@ -39,14 +39,14 @@
     .left-col {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 1rem;
     }
     .left-col section:first-of-type p { margin-bottom: 1rem; }
     section { width: 100%; }
     h2 {
       font-size: 2.1rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .media-section { margin-top: 0.5rem; }
     a {
@@ -140,7 +140,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 0rem;
     }
     #themeToggle {
       position: fixed;
@@ -190,7 +190,7 @@
         <p>
           <strong>Movies:</strong>
           <a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a>,
-          <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>,
+          
           <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a>,
           <a href="https://www.imdb.com/title/tt19637052/" target="_blank">Love Lies Bleeding</a>
 
@@ -215,7 +215,7 @@
           </div>
           <div>
             <p><a href="https://github.com/juliettemangon2" target="_blank">GitHub</a></p>
-            <p><a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">She Is The Music profile</a></p>
+            <p><a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">She Is The Music </a></p>
           </div>
         </div>
       </section>
@@ -344,9 +344,9 @@
 
       <details id="sk-toggle" open><summary>Skills</summary></details>
       <ul id="sk-list">
-        <li>Python, Java, C++, C, JavaScript, React, HTML, CSS, MATLAB, Haskell, Assembly, BASIC</li>
-        <li>AWS, Git, GitHub, Docker, Figma, LaTeX, Unix/Linux, Excel, Google Suite, Node.js, NPM, Vite</li>
-        <li>English, French, Spanish (Conversational)</li>
+        <li><strong>Languages & Frameworks: </strong>Python, Java, C++, C, JavaScript, React, HTML, CSS, MATLAB, Assembly</li>
+        <li><strong>Tools & Platforms: </strong>AWS, Git, GitHub, NPM, Vite, Docker, Unix/Linux, LaTeX, Excel, Google Suite, Ollama, APIs </li>
+        <li><strong>Spoken Languages: </strong>English, French, Spanish (Conversational)</li>
       </ul>
     </section>
   </main>
@@ -355,8 +355,8 @@
     const themes = {
       default: { '--bg': '#FF9FD5', '--text': '#D10000', '--highlight': '#BFFF00' },
       alt:     { '--bg': '#B8F3FF', '--text': '#017BE6', '--highlight': '#FF9DFF' },
-      green:   { '--bg': '#AFBDD6', '--text': '#F6FA63', '--highlight': '#AB005B' },
-      yellow:  { '--bg': '#FBFF8E', '--text': '#A272BF', '--highlight': '#FFBC1F' }
+      green:   { '--bg': '#9cb1d3', '--text': '#F6FA63', '--highlight': '#AB005B' },
+      yellow:  { '--bg': '#ff9900', '--text': '#f5e4ff', '--highlight': '#FBFF8E' }
     };
     const order = ['default','alt','green','yellow'];
     function applyTheme(name) {
