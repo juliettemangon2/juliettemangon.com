@@ -31,8 +31,8 @@
       margin-top: 4rem;
       padding: 1rem 5vw 3rem;
       display: grid;
-      grid-template-columns: 1fr 1.25fr;
-      gap: 5rem;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
       align-items: start;
     }
     main > * { min-width: 0; }
@@ -142,6 +142,37 @@
       gap: 1rem;
       margin-top: 0rem;
     }
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1.5fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .media-grid div {
+      padding-right: 1rem;
+    }
+    #collapseToggle {
+      position: fixed;
+      top: 1.77rem;
+      right: 3.7rem; /* offset to the left of theme toggle */
+      width: 20px;
+      height: 20px;
+      background-color: var(--text);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #collapseToggle:hover {
+      background-color: var(--highlight);
+    }
+
+
+
     #themeToggle {
       position: fixed;
       top: 1.5rem;
@@ -161,6 +192,7 @@
   </style>
 </head>
 <body>
+  <div id="collapseToggle" title="Collapse/Expand Resume Sections"></div>
   <div id="themeToggle" title="Switch Theme"></div>
   <main>
     <div class="left-col">
@@ -173,37 +205,42 @@
           are intuitive and thoughtful in how they shape user experience.
         </p>
         <p>
-          Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to
-          <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>paint</strong></a> in my free time.
+          Outside of tech, I care deeply about the environment and how innovation impacts sustainability. I also love to paint in my free time.
+        </p>
+        <p>
+          Check out my painting portfolio 
+          <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>here.</strong></a> 
         </p>
       </section>
 
       <section class="media-section">
-        <h2>Current Favorite Media</h2>
-        <p>
+      <h2>Current Favorite Media</h2>
+      <div class="media-grid">
+        <div>
           <strong>Albums:</strong>
-          <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a>,
-          <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a>,
-          <a href="https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg" target="_blank">The Bends</a>,
-          <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a>
-        </p>
-        <p>
+          <p><a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a></p>
+          <p><a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a></p>
+          <p><a href="https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg" target="_blank">The Bends</a></p>
+          <p><a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
+        </div>
+        <div>
           <strong>Movies:</strong>
-          <a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a>,
-          
-          <a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a>,
-          <a href="https://www.imdb.com/title/tt19637052/" target="_blank">Love Lies Bleeding</a>
-
-        </p>
-        <p>
+          <p><a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a></p>
+          <p><a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
+          <p><a href="https://www.imdb.com/title/tt19637052/" target="_blank">Love Lies Bleeding</a></p>
+          <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>
+        </div>
+        <div>
           <strong>TV:</strong>
-          <a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a>,
-          <a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a>, 
-          <a href="https://www.imdb.com/title/tt3526078/" target="_blank">Schitt's Creek</a>,
-          <a href="https://www.imdb.com/title/tt6468322/" target="_blank">Money Heist</a>
+          <p><a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a></p>
+          <p><a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a></p>
+          <p><a href="https://www.imdb.com/title/tt3526078/" target="_blank">Schitt's Creek</a></p>
+          <p><a href="https://www.imdb.com/title/tt6468322/" target="_blank">Money Heist</a></p>
+        </div>
+      </div>
+    </section>
 
-        </p>
-      </section>
+
 
       <section>
         <h2>Contact</h2>
@@ -337,7 +374,7 @@
         <li>
           <a href="MUSIC%20AI.pdf" target="_blank"><strong>AI in Music Creation Analysis</strong></a>
           <p class="description">
-            Explored the creative, ethical, and copyright implications of generative AI models in music composition.
+            Explored how generative AI is changing music creation, raising new questions about authorship, originality, and the role of human input in creative work.
           </p>
         </li>
       </ul>
@@ -370,6 +407,22 @@
       const idx = (order.indexOf(localStorage.getItem('theme')) + 1) % order.length;
       applyTheme(order[idx]);
     });
+    const collapseToggle = document.getElementById("collapseToggle");
+    let collapsed = false;
+
+    collapseToggle.addEventListener("click", () => {
+      const toggles = document.querySelectorAll("section details");
+      toggles.forEach(detail => {
+        if (collapsed) {
+          detail.setAttribute("open", true);
+        } else {
+          detail.removeAttribute("open");
+        }
+      });
+      collapsed = !collapsed;
+    });
+
+
   </script>
 </body>
 </html>
