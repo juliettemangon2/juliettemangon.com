@@ -7,9 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #FF9FD5;
-      --text: #D10000;
-      --highlight: #BFFF00;
+      --bg: #e1ecff;
+      --text: #80074f;
+      --highlight: #6fc1de;
     }
     * {
       margin: 0;
@@ -416,15 +416,15 @@
       © 2025 Juliette Mangon
     </p>
   </footer>
+  
 
   <script>
     const themes = {
-      default: { '--bg': '#FF9FD5', '--text': '#D10000', '--highlight': '#BFFF00' },
-      alt:     { '--bg': '#d1f3ff', '--text': '#3588a6  ', '--highlight': '#FF9DFF' },
-      green:   { '--bg': '#9cb1d3', '--text': '#F6FA63', '--highlight': '#AB005B' },
-      yellow:  { '--bg': '#ff9900', '--text': '#f5e4ff', '--highlight': '#FBFF8E' }
+      default: { '--bg': '#e1ecff', '--text': '#80074f', '--highlight': '#6fc1de ' },
+      alt:     { '--bg': '#d1f3ff', '--text': '#1f7e96  ', '--highlight': '#FF9DFF' },
+      gray:   { '--bg': '#9cb1d3', '--text': '#ffa', '--highlight': '#AB005B' },
     };
-    const order = ['default','alt','green','yellow'];
+    const order = ['default','alt','gray'];
     function applyTheme(name) {
       Object.entries(themes[name]).forEach(([k,v]) => {
         document.documentElement.style.setProperty(k, v);
