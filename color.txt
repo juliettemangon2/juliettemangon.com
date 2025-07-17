@@ -1,0 +1,9 @@
+#d1f3ff;
+#6fc1de 
+#B8F3FF 
+rgb(120, 155, 211)
+#80074f
+#d10000
+#ffb7e0
+#ffbf00
+pink:  { '--bg': '#ffa2d7   ', '--text': '#Df0000', '--highlight': '#BFFF00' }

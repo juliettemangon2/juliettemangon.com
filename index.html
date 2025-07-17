@@ -66,12 +66,6 @@
       font-weight: 700;
       margin: .9rem 0 .5rem;
     }
-    b {
-      color: var(--text);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    b:hover { text-decoration: none; }
     summary::-webkit-details-marker,
     summary::-moz-list-bullet,
     summary::marker {
@@ -145,33 +139,29 @@
     }
     .photos {
       margin-top: 2rem;
-      margin-left: rem;
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     .photos img {
-      width: 530px;
+      width: 100%;
+      max-width: 530px;
       height: auto;
       object-fit: cover;
       transition: transform 0.3s;
+      flex: 1 1 48%;
     }
-    
     .media-grid {
       display: grid;
       grid-template-columns: 1.3fr 1.5fr 1fr;
       gap: 1rem;
       margin-top: 0.5rem;
     }
-
-    .media-grid div {
-      padding-right: 1rem;
-    }
+    .media-grid div { padding-right: 1rem; }
     #collapseToggle {
       position: fixed;
       top: 1.77rem;
-      right: 3.7rem; /* offset to the left of theme toggle */
+      right: 3.7rem;
       width: 20px;
       height: 20px;
       background-color: var(--text);
@@ -182,12 +172,7 @@
       align-items: center;
       justify-content: center;
     }
-
-    #collapseToggle:hover {
-      background-color: var(--highlight);
-    }
-
-
+    #collapseToggle:hover { background-color: var(--highlight); }
     #themeToggle {
       position: fixed;
       top: 1.5rem;
@@ -200,8 +185,24 @@
       transition: background-color .3s;
     }
     #themeToggle:hover { background-color: var(--highlight); }
+
+    /* Tablet screens */
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .contact-columns { grid-template-columns: 1fr; }
+      .media-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Smaller screens */
+    @media (max-width: 900px) {
+      .media-grid { grid-template-columns: 1fr; }
+      .photos img { flex: 1 1 100%; }
+    }
+
     @media (max-width: 768px) {
-      main { grid-template-columns: 1fr; gap: 3rem; }
       .contact-columns { grid-template-columns: 1fr; }
     }
   </style>
@@ -424,40 +425,47 @@
   </footer>
   
 
-  <script>
-    const themes = {
-      default: { '--bg': '#e1ecff', '--text': '#80074f', '--highlight': '#6fc1de ' },
-      alt:     { '--bg': '#d1f3ff', '--text': '#1f7e96  ', '--highlight': '#FF9DFF' },
-      gray:   { '--bg': '#E9E1E2', '--text': '#DF5624', '--highlight': '#ffa' },
-    };
-    const order = ['default','alt','gray'];
-    function applyTheme(name) {
-      Object.entries(themes[name]).forEach(([k,v]) => {
-        document.documentElement.style.setProperty(k, v);
+ <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const themes = {
+        default: { '--bg': '#e1ecff', '--text': '#80074f', '--highlight': '#6fc1de' },
+        alt:     { '--bg': '#d1f3ff', '--text': '#1f7e96', '--highlight': '#FF9DFF' },
+        gray:    { '--bg': '#E9E1E2', '--text': '#DF5624', '--highlight': '#ffa' }
+      };
+      const order = ['default', 'alt', 'gray'];
+
+      function applyTheme(name) {
+        if (!themes[name]) name = 'default';
+        Object.entries(themes[name]).forEach(([k, v]) => {
+          document.documentElement.style.setProperty(k, v);
+        });
+        localStorage.setItem('theme', name);
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      applyTheme(savedTheme && themes[savedTheme] ? savedTheme : 'default');
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const current = localStorage.getItem('theme') || 'default';
+        const idx = (order.indexOf(current) + 1) % order.length;
+        applyTheme(order[idx]);
       });
-      localStorage.setItem('theme', name);
-    }
-    applyTheme(localStorage.getItem('theme') || 'default');
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const idx = (order.indexOf(localStorage.getItem('theme')) + 1) % order.length;
-      applyTheme(order[idx]);
-    });
-    const collapseToggle = document.getElementById("collapseToggle");
-    let collapsed = false;
 
-    collapseToggle.addEventListener("click", () => {
-      const toggles = document.querySelectorAll("section details");
-      toggles.forEach(detail => {
-        if (collapsed) {
-          detail.setAttribute("open", true);
-        } else {
-          detail.removeAttribute("open");
-        }
+      const collapseToggle = document.getElementById("collapseToggle");
+      let collapsed = false;
+
+      collapseToggle.addEventListener("click", () => {
+        const toggles = document.querySelectorAll("section details");
+        toggles.forEach(detail => {
+          if (collapsed) {
+            detail.setAttribute("open", true);
+          } else {
+            detail.removeAttribute("open");
+          }
+        });
+        collapsed = !collapsed;
       });
-      collapsed = !collapsed;
     });
-
-
   </script>
 </body>
 </html>
