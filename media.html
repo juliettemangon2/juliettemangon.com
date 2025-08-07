@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juliette Mangon | Favorite Media</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #e1ecff;
+      --text: #80074f;
+      --highlight: #6fc1de;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      padding: 2rem 5vw;
+      max-width: 100%;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--sections)
+    }
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      color: var(--title)
+    }
+    a:hover {
+      color: var(--highlight);
+    }
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr  1fr;
+      gap: 10rem;
+      margin-top: 0rem;
+    }
+    .media-section {
+      margin-bottom: 2.5rem;
+    }
+    ul.media-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.media-list li {
+      margin-bottom: 0.5rem;
+    }
+    ul.media-list li a {
+      color: var(--titles);
+      font-size: 1.1rem;
+    }
+    ul.media-list li a:hover {
+      color: var(--highlight);
+    }
+    .description {
+      font-size: 0.95rem;
+      font-weight: 550;
+      color: var(--text);
+      margin-top: 0.3rem;
+    }
+    #themeToggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: var(--text);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color .3s;
+    }
+    #themeToggle:hover { background-color: var(--highlight); }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .back-link:hover {
+      color: var(--highlight);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 3rem;
+    }
+  
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">&larr; Back</a>
+  <div id="themeToggle" title="Switch Theme"></div>
+  <section class="media-section"></section>
+    <div class="columns">
+          <div>
+             <h2>Albums</h2>
+              <ul class="media-list">
+                <li>
+                  <a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank" >333 - Bladee</a>
+                  <p class="description">Description.</p>
+
+                </li>
+                <li>
+                  <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank" >This Is Happening - LCD Soundsystem</a>
+                  <p class="description">This is one of my favorite albums because of its musical and lyrical depth. Each track layers contrasting sounds in a way that somehow fits together perfectly. At first, the songs might seem simple or conversational, but repeated listens reveal clever wordplay, cultural references, and a lot of emotional weight. James Murphy pairs sad, sometimes devastating lyrics with music that's danceable and bright. That contrast makes it feel both personal and communal. It's experimental but still intentional.</p>
+                </li>
+                <li>
+                  <a href="https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg" target="_blank" ">The Bends - Radiohead</a>
+                  <p class="description">Description.</p>
+                </li>
+                <li>
+                  <a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank" >Punisher - Phoebe Bridgers</a>
+                  <p class="description">Description.</p>
+                </li>
+              </ul>
+          </div>
+          <div>
+            <h2>Painters</h2>
+    <ul class="media-list">
+      <li>
+        <a href="https://www.instagram.com/pokidyshev_art/" target="_blank" >Ivan Pokidyshev</a>
+        <p class="description">Description.</p>
+      </li>
+      <li><a href="https://www.instagram.com/aunt.ag0ny/" target="_blank" >Amy Renee Webb</a>
+        <p class="description">Description.</p>
+      </li>
+      <li><a href="https://www.instagram.com/laurafootes/" target="_blank" ">Laura Footes</a>
+        <p class="description">Description.</p>
+      </li>
+      <li><a href="https://www.instagram.com/dylanrose_rheingold/" target="_blank" >Dylan Rheingold</a>
+        <p class="description">Description.</p>
+      </li>
+    </ul>
+          </div>
+        </div>
+  </section>
+  <section class="media-section"></section>
+    <div class="columns">
+          <div>
+             <h2>Movies</h2>
+    <ul class="media-list">
+      <li>
+        <a href="https://www.imdb.com/title/tt5726616/" target="_blank" >Call Me by Your Name</a>
+        <p class="description">Everything is so visually beautiful. I love the way it was filmed and the locations they chose. Timothée Chalamet is incredible in this—he plays his role so well. I love the summer vibe and the mix of languages. He captures teenage embarrassment and emotion perfectly.</p>
+      </li>
+      <li>
+        <a href="https://www.imdb.com/title/tt19637052/" target="_blank" >Love Lies Bleeding</a>
+        <p class="description">My favorite shot is the egg yolks and cigarettes going into the trash. I love this movie because it’s funny at times, sweet at others, but also completely wild. Both main actors are amazing. The timeline can be a little confusing, but I like how they play with it.</p>
+      </li>
+      <li>
+        <a href="https://www.imdb.com/title/tt6751668/" target="_blank" >Parasite</a>
+        <p class="description">Such a great story with amazing character development. This movie makes me anxious and uncomfortable in the best way. It feels like I’m always bracing for something bad to happen, and then it hits out of nowhere. The characters are so interesting, with traits that are both relatable and frustrating. Visually, it’s beautiful too.</p>
+      </li>
+      <li>
+        <a href="https://www.imdb.com/title/tt2267998/" target="_blank" >Gone Girl</a>
+        <p class="description">Such a good thriller. Creepy and strange in parts, but also really fun to watch. I love the way the story is told. Rosamund Pike is incredible—such a powerful lead.</p>
+      </li>
+    </ul>
+          </div>
+          <div>
+             <h2>TV Shows</h2>
+    <ul class="media-list">
+      <li>
+        <a href="https://www.imdb.com/title/tt6468322/" target="_blank" >Money Heist</a>
+        <p class="description">The first few seasons are so well done. Each character is developed so carefully, and the plot is intricate and satisfying, even when things go wrong. It feels like a constant game of ping pong. It’s too bad the show can only keep that level for so long.</p>
+      </li>
+      <li>
+        <a href="https://www.imdb.com/title/tt3526078/" target="_blank" >Schitt's Creek</a>
+        <p class="description">Comedic genius. This show is funny and smart, and I actually laugh out loud so often. I was surprised by how visually pleasing it is too. Some moments are kind of gross, but that’s the point.</p>
+      </li>
+      <li>
+        <a href="https://www.imdb.com/title/tt1723816/" target="_blank" >Girls</a>
+        <p class="description">Currently watching this and enjoying it. Super cringe, super relatable, and sometimes funny. Not much else to say.</p>
+      </li>
+      <li>
+        <a href="https://www.imdb.com/title/tt0159206/" target="_blank" >Sex and the City</a>
+        <p class="description">So much more fabulous than people give it credit for. Everyone knows about the fashion, but even the little details are perfect. It’s exactly what I’d want this show to be. And yes, Carrie hating cooking is very relatable.</p>
+      </li>
+    </ul>
+          </div>
+        </div>
+  </section>
+  
+
+  <footer>
+    <p>© 2025 Juliette Mangon</p>
+  </footer>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const themes = {
+        default: { '--bg': '#e4e6ff', '--text': '#ff6200', '--highlight': '#e9ffa8', '--sections': '#1686a5ff', '--titles': '#005c76ff' },
+        alt:     { '--bg': '#e1ecff', '--text': '#6180a7ff', '--highlight': '#FF9DFF', '--sections': '#ff3370ff', '--titles': '#c8026fff' },
+        gray:    { '--bg': '#FFDCF6 ', '--text': '#d60b6dff', '--highlight': '#ff28a9', '--sections': '#3c44b3ff', '--titles': '#ff6933ff' }
+      };
+      const order = ['default', 'alt', 'gray']; 
+
+      function applyTheme(name) {
+        if (!themes[name]) name = 'default';
+        Object.entries(themes[name]).forEach(([k, v]) => {
+          document.documentElement.style.setProperty(k, v);
+        });
+        localStorage.setItem('theme', name);
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      applyTheme(savedTheme && themes[savedTheme] ? savedTheme : 'default');
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const current = localStorage.getItem('theme') || 'default';
+        const idx = (order.indexOf(current) + 1) % order.length;
+        applyTheme(order[idx]);
+      });
+    });
+  </script>
+</body>
+</html>

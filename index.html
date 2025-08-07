@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Juliette Mangon</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #e1ecff;
@@ -19,9 +22,9 @@
     html, body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Instrument Sans', sans-serif;
       line-height: 1.6;
-      font-size: 1.05rem;
+      font-size: 1.105rem;
       height: 100%;
       overflow-x: hidden;
       word-wrap: break-word;
@@ -227,37 +230,12 @@
           Check out my painting portfolio 
           <a href="paintings.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>here.</strong></a> 
         </p>
+        <p>
+          Check out my current favorite media 
+          <a href="media.html" onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>here.</strong></a> 
+        </p>
       </section>
-
-      <section class="media-section">
-      <h2>Current Favorite Media</h2>
-      <div class="media-grid">
-        <div>
-          <strong>Albums:</strong>
-          <p><a href="https://open.spotify.com/album/38grabLpTHYySHEyG0TyUN" target="_blank">333</a></p>
-          <p><a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz" target="_blank">This Is Happening</a></p>
-          <p><a href="https://open.spotify.com/album/35UJLpClj5EDrhpNIi4DFg" target="_blank">The Bends</a></p>
-          <p><a href="https://open.spotify.com/album/6Pp6qGEywDdofgFC1oFbSH" target="_blank">Punisher</a></p>
-        </div>
-        <div>
-          <strong>Movies:</strong>
-          <p><a href="https://www.imdb.com/title/tt6751668/" target="_blank">Parasite</a></p>
-          <p><a href="https://www.imdb.com/title/tt0110413/" target="_blank">Léon: The Professional</a></p>
-          <p><a href="https://www.imdb.com/title/tt19637052/" target="_blank">Love Lies Bleeding</a></p>
-          <a href="https://www.imdb.com/title/tt5726616/" target="_blank">Call Me by Your Name</a>
-        </div>
-        <div>
-          <strong>TV:</strong>
-          <p><a href="https://www.imdb.com/title/tt1723816/" target="_blank">Girls</a></p>
-          <p><a href="https://www.imdb.com/title/tt7016936/" target="_blank">Killing Eve</a></p>
-          <p><a href="https://www.imdb.com/title/tt3526078/" target="_blank">Schitt's Creek</a></p>
-          <p><a href="https://www.imdb.com/title/tt6468322/" target="_blank">Money Heist</a></p>
-        </div>
-      </div>
-    </section>
-
-
-
+      
        <section class="contact-section">
         <h2>Contact & Links</h2>
         <div class="contact-columns">
@@ -274,9 +252,7 @@
       </section>
        <section>
         <div class="photos">
-          <img src="images/sunset0.jpeg" alt="Juliette Mangon">
-          <img src="images/park0.jpeg" alt="Juliette Mangon">
-          <img src="images/city0.png" alt="Juliette Mangon">
+          
         </div>
        
         
@@ -425,12 +401,13 @@
   </footer>
   
 
+
  <script>
     window.addEventListener("DOMContentLoaded", () => {
       const themes = {
-        default: { '--bg': '#e1ecff', '--text': '#80074f', '--highlight': '#6fc1de' },
-        alt:     { '--bg': '#d1f3ff', '--text': '#1f7e96', '--highlight': '#FF9DFF' },
-        gray:    { '--bg': '#E9E1E2', '--text': '#DF5624', '--highlight': '#ffa' }
+        default: { '--bg': '#e4e6ff', '--text': '#ff6200', '--highlight': '#e9ffa8' },
+        alt:     { '--bg': '#d2e6ffff', '--text': '#A70A4E', '--highlight': '#FF9DFF' },
+        gray:    { '--bg': '#FFDCF6 ', '--text': '#d60b6dff', '--highlight': '#ff28a9' }
       };
       const order = ['default', 'alt', 'gray'];
 

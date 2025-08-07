@@ -1,9 +1,12 @@
-#d1f3ff;
-#6fc1de 
-#B8F3FF 
-rgb(120, 155, 211)
-#80074f
-#d10000
-#ffb7e0
-#ffbf00
-pink:  { '--bg': '#ffa2d7   ', '--text': '#Df0000', '--highlight': '#BFFF00' }
+#ffb300ff
+#e75e5eff
+
+#ffdd00ff
+#faffd1ff
+#2c75adff
+#c8026fff
+#1686a5ff
+
+hsla(96, 100%, 27%, 1.00)
+#3c44b3ff
+#98bfefff
