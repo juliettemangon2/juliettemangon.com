@@ -6,23 +6,70 @@
   <title>Juliette Mangon | Favorite Media</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    header {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  z-index: 1000;
-}
-    header a{
-      color:#000;text-decoration:none;font-weight:600;transition:color .2s;
+    :root {
+      --bg: #eaf4ec;
+      --text: #403d52;
+      --highlight: #6fc1de;
     }
-    header a:hover{color:#000;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      background: #eaf4ec;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 4rem 0 2rem ;
+      padding: 4rem 0 2rem;
       display: flex;
       justify-content: center;
+    }
+
+    header {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+    }
+    header a {
+      color: var(--square);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .2s;
+    }
+    header a:hover {
+      color: var(--highlight);
+    }
+
+    #themeToggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: var(--square);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color .3s;
+    }
+    #themeToggle:hover {
+      background-color: var(--square);
+    }
+
+    #collapseToggle {
+      position: fixed;
+      top: 2rem;
+      right: 4.5rem;
+      width: 20px;
+      height: 20px;
+      background-color: var(--square);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color 0.3s;
+    }
+    #collapseToggle:hover {
+      background-color: var(--highlight);
     }
 
     .container {
@@ -40,17 +87,10 @@
       max-width: 500px;
     }
 
-    .column.left {
-      transform: translateY(20px);
-    }
+    .column.left { transform: translateY(20px); }
+    .column.right { transform: translateY(200px); }
 
-    .column.right {
-      transform: translateY(200px);
-    }
-
-    .media-block {
-      margin: 0;
-    }
+    .media-block { margin: 0; }
 
     .media-item {
       display: flex;
@@ -93,10 +133,13 @@
       text-decoration: underline;
     }
 
-    main.gallery{
-      display:grid;gap:1.5rem;
-      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-      padding:0 2rem 2rem;max-width:1200px;margin:0 auto;
+    main.gallery {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      padding: 0 2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -104,99 +147,99 @@
 <body>
   <header>
     <a href="index.html">&larr; Back</a>
-        <div id="themeToggle" title="Switch Theme"></div>
-
   </header>
+  <div id="themeToggle" title="Switch Theme"></div>
+  <div id="collapseToggle" title="Collapse/Expand Descriptions"></div>
 
-<div class="container">
+  <div class="container">
 
   <!-- LEFT COLUMN: Albums + Painters -->
   <div class="column left">
 
-    <div class="media-block" style="background-color: #fefeb7;">
+    <div class="media-block" style="background-color: #EDEDD6;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ALBUM</span>
         <span class="media-title">333</span>
         <span class="media-number">01</span>
       </div>
-      <div class="media-desc" style="background-color: #fefeb7;">
+      <div class="media-desc" style="background-color: #EDEDD6;">
         Description.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #6e8965;">
+    <div class="media-block" style="background-color: #f9f9ce;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ALBUM</span>
         <span class="media-title">This Is Happening</span>
         <span class="media-number">02</span>
       </div>
-      <div class="media-desc" style="background-color: #6e8965; color: white;">
+      <div class="media-desc" style="background-color: #f9f9ce; ">
         James Murphy pairs devastating lyrics with upbeat, almost celebratory arrangements. Each song layers chaotic-feeling sounds that are actually very precise. It's clever, sad, danceable, and oddly comforting.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #b9dddc;">
+    <div class="media-block" style="background-color: #ded5df;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ALBUM</span>
         <span class="media-title">The Bends</span>
         <span class="media-number">03</span>
       </div>
-      <div class="media-desc" style="background-color: #b9dddc;">
+      <div class="media-desc" style="background-color: #ded5df;">
         Description.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #f24505;">
+    <div class="media-block" style="background-color: #e2eaf8;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ALBUM</span>
         <span class="media-title">Punisher</span>
         <span class="media-number">04</span>
       </div>
-      <div class="media-desc" style="background-color: #f24505; color: white;">
+      <div class="media-desc" style="background-color: #e2eaf8; ">
         Description.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #f59cb0;">
+    <div class="media-block" style="background-color: #be9fbcff; ">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ARTIST</span>
         <span class="media-title">Ivan Pokidyshev</span>
         <span class="media-number">05</span>
       </div>
-      <div class="media-desc" style="background-color: #f59cb0;">
+      <div class="media-desc" style="background-color: #be9fbcff; color: var(--contrast);">
         Description.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #f7d509;">
+    <div class="media-block" style="background-color: #b6bbd5;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ARTIST</span>
         <span class="media-title">Amy Renee Webb</span>
         <span class="media-number">06</span>
       </div>
-      <div class="media-desc" style="background-color: #f7d509;">
+      <div class="media-desc" style="background-color: #b6bbd5;">
         Description.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #afd1c7;">
+    <div class="media-block" style="background-color: #f1f5df;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ARTIST</span>
         <span class="media-title">Laura Footes</span>
         <span class="media-number">07</span>
       </div>
-      <div class="media-desc" style="background-color: #afd1c7;">
+      <div class="media-desc" style="background-color: #f1f5df;">
         Description.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #41658A;">
+    <div class="media-block" style="background-color: #c9dae5;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">ARTIST</span>
         <span class="media-title">Dylan Rheingold</span>
         <span class="media-number">08</span>
       </div>
-      <div class="media-desc" style="background-color: #41658A; color: white;">
+      <div class="media-desc" style="background-color: #c9dae5; ">
         Description.
       </div>
     </div>
@@ -206,90 +249,90 @@
   <!-- RIGHT COLUMN: Movies + TV -->
   <div class="column right">
 
-    <div class="media-block" style="background-color: #fefeb7;">
+    <div class="media-block" style="background-color: #EAE7ED;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">MOVIE</span>
         <span class="media-title">Call Me by Your Name</span>
         <span class="media-number">09</span>
       </div>
-      <div class="media-desc" style="background-color: #fefeb7;">
+      <div class="media-desc" style="background-color: #EAE7ED;">
         Everything is so visually beautiful. The locations, the summer feeling, the mix of languages—it all works. Timothée Chalamet captures awkward teenage emotion perfectly.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #6e8965;">
+    <div class="media-block" style="background-color: #EFEAD9;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">MOVIE</span>
         <span class="media-title">Love Lies Bleeding</span>
         <span class="media-number">10</span>
       </div>
-      <div class="media-desc" style="background-color: #6e8965; color: white;">
-        My favorite shot is the egg yolks and cigarettes going into the trash. It’s sweet, weird, wild, and full of great performances.
+      <div class="media-desc" style="background-color: #EFEAD9; ">
+        My favorite shot is the egg yolks and cigarettes going into the trash. It's sweet, weird, wild, and full of great performances.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #b9dddc;">
+    <div class="media-block" style="background-color: #e2eaf8;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">MOVIE</span>
         <span class="media-title">Parasite</span>
         <span class="media-number">11</span>
       </div>
-      <div class="media-desc" style="background-color: #b9dddc;">
+      <div class="media-desc" style="background-color: #e2eaf8;">
         Uncomfortable in the best way. The tension builds perfectly and the characters are painfully human. Visually it's incredible too.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #f24505;">
+    <div class="media-block" style="background-color: #be9fbcff ">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">MOVIE</span>
         <span class="media-title">Gone Girl</span>
         <span class="media-number">12</span>
       </div>
-      <div class="media-desc" style="background-color: #f24505; color: white;">
+      <div class="media-desc" style="background-color: #be9fbcff; color: var(--contrast)">
         Creepy, clever, fun to watch. Rosamund Pike is unforgettable.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #f59cb0;">
+    <div class="media-block" style="background-color: #DED5DF;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">TV</span>
         <span class="media-title">Money Heist</span>
         <span class="media-number">13</span>
       </div>
-      <div class="media-desc" style="background-color: #f59cb0;">
+      <div class="media-desc" style="background-color: #DED5DF;">
         Plot twists, strong character arcs, and tension that holds up for the first few seasons.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #f7d509;">
+    <div class="media-block" style="background-color: #F9F9CE;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">TV</span>
         <span class="media-title">Schitt's Creek</span>
         <span class="media-number">14</span>
       </div>
-      <div class="media-desc" style="background-color: #f7d509;">
+      <div class="media-desc" style="background-color: #f9f9ce;">
         Hilarious, sweet, and surprisingly beautiful. I laughed a lot.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #afd1c7;">
+    <div class="media-block" style="background-color: #CED9EE;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">TV</span>
         <span class="media-title">Girls</span>
         <span class="media-number">15</span>
       </div>
-      <div class="media-desc" style="background-color: #afd1c7;">
+      <div class="media-desc" style="background-color: #CED9EE;">
         Cringe and chaotic in the best way. Relatable even when it's ridiculous.
       </div>
     </div>
 
-    <div class="media-block" style="background-color: #41658A;">
+    <div class="media-block" style="background-color: #B6BBD5;">
       <div class="media-item" onclick="toggleDesc(this)">
         <span class="media-label">TV</span>
         <span class="media-title">Sex and the City</span>
         <span class="media-number">16</span>
       </div>
-      <div class="media-desc" style="background-color: #41658A; color: white;">
+      <div class="media-desc" style="background-color: #B6BBD5;">
         So much more fabulous than people give it credit for. The fashion gets the attention, but the dialogue and detail are just as good. And Carrie not cooking? Extremely relatable.
       </div>
     </div>
@@ -297,13 +340,52 @@
   </div>
 </div>
 
-<script>
-  function toggleDesc(el) {
-    const desc = el.nextElementSibling;
-    desc.classList.toggle('open');
-  }
-</script>
+  <script>
+    // Toggle single item
+    function toggleDesc(el) {
+      const desc = el.nextElementSibling;
+      desc.classList.toggle('open');
+    }
 
+    // Theme toggling
+    window.addEventListener("DOMContentLoaded", () => {
+      const themes = {
+        default: { '--bg': '#e4e6ff', '--text': '#ff6200', '--highlight': '#e9ffa8', '--square': '#ff6200', '--contrast': '#ffe1c8ff' },
+        alt:     { '--bg': '#d2e6ffff', '--text': '#A70A4E', '--highlight': '#FF9DFF', '--square': '#A70A4E', '--contrast': '#ffdcebff' },
+        gray:    { '--bg': '#FFDCF6', '--text': '#A70A4E', '--highlight': '#ff28a9', '--square': '#d60b6dff', '--contrast': '#ffdcebff' }
+      };
+      const order = ['default', 'alt', 'gray'];
 
+      function applyTheme(name) {
+        if (!themes[name]) name = 'default';
+        Object.entries(themes[name]).forEach(([k, v]) => {
+          document.documentElement.style.setProperty(k, v);
+        });
+        localStorage.setItem('theme', name);
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      applyTheme(savedTheme && themes[savedTheme] ? savedTheme : 'default');
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const current = localStorage.getItem('theme') || 'default';
+        const idx = (order.indexOf(current) + 1) % order.length;
+        applyTheme(order[idx]);
+      });
+
+      // Collapse/Expand all descriptions
+      let collapsed = false;
+      document.getElementById("collapseToggle").addEventListener("click", () => {
+        document.querySelectorAll(".media-desc").forEach(desc => {
+          if (collapsed) {
+            desc.classList.add("open");
+          } else {
+            desc.classList.remove("open");
+          }
+        });
+        collapsed = !collapsed;
+      });
+    });
+  </script>
 </body>
 </html>
