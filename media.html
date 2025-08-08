@@ -374,7 +374,8 @@
       });
 
       // Collapse/Expand all descriptions
-      let collapsed = false;
+      let collapsed = [...document.querySelectorAll('.media-desc')].every(desc => !desc.classList.contains('open'));
+
       document.getElementById("collapseToggle").addEventListener("click", () => {
         document.querySelectorAll(".media-desc").forEach(desc => {
           if (collapsed) {
