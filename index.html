@@ -180,24 +180,20 @@
     cursor: pointer; z-index: 2000; transition: background-color .3s;
   }
   #themeToggle:hover { background-color: var(--highlight); }
-  /* --- Projects gating: place at end of <style> --- */
+  
+  /* When the outer toggle is open, always show all descriptions unless individually closed */
 
-    /* Grid/titles always visible */
-    #tp-list { display: block !important; }
+  details#tp-toggle[open] ~ #tp-list .description,
+  details#tp-toggle[open] ~ #tp-list .sublist {
+    display: block !important;
+  }
 
-    /* Hide all bodies/descriptions by default */
-    #tp-list .project-item .project-body,
-    #tp-list .project-item .description,
-    #tp-list .project-item .sublist {
-      display: none !important;
-    }
+  /* Hide descriptions only if the specific project-item is explicitly closed */
+  .project-item:not([open]) .description,
+  .project-item:not([open]) .sublist {
+    display: none !important;
+  }
 
-    /* Show only when BOTH: outer is open AND that item is open */
-    details#tp-toggle[open] ~ #tp-list .project-item[open] .project-body,
-    details#tp-toggle[open] ~ #tp-list .project-item[open] .description,
-    details#tp-toggle[open] ~ #tp-list .project-item[open] .sublist {
-      display: block !important;
-    }
 
 
   /* Tablet screens */
@@ -502,46 +498,61 @@
   </footer>
 
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const themes = {
-        default: { '--bg': '#e4e6ff', '--text': '#ff6200', '--highlight': '#e9ffa8' },
-        alt:     { '--bg': '#d2e6ffff', '--text': '#A70A4E', '--highlight': '#FF9DFF' },
-        gray:    { '--bg': '#FFDCF6 ', '--text': '#d60b6dff', '--highlight': '#ff28a9' }
-      };
-      const order = ['default', 'alt', 'gray'];
+  window.addEventListener("DOMContentLoaded", () => {
+    // THEME
+    const themes = {
+      default: { '--bg': '#e4e6ff', '--text': '#ff6200', '--highlight': '#e9ffa8' },
+      alt:     { '--bg': '#d2e6ff', '--text': '#A70A4E', '--highlight': '#FF9DFF' },
+      gray:    { '--bg': '#FFDCF6', '--text': '#d60b6d', '--highlight': '#ff28a9' }
+    };
+    const order = ['default', 'alt', 'gray'];
 
-      function applyTheme(name) {
-        if (!themes[name]) name = 'default';
-        Object.entries(themes[name]).forEach(([k, v]) => {
-          document.documentElement.style.setProperty(k, v);
-        });
-        localStorage.setItem('theme', name);
+    function applyTheme(name) {
+      if (!themes[name]) name = 'default';
+      for (const [k, v] of Object.entries(themes[name])) {
+        document.documentElement.style.setProperty(k, v);
       }
+      localStorage.setItem('theme', name);
+    }
+    applyTheme(localStorage.getItem('theme') || 'default');
 
-      const savedTheme = localStorage.getItem('theme');
-      applyTheme(savedTheme && themes[savedTheme] ? savedTheme : 'default');
-
-      document.getElementById('themeToggle').addEventListener('click', () => {
-        const current = localStorage.getItem('theme') || 'default';
-        const idx = (order.indexOf(current) + 1) % order.length;
-        applyTheme(order[idx]);
-      });
-
-      const collapseToggle = document.getElementById("collapseToggle");
-      let collapsed = false;
-
-      collapseToggle.addEventListener("click", () => {
-        const toggles = document.querySelectorAll("section details");
-        toggles.forEach(detail => {
-          if (collapsed) {
-            detail.setAttribute("open", true);
-          } else {
-            detail.removeAttribute("open");
-          }
-        });
-        collapsed = !collapsed;
-      });
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = localStorage.getItem('theme') || 'default';
+      const idx = (order.indexOf(current) + 1) % order.length;
+      applyTheme(order[idx]);
     });
-  </script>
+
+    // COLLAPSE/EXPAND ALL
+    const collapseToggle = document.getElementById("collapseToggle");
+    let collapsed = false;
+    collapseToggle.addEventListener("click", () => {
+      const toggles = document.querySelectorAll("section details, #tp-list .project-item");
+      toggles.forEach(detail => {
+        if (collapsed) detail.setAttribute("open", true);
+        else detail.removeAttribute("open");
+      });
+      collapsed = !collapsed;
+    });
+
+    // PROJECTS: ensure all descriptions are visible on initial load
+    const outerToggle = document.querySelector("#tp-toggle");
+    const projectItems = document.querySelectorAll("#tp-list .project-item");
+
+    // 1) On first load: if outer is open, force all project items open
+    if (outerToggle && outerToggle.open) {
+      projectItems.forEach(item => { item.open = true; });
+    }
+
+    // 2) If user opens the outer toggle later, also force all items open
+    if (outerToggle) {
+      outerToggle.addEventListener("toggle", () => {
+        if (outerToggle.open) {
+          projectItems.forEach(item => { item.open = true; });
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
