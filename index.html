@@ -8,207 +8,220 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #e1ecff;
-      --text: #80074f;
-      --highlight: #6fc1de;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Instrument Sans', sans-serif;
-      line-height: 1.6;
-      font-size: 1.05rem;
-      height: 100%;
-      overflow-x: hidden;
-      word-wrap: break-word;
-      max-width: 100%;
-    }
-    main {
-      margin-top: 4rem;
-      padding: 1rem 5vw 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3rem;
-      align-items: start;
-    }
-    main > * { min-width: 0; }
-    .left-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .left-col section:first-of-type p { margin-bottom: 1rem; }
-    section { width: 100%; }
-    h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .media-section { margin-top: 0rem; }
-    .contact-section { margin-top: 0.5rem; }
-    a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    a:hover { color: var(--highlight); }
-    details { margin-bottom: 0; }
-    details > summary {
-      list-style: none;
-      padding-left: 1.2rem;
-      position: relative;
-      font-size: 1.25rem;
-      cursor: pointer;
-      font-weight: 700;
-      margin: .9rem 0 .5rem;
-    }
-    summary::-webkit-details-marker,
-    summary::-moz-list-bullet,
-    summary::marker {
-      display: none;
-      content: none;
-    }
-    summary::before {
-      content: "▶ ";
-      position: absolute;
-      left: 0;
-      top: .1rem;
-      transition: transform .2s;
-    }
-    details[open] > summary::before {
-      transform: rotate(90deg);
-    }
-    .section-list {
-      list-style: none;
-      padding-left: 1.5rem;
-      margin: 0 0 1.5rem;
-    }
-    .section-list > li { margin-bottom: .4rem; }
-    .section-list > li > strong {
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-    .description {
-      display: none;
-      margin: .2rem 0 1rem;
-      font-size: .95rem;
-    }
-    details#edu-toggle[open] ~ #edu-list .description,
-    details#we-toggle[open] ~ #we-list .description,
-    details#tp-toggle[open] ~ #tp-list .sublist,
-    details#tp-toggle[open] ~ #tp-list .description {
-      display: block;
-    }
-    #sk-list {
-      display: none;
-      list-style: none;
-      margin-top: .5rem;
-      padding-left: 1.5rem;
-    }
-    details#sk-toggle[open] ~ #sk-list {
-      display: block;
-    }
-    details#ms-toggle > .description {
-      display: none;
-      padding-left: 1.5rem;
-      margin: .3rem 0 1rem;
-      font-size: .95rem;
-    }
-    details#ms-toggle[open] > .description {
-      display: block;
-    }
-    .sublist {
-      display: none;
-      list-style: none;
-      margin-top: .3rem;
-      padding-left: 1rem;
-      font-size: .95rem;
-    }
-    .details-inline[open] > .sublist {
-      display: block;
-    }
-    .contact-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 0rem;
-    }
-    .photos {
-      margin-top: 2rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .photos img {
-      width: 100%;
-      max-width: 530px;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.3s;
-      flex: 1 1 48%;
-    }
-    .media-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1.5fr 1fr;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-    .media-grid div { padding-right: 1rem; }
-    #collapseToggle {
-      position: fixed;
-      top: 1.77rem;
-      right: 3.7rem;
-      width: 20px;
-      height: 20px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #collapseToggle:hover { background-color: var(--highlight); }
-    #themeToggle {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color .3s;
-    }
-    #themeToggle:hover { background-color: var(--highlight); }
+<style>
+  :root {
+    --bg: #e1ecff;
+    --text: #80074f;
+    --highlight: #6fc1de;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Instrument Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    height: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    max-width: 100%;
+  }
+  main {
+    margin-top: 4rem;
+    padding: 1rem 5vw 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  main > * { min-width: 0; }
+  .left-col { display: flex; flex-direction: column; gap: 1rem; }
+  .left-col section:first-of-type p { margin-bottom: 1rem; }
+  section { width: 100%; }
+  h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .media-section { margin-top: 0rem; }
+  .contact-section { margin-top: 0.5rem; }
+  a { color: var(--text); text-decoration: none; transition: color .2s; }
+  a:hover { color: var(--highlight); }
+  p { margin-bottom: 0.5rem; font-size: 1.2rem; line-height: 1.6; }
 
-    /* Tablet screens */
-    @media (max-width: 1024px) {
-      main {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      .contact-columns { grid-template-columns: 1fr; }
-      .media-grid { grid-template-columns: 1fr 1fr; }
+  /* details triangles */
+  details { margin-bottom: 0; }
+  details > summary {
+    list-style: none;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    margin: .6rem 0 .4rem;
+  }
+  summary::-webkit-details-marker,
+  summary::-moz-list-bullet,
+  summary::marker { display: none; content: none; }
+  summary::before {
+    content: "▶ ";
+    position: absolute;
+    left: 0;
+    top: .1rem;
+    transition: transform .2s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+
+  /* generic lists in left column */
+  .section-list { list-style: none; padding-left: 1.5rem; margin: 0 0 1.5rem; }
+  .section-list > li { margin-bottom: .4rem; }
+  .section-list > li > strong { font-size: 1.05rem; font-weight: 600; }
+
+  /* descriptions default hidden for expandable sections (left column) */
+  .description {
+    display: none;
+    margin: .2rem 0 1rem;
+    font-size: .95rem;
+  }
+  details#edu-toggle[open] ~ #edu-list .description,
+  details#we-toggle[open] ~ #we-list .description { display: block; }
+
+  /* skills + mentorship description show/hide */
+  #sk-list { display: none; list-style: none; margin-top: .5rem; padding-left: 1.5rem; }
+  details#sk-toggle[open] ~ #sk-list { display: block; }
+  details#ms-toggle > .description {
+    display: none;
+    padding-left: 1.5rem;
+    margin: .3rem 0 1rem;
+    font-size: .95rem;
+  }
+  details#ms-toggle[open] > .description { display: block; }
+
+  /* sublists default hidden unless shown by section-specific rules */
+  .sublist { display: none; list-style: none; margin-top: .3rem; padding-left: 1rem; font-size: .95rem; }
+
+  /* ---------- Projects (right column) ---------- */
+  /* Grid container: always visible */
+  #tp-list.projects-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    border-top: 1px solid currentColor; /* thinner border */
+    display: block; /* keep grid/titles visible regardless of outer toggle */
+  }
+
+  /* Each project as its own details */
+  .project-item { border-bottom: 1px solid currentColor; }
+  .project-item > summary {
+    margin: 0;
+    padding: 0.6rem 0;         /* compact */
+    padding-left: 0;
+    font-size: 0.95rem;        /* smaller project title */
+    font-weight: 600;
+  }
+  /* hide default triangle for project rows; whole row still toggles */
+  .project-item > summary::before { display: none; }
+
+  /* Row layout */
+  .proj-row { display: flex; align-items: center; gap: 0.8rem; }
+  .proj-num {
+    width: 32px; height: 32px; flex: 0 0 32px;
+    border: 1.5px solid currentColor; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 500; font-size: 0.85rem;
+  }
+  .proj-title { line-height: 1.1; font-size: 1.1rem; }
+  .proj-link {
+    margin-left: auto; display: inline-flex;
+    width: 22px; height: 22px; align-items: center; justify-content: center;
+    color: var(--text); opacity: .95; transition: color .2s, transform .2s;
+  }
+  .proj-link:hover { color: var(--highlight); transform: translateY(-1px); }
+
+  /* Expanded content (description + sublist) */
+  .project-body {
+    display: none;                 /* default hidden */
+    padding: 0.4rem 0 0.8rem;
+    margin-left: calc(32px + 0.8rem); /* align under title circle */
+    font-size: 0.85rem;
+  }
+
+  /* Hide descriptions/sublists by default */
+  .project-item .description { display: none; }
+  .project-item .sublist { display: none; }
+
+  /* GATED VISIBILITY:
+     Only show body + description + sublist when BOTH:
+     - the outer Projects toggle is open
+     - that specific project is open
+  */
+  details#tp-toggle[open] ~ #tp-list .project-item[open] .project-body { display: block; }
+  details#tp-toggle[open] ~ #tp-list .project-item[open] .description { display: block; }
+  details#tp-toggle[open] ~ #tp-list .project-item[open] .sublist { display: block; }
+
+  .contact-columns {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0rem;
+  }
+  .photos { margin-top: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .photos img {
+    width: 100%; max-width: 530px; height: auto; object-fit: cover;
+    transition: transform 0.3s; flex: 1 1 48%;
+  }
+  .media-grid { display: grid; grid-template-columns: 1.3fr 1.5fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+  .media-grid div { padding-right: 1rem; }
+
+  #collapseToggle {
+    position: fixed; top: 1.77rem; right: 3.7rem;
+    width: 20px; height: 20px; background-color: var(--text);
+    cursor: pointer; z-index: 2000; transition: background-color 0.3s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #collapseToggle:hover { background-color: var(--highlight); }
+  #themeToggle {
+    position: fixed; top: 1.5rem; right: 1.5rem;
+    width: 30px; height: 30px; background-color: var(--text);
+    cursor: pointer; z-index: 2000; transition: background-color .3s;
+  }
+  #themeToggle:hover { background-color: var(--highlight); }
+  /* --- Projects gating: place at end of <style> --- */
+
+    /* Grid/titles always visible */
+    #tp-list { display: block !important; }
+
+    /* Hide all bodies/descriptions by default */
+    #tp-list .project-item .project-body,
+    #tp-list .project-item .description,
+    #tp-list .project-item .sublist {
+      display: none !important;
     }
 
-    /* Smaller screens */
-    @media (max-width: 900px) {
-      .media-grid { grid-template-columns: 1fr; }
-      .photos img { flex: 1 1 100%; }
+    /* Show only when BOTH: outer is open AND that item is open */
+    details#tp-toggle[open] ~ #tp-list .project-item[open] .project-body,
+    details#tp-toggle[open] ~ #tp-list .project-item[open] .description,
+    details#tp-toggle[open] ~ #tp-list .project-item[open] .sublist {
+      display: block !important;
     }
 
-    @media (max-width: 768px) {
-      .contact-columns { grid-template-columns: 1fr; }
-    }
-  </style>
+
+  /* Tablet screens */
+  @media (max-width: 1024px) {
+    main { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-columns { grid-template-columns: 1fr; }
+    .media-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Smaller screens */
+  @media (max-width: 900px) {
+    .media-grid { grid-template-columns: 1fr; }
+    .photos img { flex: 1 1 100%; }
+    .proj-num { width: 28px; height: 28px; flex-basis: 28px; font-size: 0.8rem; }
+    .project-body { margin-left: calc(28px + 0.8rem); }
+  }
+
+  @media (max-width: 768px) {
+    .contact-columns { grid-template-columns: 1fr; }
+  }
+</style>
+
+
+
 </head>
 <body>
   <div id="collapseToggle" title="Collapse/Expand Resume Sections"></div>
@@ -220,7 +233,7 @@
         <p>
           My name is <strong>Juliette Mangon</strong>. I'm a Computer Science and Mathematics student at
           <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a> passionate about how technology can support creative expression and
-          connect people working across media-driven fields. I'm especially interested in building systems—interfaces, platforms, or algorithms—that
+          connect people working across media-driven fields. I'm especially interested in building systems that
           are intuitive and thoughtful in how they shape user experience.
         </p>
         <p>
@@ -236,7 +249,7 @@
         </p>
       </section>
       
-       <section class="contact-section">
+      <section class="contact-section">
         <h2>Contact & Links</h2>
         <div class="contact-columns">
           <div>
@@ -250,12 +263,9 @@
           </div>
         </div>
       </section>
-       <section>
-        <div class="photos">
-          
-        </div>
-       
-        
+
+      <section>
+        <div class="photos"></div>
       </section>
     </div>
 
@@ -294,14 +304,14 @@
         <li>
           <strong>Website Developer</strong>, Tryst Restaurant (2025)
           <p class="description">
-            Rebuilt the restaurant’s site with HTML/CSS/JS. Improved UX through responsive layouts, added SEO optimizations,
+            Rebuilt the restaurant's site with HTML/CSS/JS. Improved UX through responsive layouts, added SEO optimizations,
             and enhanced accessibility and performance.
           </p>
         </li>
         <li>
           <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem Solving (2023–)
           <p class="description">
-            Graded national proof-based math contest entries, evaluating rigor and providing detailed feedback.
+            Evaluating Olympiad-level proofs, assessing complex reasoning and providing detailed written feedback. Collaborating with other graders to standardize scoring and ensure consistency across submissions. 
           </p>
         </li>
         <li>
@@ -313,33 +323,73 @@
       </ul>
 
       <details id="ms-toggle" open>
-        <summary><a href="projects/She%20is%20the%20music.pdf" target="_blank">Connect TogetHER Music Tech Mentorship Project 🔗</a></summary>
+        <summary>Connect TogetHER Music Tech Mentorship Project  <a href="projects/She%20is%20the%20music.pdf" target="_blank"aria-label="Open project">
+          <svg viewBox="0 0 22 22" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg> </a></summary>
+      
         <p class="description">
           Selected for <a href="https://sheisthemusic.org/" target="_blank"><strong>She Is The Music</strong></a>'s competitive mentorship program as a music tech mentee under Anna Skelsey, 
           I developed a music analytics platform to visualize creative networks, uncover contributor relationships, and identify derivative links between songs to support A&R insights and catalog strategy.
-
         </p>
       </details>
 
-      <details id="tp-toggle" open><summary>Projects</summary></details>
-      <ul id="tp-list" class="section-list">
-        <li>
-          <a href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank">
-            <strong>Plagiarism Detection Enhancement Project 🔗</strong>
-          </a>
+    <!-- Projects -->
+    <details id="tp-toggle" open>
+      <summary>Projects</summary>
+    </details>
+    <ul id="tp-list" class="projects-list">
+
+      <!-- Project 1 -->
+      <details class="project-item">
+        <summary>
+          <div class="proj-row">
+            <span class="proj-num">01</span>
+            <span class="proj-title">Essay Plagiarism Detection Project </span>
+            <a class="proj-link" href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank" aria-label="Open project">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </summary>
+        <div class="project-body">
           <p class="description">
-            Engineered an NLP plagiarism detector with TF-IDF & Word2Vec; improved precision via iterative tuning.
+            Developed and optimized a plagiarism detection system using TF-IDF vectors, cosine similarity, and n-gram models. Verified research findings on trigram-based detection, implemented multiprocessing to reduce runtime by 80%, and adjusted vectorization to improve F-scores while minimizing false positives across large text corpora.
           </p>
-        </li>
-        <li>
-          <a href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank">
-            <strong>Spotify Listening Behavior Case Study 🔗</strong>
-          </a>
+        </div>
+      </details>
+
+      <!-- Project 2 -->
+      <details class="project-item">
+        <summary>
+          <div class="proj-row">
+            <span class="proj-num">02</span>
+            <span class="proj-title">Spotify Listening Behavior Case Study</span>
+            <a class="proj-link" href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf" target="_blank" aria-label="Open project">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </summary>
+        <div class="project-body">
           <p class="description">
-            Explored Spotify’s use of machine learning in personalized recommendations, playlist curation, and user engagement features like Wrapped, with analysis of licensing models, AI risks, and global platform strategy.          </p>
-        </li>
-         <li>
-          <b><strong>Custom Portfolio Websites</strong></b>
+            Explored Spotify’s use of machine learning in personalized recommendations, playlist curation, and user engagement features like Wrapped, with analysis of licensing models, AI risks, and global platform strategy.
+          </p>
+        </div>
+      </details>
+
+      <!-- Project 3 with sublist -->
+      <details class="project-item">
+        <summary>
+          <div class="proj-row">
+            <span class="proj-num">03</span>
+            <span class="proj-title">Client Website Development Projects</span>
+      
+          </div>
+        </summary>
+        <div class="project-body">
           <p class="description">
             Built responsive portfolio sites for photographers and visual artists using React, Tailwind CSS, and JavaScript.
             Emphasized interactive UI components and tailored visual layouts.
@@ -347,45 +397,95 @@
           <ul class="sublist">
             <li>
               <a href="https://juliettemangon2.github.io/amandine/" target="_blank">
-                Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging 🔗
+                Amandine Mangon: Postcard-style gallery exploring archival and personal photography through collaging 
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                  <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </li>
             <li>
               <a href="https://mateoantoniomartinez.com/" target="_blank">
-                Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing 🔗
+                Mateo Antonio Martinez: Personal photography site with exhibits, photo essays, and reflective writing 
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                  <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </li>
             <li>
               <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">
-                Chris Fitzgerald: Studio portraits, street photography, and editorial work 🔗
+                Chris Fitzgerald: Studio portraits, street photography, and editorial work 
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                  <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </li>
           </ul>
-        </li>
-        <li>
-          <a href="projects/Businessof%20Video%20games%20final.pdf" target="_blank">
-            <strong>Fashion in Video Games Proposal 🔗</strong> 
-          </a>
+        </div>
+      </details>
+
+      <!-- Project 4 -->
+      <details class="project-item">
+        <summary>
+          <div class="proj-row">
+            <span class="proj-num">04</span>
+            <span class="proj-title">Proposal: Kering-Branded Fashion Toolkits for Roblox and Fortnite</span>
+            <a class="proj-link" href="projects/Businessof%20Video%20games%20final.pdf" target="_blank" aria-label="Open project">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </summary>
+        <div class="project-body">
           <p class="description">
-            Proposed that Kering invest in digital fashion tools for UGC platforms like Roblox and Fortnite to engage younger audiences
-            and extend brand identity into virtual economies through branded templates and avatar assets.
+            Proposed that Kering invest in branded digital fashion toolkits for UGC platforms like Roblox and Fortnite, offering customizable avatar assets, textures, and templates to engage players, expand brand presence in virtual economies, and generate new revenue through creator royalties.
           </p>
-        </li>
-        <li>
-          <a href="https://github.com/juliettemangon2/adhocRetrievalSystem" target="_blank">
-            <strong>Ad Hoc Information Retrieval System 🔗</strong> 
-          </a>
+        </div>
+      </details>
+
+      <!-- Project 5 -->
+      <details class="project-item">
+        <summary>
+          <div class="proj-row">
+            <span class="proj-num">05</span>
+            <span class="proj-title">Ad Hoc Information Retrieval System</span>
+            <a class="proj-link" href="https://github.com/juliettemangon2/adhocRetrievalSystem" target="_blank" aria-label="Open project">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </summary>
+        <div class="project-body">
           <p class="description">
             Built a TF-IDF-based ranking system to match 1,400 document abstracts to 225 custom queries. Used cosine similarity to determine relevance and evaluated system performance using Mean Average Precision to guide algorithm refinements.
           </p>
-        </li>
-        <li>
-          <a href="projects/MUSIC%20AI.pdf" target="_blank"><strong>AI in Music Creation Analysis 🔗</strong></a>
+        </div>
+      </details>
+
+      <!-- Project 6 -->
+      <details class="project-item">
+        <summary>
+          <div class="proj-row">
+            <span class="proj-num">06</span>
+            <span class="proj-title">AI in Music Creation Analysis</span>
+            <a class="proj-link" href="projects/MUSIC%20AI.pdf" target="_blank" aria-label="Open project">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </summary>
+        <div class="project-body">
           <p class="description">
             Explored how generative AI is changing music creation, raising new questions about authorship, originality, and the role of human input in creative work.
           </p>
-        </li>
-      </ul>
+        </div>
+      </details>
+
+    </ul>
+
+
 
       <details id="sk-toggle" open><summary>Skills</summary></details>
       <ul id="sk-list">
@@ -400,10 +500,8 @@
       © 2025 Juliette Mangon
     </p>
   </footer>
-  
 
-
- <script>
+  <script>
     window.addEventListener("DOMContentLoaded", () => {
       const themes = {
         default: { '--bg': '#e4e6ff', '--text': '#ff6200', '--highlight': '#e9ffa8' },
