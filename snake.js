@@ -12,9 +12,9 @@
     canvas.tabIndex = 0;
 
     // Grid config
-    const GRID_W = 24;          // number of cells horizontally
-    const GRID_H = 24;          // number of cells vertically
-    const CELL = 10;            // internal pixels per cell
+    const GRID_W = 24; // number of cells horizontally
+    const GRID_H = 24; // number of cells vertically
+    const CELL = 10; // internal pixels per cell
     const FRAME_INTERVAL = 100; // ms between ticks
     const INITIAL_LENGTH = 3;
 
@@ -37,7 +37,10 @@
       refreshColors();
       if (!running) renderFrame(); // keep frozen board consistent with theme
     });
-    themeObserver.observe(root, { attributes: true, attributeFilter: ["style"] });
+    themeObserver.observe(root, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
 
     // Also handle your theme button directly
     const themeBtn = document.getElementById("themeToggle");
@@ -88,13 +91,20 @@
       return r < 0 ? r + b : r;
     }
 
-    function posEq(a, b) { return a.x === b.x && a.y === b.y; }
-    function collides(pos, arr) { return arr.some((p) => posEq(p, pos)); }
+    function posEq(a, b) {
+      return a.x === b.x && a.y === b.y;
+    }
+    function collides(pos, arr) {
+      return arr.some((p) => posEq(p, pos));
+    }
 
     function randomApple() {
       let p;
       do {
-        p = { x: Math.floor(Math.random() * GRID_W), y: Math.floor(Math.random() * GRID_H) };
+        p = {
+          x: Math.floor(Math.random() * GRID_W),
+          y: Math.floor(Math.random() * GRID_H),
+        };
       } while (collides(p, snake));
       return p;
     }
@@ -125,7 +135,10 @@
       const axis = direction.axis;
       const newHead = {
         ...head,
-        [axis]: modulo(head[axis] + direction.value, axis === "x" ? GRID_W : GRID_H),
+        [axis]: modulo(
+          head[axis] + direction.value,
+          axis === "x" ? GRID_W : GRID_H
+        ),
       };
 
       // Self-collision
@@ -137,7 +150,7 @@
       if (apple && posEq(newHead, apple)) {
         grow = 1;
         apple = randomApple();
-        scoreEl.textContent = "Score: " + (++score);
+        scoreEl.textContent = "Score: " + ++score;
       }
 
       snake.unshift(newHead);
@@ -158,7 +171,11 @@
       // Ignore if typing in a form control
       const t = e.target;
       const typing =
-        t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable);
+        t &&
+        (t.tagName === "INPUT" ||
+          t.tagName === "TEXTAREA" ||
+          t.tagName === "SELECT" ||
+          t.isContentEditable);
       if (typing) return;
 
       const hasFocus = section.contains(document.activeElement);
@@ -171,7 +188,7 @@
     }
 
     // Reset to initial frozen state (no movement)
-    function resetFrozen() {
+    function resetFrozen({ focusButton = false } = {}) {
       if (interval) clearInterval(interval);
       window.removeEventListener("keydown", keyHandler);
 
@@ -191,8 +208,10 @@
 
       playBtn.textContent = "Play";
 
-      // Return focus to the button so arrow keys won't be captured here
-      playBtn.focus();
+      if (focusButton) {
+        // Keep keyboard-friendly restart without jumping the page
+        playBtn.focus({ preventScroll: true });
+      }
     }
 
     function start() {
@@ -234,9 +253,10 @@
     // - If not running: clicking acts as "Play" -> start movement
     playBtn.addEventListener("click", function () {
       if (running) {
-        resetFrozen(); // freeze to initial state
+        // Restart: freeze to initial and keep focus on button (no scroll)
+        resetFrozen({ focusButton: true });
       } else {
-        start();       // start moving
+        start();
       }
     });
 
@@ -244,7 +264,7 @@
     // Delay one frame so your theme's applyTheme (also on DOMContentLoaded) can set CSS vars first.
     requestAnimationFrame(() => {
       refreshColors();
-      resetFrozen();
+      resetFrozen({ focusButton: false });
     });
   });
 })();
