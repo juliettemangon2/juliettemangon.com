@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Juliette Mangon</title>
@@ -14,6 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="snake.css" />
+
     <style>
       :root {
         --bg: #e1ecff;
@@ -437,6 +440,8 @@
       }
     </style>
   </head>
+  <script defer src="snake.js"></script>
+
   <body>
     <div id="collapseToggle" title="Collapse/Expand Resume Sections"></div>
     <div id="themeToggle" title="Switch Theme"></div>
@@ -511,7 +516,22 @@
               </p>
             </div>
           </div>
+
         </section>
+
+        <!-- Snake Game -->
+    <section id="snake-section" aria-labelledby="snake-title" class="snake-section">
+      <h2 id="snake-title">Snake</h2>
+
+      <div class="snake-card">
+        <canvas id="snake-canvas" width="240" height="240" aria-label="Snake game board"></canvas>
+
+        <div class="snake-ui">
+          <button type="button" id="snake-play">Play</button>
+          <span id="snake-score" aria-live="polite">Score: 0</span>
+        </div>
+      </div>
+    </section>
 
         <section>
           <div class="photos"></div>
