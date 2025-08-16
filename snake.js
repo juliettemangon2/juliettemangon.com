@@ -27,8 +27,8 @@
     function refreshColors() {
       const css = getComputedStyle(document.documentElement);
       colors.snake = (css.getPropertyValue("--text") || "#000").trim();
-      colors.food = (css.getPropertyValue("--bg") || "#fff").trim();
-      colors.board = (css.getPropertyValue("--highlight") || "#ddd").trim();
+      colors.food = (css.getPropertyValue("--highlight") || "#fff").trim();
+      colors.board = (css.getPropertyValue("--bg") || "#ddd").trim();
     }
 
     // Watch for theme changes (your applyTheme mutates :root style)
