@@ -15,7 +15,7 @@
     const GRID_W = 24; // number of cells horizontally
     const GRID_H = 24; // number of cells vertically
     const CELL = 10; // internal pixels per cell
-    const FRAME_INTERVAL = 100; // ms between ticks
+    const FRAME_INTERVAL = 150; // ms between ticks
     const INITIAL_LENGTH = 3;
 
     // Ensure crisp internal resolution
