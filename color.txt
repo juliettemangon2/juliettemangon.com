@@ -25,3 +25,71 @@ curl --request POST \
   --header "Content-Type: application/x-www-form-urlencoded" \
   --header "Authorization: Basic $(echo -n 'q5C4zRsrKHTtByAZbl8aIuSdYg01AR2MjjUGpCLMLs0AobOl:gXGxeiUROX3mDVTXcMMbMo90xCUpF4nt4jgomYAhUUGtiguLVACZ2LsigOTpG0sA' | base64)" \
   --data "grant_type=authorization_code&code=<AUTH_CODE>&redirect_uri=http://localhost:3000/auth/autodesk/callback"
+
+
+
+
+
+  http://127.0.0.1:3000/index.html
+
+   <details id="sk-toggle" open>
+          <summary>Skills</summary>
+            <div class="skill-row">
+              <div class="skill-label">Languages & Frameworks</div>
+              <div class="skill-items">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">C</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">Assembly</span>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label">Tools & Platforms</div>
+              <div class="skill-items">
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Figma</span>
+                 <span class="skill-tag">APIs</span>
+                <span class="skill-tag">Vite</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Unix/Linux</span>
+                <span class="skill-tag">LaTeX</span>
+                <span class="skill-tag">Excel</span>
+                <span class="skill-tag">Google Suite</span>
+                <span class="skill-tag">Ollama</span>
+               
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label">Data & Visualization</div>
+              <div class="skill-items">
+
+                <span class="skill-tag">Neo4j</span>
+                <span class="skill-tag">Matplotlib</span>
+                <span class="skill-tag">vis.js</span>
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">Drizzle ORM</span>
+                <span class="skill-tag">SQL</span>
+              </div>
+            </div>
+
+            <div class="skill-row">
+              <div class="skill-label">Spoken Languages</div>
+              <div class="skill-items">
+                <span class="skill-tag">English</span>
+                <span class="skill-tag">French</span>
+                <span class="skill-tag">Spanish (Conversational)</span>
+              </div>
+            </div>
+          </div>
+        </details>
