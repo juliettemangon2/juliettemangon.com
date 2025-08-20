@@ -378,9 +378,13 @@
           "--text": "#d60b6d",
           "--highlight": "#83dbd6ff",
         },
+        blue: {
+          "--bg": "#20406C",
+          "--text": "#BED8FE",
+          "--highlight": "#D8D34B",
+        },
       };
-      const order = ["default", "alt", "gray"];
-
+      const order = [ "blue","default", "alt", "gray"];
       function applyTheme(name) {
         Object.entries(themes[name]).forEach(([k, v]) =>
           document.documentElement.style.setProperty(k, v)

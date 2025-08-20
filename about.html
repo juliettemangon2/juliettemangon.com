@@ -252,8 +252,13 @@
           "--text": "#d60b6d",
           "--highlight": "#83dbd6ff",
         },
+        blue: {
+          "--bg": "#20406C",
+          "--text": "#BED8FE",
+          "--highlight": "#D8D34B",
+        },
       };
-      const order = ["default", "alt", "gray"];
+      const order = [ "blue","default", "alt", "gray"];
       function applyTheme(name) {
         if (!themes[name]) name = "default";
         for (const [k, v] of Object.entries(themes[name])) {

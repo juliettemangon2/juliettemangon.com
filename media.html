@@ -67,7 +67,7 @@
         right: 1.5rem;
         width: 30px;
         height: 30px;
-        background-color: var(--text);
+        background-color: var(--square);
         cursor: pointer;
         z-index: 2000;
         transition: background-color 0.3s;
@@ -82,7 +82,7 @@
         right: 3.7rem;
         width: 20px;
         height: 20px;
-        background-color: var(--text);
+        background-color: var(--square);
         cursor: pointer;
         z-index: 2000;
         transition: background-color 0.3s;
@@ -203,7 +203,7 @@
       footer p {
         text-align: center;
         font-size: 0.9rem;
-        color: var(--text);
+        color: var(--square);
         margin-bottom: 0.7rem;
         margin-top: 2rem;
       }
@@ -486,7 +486,7 @@
           style="
             text-align: center;
             font-size: 0.9rem;
-            color: var(--text);
+            color: var(--square);
             margin-bottom: 0.7rem;
             margin-top: 3rem;
           "
@@ -527,8 +527,14 @@
             "--square": "#d60b6dff",
             "--contrast": "#83dbd6ff",
           },
+          blue: {
+          "--bg": "#20406C",
+          "--text": "#20406C",
+          "--square": "#BED8FE",
+          "--highlight": "#D8D34B",
+        },
         };
-        const order = ["default", "alt", "gray"];
+        const order = ["blue","default", "alt", "gray"];
 
         function applyTheme(name) {
           if (!themes[name]) name = "default";

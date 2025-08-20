@@ -147,6 +147,9 @@
         border: 1px solid currentColor;
         padding: 0.4rem;
       }
+      .top-actions:hover {
+        background-color: var(--highlight);
+      }
 
       /* Styling for the PDF link */
       .pdf-link {
@@ -155,11 +158,13 @@
         text-decoration: none;
         transition: color 0.2s, opacity 0.2s;
       }
-
       .pdf-link:hover {
-        color: var(--highlight);
-        opacity: 1;
+        font-size: 0.9rem;
+        color: var(--text2);
+        text-decoration: none;
+        transition: color 0.2s, opacity 0.2s;
       }
+
 
       /* Lists and descriptions */
       .section-list {
@@ -840,19 +845,28 @@
           "--bg": "#e4e6ff",
           "--text": "#ff6200",
           "--highlight": "#e9ffa8",
+          "--text2": "#ff6200"
         },
         alt: {
           "--bg": "#d2e6ff",
           "--text": "#A70A4E",
           "--highlight": "#FF9DFF",
+          "--text2": "#A70A4E"
         },
         gray: {
           "--bg": "#FFDCF6",
           "--text": "#d60b6d",
           "--highlight": "#83dbd6ff",
+          "--text2": "#d60b6d"
+        },
+        blue: {
+          "--bg": "#20406C",
+          "--text": "#BED8FE",
+          "--highlight": "#D8D34B",
+          "--text2": "#20406C"
         },
       };
-      const order = ["default", "alt", "gray"];
+      const order = [ "blue","default", "alt", "gray"];
       function applyTheme(name) {
         if (!themes[name]) name = "default";
         for (const [k, v] of Object.entries(themes[name])) {
