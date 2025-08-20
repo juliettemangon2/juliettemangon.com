@@ -70,6 +70,23 @@
         font-weight: 600;
       }
 
+      .topnav a::before,
+      .topnav a::after {
+        content: " [ ";
+        opacity: 0;
+      }
+      .topnav a::after {
+        content: " ] ";
+      }
+
+      /* Hover or active page link shows brackets */
+      .topnav a:hover::before,
+      .topnav a:hover::after,
+      .topnav a.active::before,
+      .topnav a.active::after {
+        opacity: 1;
+      }
+
       main {
         max-width: 900px;
         margin: 6rem auto 3rem;
@@ -128,7 +145,7 @@
     <!-- Persistent controls -->
     <div id="themeToggle" title="Switch Theme"></div>
     <nav class="topnav" aria-label="Site">
-      <a href="index.html">home</a>
+      <a href="index.html" class="active">home</a>
       <a href="about.html">about</a>
       <a href="resume.html">resume</a>
       <a href="contact.html">contact</a>

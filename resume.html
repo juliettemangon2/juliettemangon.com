@@ -40,7 +40,7 @@
         overflow-x: hidden;
       }
 
-      /* Theme + collapse + top nav */
+      /* Theme toggle */
       #themeToggle {
         position: fixed;
         top: 1.5rem;
@@ -56,26 +56,9 @@
         background-color: var(--highlight);
       }
 
-      #collapseToggle {
-        position: fixed;
-        top: 1.77rem;
-        right: 3.7rem;
-        width: 20px;
-        height: 20px;
-        background-color: var(--text);
-        cursor: pointer;
-        z-index: 2000;
-        transition: background-color 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #collapseToggle:hover {
-        background-color: var(--highlight);
-      }
-
+      /* Top nav */
       .topnav {
-        position: fixed;
+        position: absolute;
         top: 1.5rem;
         left: 1.5rem;
         display: flex;
@@ -88,13 +71,35 @@
         font-weight: 600;
       }
 
+      .topnav a::before,
+      .topnav a::after {
+        content: " [ ";
+        opacity: 0;
+      }
+      .topnav a::after {
+        content: " ] ";
+      }
+
+      /* Hover or active page link shows brackets */
+      .topnav a:hover::before,
+      .topnav a:hover::after,
+      .topnav a.active::before,
+      .topnav a.active::after {
+        opacity: 1;
+      }
+
+      /* Layout */
       main {
-        max-width: 900px;
+        max-width: 1400px;
         margin: 6rem auto 3rem;
-        padding: 0 1.25rem 3rem;
+        padding: 0 1.5rem 3rem;
         animation: slideIn 0.6s ease forwards;
         opacity: 0;
         transform: translateY(30px);
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
       }
       @keyframes slideIn {
         to {
@@ -104,10 +109,20 @@
       }
 
       h2 {
-        font-size: 2rem;
+        color: var(--bg);
+        font-size: 0.8rem;
         font-weight: 700;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0rem;
+
+        grid-column: 1 / -1;
       }
+      h3 {
+        font-size: 1.7rem;
+        font-weight: 650;
+        margin: 0rem 0 0.6rem;
+        padding-left: 1.5rem; /* keep indent so layout feels consistent */
+      }
+
       a {
         color: var(--text);
         text-decoration: none;
@@ -120,44 +135,33 @@
         margin-bottom: 0.5rem;
         font-size: 1.2rem;
       }
-
-      /* details triangles */
-      details {
-        margin-bottom: 0;
-      }
-      details > summary {
-        list-style: none;
-        padding-left: 1.5rem;
-        position: relative;
-        font-size: 1.4rem;
-        cursor: pointer;
-        font-weight: 650;
-        margin: 0.6rem 0 0.1rem;
-      }
-      summary::-webkit-details-marker,
-      summary::-moz-list-bullet,
-      summary::marker {
-        display: none;
-        content: none;
-      }
-      summary::before {
-        content: "▶ ";
+      /* Container for PDF + toggle */
+      .top-actions {
         position: absolute;
-        left: 0;
-        top: 0.1rem;
-        transition: transform 0.2s;
-      }
-      details[open] > summary::before {
-        transform: rotate(90deg);
-      }
-      details#ms-toggle > .description {
-        display: none;
-      }
-      details#ms-toggle[open] > .description {
-        display: block;
+        top: 1.5rem;
+        right: 5rem;
+        display: flex;
+        gap: 1rem;
+        z-index: 1500;
+        font-weight: 600;
+        border: 1px solid currentColor;
+        padding: 0.4rem;
       }
 
-      /* generic lists */
+      /* Styling for the PDF link */
+      .pdf-link {
+        font-size: 0.9rem;
+        color: var(--text);
+        text-decoration: none;
+        transition: color 0.2s, opacity 0.2s;
+      }
+
+      .pdf-link:hover {
+        color: var(--highlight);
+        opacity: 1;
+      }
+
+      /* Lists and descriptions */
       .section-list {
         list-style: none;
         padding-left: 1.5rem;
@@ -170,19 +174,23 @@
         font-size: 1.3rem;
         font-weight: 600;
       }
-
-      /* descriptions default hidden for expandable sections */
       .description {
-        display: none;
         margin: 0.2rem 0 1rem;
         font-size: 1.1rem;
+      } /* always visible now */
+
+      /* Work Experience boxes */
+      #we-list.section-list > li {
+        border: 1px solid currentColor;
+        padding: 0.85rem 0.9rem;
+        margin-bottom: 0.85rem;
+        max-width: 600px;
       }
-      details#edu-toggle[open] ~ #edu-list .description,
-      details#we-toggle[open] ~ #we-list .description {
-        display: block;
+      #we-list .description {
+        margin-top: 0.35rem;
       }
 
-      /* Projects list */
+      /* Projects with per-item toggle */
       #tp-list.projects-list {
         list-style: none;
         padding-left: 0;
@@ -190,17 +198,23 @@
         border-top: 1px solid currentColor;
         display: block;
       }
-      .project-item {
+      details.project-item {
         border-bottom: 1px solid currentColor;
       }
-      .project-item > summary {
-        margin: 0;
-        padding: 0.6rem 0;
-        padding-left: 0;
-        font-size: 0.95rem;
-        font-weight: 600;
+      details.project-item[open] .project-body,
+      details.project-item[open] .description,
+      details.project-item[open] .sublist {
+        display: block;
       }
-      .project-item > summary::before {
+
+      /* Clickable row for project title */
+      .project-item > summary {
+        list-style: none;
+        margin: 0;
+        padding: 0.6rem 0 0.6rem 0;
+        cursor: pointer;
+      }
+      .project-item > summary::-webkit-details-marker {
         display: none;
       }
       .proj-row {
@@ -240,28 +254,18 @@
         color: var(--highlight);
         transform: translateY(-1px);
       }
-
       .project-body {
         display: none;
-        padding: 0rem 0 0.8rem;
+        padding: 0 0 0.8rem;
         margin-left: calc(32px + 0.8rem);
         font-size: 0.85rem;
       }
-      .project-item .description {
-        display: none;
-      }
-      .project-item .sublist {
+      .sublist {
         display: none;
         list-style: none;
         margin-top: 0.3rem;
         padding-left: 1rem;
         font-size: 0.95rem;
-      }
-
-      details#tp-toggle[open] ~ #tp-list .project-item[open] .project-body,
-      details#tp-toggle[open] ~ #tp-list .project-item[open] .description,
-      details#tp-toggle[open] ~ #tp-list .project-item[open] .sublist {
-        display: block;
       }
 
       /* Skills (ledger style) */
@@ -270,14 +274,15 @@
       }
       .skill-row {
         display: grid;
-        grid-template-columns: 190px 1fr;
-        gap: 1rem;
+        grid-template-columns: 220px 1fr;
+        gap: 0rem;
         align-items: start;
         padding: 0.75rem 0;
       }
       .skill-label {
         font-weight: 500;
         font-size: 1.2rem;
+        padding-left: 1.5rem;
       }
       .skill-items {
         display: flex;
@@ -292,14 +297,16 @@
         white-space: nowrap;
       }
 
-      details#sk-toggle > #skills-ledger {
-        display: none;
-      }
-      details#sk-toggle[open] > #skills-ledger {
-        display: block;
+      footer {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-top: 3rem;
       }
 
       @media (max-width: 900px) {
+        main {
+          grid-template-columns: 1fr;
+        }
         .skill-row {
           grid-template-columns: 1fr;
           gap: 0.4rem;
@@ -314,459 +321,89 @@
           margin-left: calc(28px + 0.8rem);
         }
       }
-
-      /* ONLY CHANGE: Work Experience items as boxes */
-      #we-list.section-list > li {
-        border: 1px solid currentColor;
-        padding: 0.85rem 0.9rem;
-        margin-bottom: 0.85rem;
-      }
-      #we-list .description {
-        margin-top: 0.35rem;
-      }
     </style>
   </head>
   <body>
-    <!-- Persistent nav + controls -->
+    <!-- Theme toggle only -->
     <div id="themeToggle" title="Switch Theme"></div>
-    <div id="collapseToggle" title="Collapse/Expand Resume Sections"></div>
+
     <nav class="topnav" aria-label="Site">
       <a href="index.html">home</a>
       <a href="about.html">about</a>
-      <a href="resume.html">resume</a>
+      <a href="resume.html" class="active">resume</a>
       <a href="contact.html">contact</a>
     </nav>
+    <div class="top-actions">
+  <a href="1JulietteMangonResume.pdf" target="_blank" class="pdf-link">View PDF version</a>
+</div>
 
     <main>
       <h2>
-        Resume
-        <a
-          href="1JulietteMangonResume.pdf"
-          target="_blank"
-          style="
-            font-size: 1rem;
-            font-weight: 400;
-            margin-left: 0.5rem;
-            position: relative;
-            top: -2px;
-          "
-        >
-          (PDF)
-        </a>
+        .
       </h2>
 
-      <!-- Education -->
-      <details id="edu-toggle" open><summary>Education</summary></details>
-      <ul id="edu-list" class="section-list">
-        <li>
-          <strong>B.A. in Computer Science and Mathematics</strong>, NYU
-          (2023-2025)
-          <p class="description">
-            Coursework: Algorithms, Applied Internet Technology, Natural
-            Language Processing, Numerical Computing, Operating Systems,
-            Mathematical Statistics, Numerical Analysis
-          </p>
-        </li>
-        <li>
-          <strong
-            >Minor in Business of Entertainment, Media, and Technology</strong
-          >
-          <p class="description">
-            Coursework: Data Analysis in the Music Industry, Business Structure
-            of the Music Industry, Entertainment & Media Industries, Business of
-            Film, Business of Video Games.
-          </p>
-        </li>
-      </ul>
-
-      <!-- Work Experience -->
-      <details id="we-toggle" open><summary>Work Experience</summary></details>
-      <ul id="we-list" class="section-list">
-        <li>
-          <strong>AI/ML Intern</strong>, Enlaye (2025)
-          <p class="description">
-            Working on the agentic architecture of
-            <a href="https://www.enlaye.com/" target="_blank"
-              ><strong>Enlaye</strong></a
+      <!-- LEFT COLUMN: Education + Work -->
+      <section aria-label="Left Column">
+        <h3>Education</h3>
+        <ul id="edu-list" class="section-list">
+          <li>
+            <strong>B.A. in Computer Science and Mathematics</strong>, NYU
+            (2023-2025)
+            <p class="description">
+              Coursework: Algorithms, Applied Internet Technology, Natural
+              Language Processing, Numerical Computing, Operating Systems,
+              Mathematical Statistics, Numerical Analysis
+            </p>
+          </li>
+          <li>
+            <strong
+              >Minor in Business of Entertainment, Media, and Technology</strong
             >
-            's AI-native contract platform, building data-driven query
-            preprocessing and multi-agent reasoning systems deployed on AWS.
-          </p>
-        </li>
-        <li>
-          <strong>Website Developer</strong>, Tryst Restaurant (2025)
-          <p class="description">
-            Rebuilt the restaurant's site with HTML/CSS/JS. Improved UX through
-            responsive layouts, added SEO optimizations, and enhanced
-            accessibility and performance.
-          </p>
-        </li>
-        <li>
-          <strong>USA Mathematical Talent Search Grader</strong>, Art of Problem
-          Solving (2023–)
-          <p class="description">
-            Evaluating Olympiad-level proofs, assessing complex reasoning and
-            providing detailed written feedback. Collaborating with other
-            graders to standardize scoring and ensure consistency across
-            submissions.
-          </p>
-        </li>
-        <li>
-          <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
-          <p class="description">
-            Developed an AI-powered SwiftUI photo editor using OpenCV; assisted
-            Figma UI design and competitive feature analysis.
-          </p>
-        </li>
-      </ul>
-
-      <!-- Mentorship -->
-      <details id="ms-toggle" open>
-        <summary>
-          Connect TogetHER Music Tech Mentorship Project
-          <a
-            href="projects/She%20is%20the%20music.pdf"
-            target="_blank"
-            aria-label="Open project"
-          >
-            <svg
-              viewBox="0 0 22 20"
-              width="22"
-              height="19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </a>
-        </summary>
-        <p class="description">
-          Selected for
-          <a href="https://sheisthemusic.org/" target="_blank"
-            ><strong>She Is The Music</strong></a
-          >
-          's competitive mentorship program as a music tech mentee under Anna
-          Skelsey, I developed a music analytics platform to visualize creative
-          networks, uncover contributor relationships, and identify derivative
-          links between songs to support A&R insights and catalog strategy.
-        </p>
-      </details>
-
-      <!-- Projects -->
-      <details id="tp-toggle" open><summary>Projects</summary></details>
-      <ul id="tp-list" class="projects-list">
-        <!-- Project 1 -->
-        <details class="project-item">
-          <summary>
-            <div class="proj-row">
-              <span class="proj-num">01</span>
-              <span class="proj-title">Essay Plagiarism Detection Project</span>
-              <a
-                class="proj-link"
-                href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf"
-                target="_blank"
-                aria-label="Open project"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </summary>
-          <div class="project-body">
             <p class="description">
-              Developed and optimized a plagiarism detection system using TF-IDF
-              vectors, cosine similarity, and n-gram models. Verified research
-              findings on trigram-based detection, implemented multiprocessing
-              to reduce runtime by 80%, and adjusted vectorization to improve
-              F-scores while minimizing false positives across large text
-              corpora.
+              Coursework: Data Analysis in the Music Industry, Business
+              Structure of the Music Industry, Entertainment and Media
+              Industries, Business of Film, Business of Video Games.
             </p>
-          </div>
-        </details>
+          </li>
+        </ul>
 
-        <!-- Project 2 -->
-        <details class="project-item">
-          <summary>
-            <div class="proj-row">
-              <span class="proj-num">02</span>
-              <span class="proj-title"
-                >Spotify Listening Behavior Case Study</span
-              >
-              <a
-                class="proj-link"
-                href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf"
-                target="_blank"
-                aria-label="Open project"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </summary>
-          <div class="project-body">
+        <h3>Work Experience</h3>
+        <ul id="we-list" class="section-list">
+          <li>
+            <strong>AI/ML Intern</strong>, Enlaye (2025)
             <p class="description">
-              Explored Spotify's use of machine learning in personalized
-              recommendations, playlist curation, and user engagement features
-              like Wrapped, with analysis of licensing models, AI risks, and
-              global platform strategy.
+              Working on the agentic architecture of Enlaye's AI-native contract
+              platform, building data-driven query preprocessing and multi-agent
+              reasoning systems deployed on AWS.
             </p>
-          </div>
-        </details>
-
-        <!-- Project 3 with sublist -->
-        <details class="project-item">
-          <summary>
-            <div class="proj-row">
-              <span class="proj-num">03</span>
-              <span class="proj-title"
-                >Client Website Development Projects</span
-              >
-            </div>
-          </summary>
-          <div class="project-body">
+          </li>
+          <li>
+            <strong>Website Developer</strong>, Tryst Restaurant (2025)
             <p class="description">
-              Built responsive portfolio sites for photographers and visual
-              artists using React, Tailwind CSS, and JavaScript. Emphasized
-              interactive UI components and tailored visual layouts.
+              Rebuilt the restaurant's site with HTML/CSS/JS. Improved UX
+              through responsive layouts, added SEO optimizations, and enhanced
+              accessibility and performance.
             </p>
-            <ul class="sublist">
-              <li>
-                <a
-                  href="https://juliettemangon2.github.io/amandine/"
-                  target="_blank"
-                >
-                  Amandine Mangon: Postcard-style gallery exploring archival and
-                  personal photography through collaging
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="vertical-align: middle"
-                  >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="https://mateoantoniomartinez.com/" target="_blank">
-                  Mateo Antonio Martinez: Personal photography site with
-                  exhibits, photo essays, and reflective writing
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="vertical-align: middle"
-                  >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/"
-                  target="_blank"
-                >
-                  Chris Fitzgerald: Studio portraits, street photography, and
-                  editorial work
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="vertical-align: middle"
-                  >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </details>
-
-        <!-- Project 4 -->
-        <details class="project-item">
-          <summary>
-            <div class="proj-row">
-              <span class="proj-num">04</span>
-              <span class="proj-title"
-                >Proposal: Kering-Branded Fashion Toolkits for UGC
-                Platforms</span
-              >
-              <a
-                class="proj-link"
-                href="projects/Businessof%20Video%20games%20final.pdf"
-                target="_blank"
-                aria-label="Open project"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </summary>
-          <div class="project-body">
+          </li>
+          <li>
+            <strong>USA Mathematical Talent Search Grader</strong>, Art of
+            Problem Solving (2023–)
             <p class="description">
-              Proposed that Kering invest in branded digital fashion toolkits
-              for UGC platforms like Roblox and Fortnite, offering customizable
-              avatar assets, textures, and templates to engage players, expand
-              brand presence in virtual economies, and generate new revenue
-              through creator royalties.
+              Evaluating Olympiad-level proofs, assessing complex reasoning and
+              providing detailed written feedback. Collaborating with other
+              graders to standardize scoring and ensure consistency across
+              submissions.
             </p>
-          </div>
-        </details>
-
-        <!-- Project 5 -->
-        <details class="project-item">
-          <summary>
-            <div class="proj-row">
-              <span class="proj-num">05</span>
-              <span class="proj-title"
-                >Ad Hoc Information Retrieval System</span
-              >
-              <a
-                class="proj-link"
-                href="https://github.com/juliettemangon2/adhocRetrievalSystem"
-                target="_blank"
-                aria-label="Open project"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </summary>
-          <div class="project-body">
+          </li>
+          <li>
+            <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
             <p class="description">
-              Built a TF-IDF-based ranking system to match 1,400 document
-              abstracts to 225 custom queries. Used cosine similarity to
-              determine relevance and evaluated system performance using Mean
-              Average Precision to guide algorithm refinements.
+              Developed an AI-powered SwiftUI photo editor using OpenCV;
+              assisted Figma UI design and competitive feature analysis.
             </p>
-          </div>
-        </details>
-
-        <!-- Project 6 -->
-        <details class="project-item">
-          <summary>
-            <div class="proj-row">
-              <span class="proj-num">06</span>
-              <span class="proj-title">AI in Music Creation Analysis</span>
-              <a
-                class="proj-link"
-                href="projects/MUSIC%20AI.pdf"
-                target="_blank"
-                aria-label="Open project"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </summary>
-          <div class="project-body">
-            <p class="description">
-              Explored how generative AI is changing music creation, raising new
-              questions about authorship, originality, and the role of human
-              input in creative work.
-            </p>
-          </div>
-        </details>
-      </ul>
-
-      <!-- Skills -->
-      <details id="sk-toggle" open>
-        <summary>Skills</summary>
+          </li>
+        </ul>
+        <h3>Skills</h3>
         <div id="skills-ledger">
           <div class="skill-row">
             <div class="skill-label">Languages & Frameworks</div>
@@ -824,17 +461,381 @@
             </div>
           </div>
         </div>
-      </details>
+      </section>
+
+      <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
+      <section aria-label="Right Column">
+      
+        <h3>Projects</h3>
+        <ul id="tp-list" class="projects-list">
+                    <!-- Project 1 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">01</span>
+                <span class="proj-title"
+                  >Music Metadata Aggregation & Insights Tool</span
+                >
+                <a
+                  class="proj-link"
+                  href="projects/She%20is%20the%20music.pdf"
+                  target="_blank"
+                  aria-label="Open project"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+               Selected for
+          <a href="https://sheisthemusic.org/" target="_blank"
+            ><strong>She Is The Music</strong></a
+          >
+          's Connect TogetHER mentorship program as a music tech mentee under Anna
+          Skelsey, I developed a music analytics platform to visualize creative
+          networks, uncover contributor relationships, and identify derivative
+          links between songs to support A and R insights and catalog strategy.
+              </p>
+            </div>
+          </details>
+          <!-- Project 1 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">02</span>
+                <span class="proj-title"
+                  >Essay Plagiarism Detection Project</span
+                >
+                <a
+                  class="proj-link"
+                  href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf"
+                  target="_blank"
+                  aria-label="Open project"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+                Developed and optimized a plagiarism detection system using
+                TF-IDF vectors, cosine similarity, and n-gram models. Verified
+                research findings on trigram-based detection, implemented
+                multiprocessing to reduce runtime by 80 percent, and adjusted
+                vectorization to improve F-scores and minimize false
+                positives across the text corpora.
+              </p>
+            </div>
+          </details>
+
+          <!-- Project 2 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">03</span>
+                <span class="proj-title"
+                  >Spotify Listening Behavior Case Study</span
+                >
+                <a
+                  class="proj-link"
+                  href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf"
+                  target="_blank"
+                  aria-label="Open project"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+                Explored Spotify's use of machine learning in personalized
+                recommendations, playlist curation, and user engagement features
+                like Wrapped, with analysis of licensing models, AI risks, and
+                global platform strategy.
+              </p>
+            </div>
+          </details>
+
+          <!-- Project 3 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">04</span>
+                <span class="proj-title"
+                  >Client Website Development Projects</span
+                >
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+                Built responsive portfolio sites for photographers and visual
+                artists using React, Tailwind CSS, and JavaScript. Emphasized
+                interactive UI components and tailored visual layouts.
+              </p>
+              <ul class="sublist">
+                <li>
+                  <a
+                    href="https://juliettemangon2.github.io/amandine/"
+                    target="_blank"
+                  >
+                    Amandine Mangon: Postcard-style gallery exploring archival
+                    and personal photography through collaging
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="vertical-align: middle"
+                    >
+                      <path
+                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://mateoantoniomartinez.com/" target="_blank">
+                    Mateo Antonio Martinez: Personal photography site with
+                    exhibits, photo essays, and reflective writing
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="vertical-align: middle"
+                    >
+                      <path
+                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/"
+                    target="_blank"
+                  >
+                    Chris Fitzgerald: Studio portraits, street photography, and
+                    editorial work
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="vertical-align: middle"
+                    >
+                      <path
+                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Project 4 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">05</span>
+                <span class="proj-title"
+                  >Proposal: Kering-Branded Fashion Toolkits for UGC
+                  Platforms</span
+                >
+                <a
+                  class="proj-link"
+                  href="projects/Businessof%20Video%20games%20final.pdf"
+                  target="_blank"
+                  aria-label="Open project"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+                Proposed that Kering invest in branded digital fashion toolkits
+                for UGC platforms like Roblox and Fortnite, offering
+                customizable avatar assets, textures, and templates to engage
+                players, expand brand presence in virtual economies, and
+                generate new revenue through creator royalties.
+              </p>
+            </div>
+          </details>
+
+          <!-- Project 5 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">06</span>
+                <span class="proj-title"
+                  >Ad Hoc Information Retrieval System</span
+                >
+                <a
+                  class="proj-link"
+                  href="https://github.com/juliettemangon2/adhocRetrievalSystem"
+                  target="_blank"
+                  aria-label="Open project"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+                Built a TF-IDF-based ranking system to match 1,400 document
+                abstracts to 225 custom queries. Used cosine similarity to
+                determine relevance and evaluated system performance using Mean
+                Average Precision to guide algorithm refinements.
+              </p>
+            </div>
+          </details>
+
+          <!-- Project 6 -->
+          <details class="project-item" open>
+            <summary role="button" aria-expanded="true">
+              <div class="proj-row">
+                <span class="proj-num">07</span>
+                <span class="proj-title">AI in Music Creation Analysis</span>
+                <a
+                  class="proj-link"
+                  href="projects/MUSIC%20AI.pdf"
+                  target="_blank"
+                  aria-label="Open project"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </summary>
+            <div class="project-body">
+              <p class="description">
+                Explored how generative AI is changing music creation, raising
+                new questions about authorship, originality, and the role of
+                human input in creative work.
+              </p>
+            </div>
+          </details>
+        </ul>
+      </section>
 
       <footer>
-    <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; margin-top: 4rem;">
-      © 2025 Juliette Mangon
-    </p>
-  </footer>
+        <p
+          style="
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.7rem;
+            margin-top: 4rem;
+          "
+        >
+          © 2025 Juliette Mangon
+        </p>
+      </footer>
     </main>
 
     <script>
-      // THEME
+      // Theme
       const themes = {
         default: {
           "--bg": "#e4e6ff",
@@ -861,47 +862,23 @@
         localStorage.setItem("theme", name);
       }
       applyTheme(localStorage.getItem("theme") || "default");
-
       document.getElementById("themeToggle").addEventListener("click", () => {
         const current = localStorage.getItem("theme") || "default";
         const idx = (order.indexOf(current) + 1) % order.length;
         applyTheme(order[idx]);
       });
 
-      // COLLAPSE/EXPAND ALL
-      const collapseToggle = document.getElementById("collapseToggle");
-      let collapsed = false;
-      collapseToggle.addEventListener("click", () => {
-        const toggles = document.querySelectorAll(
-          "main details, #tp-list .project-item"
-        );
-        toggles.forEach((detail) => {
-          if (collapsed) detail.setAttribute("open", true);
-          else detail.removeAttribute("open");
+      // Improve a11y state on project toggles
+      document
+        .querySelectorAll("details.project-item > summary")
+        .forEach((s) => {
+          s.addEventListener("click", () => {
+            const d = s.parentElement;
+            setTimeout(() => {
+              s.setAttribute("aria-expanded", d.open ? "true" : "false");
+            }, 0);
+          });
         });
-        collapsed = !collapsed;
-      });
-
-      // PROJECTS: ensure all descriptions are visible when Projects header is open
-      const outerToggle = document.querySelector("#tp-toggle");
-      const projectItems = document.querySelectorAll("#tp-list .project-item");
-
-      // On first load: if outer is open, force all project items open
-      if (outerToggle && outerToggle.open) {
-        projectItems.forEach((item) => {
-          item.open = true;
-        });
-      }
-      // If user opens the outer toggle later, also force all items open
-      if (outerToggle) {
-        outerToggle.addEventListener("toggle", () => {
-          if (outerToggle.open) {
-            projectItems.forEach((item) => {
-              item.open = true;
-            });
-          }
-        });
-      }
     </script>
   </body>
 </html>

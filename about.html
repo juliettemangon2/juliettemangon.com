@@ -73,6 +73,23 @@
         font-weight: 600;
       }
 
+      .topnav a::before,
+      .topnav a::after {
+        content: " [ ";
+        opacity: 0;
+      }
+      .topnav a::after {
+        content: " ] ";
+      }
+
+      /* Hover or active page link shows brackets */
+      .topnav a:hover::before,
+      .topnav a:hover::after,
+      .topnav a.active::before,
+      .topnav a.active::after {
+        opacity: 1;
+      }
+
       main {
         max-width: 900px;
         margin: 6rem auto 3rem;
@@ -89,6 +106,7 @@
       }
 
       h2 {
+        color: var(--bg);
         font-size: 2rem;
         font-weight: 700;
         margin: 1.2rem 0 0.6rem;
@@ -96,7 +114,7 @@
       a {
         color: var(--text);
         text-decoration: none;
-        transition: color 0.2s;
+        transition: color 0.1s;
       }
       a:hover {
         color: var(--highlight);
@@ -150,7 +168,7 @@
     <div id="themeToggle" title="Switch Theme"></div>
     <nav class="topnav" aria-label="Site">
       <a href="index.html">home</a>
-      <a href="about.html">about</a>
+      <a href="about.html" class="active">about</a>
       <a href="resume.html">resume</a>
       <a href="contact.html">contact</a>
     </nav>
@@ -158,16 +176,17 @@
     <main>
       <!-- About content (preserved text) -->
       <section>
-        <h2>About</h2>
+        <h2>.</h2>
         <p>
-          My name is <strong>Juliette Mangon</strong>. I'm studying Computer Science
-          and Mathematics with a minor in the Business of Entertainment, Media, and Technology at
-          <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a>.
-        
+          My name is <strong>Juliette Mangon</strong>. I'm studying Computer
+          Science and Mathematics with a minor in the Business of Entertainment,
+          Media, and Technology at
+          <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a
+          >.
         </p>
         <p>
-            I am passionate about how technology can support creative expression and
-          connect people working across media-driven fields. I'm especially
+          I am passionate about how technology can support creative expression
+          and connect people working across media-driven fields. I'm especially
           interested in building systems that are intuitive and thoughtful in
           how they shape user experience.
         </p>
@@ -194,15 +213,22 @@
         </p>
       </section>
 
-     
       <section>
         <div class="photos"></div>
       </section>
       <footer>
-    <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; margin-top: 2rem;">
-      © 2025 Juliette Mangon
-    </p>
-  </footer>
+        <p
+          style="
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.7rem;
+            margin-top: 2rem;
+          "
+        >
+          © 2025 Juliette Mangon
+        </p>
+      </footer>
     </main>
 
     <!-- Snake logic (preserved include) -->
