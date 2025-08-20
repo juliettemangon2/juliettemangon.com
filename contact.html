@@ -1,234 +1,218 @@
 <!DOCTYPE html>
-<html lang="en" class="theme1">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Let’s Connect!</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Juliette Mangon</title>
 
-  <style>
-    :root {
-      --yellow: #fdffe1;         /* light yellow */
-      --cyan: #d5eff5;  /* light cyan */
-      --softgray: #fffff7;   /* off-white for cards */
-      --tomato: #ff6d4c;       /* tomato text */
-      --accent: #4a537b;     /* deep-blue accents */
-      --darkblue: #00285d;
-      --blue: #185ab0;
-      --azure: #eefcff;
-    }
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* THEME 1 STRIPES */
-    html.theme1 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--cyan) 0   100px,
-        var(--yellow)        100px 200px
-      );
-    }
-
-    /* THEME 2 STRIPES & SWAP */
-    html.theme2 {
-      background: repeating-linear-gradient(
-        to right,
-        var(--darkblue) 0   100px,
-        var(--blue)   100px 200px
-      );
-      --tomato:   #00285d;  /* swap to deep-blue text */
-      --accent: #185ab0;  /* swap to tomato accents */
-    }
-
-    html {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    body {
-      min-height: 100vh;
-      padding: 40px 30px;
-      color: var(--tomato);
-      background: transparent;
-      position: relative;
-    }
-    /* TOP-LEFT HOME & TOP-RIGHT THEME SWITCH */
-    .top-buttons {
-      position: absolute;
-      top: 20px; left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .top-buttons a {
-      font-weight: 600;
-      padding: 0.6rem 1.2rem;
-      color: var(--tomato);
-      background: var(--softgray);
-      border: 3px solid var(--cyan);
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 0 2px var(--accent);
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
-    .top-buttons a:hover {
-      background: var(--accent);
-      color: var(--softgray);
-      transform: scale(1.05);
-    }
-
-    .toggle-switch {
-      position: absolute;
-      top: 20px; right: 20px;
-      width: 50px; height: 24px;
-    }
-    .toggle-switch input {
-      opacity: 0; width: 0; height: 0;
-    }
-    .toggle-switch label {
-      position: absolute;
-      cursor: pointer;
-      background-color: #ccc;
-      border-radius: 24px;
-      width: 100%; height: 100%;
-      transition: background-color 0.3s;
-    }
-    .toggle-switch label::after {
-      content: '';
-      position: absolute;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: #fff;
-      top: 3px; left: 3px;
-      transition: transform 0.3s;
-    }
-    .toggle-switch input:checked + label {
-      background: var(--accent);
-    }
-    .toggle-switch input:checked + label::after {
-      transform: translateX(26px);
-    }
-
-    /* MAIN CARD */
-    .contact-card {
-      max-width: 700px;
-      margin: 120px auto 0; /* push below header controls */
-      padding: 2rem;
-      border-radius: 16px;
-      background: var(--softgray);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-    html.theme2 .contact-card {
-      background: var(--azure);
-    }
-
-    .contact-card h2 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-      -webkit-text-stroke: 2.5px var(--accent);
-      letter-spacing: 0.1em;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1.4rem;
-      margin: 1rem 0;
-      position: relative;
-    }
-    .contact-item::before {
-      font-size: 1.6rem;
-      color: var(--accent);
-    }
-    .email::before    { content: '📧'; }
-    .phone::before    { content: '📞'; }
-    .linkedin::before { content: '🔗'; }
-    .github::before   { content: '💻'; }
-    .sheisthemusic::before   { content: '🎶'; }
-
-    .contact-item a {
-      color: var(--tomato);
-      font-weight: 600;
-      text-decoration: none;
-      padding-bottom: 2px;
-      border-bottom: 2px dashed var(--accent);
-      transition: color 0.3s, transform 0.3s;
-    }
-    .contact-item a:hover {
-      color: var(--accent);
-      transform: translateX(4px);
-    }
-
-    @media (max-width: 600px) {
-      .contact-card {
-        margin: 80px 1rem 0;
-        padding: 1.5rem;
+    <style>
+      :root {
+        --bg: #e1ecff;
+        --text: #80074f;
+        --highlight: #6fc1de;
       }
-      .contact-card h2 {
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Instrument Sans", sans-serif;
+        line-height: 1.6;
+        font-size: 1.05rem;
+        overflow-x: hidden;
+      }
+
+      /* Theme + simple top nav */
+      #themeToggle {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 30px;
+        height: 30px;
+        background-color: var(--text);
+        cursor: pointer;
+        z-index: 2000;
+        transition: background-color 0.2s;
+      }
+      #themeToggle:hover {
+        background-color: var(--highlight);
+      }
+
+      .topnav {
+        position: fixed;
+        top: 1.5rem;
+        left: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        z-index: 1500;
+      }
+      .topnav a {
+        color: var(--text);
+        text-decoration: none; /* no decoration */
+        font-weight: 600;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 6rem auto 3rem;
+        padding: 0 1.25rem;
+        animation: slideIn 0.6s ease forwards;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      @keyframes slideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h2 {
+        color: var(--bg);
         font-size: 2rem;
+        font-weight: 700;
+        margin: 1.2rem 0 4.6rem;
       }
-      .contact-item {
-        font-size: 1.1rem;
+      a {
+        color: var(--text);
+        text-decoration: none;
+        transition: color 0.2s;
       }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="top-buttons">
-    <a href="index.html">Home</a>
-  </div>
-  <div class="toggle-switch">
-    <input type="checkbox" id="theme-toggle"/>
-    <label for="theme-toggle"></label>
-  </div>
-
-  <div class="contact-card">
-    <h2>LET'S CONNECT!</h2>
-
-    <div class="contact-item email">
-      <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a>
-    </div>
-    <div class="contact-item phone">
-      <a href="tel:+17816288078">+1 (781) 628-8078</a>
-    </div>
-    <div class="contact-item linkedin">
-      <a href="https://www.linkedin.com/in/juliette-mangon/" target="_blank">
-        linkedin.com/in/juliette-mangon
-      </a>
-    </div>
-    <div class="contact-item github">
-      <a href="https://github.com/juliettemangon2" target="_blank">
-        github.com/juliettemangon2
-      </a>
-    </div>
-     <div class="contact-item sheisthemusic">
-      <a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">
-        sheisthemusic.org/profile/juliette-mangongmail-com/
-      </a>
-    </div>
-  </div>
-
-  <script>
-    const checkbox = document.getElementById('theme-toggle');
-    checkbox.addEventListener('change', () => {
-      const html = document.documentElement;
-      if (checkbox.checked) {
-        html.classList.replace('theme1','theme2');
-      } else {
-        html.classList.replace('theme2','theme1');
+      a:hover {
+        color: var(--highlight);
       }
-    });
-  </script>
-</body>
+      p {
+        margin-bottom: 0.5rem;
+        font-size: 3.2rem;
+        text-align: center;
+      }
+
+      .contact-columns {
+        
+        display: grid;
+        grid-template-columns: 1fr 0fr;
+        gap: 0;
+        margin-top: 4rem;
+      }
+
+      .contact-columns p {
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .contact-columns {
+          grid-template-columns: 1fr;
+        }
+        .photos img {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Persistent controls -->
+    <div id="themeToggle" title="Switch Theme"></div>
+    <nav class="topnav" aria-label="Site">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="resume.html">resume</a>
+      <a href="contact.html">contact</a>
+    </nav>
+
+    <main>
+      <section class="contact-section">
+        <h2>.</h2>
+        <div class="contact-columns">
+          <div>
+            <p>
+              <a href="mailto:juliette.mangon@gmail.com"
+                >juliette.mangon@gmail.com</a
+              >
+            </p>
+            <p><a href="tel:+17816288078">(781) 628-8078</a></p>
+            <p>
+              <a href="https://github.com/juliettemangon2" target="_blank"
+                >GitHub</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://www.linkedin.com/in/juliette-mangon"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://sheisthemusic.org/profile/juliette-mangongmail-com/"
+                target="_blank"
+                >She Is The Music</a
+              >
+            </p>
+        
+            
+          </div>
+        </div>
+      </section>
+      <footer>
+    <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; margin-top: 8.5rem;">
+      © 2025 Juliette Mangon
+    </p>
+  </footer>
+    </main>
+
+    <script>
+      // THEME
+      const themes = {
+        default: {
+          "--bg": "#e4e6ff",
+          "--text": "#ff6200",
+          "--highlight": "#e9ffa8",
+        },
+        alt: {
+          "--bg": "#d2e6ff",
+          "--text": "#A70A4E",
+          "--highlight": "#FF9DFF",
+        },
+        gray: {
+          "--bg": "#FFDCF6",
+          "--text": "#d60b6d",
+          "--highlight": "#83dbd6ff",
+        },
+      };
+      const order = ["default", "alt", "gray"];
+      function applyTheme(name) {
+        if (!themes[name]) name = "default";
+        for (const [k, v] of Object.entries(themes[name])) {
+          document.documentElement.style.setProperty(k, v);
+        }
+        localStorage.setItem("theme", name);
+      }
+      applyTheme(localStorage.getItem("theme") || "default");
+
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        const current = localStorage.getItem("theme") || "default";
+        const idx = (order.indexOf(current) + 1) % order.length;
+        applyTheme(order[idx]);
+      });
+    </script>
+  </body>
 </html>

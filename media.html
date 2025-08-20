@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juliette Mangon | Favorite Media</title>
+    <title>Media | Juliette Mangon</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -26,11 +30,11 @@
       body {
         background: var(--bg);
         color: var(--text);
-        font-family: "Inter", sans-serif;
+        font-family: "Instrument Sans", sans-serif;
         margin: 0;
         padding: 4rem 0 2rem;
         display: flex;
-        justify-content: center; /* keep your original centering */
+        justify-content: center;
       }
 
       .page {
@@ -78,11 +82,11 @@
         right: 3.7rem;
         width: 20px;
         height: 20px;
-        background-color: var(--text); /* use --text like index */
+        background-color: var(--text);
         cursor: pointer;
         z-index: 2000;
         transition: background-color 0.3s;
-        display: flex; /* center like index */
+        display: flex;
         align-items: center;
         justify-content: center;
       }
@@ -94,24 +98,37 @@
         display: flex;
         gap: 8rem;
         max-width: 1200px;
+        margin-top: 4rem;
         margin-left: 2rem;
         width: 100%;
         justify-content: center;
         margin-bottom: 4.5rem; /* more space before footer */
       }
 
+      /* Page-load animation for columns */
       .column {
         display: flex;
         flex-direction: column;
         width: 100%;
         max-width: 500px;
-      }
 
-      .column.left {
+        opacity: 0;
         transform: translateY(60px);
+        animation: fadeUp 0.6s ease forwards;
       }
       .column.right {
-        transform: translateY(60px);
+        animation-delay: 0.12s; /* slight stagger */
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .media-block {
@@ -142,43 +159,41 @@
 
       .media-number {
         font-weight: 400;
-        color: var(--text); /* number color */
+        color: var(--text);
         border-radius: 50%;
         border: 1.5px solid var(--text);
-        display: inline-flex; /* allows centering */
+        display: inline-flex;
         justify-content: center;
         align-items: center;
-        width: 28px; /* circle size */
+        width: 28px;
         height: 28px;
         font-size: 0.8rem;
       }
 
+      /* Smooth open/close animation for descriptions */
       .media-desc {
-        padding: 1rem 1.5rem;
-        display: none;
-        font-weight: 500;
+        padding: 0 1rem;
+        display: block; /* keep in flow to allow transition */
+        max-height: 0; /* collapsed */
+        opacity: 0;
+        overflow: hidden;
         line-height: 1.5;
+        font-weight: 500;
+        transition: max-height 0.35s ease, opacity 0.35s ease,
+          padding 0.35s ease;
       }
-
       .media-desc.open {
-        display: block;
+        max-height: 500px; /* enough to reveal typical text blocks */
+        opacity: 1;
+        padding: 1rem 1rem; /* add vertical padding when open */
       }
 
       .media-desc a {
         color: inherit;
-        text-decoration: none;;
+        text-decoration: none;
       }
       .media-desc a:hover {
         color: var(--highlight);
-      }
-
-      main.gallery {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        padding: 0 2rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
       }
 
       /* Footer like your paintings page */
@@ -192,12 +207,27 @@
         margin-bottom: 0.7rem;
         margin-top: 2rem;
       }
+
+      /* Respect reduced motion preference */
+      @media (prefers-reduced-motion: reduce) {
+        .column {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+        .media-desc {
+          transition: none;
+          max-height: none;
+          opacity: 1;
+          padding: 1rem 1rem;
+        }
+      }
     </style>
   </head>
 
   <body>
     <header>
-      <a href="index.html">&larr; Back</a>
+      <a href="about.html">&larr; back</a>
     </header>
     <div id="themeToggle" title="Switch Theme"></div>
     <div id="collapseToggle" title="Collapse/Expand Descriptions"></div>
@@ -213,10 +243,11 @@
               <span class="media-label">ALBUM</span>
             </div>
             <div class="media-desc" style="background-color: #ededd6">
-              Choke Enough by Oklou is one of my favorite albums right now. She just sounds so light
-              and soft like she is floating over the music. The album explores themes of self
-              discovery emotional vulnerability, and listening to it is an
-              entirely immersive experience.
+              Choke Enough by Oklou is one of my favorite albums right now. She
+              just sounds so light and soft like she is floating over the music.
+              The album explores themes of self discovery emotional
+              vulnerability, and listening to it is an entirely immersive
+              experience.
             </div>
           </div>
 
@@ -241,8 +272,10 @@
               <span class="media-label">ALBUM</span>
             </div>
             <div class="media-desc" style="background-color: #ded5df">
-              Just an extremely well done album. Not one skip, and has some of my favorite Radiohead songs of all time. I have been listening to this album
-              a lot in the car recently, it just sounds so good, and is even better when you know the lyrics. 
+              Just an extremely well done album. Not one skip, and has some of
+              my favorite Radiohead songs of all time. I have been listening to
+              this album a lot in the car recently, it just sounds so good, and
+              is even better when you know the lyrics.
             </div>
           </div>
 
@@ -253,8 +286,12 @@
               <span class="media-label">ALBUM</span>
             </div>
             <div class="media-desc" style="background-color: #e2eaf8">
-              Front to back, this album is a masterpiece. Punisher is exactly what we needed in 2020, a year full of fear, uncertainty, and isolation, which Phoebe Bridgers captures so well.
-              She famously takes years to write songs, and it really shows in this album. Each song is clearly fully fledged out, there are is an orchestra when we want it, and simple acoustics when we don't.
+              Front to back, this album is a masterpiece. Punisher is exactly
+              what we needed in 2020, a year full of fear, uncertainty, and
+              isolation, which Phoebe Bridgers captures so well. She famously
+              takes years to write songs, and it really shows in this album.
+              Each song is clearly fully fledged out, there are is an orchestra
+              when we want it, and simple acoustics when we don't.
             </div>
           </div>
 
@@ -268,7 +305,12 @@
               class="media-desc"
               style="background-color: #be9fbcff; color: var(--contrast)"
             >
-              Checkout his instragram <a href="https://www.instagram.com/pokidyshev_art/" target="_blank"><strong>here</strong></a>.
+              Checkout his instragram
+              <a
+                href="https://www.instagram.com/pokidyshev_art/"
+                target="_blank"
+                ><strong>here</strong></a
+              >.
             </div>
           </div>
 
@@ -279,7 +321,10 @@
               <span class="media-label">ARTIST</span>
             </div>
             <div class="media-desc" style="background-color: #b6bbd5">
-              Checkout her instragram <a href="https://www.instagram.com/aunt.ag0ny/ " target="_blank"><strong>here</strong></a>.
+              Checkout her instragram
+              <a href="https://www.instagram.com/aunt.ag0ny/ " target="_blank"
+                ><strong>here</strong></a
+              >.
             </div>
           </div>
 
@@ -290,7 +335,10 @@
               <span class="media-label">ARTIST</span>
             </div>
             <div class="media-desc" style="background-color: #f1f5df">
-              Checkout her instragram <a href="https://www.instagram.com/laurafootes/" target="_blank"><strong>here</strong></a>.
+              Checkout her instragram
+              <a href="https://www.instagram.com/laurafootes/" target="_blank"
+                ><strong>here</strong></a
+              >.
             </div>
           </div>
 
@@ -301,7 +349,12 @@
               <span class="media-label">ARTIST</span>
             </div>
             <div class="media-desc" style="background-color: #c9dae5">
-              Checkout her instragram <a href="https://www.instagram.com/dylanrose_rheingold/" target="_blank"><strong>here</strong></a>.
+              Checkout her instragram
+              <a
+                href="https://www.instagram.com/dylanrose_rheingold/"
+                target="_blank"
+                ><strong>here</strong></a
+              >.
             </div>
           </div>
         </div>
@@ -315,10 +368,11 @@
               <span class="media-label">MOVIE</span>
             </div>
             <div class="media-desc" style="background-color: #eae7ed">
-              Everything is so visually beautiful. I love the all of the shots and
-              the lighting and the scenery. Timothée Chalamet was the perfect cast
-              for Elio, he perfectly captures teenage embarrassment and emotion.
-              The mix of languages and cultures is also done really well.
+              Everything is so visually beautiful. I love the all of the shots
+              and the lighting and the scenery. Timothée Chalamet was the
+              perfect cast for Elio, he perfectly captures teenage embarrassment
+              and emotion. The mix of languages and cultures is also done really
+              well.
             </div>
           </div>
 
@@ -346,9 +400,10 @@
             <div class="media-desc" style="background-color: #e2eaf8">
               Such a great story with amazing character development. This movie
               makes me anxious and uncomfortable in the best way. It feels like
-              I'm always bracing for something bad to happen, and then it hits out
-              of nowhere. The characters are so interesting, with traits that are
-              both relatable and frustrating. Visually, it's beautiful too.
+              I'm always bracing for something bad to happen, and then it hits
+              out of nowhere. The characters are so interesting, with traits
+              that are both relatable and frustrating. Visually, it's beautiful
+              too.
             </div>
           </div>
 
@@ -375,9 +430,10 @@
               <span class="media-label">TV</span>
             </div>
             <div class="media-desc" style="background-color: #ded5df">
-              The first few seasons are so well done. Each character is developed
-              so carefully, and the plot is intricate and satisfying, even when
-              things go wrong. It feels like a constant game of ping pong.
+              The first few seasons are so well done. Each character is
+              developed so carefully, and the plot is intricate and satisfying,
+              even when things go wrong. It feels like a constant game of ping
+              pong.
             </div>
           </div>
 
@@ -388,10 +444,10 @@
               <span class="media-label">TV</span>
             </div>
             <div class="media-desc" style="background-color: #f9f9ce">
-              Schitt's creek is probably the funniest show I've ever watched, and
-              it is comedic in such an intelligent way. I actually laugh out loud
-              so often. I was surprised by how visually pleasing it is too. Some
-              moments are kind of gross, but that’s the point.
+              Schitt's creek is probably the funniest show I've ever watched,
+              and it is comedic in such an intelligent way. I actually laugh out
+              loud so often. I was surprised by how visually pleasing it is too.
+              Some moments are kind of gross, but that’s the point.
             </div>
           </div>
 
@@ -403,7 +459,8 @@
             </div>
             <div class="media-desc" style="background-color: #ced9ee">
               Currently watching this and enjoying it. Super cringe, super
-              ridiculous, and sometimes funny and relatable. Not much else to say.
+              ridiculous, and sometimes funny and relatable. Not much else to
+              say.
             </div>
           </div>
 
@@ -414,17 +471,30 @@
               <span class="media-label">TV</span>
             </div>
             <div class="media-desc" style="background-color: #b6bbd5">
-              So much more fabulous than people give it credit for. Everyone knows
-              about the fashion, but every detail, down to what meal they are eating during what scene is perfect.
-              It's exactly what I'd want this show to be. There are definitely some unlikable traits in the characters,
-              I just find this show so entertaining that these supposed unlikable moments are just part of the fun.
+              So much more fabulous than people give it credit for. Everyone
+              knows about the fashion, but every detail, down to what meal they
+              are eating during what scene is perfect. It's exactly what I'd
+              want this show to be. There are definitely some unlikable traits
+              in the characters, I just find this show so entertaining that
+              these supposed unlikable moments are just part of the fun.
             </div>
           </div>
         </div>
       </div>
-
+      <footer>
+        <p
+          style="
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.7rem;
+            margin-top: 3rem;
+          "
+        >
+          © 2025 Juliette Mangon
+        </p>
+      </footer>
     </div>
-
 
     <script>
       // Toggle single item
@@ -496,7 +566,5 @@
           });
       });
     </script>
-   
   </body>
-  
 </html>

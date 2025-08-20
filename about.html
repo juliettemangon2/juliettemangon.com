@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juliette Mangon</title>
+    <title>About | Juliette Mangon</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
@@ -15,6 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Snake styles (preserved) -->
+    <link rel="stylesheet" href="snake.css" />
 
     <style>
       :root {
@@ -86,21 +89,10 @@
       }
 
       h2 {
-        font-size: 10rem;
-        font-weight: 600;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end; /* aligns to right */
-        line-height: 0.9; /* reduces vertical space between lines */
-        margin: 0;
-        padding-left: 67rem;
-        padding-top: 20rem;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 1.2rem 0 0.6rem;
       }
-
-      h2 span {
-        display: block;
-      }
-
       a {
         color: var(--text);
         text-decoration: none;
@@ -110,8 +102,37 @@
         color: var(--highlight);
       }
       p {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      .contact-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-top: 0.5rem;
+      }
+      .contact-columns > div {
+        border-left: 1.5px solid var(--text);
+        padding-left: 0.75rem;
+      }
+      .contact-columns p {
+        margin: 0;
+      }
+
+      .photos {
+        margin-top: 2rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .photos img {
+        width: 100%;
+        max-width: 530px;
+        height: auto;
+        object-fit: cover;
+        transition: transform 0.3s;
+        flex: 1 1 48%;
       }
 
       @media (max-width: 768px) {
@@ -135,13 +156,57 @@
     </nav>
 
     <main>
-      <section class="name-section">
-        <h2>
-          <span class="first">juliette</span>
-          <span class="last">mangon</span>
-        </h2>
+      <!-- About content (preserved text) -->
+      <section>
+        <h2>About</h2>
+        <p>
+          My name is <strong>Juliette Mangon</strong>. I'm studying Computer Science
+          and Mathematics with a minor in the Business of Entertainment, Media, and Technology at
+          <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a>.
+        
+        </p>
+        <p>
+            I am passionate about how technology can support creative expression and
+          connect people working across media-driven fields. I'm especially
+          interested in building systems that are intuitive and thoughtful in
+          how they shape user experience.
+        </p>
+        <p>
+          Outside of tech, I care deeply about the environment and how
+          innovation impacts sustainability. I also love to paint and spend time
+          outdoors.
+        </p>
+        <p>
+          Check out my painting portfolio
+          <a
+            href="paintings.html"
+            onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"
+            ><strong>here.</strong></a
+          >
+        </p>
+        <p>
+          Check out my current favorite media
+          <a
+            href="media.html"
+            onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"
+            ><strong>here.</strong></a
+          >
+        </p>
       </section>
+
+     
+      <section>
+        <div class="photos"></div>
+      </section>
+      <footer>
+    <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; margin-top: 2rem;">
+      © 2025 Juliette Mangon
+    </p>
+  </footer>
     </main>
+
+    <!-- Snake logic (preserved include) -->
+    <script defer src="snake.js"></script>
 
     <script>
       // THEME
