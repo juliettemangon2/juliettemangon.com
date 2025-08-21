@@ -144,27 +144,35 @@
         gap: 1rem;
         z-index: 1500;
         font-weight: 600;
-        border: 1px solid currentColor;
         padding: 0.4rem;
+        border: 2px solid currentColor;
+        transition: transform 0.3s, filter 0.3s, color 0.3s;
       }
+
       .top-actions:hover {
-        background-color: var(--highlight);
+        color: var(--highlight); /* changes text color */
+        border-color: var(--highlight); /* optional: match border */
+        transform: scale(1.1);
       }
 
       /* Styling for the PDF link */
+      /* PDF link base style */
       .pdf-link {
         font-size: 0.9rem;
         color: var(--text);
         text-decoration: none;
         transition: color 0.2s, opacity 0.2s;
       }
+
+      /* Hovering directly on the link */
       .pdf-link:hover {
-        font-size: 0.9rem;
-        color: var(--text2);
-        text-decoration: none;
-        transition: color 0.2s, opacity 0.2s;
+        color: var(--highlight);
       }
 
+      /* Hovering anywhere on the .top-actions container */
+      .top-actions:hover .pdf-link {
+        color: var(--highlight);
+      }
 
       /* Lists and descriptions */
       .section-list {
@@ -308,14 +316,57 @@
         margin-top: 3rem;
       }
 
+      /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and place "View PDF version" under it */
       @media (max-width: 900px) {
+        /* Stack the nav links vertically in the top-left */
+        .topnav {
+          position: absolute;
+          top: 0.75rem;
+          left: 0.75rem;
+          right: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.25rem;
+          z-index: 1500; /* below theme toggle but above content */
+        }
+        .topnav a {
+          display: inline-block;
+          padding: 0.125rem 0;
+          line-height: 1.2;
+        }
+
+        /* Keep theme toggle pinned to top-right */
+        #themeToggle {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          width: 32px;
+          height: 32px;
+          z-index: 2000;
+        }
+
+        /* Put "View PDF version" directly under the toggle */
+        .top-actions {
+          position: absolute;
+          top: calc(0.75rem + 32px + 0.5rem); /* below toggle */
+          right: 0.75rem;
+          left: auto;
+          background: transparent; /* simplify for mobile */
+          padding: 0;
+          filter: none;
+          padding: 0.4rem;
+        }
+
+        /* Create breathing room so content never hides behind stacked controls */
         main {
-          grid-template-columns: 1fr;
+          margin-top: 7rem; /* adjust if you add/remove nav items */
+          padding: 0 1rem 2rem;
+          grid-template-columns: 1fr; /* ensure single-column grid */
+          gap: 1.25rem;
         }
-        .skill-row {
-          grid-template-columns: 1fr;
-          gap: 0.4rem;
-        }
+
+        /* Projects and skills tightening on mobile */
         .proj-num {
           width: 28px;
           height: 28px;
@@ -324,6 +375,48 @@
         }
         .project-body {
           margin-left: calc(28px + 0.8rem);
+        }
+        .skill-row {
+          display: flex; /* override the desktop grid */
+          flex-direction: column; /* label on top, tags below */
+          align-items: flex-start;
+          gap: 0.35rem;
+        }
+        .skill-label {
+          padding-left: 1.5rem; /* remove ledger indent on mobile */
+          margin: 0;
+          line-height: 1.2;
+        }
+        .skill-items {
+          padding-left: 1.5rem;
+          display: flex; /* wrap tags neatly under the label */
+          flex-wrap: wrap;
+          gap: 0.35rem 0.6rem;
+          width: 100%;
+        }
+        .skill-tag {
+          white-space: nowrap; /* prevent awkward line breaks inside a tag */
+        }
+      }
+
+      /* Slightly narrow desktops or when window isn't fullscreen:
+   keep layout strong without overlap */
+      @media (max-width: 1200px) and (min-width: 901px) {
+        .topnav {
+          gap: 0.75rem;
+        }
+        #themeToggle {
+          top: 1rem;
+          right: 1rem;
+        }
+        .top-actions {
+          top: 1rem;
+          right: 4.5rem;
+        }
+        main {
+          margin-top: 6rem;
+          padding: 0 1.25rem 2.5rem;
+          gap: 1.5rem;
         }
       }
     </style>
@@ -339,13 +432,13 @@
       <a href="contact.html">contact</a>
     </nav>
     <div class="top-actions">
-  <a href="1JulietteMangonResume.pdf" target="_blank" class="pdf-link">View PDF version</a>
-</div>
+      <a href="1JulietteMangonResume.pdf" target="_blank" class="pdf-link">
+        view PDF version
+      </a>
+    </div>
 
     <main>
-      <h2>
-        .
-      </h2>
+      <h2>.</h2>
 
       <!-- LEFT COLUMN: Education + Work -->
       <section aria-label="Left Column">
@@ -367,7 +460,8 @@
             <p class="description">
               Coursework: Data Analysis in the Music Industry, Business
               Structure of the Music Industry, Entertainment and Media
-              Industries, Business of Film, Globalization of the Entertainment Industry, Business of Video Games.
+              Industries, Business of Film, Globalization of the Entertainment
+              Industry, Business of Video Games.
             </p>
           </li>
         </ul>
@@ -469,10 +563,9 @@
 
       <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
       <section aria-label="Right Column">
-      
         <h3>Projects</h3>
         <ul id="tp-list" class="projects-list">
-                    <!-- Project 1 -->
+          <!-- Project 1 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
@@ -506,14 +599,15 @@
             </summary>
             <div class="project-body">
               <p class="description">
-               Selected for
-          <a href="https://sheisthemusic.org/" target="_blank"
-            ><strong>She Is The Music</strong></a
-          >
-          's Connect TogetHER mentorship program as a music tech mentee under Anna
-          Skelsey, I developed a music analytics platform A&R teams and music professionals to visualize creative
-          networks, uncover contributor relationships, and identify derivative
-          links between songs to support A&R insights and catalog strategy.
+                Selected for
+                <a href="https://sheisthemusic.org/" target="_blank"
+                  ><strong>She Is The Music</strong></a
+                >
+                's Connect TogetHER mentorship program as a music tech mentee
+                under Anna Skelsey, I developed a music analytics platform A&R
+                teams and music professionals to visualize creative networks,
+                uncover contributor relationships, and identify derivative links
+                between songs to support A&R insights and catalog strategy.
               </p>
             </div>
           </details>
@@ -555,8 +649,8 @@
                 TF-IDF vectors, cosine similarity, and n-gram models. Verified
                 research findings on trigram-based detection, implemented
                 multiprocessing to reduce runtime by 80%, and adjusted
-                vectorization to improve F-scores and minimize false
-                positives across the text corpora.
+                vectorization to improve F-scores and minimize false positives
+                across the text corpora.
               </p>
             </div>
           </details>
@@ -621,10 +715,7 @@
               </p>
               <ul class="sublist">
                 <li>
-                  <a
-                    href="https://amandinemangon.com/"
-                    target="_blank"
-                  >
+                  <a href="https://amandinemangon.com/" target="_blank">
                     Amandine Mangon: Postcard-style gallery exploring archival
                     and personal photography through collaging
                     <svg
@@ -844,29 +935,29 @@
         default: {
           "--bg": "#e4e6ff",
           "--text": "#ff6200",
-          "--highlight": "#e9ffa8",
-          "--text2": "#ff6200"
+          "--highlight": "#4C1E4F",
+          "--text2": "#ff6200",
         },
         alt: {
           "--bg": "#d2e6ff",
           "--text": "#A70A4E",
           "--highlight": "#FF9DFF",
-          "--text2": "#A70A4E"
+          "--text2": "#A70A4E",
         },
         gray: {
           "--bg": "#FFDCF6",
           "--text": "#d60b6d",
           "--highlight": "#83dbd6ff",
-          "--text2": "#d60b6d"
+          "--text2": "#d60b6d",
         },
         blue: {
           "--bg": "#20406C",
           "--text": "#BED8FE",
           "--highlight": "#D8D34B",
-          "--text2": "#20406C"
+          "--text2": "#20406C",
         },
       };
-      const order = [ "blue","default", "alt", "gray"];
+      const order = ["blue", "default", "alt", "gray"];
       function applyTheme(name) {
         if (!themes[name]) name = "default";
         for (const [k, v] of Object.entries(themes[name])) {

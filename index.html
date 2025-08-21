@@ -140,22 +140,36 @@
         }
       }
       /* Mobile-only adjustments */
-@media (max-width: 768px) {
-  /* keep controls tidy on small screens */
+/* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and place name bottom-right */
+@media (max-width: 900px) {
+  /* Stack the nav links vertically in the top-left */
   .topnav {
-    top: 1rem;
-    left: 1rem;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    z-index: 1500; /* below theme toggle but above content */
   }
-  #themeToggle {
-    top: 1rem;
-    right: 1rem;
-    width: 32px;
-    height: 32px;
+  .topnav a {
+    display: inline-block;
+    padding: 0.125rem 0;
+    line-height: 1.2;
   }
 
-  /* fill the viewport and anchor name bottom-right */
+  /* Keep theme toggle pinned to top-right */
+  #themeToggle {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    z-index: 2000;
+  }
+
+  /* Fill the viewport and anchor the name bottom-right */
   main {
     margin: 0;
     padding: 0 1rem;
@@ -165,10 +179,10 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    padding: 4rem 1rem 1.75rem;
+    padding: 4rem 1rem 1.75rem; /* leaves room for stacked nav */
   }
 
-  /* scale name and remove desktop padding offsets */
+  /* Scale name and remove desktop offsets */
   h2 {
     font-size: clamp(3rem, 14vw, 7rem);
     line-height: 0.92;
@@ -178,11 +192,33 @@
   }
 }
 
-/* very small phones */
+/* Very small phones */
 @media (max-width: 380px) {
   .name-section { padding: 3.5rem 0.9rem 1.25rem; }
   h2 { font-size: clamp(2.5rem, 16vw, 6rem); }
 }
+
+/* Slightly narrow desktops or when window isn't fullscreen:
+   keep layout strong without brittle large paddings */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .topnav { gap: 0.75rem; }
+
+  /* Use flexible positioning instead of large paddings */
+  .name-section {
+    min-height: calc(100vh - 6rem); /* accounts for top controls */
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 2rem 2rem;
+  }
+  h2 {
+    font-size: clamp(5rem, 10vw, 9rem);
+    line-height: 0.9;
+    padding-left: 0;   /* override desktop hard offsets */
+    padding-top: 0;    /* override desktop hard offsets */
+  }
+}
+
 
     </style>
   </head>

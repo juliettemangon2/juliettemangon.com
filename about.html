@@ -153,14 +153,64 @@
         flex: 1 1 48%;
       }
 
-      @media (max-width: 768px) {
-        .contact-columns {
-          grid-template-columns: 1fr;
-        }
-        .photos img {
-          flex: 1 1 100%;
-        }
-      }
+      /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and avoid overlap */
+@media (max-width: 900px) {
+  /* Stack the nav links vertically in the top-left */
+  .topnav {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    z-index: 1500; /* below theme toggle but above content */
+  }
+  .topnav a {
+    display: inline-block;           /* larger tap targets without full-width buttons */
+    padding: 0.125rem 0;             /* keep layout tight and aligned */
+    line-height: 1.2;
+  }
+
+  /* Keep theme toggle pinned to top-right, slightly tighter on mobile */
+  #themeToggle {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    z-index: 2000;
+  }
+
+  /* Create breathing room below the stacked nav so content never hides behind it */
+  main {
+    margin-top: 7rem;                /* adjust if you add/remove nav items */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Existing page-specific responsive rules */
+  .contact-columns {
+    grid-template-columns: 1fr;
+  }
+  .photos img {
+    flex: 1 1 100%;
+  }
+}
+
+/* Slightly narrow desktops: reduce spacing so layout holds up when not fullscreen */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .topnav {
+    gap: 0.75rem;
+  }
+  main {
+    margin-top: 6rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
     </style>
   </head>
   <body>
@@ -178,11 +228,11 @@
       <section>
         <h2>.</h2>
         <p>
-          My name is <strong>Juliette Mangon</strong>. I'm studying Computer
+          My name is Juliette Mangon. I'm studying Computer
           Science and Mathematics with a minor in the Business of Entertainment,
           Media, and Technology at
           <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a
-          >.
+          >, graduating in December 2025.
         </p>
         <p>
           I am passionate about how technology can support creative expression
@@ -240,7 +290,7 @@
         default: {
           "--bg": "#e4e6ff",
           "--text": "#ff6200",
-          "--highlight": "#e9ffa8",
+          "--highlight": "#4C1E4F",
         },
         alt: {
           "--bg": "#d2e6ff",

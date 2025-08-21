@@ -209,19 +209,104 @@
       }
 
       /* Respect reduced motion preference */
-      @media (prefers-reduced-motion: reduce) {
-        .column {
-          animation: none;
-          opacity: 1;
-          transform: none;
-        }
-        .media-desc {
-          transition: none;
-          max-height: none;
-          opacity: 1;
-          padding: 1rem 1rem;
-        }
-      }
+      /* Mobile & narrow screens: tidy header/controls, single column, readable sizing */
+@media (max-width: 900px) {
+  /* Body/top spacing handled by fixed controls */
+  body {
+    padding: 0 0 2rem;
+  }
+
+  /* Back link pinned top-left */
+  header {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1500;
+  }
+  header a { font-size: 0.95rem; }
+
+  /* Theme toggle pinned top-right */
+  #themeToggle {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    z-index: 2000;
+  }
+
+  /* Collapse/Expand button sits under theme toggle */
+  #collapseToggle {
+    position: absolute;
+    top: calc(0.75rem + 32px + 0.5rem);
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+    z-index: 2000;
+  }
+
+  /* Page/container layout */
+  .page {
+    align-items: stretch;
+    width: 100%;
+  }
+  .container {
+    flex-direction: column;     /* two columns -> one */
+    gap: 1rem;
+    max-width: 720px;
+    width: 100%;
+    margin: 6.5rem 0 3rem;      /* clears fixed header/toggles */
+    padding: 0 1rem;
+    margin-left: 0;
+  }
+  .column {
+    max-width: none;
+  }
+
+  /* Media rows: comfortable tap targets & sizing */
+  .media-item {
+    padding: 0.85rem 0.75rem;
+    letter-spacing: 0.015em;
+  }
+  .media-number {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+  .media-title {
+    font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+  }
+  .media-label {
+    font-size: clamp(0.75rem, 3.4vw, 0.95rem);
+  }
+
+  /* Description easing room when expanded */
+  .media-desc {
+    padding: 0 0.75rem;
+  }
+  .media-desc.open {
+    padding: 0.85rem 0.75rem;
+    max-height: 600px; /* allow a bit more text */
+  }
+
+  /* Footer spacing */
+  footer p {
+    margin-top: 2rem;
+  }
+}
+
+/* Slightly narrow desktops (not fullscreen) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  #themeToggle { top: 1rem; right: 1rem; }
+  #collapseToggle { top: calc(1rem + 32px + 0.5rem); right: 1rem; }
+  .container {
+    gap: 2.5rem;
+    margin-top: 5.5rem;
+    margin-left: 0;
+    padding: 0 1.25rem;
+  }
+}
+
     </style>
   </head>
 
@@ -509,7 +594,7 @@
           default: {
             "--bg": "#e4e6ff",
             "--text": "#ff6200",
-            "--highlight": "#e9ffa8",
+            "--highlight": "#4C1E4F",
             "--square": "#ff6200",
             "--contrast": "#ffe1c8ff",
           },
@@ -518,7 +603,7 @@
             "--text": "#A70A4E",
             "--highlight": "#FF9DFF",
             "--square": "#A70A4E",
-            "--contrast": "#ffdcebff",
+            "--contrast": "#A70A4E",
           },
           gray: {
             "--bg": "#FFDCF6",
