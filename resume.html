@@ -17,411 +17,435 @@
     />
 
     <style>
-      :root {
-        --bg: #e1ecff;
-        --text: #80074f;
-        --highlight: #6fc1de;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Instrument Sans", sans-serif;
-        line-height: 1.6;
-        font-size: 1.05rem;
-        overflow-x: hidden;
-      }
+  :root {
+    --bg: #e1ecff;
+    --text: #80074f;
+    --highlight: #6fc1de;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Instrument Sans", sans-serif;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    overflow-x: hidden;
+  }
 
-      /* Theme toggle */
-      #themeToggle {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        width: 30px;
-        height: 30px;
-        background-color: var(--text);
-        cursor: pointer;
-        z-index: 2000;
-        transition: background-color 0.2s;
-      }
-      #themeToggle:hover {
-        background-color: var(--highlight);
-      }
+  /* Theme toggle */
+  #themeToggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    background-color: var(--text);
+    cursor: pointer;
+    z-index: 2000;
+    transition: background-color 0.2s;
+  }
+  #themeToggle:hover {
+    background-color: var(--highlight);
+  }
 
-      /* Top nav */
-      .topnav {
-        position: absolute;
-        top: 1.5rem;
-        left: 1.5rem;
-        display: flex;
-        gap: 1rem;
-        z-index: 1500;
-      }
-      .topnav a {
-        color: var(--text);
-        text-decoration: none; /* no decoration */
-        font-weight: 600;
-      }
+  /* Top nav */
+  .topnav {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 1500;
+  }
+  .topnav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+  }
 
-      .topnav a::before,
-      .topnav a::after {
-        content: " [ ";
-        opacity: 0;
-      }
-      .topnav a::after {
-        content: " ] ";
-      }
+  .topnav a::before,
+  .topnav a::after {
+    content: " [ ";
+    opacity: 0;
+  }
+  .topnav a::after {
+    content: " ] ";
+  }
 
-      /* Hover or active page link shows brackets */
-      .topnav a:hover::before,
-      .topnav a:hover::after,
-      .topnav a.active::before,
-      .topnav a.active::after {
-        opacity: 1;
-      }
+  /* Hover or active page link shows brackets */
+  .topnav a:hover::before,
+  .topnav a:hover::after,
+  .topnav a.active::before,
+  .topnav a.active::after {
+    opacity: 1;
+  }
 
-      /* Layout */
-      main {
-        max-width: 1400px;
-        margin: 6rem auto 3rem;
-        padding: 0 1.5rem 3rem;
-        animation: slideIn 0.6s ease forwards;
-        opacity: 0;
-        transform: translateY(30px);
+  /* Layout */
+  main {
+    max-width: 1400px;
+    margin: 6rem auto 3rem;
+    padding: 0 1.5rem 3rem;
+    animation: slideIn 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-      @keyframes slideIn {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-      h2 {
-        color: var(--bg);
-        font-size: 0.8rem;
-        font-weight: 700;
-        margin-bottom: 0rem;
+  h2 {
+    color: var(--bg);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0rem;
+    grid-column: 1 / -1;
+  }
+  h3 {
+    font-size: 1.7rem;
+    font-weight: 650;
+    margin: 0rem 0 0.6rem;
+    padding-left: 1.5rem;
+  }
 
-        grid-column: 1 / -1;
-      }
-      h3 {
-        font-size: 1.7rem;
-        font-weight: 650;
-        margin: 0rem 0 0.6rem;
-        padding-left: 1.5rem; /* keep indent so layout feels consistent */
-      }
+  a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: var(--highlight);
+  }
+  p {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
 
-      a {
-        color: var(--text);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      a:hover {
-        color: var(--highlight);
-      }
-      p {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-      }
-      /* Container for PDF + toggle */
-      .top-actions {
-        position: absolute;
-        top: 1.4rem;
-        right: 5rem;
-        display: flex;
-        gap: 1rem;
-        z-index: 1500;
-        font-weight: 600;
-        padding: 0.4rem;
-        border: 2px solid currentColor;
-        transition: transform 0.3s, filter 0.3s, color 0.3s;
-      }
+  /* Container for PDF + toggle */
+  .top-actions {
+    position: absolute;
+    top: 1.4rem;
+    right: 5rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 1500;
+    font-weight: 600;
+    padding: 0.4rem;
+    border: 2px solid currentColor;
+    transition: transform 0.3s, filter 0.3s, color 0.3s;
+  }
+  .top-actions:hover {
+    color: var(--highlight);
+    border-color: var(--highlight);
+    transform: scale(1.1);
+  }
+  .pdf-link {
+    font-size: 0.9rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s, opacity 0.2s;
+  }
+  .pdf-link:hover {
+    color: var(--highlight);
+  }
+  .top-actions:hover .pdf-link {
+    color: var(--highlight);
+  }
 
-      .top-actions:hover {
-        color: var(--highlight); /* changes text color */
-        border-color: var(--highlight); /* optional: match border */
-        transform: scale(1.1);
-      }
+  /* Lists and descriptions */
+  .section-list {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin: 0 0 1.5rem;
+  }
+  .section-list > li {
+    margin-bottom: 0.4rem;
+  }
+  .section-list > li > strong {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .description {
+    margin: 0.2rem 0 1rem;
+    font-size: 1.1rem;
+  }
 
-      /* Styling for the PDF link */
-      /* PDF link base style */
-      .pdf-link {
-        font-size: 0.9rem;
-        color: var(--text);
-        text-decoration: none;
-        transition: color 0.2s, opacity 0.2s;
-      }
+  /* Work Experience boxes */
+  #we-list.section-list > li {
+    border: 1px solid currentColor;
+    padding: 0.85rem 0.9rem;
+    margin-bottom: 0.85rem;
+    max-width: 600px;
+  }
+  #we-list .description {
+    margin-top: 0.35rem;
+  }
 
-      /* Hovering directly on the link */
-      .pdf-link:hover {
-        color: var(--highlight);
-      }
+  /* Projects list */
+  #tp-list.projects-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    border-top: 1px solid currentColor;
+    display: block;
+  }
+  details.project-item {
+    border-bottom: 1px solid currentColor;
+  }
+  details.project-item[open] .project-body,
+  details.project-item[open] .description,
+  details.project-item[open] .sublist {
+    display: block;
+  }
+  .project-item > summary {
+    list-style: none;
+    margin: 0;
+    padding: 0.6rem 0 0.6rem 0;
+    cursor: pointer;
+  }
+  .project-item > summary::-webkit-details-marker {
+    display: none;
+  }
 
-      /* Hovering anywhere on the .top-actions container */
-      .top-actions:hover .pdf-link {
-        color: var(--highlight);
-      }
+  /* Row */
+  .proj-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .proj-num {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border: 1.5px solid currentColor;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
 
-      /* Lists and descriptions */
-      .section-list {
-        list-style: none;
-        padding-left: 1.5rem;
-        margin: 0 0 1.5rem;
-      }
-      .section-list > li {
-        margin-bottom: 0.4rem;
-      }
-      .section-list > li > strong {
-        font-size: 1.3rem;
-        font-weight: 600;
-      }
-      .description {
-        margin: 0.2rem 0 1rem;
-        font-size: 1.1rem;
-      } /* always visible now */
+  /* Title + icon cluster */
+  .proj-titlewrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem; /* space between title and icon */
+    min-width: 0;
+  }
+  .proj-title {
+    line-height: 1.1;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
 
-      /* Work Experience boxes */
-      #we-list.section-list > li {
-        border: 1px solid currentColor;
-        padding: 0.85rem 0.9rem;
-        margin-bottom: 0.85rem;
-        max-width: 600px;
-      }
-      #we-list .description {
-        margin-top: 0.35rem;
-      }
+  /* Icon link next to title */
+  .proj-link {
+    margin-left: 0; /* previously auto; keep it tight beside title */
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    opacity: 0.95;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .proj-link:hover {
+    color: var(--highlight);
+    transform: translateY(-1px);
+  }
 
-      /* Projects with per-item toggle */
-      #tp-list.projects-list {
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
-        border-top: 1px solid currentColor;
-        display: block;
-      }
-      details.project-item {
-        border-bottom: 1px solid currentColor;
-      }
-      details.project-item[open] .project-body,
-      details.project-item[open] .description,
-      details.project-item[open] .sublist {
-        display: block;
-      }
+  /* Shared icon sizing/alignment */
+  .icon {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+  }
 
-      /* Clickable row for project title */
-      .project-item > summary {
-        list-style: none;
-        margin: 0;
-        padding: 0.6rem 0 0.6rem 0;
-        cursor: pointer;
-      }
-      .project-item > summary::-webkit-details-marker {
-        display: none;
-      }
-      .proj-row {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-      }
-      .proj-num {
-        width: 30px;
-        height: 30px;
-        flex: 0 0 30px;
-        border: 1.5px solid currentColor;
-        border-radius: 999px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 500;
-        font-size: 0.85rem;
-      }
-      .proj-title {
-        line-height: 1.1;
-        font-size: 1.1rem;
-        font-weight: 500;
-      }
-      .proj-link {
-        margin-left: auto;
-        display: inline-flex;
-        width: 22px;
-        height: 22px;
-        align-items: center;
-        justify-content: center;
-        color: var(--text);
-        opacity: 0.95;
-        transition: color 0.2s, transform 0.2s;
-      }
-      .proj-link:hover {
-        color: var(--highlight);
-        transform: translateY(-1px);
-      }
-      .project-body {
-        display: none;
-        padding: 0 0 0.8rem;
-        margin-left: calc(32px + 0.8rem);
-        font-size: 0.85rem;
-      }
-      .sublist {
-        display: none;
-        list-style: none;
-        margin-top: 0.3rem;
-        padding-left: 1rem;
-        font-size: 0.95rem;
-      }
+  .project-body {
+    display: none;
+    padding: 0 0 0.8rem;
+    margin-left: calc(32px + 0.8rem);
+    font-size: 0.85rem;
+  }
+  .sublist {
+    display: none;
+    list-style: none;
+    margin-top: 0.3rem;
+    padding-left: 1rem;
+    font-size: 0.95rem;
+  }
 
-      /* Skills (ledger style) */
-      #skills-ledger {
-        margin-top: 0.5rem;
-      }
-      .skill-row {
-        display: grid;
-        grid-template-columns: 220px 1fr;
-        gap: 0rem;
-        align-items: start;
-        padding: 0.75rem 0;
-      }
-      .skill-label {
-        font-weight: 500;
-        font-size: 1.2rem;
-        padding-left: 1.5rem;
-      }
-      .skill-items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem 0.6rem;
-      }
-      .skill-tag {
-        border: 1px solid currentColor;
-        padding: 0.12rem 0.5rem;
-        font-size: 1.2rem;
-        line-height: 1.3;
-        white-space: nowrap;
-      }
+  /* Skills (ledger style) */
+  #skills-ledger {
+    margin-top: 0.5rem;
+  }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0rem;
+    align-items: start;
+    padding: 0.75rem 0;
+  }
+  .skill-label {
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding-left: 1.5rem;
+  }
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+  }
+  .skill-tag {
+    border: 1px solid currentColor;
+    padding: 0.12rem 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
 
-      footer {
-        grid-column: 1 / -1;
-        text-align: center;
-        margin-top: 3rem;
-      }
+  footer {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 3rem;
+  }
 
-      /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and place "View PDF version" under it */
-      @media (max-width: 900px) {
-        /* Stack the nav links vertically in the top-left */
-        .topnav {
-          position: absolute;
-          top: 0.75rem;
-          left: 0.75rem;
-          right: auto;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.25rem;
-          z-index: 1500; /* below theme toggle but above content */
-        }
-        .topnav a {
-          display: inline-block;
-          padding: 0.125rem 0;
-          line-height: 1.2;
-        }
+  /* Mobile */
+  @media (max-width: 900px) {
+    .topnav {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+      z-index: 1500;
+    }
+    .topnav a {
+      display: inline-block;
+      padding: 0.125rem 0;
+      line-height: 1.2;
+    }
 
-        /* Keep theme toggle pinned to top-right */
-        #themeToggle {
-          position: absolute;
-          top: 0.75rem;
-          right: 0.75rem;
-          width: 32px;
-          height: 32px;
-          z-index: 2000;
-        }
+    #themeToggle {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 32px;
+      height: 32px;
+      z-index: 2000;
+    }
 
-        /* Put "View PDF version" directly under the toggle */
-        .top-actions {
-          position: absolute;
-          top: calc(0.75rem + 32px + 0.5rem); /* below toggle */
-          right: 0.75rem;
-          left: auto;
-          background: transparent; /* simplify for mobile */
-          padding: 0;
-          filter: none;
-          padding: 0.4rem;
-        }
+    .top-actions {
+      position: absolute;
+      top: calc(0.75rem + 32px + 0.5rem);
+      right: 0.75rem;
+      left: auto;
+      background: transparent;
+      padding: 0;
+      filter: none;
+      padding: 0.4rem;
+    }
 
-        /* Create breathing room so content never hides behind stacked controls */
-        main {
-          margin-top: 7rem; /* adjust if you add/remove nav items */
-          padding: 0 1rem 2rem;
-          grid-template-columns: 1fr; /* ensure single-column grid */
-          gap: 1.25rem;
-        }
+    main {
+      margin-top: 7rem;
+      padding: 0 1rem 2rem;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
 
-        /* Projects and skills tightening on mobile */
-        .proj-num {
-          width: 28px;
-          height: 28px;
-          flex-basis: 28px;
-          font-size: 0.8rem;
-        }
-        .project-body {
-          margin-left: calc(28px + 0.8rem);
-        }
-        .skill-row {
-          display: flex; /* override the desktop grid */
-          flex-direction: column; /* label on top, tags below */
-          align-items: flex-start;
-          gap: 0.35rem;
-        }
-        .skill-label {
-          padding-left: 1.5rem; /* remove ledger indent on mobile */
-          margin: 0;
-          line-height: 1.2;
-        }
-        .skill-items {
-          padding-left: 1.5rem;
-          display: flex; /* wrap tags neatly under the label */
-          flex-wrap: wrap;
-          gap: 0.35rem 0.6rem;
-          width: 100%;
-        }
-        .skill-tag {
-          white-space: nowrap; /* prevent awkward line breaks inside a tag */
-        }
-      }
+    .proj-num {
+      width: 28px;
+      height: 28px;
+      flex-basis: 28px;
+      font-size: 0.8rem;
+    }
+    .project-body {
+      margin-left: calc(28px + 0.8rem);
+    }
 
-      /* Slightly narrow desktops or when window isn't fullscreen:
-   keep layout strong without overlap */
-      @media (max-width: 1200px) and (min-width: 901px) {
-        .topnav {
-          gap: 0.75rem;
-        }
-        #themeToggle {
-          top: 1rem;
-          right: 1rem;
-        }
-        .top-actions {
-          top: 1rem;
-          right: 4.5rem;
-        }
-        main {
-          margin-top: 6rem;
-          padding: 0 1.25rem 2.5rem;
-          gap: 1.5rem;
-        }
-      }
-    </style>
+    .skill-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+    .skill-label {
+      padding-left: 1.5rem;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .skill-items {
+      padding-left: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.6rem;
+      width: 100%;
+    }
+    .skill-tag {
+      white-space: nowrap;
+    }
+  }
+
+  /* Narrow desktops */
+  @media (max-width: 1200px) and (min-width: 901px) {
+    .topnav {
+      gap: 0.75rem;
+    }
+    #themeToggle {
+      top: 1rem;
+      right: 1rem;
+    }
+    .top-actions {
+      top: 1rem;
+      right: 4.5rem;
+    }
+    main {
+      margin-top: 6rem;
+      padding: 0 1.25rem 2.5rem;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
   </head>
   <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute; opacity: 0"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <path
+          d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+    </svg>
     <!-- Theme toggle only -->
     <div id="themeToggle" title="Switch Theme"></div>
 
@@ -562,6 +586,7 @@
       </section>
 
       <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
+      <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
       <section aria-label="Right Column">
         <h3>Projects</h3>
         <ul id="tp-list" class="projects-list">
@@ -570,31 +595,22 @@
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
                 <span class="proj-num">01</span>
-                <span class="proj-title"
-                  >Music Metadata Aggregation & Insights Tool</span
-                >
-                <a
-                  class="proj-link"
-                  href="projects/She%20is%20the%20music.pdf"
-                  target="_blank"
-                  aria-label="Open project"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <span class="proj-titlewrap">
+                  <span class="proj-title"
+                    >Music Metadata Aggregation & Insights Tool</span
                   >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
+                  <a
+                    class="proj-link"
+                    href="projects/She%20is%20the%20music.pdf"
+                    target="_blank"
+                    aria-label="Open project"
+                  >
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-external"></use>
+                    </svg>
+                  </a>
+                </span>
               </div>
             </summary>
             <div class="project-body">
@@ -611,36 +627,28 @@
               </p>
             </div>
           </details>
-          <!-- Project 1 -->
+
+          <!-- Project 2 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
                 <span class="proj-num">02</span>
-                <span class="proj-title"
-                  >Essay Plagiarism Detection Project</span
-                >
-                <a
-                  class="proj-link"
-                  href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf"
-                  target="_blank"
-                  aria-label="Open project"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <span class="proj-titlewrap">
+                  <span class="proj-title"
+                    >Essay Plagiarism Detection Project</span
                   >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
+                  <a
+                    class="proj-link"
+                    href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf"
+                    target="_blank"
+                    aria-label="Open project"
+                  >
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-external"></use>
+                    </svg>
+                  </a>
+                </span>
               </div>
             </summary>
             <div class="project-body">
@@ -655,36 +663,27 @@
             </div>
           </details>
 
-          <!-- Project 2 -->
+          <!-- Project 3 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
                 <span class="proj-num">03</span>
-                <span class="proj-title"
-                  >Spotify Listening Behavior Case Study</span
-                >
-                <a
-                  class="proj-link"
-                  href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf"
-                  target="_blank"
-                  aria-label="Open project"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <span class="proj-titlewrap">
+                  <span class="proj-title"
+                    >Spotify Listening Behavior Case Study</span
                   >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
+                  <a
+                    class="proj-link"
+                    href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf"
+                    target="_blank"
+                    aria-label="Open project"
+                  >
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-external"></use>
+                    </svg>
+                  </a>
+                </span>
               </div>
             </summary>
             <div class="project-body">
@@ -697,7 +696,7 @@
             </div>
           </details>
 
-          <!-- Project 3 -->
+          <!-- Project 4 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
@@ -719,20 +718,14 @@
                     Amandine Mangon: Postcard-style gallery exploring archival
                     and personal photography through collaging
                     <svg
-                      viewBox="0 0 24 24"
+                      class="icon"
                       width="16"
                       height="16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
                       style="vertical-align: middle"
                     >
-                      <path
-                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
+                      <use href="#icon-external"></use>
                     </svg>
                   </a>
                 </li>
@@ -741,20 +734,14 @@
                     Mateo Antonio Martinez: Personal photography site with
                     exhibits, photo essays, and reflective writing
                     <svg
-                      viewBox="0 0 24 24"
+                      class="icon"
                       width="16"
                       height="16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
                       style="vertical-align: middle"
                     >
-                      <path
-                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
+                      <use href="#icon-external"></use>
                     </svg>
                   </a>
                 </li>
@@ -766,20 +753,14 @@
                     Chris Fitzgerald: Studio portraits, street photography, and
                     editorial work
                     <svg
-                      viewBox="0 0 24 24"
+                      class="icon"
                       width="16"
                       height="16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
                       style="vertical-align: middle"
                     >
-                      <path
-                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
+                      <use href="#icon-external"></use>
                     </svg>
                   </a>
                 </li>
@@ -787,37 +768,28 @@
             </div>
           </details>
 
-          <!-- Project 4 -->
+          <!-- Project 5 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
                 <span class="proj-num">05</span>
-                <span class="proj-title"
-                  >Proposal: Kering-Branded Fashion Toolkits for UGC
-                  Platforms</span
-                >
-                <a
-                  class="proj-link"
-                  href="projects/Businessof%20Video%20games%20final.pdf"
-                  target="_blank"
-                  aria-label="Open project"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <span class="proj-titlewrap">
+                  <span class="proj-title"
+                    >Proposal: Kering-Branded Fashion Toolkits for UGC
+                    Platforms</span
                   >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
+                  <a
+                    class="proj-link"
+                    href="projects/Businessof%20Video%20games%20final.pdf"
+                    target="_blank"
+                    aria-label="Open project"
+                  >
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-external"></use>
+                    </svg>
+                  </a>
+                </span>
               </div>
             </summary>
             <div class="project-body">
@@ -831,36 +803,27 @@
             </div>
           </details>
 
-          <!-- Project 5 -->
+          <!-- Project 6 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
                 <span class="proj-num">06</span>
-                <span class="proj-title"
-                  >Ad Hoc Information Retrieval System</span
-                >
-                <a
-                  class="proj-link"
-                  href="https://github.com/juliettemangon2/adhocRetrievalSystem"
-                  target="_blank"
-                  aria-label="Open project"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <span class="proj-titlewrap">
+                  <span class="proj-title"
+                    >Ad Hoc Information Retrieval System</span
                   >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
+                  <a
+                    class="proj-link"
+                    href="https://github.com/juliettemangon2/adhocRetrievalSystem"
+                    target="_blank"
+                    aria-label="Open project"
+                  >
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-external"></use>
+                    </svg>
+                  </a>
+                </span>
               </div>
             </summary>
             <div class="project-body">
@@ -873,34 +836,25 @@
             </div>
           </details>
 
-          <!-- Project 6 -->
+          <!-- Project 7 -->
           <details class="project-item" open>
             <summary role="button" aria-expanded="true">
               <div class="proj-row">
                 <span class="proj-num">07</span>
-                <span class="proj-title">AI in Music Creation Analysis</span>
-                <a
-                  class="proj-link"
-                  href="projects/MUSIC%20AI.pdf"
-                  target="_blank"
-                  aria-label="Open project"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="22"
-                    height="22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <span class="proj-titlewrap">
+                  <span class="proj-title">AI in Music Creation Analysis</span>
+                  <a
+                    class="proj-link"
+                    href="projects/MUSIC%20AI.pdf"
+                    target="_blank"
+                    aria-label="Open project"
                   >
-                    <path
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
+                    <svg class="icon" aria-hidden="true" focusable="false">
+                      <use href="#icon-external"></use>
+                    </svg>
+                  </a>
+                </span>
               </div>
             </summary>
             <div class="project-body">

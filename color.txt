@@ -14,17 +14,8 @@ hsla(96, 100%, 27%, 1.00)
 #5ea94dff
 
 #ffe1c8ff
-#83dbd6ff
+#1821c7c0
 #ff7700ff
 #58125dff 
-
-
-
-
-curl --request POST \
-  --url https://developer.api.autodesk.com/authentication/v2/token \
-  --header "Content-Type: application/x-www-form-urlencoded" \
-  --header "Authorization: Basic $(echo -n 'q5C4zRsrKHTtByAZbl8aIuSdYg01AR2MjjUGpCLMLs0AobOl:gXGxeiUROX3mDVTXcMMbMo90xCUpF4nt4jgomYAhUUGtiguLVACZ2LsigOTpG0sA' | base64)" \
-  --data "grant_type=authorization_code&code=<AUTH_CODE>&redirect_uri=http://localhost:3000/auth/autodesk/callback"
 
 
