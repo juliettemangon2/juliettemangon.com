@@ -1,285 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Juliette Mangon</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliette Mangon</title>
 
-    <style>
-      :root {
-        --bg: #e1ecff;
-        --text: #80074f;
-        --highlight: #6fc1de;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #e1ecff;
+      --text: #80074f;
+      --highlight: #6fc1de;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      overflow-x: hidden;
+    }
+
+    /* Theme + simple top nav */
+    #themeToggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: var(--text);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color 0.2s;
+    }
+
+    #themeToggle:hover {
+      background-color: var(--highlight);
+    }
+
+    .topnav {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 1500;
+    }
+
+    .topnav a {
+      color: var(--text);
+      text-decoration: none;
+      /* no decoration */
+      font-weight: 600;
+    }
+
+    .topnav a::before,
+    .topnav a::after {
+      content: " [ ";
+      opacity: 0;
+    }
+
+    .topnav a::after {
+      content: " ] ";
+    }
+
+    /* Hover or active page link shows brackets */
+    .topnav a:hover::before,
+    .topnav a:hover::after,
+    .topnav a.active::before,
+    .topnav a.active::after {
+      opacity: 1;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 6rem auto 3rem;
+      padding: 0 1.25rem;
+      animation: slideIn 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Instrument Sans", sans-serif;
-        line-height: 1.6;
-        font-size: 1.05rem;
-        overflow-x: hidden;
+    }
+
+    h2 {
+      font-size: 10rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      /* aligns to right */
+      line-height: 0.9;
+      /* reduces vertical space between lines */
+      margin: 0;
+      padding-left: 67rem;
+      padding-top: 20rem;
+    }
+
+    h2 span {
+      display: block;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--highlight);
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-columns {
+        grid-template-columns: 1fr;
       }
 
-      /* Theme + simple top nav */
-      #themeToggle {
-        position: fixed;
-        top: 1.5rem;
-        right: 1.5rem;
-        width: 30px;
-        height: 30px;
-        background-color: var(--text);
-        cursor: pointer;
-        z-index: 2000;
-        transition: background-color 0.2s;
+      .photos img {
+        flex: 1 1 100%;
       }
-      #themeToggle:hover {
-        background-color: var(--highlight);
-      }
+    }
 
+    /* Mobile-only adjustments */
+    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and place name bottom-right */
+    @media (max-width: 900px) {
+
+      /* Stack the nav links vertically in the top-left */
       .topnav {
         position: fixed;
-        top: 1.5rem;
-        left: 1.5rem;
+        top: 0.75rem;
+        left: 0.75rem;
+        right: auto;
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
         z-index: 1500;
+        /* below theme toggle but above content */
       }
+
       .topnav a {
-        color: var(--text);
-        text-decoration: none; /* no decoration */
-        font-weight: 600;
+        display: inline-block;
+        padding: 0.125rem 0;
+        line-height: 1.2;
       }
 
-      .topnav a::before,
-      .topnav a::after {
-        content: " [ ";
-        opacity: 0;
-      }
-      .topnav a::after {
-        content: " ] ";
-      }
-
-      /* Hover or active page link shows brackets */
-      .topnav a:hover::before,
-      .topnav a:hover::after,
-      .topnav a.active::before,
-      .topnav a.active::after {
-        opacity: 1;
+      /* Keep theme toggle pinned to top-right */
+      #themeToggle {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        z-index: 2000;
       }
 
+      /* Fill the viewport and anchor the name bottom-right */
       main {
-        max-width: 900px;
-        margin: 6rem auto 3rem;
-        padding: 0 1.25rem;
-        animation: slideIn 0.6s ease forwards;
-        opacity: 0;
-        transform: translateY(30px);
+        margin: 0;
+        padding: 0 1rem;
       }
-      @keyframes slideIn {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+
+      .name-section {
+        min-height: 100svh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 4rem 1rem 1.75rem;
+        /* leaves room for stacked nav */
+      }
+
+      /* Scale name and remove desktop offsets */
+      h2 {
+        font-size: clamp(3rem, 14vw, 7rem);
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+        padding-left: 0;
+        padding-top: 0;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 380px) {
+      .name-section {
+        padding: 3.5rem 0.9rem 1.25rem;
       }
 
       h2 {
-        font-size: 10rem;
-        font-weight: 600;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end; /* aligns to right */
-        line-height: 0.9; /* reduces vertical space between lines */
-        margin: 0;
-        padding-left: 67rem;
-        padding-top: 20rem;
+        font-size: clamp(2.5rem, 16vw, 6rem);
       }
+    }
 
-      h2 span {
-        display: block;
-      }
-
-      a {
-        color: var(--text);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      a:hover {
-        color: var(--highlight);
-      }
-      p {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-      }
-
-      @media (max-width: 768px) {
-        .contact-columns {
-          grid-template-columns: 1fr;
-        }
-        .photos img {
-          flex: 1 1 100%;
-        }
-      }
-      /* Mobile-only adjustments */
-/* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and place name bottom-right */
-@media (max-width: 900px) {
-  /* Stack the nav links vertically in the top-left */
-  .topnav {
-    position: fixed;
-    top: 0.75rem;
-    left: 0.75rem;
-    right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    z-index: 1500; /* below theme toggle but above content */
-  }
-  .topnav a {
-    display: inline-block;
-    padding: 0.125rem 0;
-    line-height: 1.2;
-  }
-
-  /* Keep theme toggle pinned to top-right */
-  #themeToggle {
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 32px;
-    height: 32px;
-    z-index: 2000;
-  }
-
-  /* Fill the viewport and anchor the name bottom-right */
-  main {
-    margin: 0;
-    padding: 0 1rem;
-  }
-  .name-section {
-    min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 4rem 1rem 1.75rem; /* leaves room for stacked nav */
-  }
-
-  /* Scale name and remove desktop offsets */
-  h2 {
-    font-size: clamp(3rem, 14vw, 7rem);
-    line-height: 0.92;
-    letter-spacing: -0.01em;
-    padding-left: 0;
-    padding-top: 0;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 380px) {
-  .name-section { padding: 3.5rem 0.9rem 1.25rem; }
-  h2 { font-size: clamp(2.5rem, 16vw, 6rem); }
-}
-
-/* Slightly narrow desktops or when window isn't fullscreen:
+    /* Slightly narrow desktops or when window isn't fullscreen:
    keep layout strong without brittle large paddings */
-@media (max-width: 1200px) and (min-width: 901px) {
-  .topnav { gap: 0.75rem; }
-
-  /* Use flexible positioning instead of large paddings */
-  .name-section {
-    min-height: calc(100vh - 6rem); /* accounts for top controls */
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 2rem 2rem;
-  }
-  h2 {
-    font-size: clamp(5rem, 10vw, 9rem);
-    line-height: 0.9;
-    padding-left: 0;   /* override desktop hard offsets */
-    padding-top: 0;    /* override desktop hard offsets */
-  }
-}
-
-
-    </style>
-  </head>
-  <body>
-    <!-- Persistent controls -->
-    <div id="themeToggle" title="Switch Theme"></div>
-    <nav class="topnav" aria-label="Site">
-      <a href="index.html" class="active">home</a>
-      <a href="about.html">about</a>
-      <a href="resume.html">resume</a>
-      <a href="contact.html">contact</a>
-    </nav>
-
-    <main>
-      <section class="name-section">
-        <h2>
-          <span class="first">juliette</span>
-          <span class="last">mangon</span>
-        </h2>
-      </section>
-    </main>
-
-    <script>
-      // THEME
-      const themes = {
-        default: {
-          "--bg": "#e4e6ff",
-          "--text": "#ff6200",
-          "--highlight": "#4C1E4F",
-        },
-        alt: {
-          "--bg": "#d2e6ff",
-          "--text": "#A70A4E",
-          "--highlight": "#FF9DFF",
-        },
-        gray: {
-          "--bg": "#FFDCF6",
-          "--text": "#d60b6d",
-          "--highlight": "#83dbd6ff",
-        },
-        blue: {
-          "--bg": "#20406C",
-          "--text": "#BED8FE",
-          "--highlight": "#D8D34B",
-        },
-      };
-      const order = [ "blue","default", "alt", "gray"];
-      function applyTheme(name) {
-        if (!themes[name]) name = "default";
-        for (const [k, v] of Object.entries(themes[name])) {
-          document.documentElement.style.setProperty(k, v);
-        }
-        localStorage.setItem("theme", name);
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .topnav {
+        gap: 0.75rem;
       }
-      applyTheme(localStorage.getItem("theme") || "default");
 
-      document.getElementById("themeToggle").addEventListener("click", () => {
-        const current = localStorage.getItem("theme") || "default";
-        const idx = (order.indexOf(current) + 1) % order.length;
-        applyTheme(order[idx]);
-      });
-    </script>
-  </body>
+      /* Use flexible positioning instead of large paddings */
+      .name-section {
+        min-height: calc(100vh - 6rem);
+        /* accounts for top controls */
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 2rem 2rem;
+      }
+
+      h2 {
+        font-size: clamp(5rem, 10vw, 9rem);
+        line-height: 0.9;
+        padding-left: 0;
+        /* override desktop hard offsets */
+        padding-top: 0;
+        /* override desktop hard offsets */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Persistent controls -->
+  <div id="themeToggle" title="Switch Theme"></div>
+  <nav class="topnav" aria-label="Site">
+    <a href="index.html" class="active">home</a>
+    <a href="about.html">about</a>
+    <a href="resume.html">resume</a>
+    <a href="paintings.html">paintings</a>
+    <a href="contact.html">contact</a>
+  </nav>
+
+  <main>
+    <section class="name-section">
+      <h2>
+        <span class="first">juliette</span>
+        <span class="last">mangon</span>
+      </h2>
+    </section>
+  </main>
+
+  <script>
+    // THEME
+    const themes = {
+      default: {
+        "--bg": "#e4e6ff",
+        "--text": "#ff6200",
+        "--highlight": "#4C1E4F",
+      },
+      alt: {
+        "--bg": "#d2e6ff",
+        "--text": "#A70A4E",
+        "--highlight": "#FF9DFF",
+      },
+      gray: {
+        "--bg": "#FFDCF6",
+        "--text": "#d60b6d",
+        "--highlight": "#83dbd6ff",
+      },
+      blue: {
+        "--bg": "#20406C",
+        "--text": "#BED8FE",
+        "--highlight": "#D8D34B",
+      },
+    };
+    const order = ["blue", "default", "alt", "gray"];
+    function applyTheme(name) {
+      if (!themes[name]) name = "default";
+      for (const [k, v] of Object.entries(themes[name])) {
+        document.documentElement.style.setProperty(k, v);
+      }
+      localStorage.setItem("theme", name);
+    }
+    applyTheme(localStorage.getItem("theme") || "default");
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = localStorage.getItem("theme") || "default";
+      const idx = (order.indexOf(current) + 1) % order.length;
+      applyTheme(order[idx]);
+    });
+  </script>
+</body>
+
 </html>

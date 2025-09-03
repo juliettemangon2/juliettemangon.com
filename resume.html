@@ -1,942 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume | Juliette Mangon</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume | Juliette Mangon</title>
 
-    <style>
-  :root {
-    --bg: #e1ecff;
-    --text: #80074f;
-    --highlight: #6fc1de;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    height: 100%;
-  }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Instrument Sans", sans-serif;
-    line-height: 1.6;
-    font-size: 1.05rem;
-    overflow-x: hidden;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet" />
 
-  /* Theme toggle */
-  #themeToggle {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 30px;
-    height: 30px;
-    background-color: var(--text);
-    cursor: pointer;
-    z-index: 2000;
-    transition: background-color 0.2s;
-  }
-  #themeToggle:hover {
-    background-color: var(--highlight);
-  }
-
-  /* Top nav */
-  .topnav {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    z-index: 1500;
-  }
-  .topnav a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .topnav a::before,
-  .topnav a::after {
-    content: " [ ";
-    opacity: 0;
-  }
-  .topnav a::after {
-    content: " ] ";
-  }
-
-  /* Hover or active page link shows brackets */
-  .topnav a:hover::before,
-  .topnav a:hover::after,
-  .topnav a.active::before,
-  .topnav a.active::after {
-    opacity: 1;
-  }
-
-  /* Layout */
-  main {
-    max-width: 1400px;
-    margin: 6rem auto 3rem;
-    padding: 0 1.5rem 3rem;
-    animation: slideIn 0.6s ease forwards;
-    opacity: 0;
-    transform: translateY(30px);
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  @keyframes slideIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  h2 {
-    color: var(--bg);
-    font-size: 0.8rem;
-    font-weight: 700;
-    margin-bottom: 0rem;
-    grid-column: 1 / -1;
-  }
-  h3 {
-    font-size: 1.7rem;
-    font-weight: 650;
-    margin: 0rem 0 0.6rem;
-    padding-left: 1.5rem;
-  }
-
-  a {
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  a:hover {
-    color: var(--highlight);
-  }
-  p {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-
-  /* Container for PDF + toggle */
-  .top-actions {
-    position: absolute;
-    top: 1.4rem;
-    right: 5rem;
-    display: flex;
-    gap: 1rem;
-    z-index: 1500;
-    font-weight: 600;
-    padding: 0.4rem;
-    border: 2px solid currentColor;
-    transition: transform 0.3s, filter 0.3s, color 0.3s;
-  }
-  .top-actions:hover {
-    color: var(--highlight);
-    border-color: var(--highlight);
-    transform: scale(1.1);
-  }
-  .pdf-link {
-    font-size: 0.9rem;
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.2s, opacity 0.2s;
-  }
-  .pdf-link:hover {
-    color: var(--highlight);
-  }
-  .top-actions:hover .pdf-link {
-    color: var(--highlight);
-  }
-
-  /* Lists and descriptions */
-  .section-list {
-    list-style: none;
-    padding-left: 1.5rem;
-    margin: 0 0 1.5rem;
-  }
-  .section-list > li {
-    margin-bottom: 0.4rem;
-  }
-  .section-list > li > strong {
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
-  .description {
-    margin: 0.2rem 0 1rem;
-    font-size: 1.1rem;
-  }
-
-  /* Work Experience boxes */
-  #we-list.section-list > li {
-    border: 1px solid currentColor;
-    padding: 0.85rem 0.9rem;
-    margin-bottom: 0.85rem;
-    max-width: 600px;
-  }
-  #we-list .description {
-    margin-top: 0.35rem;
-  }
-
-  /* Projects list */
-  #tp-list.projects-list {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-    border-top: 1px solid currentColor;
-    display: block;
-  }
-  details.project-item {
-    border-bottom: 1px solid currentColor;
-  }
-  details.project-item[open] .project-body,
-  details.project-item[open] .description,
-  details.project-item[open] .sublist {
-    display: block;
-  }
-  .project-item > summary {
-    list-style: none;
-    margin: 0;
-    padding: 0.6rem 0 0.6rem 0;
-    cursor: pointer;
-  }
-  .project-item > summary::-webkit-details-marker {
-    display: none;
-  }
-
-  /* Row */
-  .proj-row {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .proj-num {
-    width: 30px;
-    height: 30px;
-    flex: 0 0 30px;
-    border: 1.5px solid currentColor;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    font-size: 0.85rem;
-  }
-
-  /* Title + icon cluster */
-  .proj-titlewrap {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem; /* space between title and icon */
-    min-width: 0;
-  }
-  .proj-title {
-    line-height: 1.1;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-
-  /* Icon link next to title */
-  .proj-link {
-    margin-left: 0; /* previously auto; keep it tight beside title */
-    display: inline-flex;
-    width: 22px;
-    height: 22px;
-    align-items: center;
-    justify-content: center;
-    color: var(--text);
-    opacity: 0.95;
-    transition: color 0.2s, transform 0.2s;
-  }
-  .proj-link:hover {
-    color: var(--highlight);
-    transform: translateY(-1px);
-  }
-
-  /* Shared icon sizing/alignment */
-  .icon {
-    width: 22px;
-    height: 22px;
-    vertical-align: middle;
-  }
-
-  .project-body {
-    display: none;
-    padding: 0 0 0.8rem;
-    margin-left: calc(32px + 0.8rem);
-    font-size: 0.85rem;
-  }
-  .sublist {
-    display: none;
-    list-style: none;
-    margin-top: 0.3rem;
-    padding-left: 1rem;
-    font-size: 0.95rem;
-  }
-
-  /* Skills (ledger style) */
-  #skills-ledger {
-    margin-top: 0.5rem;
-  }
-  .skill-row {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 0rem;
-    align-items: start;
-    padding: 0.75rem 0;
-  }
-  .skill-label {
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding-left: 1.5rem;
-  }
-  .skill-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.6rem;
-  }
-  .skill-tag {
-    border: 1px solid currentColor;
-    padding: 0.12rem 0.5rem;
-    font-size: 1.2rem;
-    line-height: 1.3;
-    white-space: nowrap;
-  }
-
-  footer {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 3rem;
-  }
-
-  /* Mobile */
-  @media (max-width: 900px) {
-    .topnav {
-      position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
-      right: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.25rem;
-      z-index: 1500;
-    }
-    .topnav a {
-      display: inline-block;
-      padding: 0.125rem 0;
-      line-height: 1.2;
+  <style>
+    :root {
+      --bg: #e1ecff;
+      --text: #80074f;
+      --highlight: #6fc1de;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      overflow-x: hidden;
+    }
+
+    /* Theme toggle */
     #themeToggle {
       position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      width: 32px;
-      height: 32px;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: var(--text);
+      cursor: pointer;
       z-index: 2000;
+      transition: background-color 0.2s;
     }
 
+    #themeToggle:hover {
+      background-color: var(--highlight);
+    }
+
+    /* Top nav */
+    .topnav {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 1500;
+    }
+
+    .topnav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .topnav a::before,
+    .topnav a::after {
+      content: " [ ";
+      opacity: 0;
+    }
+
+    .topnav a::after {
+      content: " ] ";
+    }
+
+    /* Hover or active page link shows brackets */
+    .topnav a:hover::before,
+    .topnav a:hover::after,
+    .topnav a.active::before,
+    .topnav a.active::after {
+      opacity: 1;
+    }
+
+    /* Layout */
+    main {
+      max-width: 1400px;
+      margin: 6rem auto 3rem;
+      padding: 0 1.5rem 3rem;
+      animation: slideIn 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: var(--bg);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0rem;
+      grid-column: 1 / -1;
+    }
+
+    h3 {
+      font-size: 1.7rem;
+      font-weight: 650;
+      margin: 0rem 0 0.6rem;
+      padding-left: 1.5rem;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--highlight);
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* Container for PDF + toggle */
     .top-actions {
       position: absolute;
-      top: calc(0.75rem + 32px + 0.5rem);
-      right: 0.75rem;
-      left: auto;
-      background: transparent;
-      padding: 0;
-      filter: none;
+      top: 1.4rem;
+      right: 5rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 1500;
+      font-weight: 600;
       padding: 0.4rem;
+      border: 2px solid currentColor;
+      transition: transform 0.3s, filter 0.3s, color 0.3s;
     }
 
-    main {
-      margin-top: 7rem;
-      padding: 0 1rem 2rem;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+    .top-actions:hover {
+      color: var(--highlight);
+      border-color: var(--highlight);
+      transform: scale(1.1);
+    }
+
+    .pdf-link {
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s, opacity 0.2s;
+    }
+
+    .pdf-link:hover {
+      color: var(--highlight);
+    }
+
+    .top-actions:hover .pdf-link {
+      color: var(--highlight);
+    }
+
+    /* Lists and descriptions */
+    .section-list {
+      list-style: none;
+      padding-left: 1.5rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .section-list>li {
+      margin-bottom: 0.4rem;
+    }
+
+    .section-list>li>strong {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .description {
+      margin: 0.2rem 0 1rem;
+      font-size: 1.1rem;
+    }
+
+    /* Work Experience boxes */
+    #we-list.section-list>li {
+      border: 1px solid currentColor;
+      padding: 0.85rem 0.9rem;
+      margin-bottom: 0.85rem;
+      max-width: 600px;
+    }
+
+    #we-list .description {
+      margin-top: 0.35rem;
+    }
+
+    /* Projects list */
+    #tp-list.projects-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      border-top: 1px solid currentColor;
+      display: block;
+    }
+
+    details.project-item {
+      border-bottom: 1px solid currentColor;
+    }
+
+    details.project-item[open] .project-body,
+    details.project-item[open] .description,
+    details.project-item[open] .sublist {
+      display: block;
+    }
+
+    .project-item>summary {
+      list-style: none;
+      margin: 0;
+      padding: 0.6rem 0 0.6rem 0;
+      cursor: pointer;
+    }
+
+    .project-item>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Row */
+    .proj-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
 
     .proj-num {
-      width: 28px;
-      height: 28px;
-      flex-basis: 28px;
-      font-size: 0.8rem;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border: 1.5px solid currentColor;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 0.85rem;
     }
+
+    /* Title + icon cluster */
+    .proj-titlewrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      /* space between title and icon */
+      min-width: 0;
+    }
+
+    .proj-title {
+      line-height: 1.1;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* Icon link next to title */
+    .proj-link {
+      margin-left: 0;
+      /* previously auto; keep it tight beside title */
+      display: inline-flex;
+      width: 22px;
+      height: 22px;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      opacity: 0.95;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .proj-link:hover {
+      color: var(--highlight);
+      transform: translateY(-1px);
+    }
+
+    /* Shared icon sizing/alignment */
+    .icon {
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
+
     .project-body {
-      margin-left: calc(28px + 0.8rem);
+      display: none;
+      padding: 0 0 0.8rem;
+      margin-left: calc(32px + 0.8rem);
+      font-size: 0.85rem;
+    }
+
+    .sublist {
+      display: none;
+      list-style: none;
+      margin-top: 0.3rem;
+      padding-left: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* Skills (ledger style) */
+    #skills-ledger {
+      margin-top: 0.5rem;
     }
 
     .skill-row {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.35rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0rem;
+      align-items: start;
+      padding: 0.75rem 0;
     }
+
     .skill-label {
+      font-weight: 500;
+      font-size: 1.2rem;
       padding-left: 1.5rem;
-      margin: 0;
-      line-height: 1.2;
     }
+
     .skill-items {
-      padding-left: 1.5rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem 0.6rem;
-      width: 100%;
     }
+
     .skill-tag {
+      border: 1px solid currentColor;
+      padding: 0.12rem 0.5rem;
+      font-size: 1.2rem;
+      line-height: 1.3;
       white-space: nowrap;
     }
-  }
 
-  /* Narrow desktops */
-  @media (max-width: 1200px) and (min-width: 901px) {
-    .topnav {
-      gap: 0.75rem;
+    footer {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 3rem;
     }
-    #themeToggle {
-      top: 1rem;
-      right: 1rem;
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .topnav {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        z-index: 1500;
+      }
+
+      .topnav a {
+        display: inline-block;
+        padding: 0.125rem 0;
+        line-height: 1.2;
+      }
+
+      #themeToggle {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        z-index: 2000;
+      }
+
+      .top-actions {
+        position: absolute;
+        top: calc(0.75rem + 32px + 0.5rem);
+        right: 0.75rem;
+        left: auto;
+        background: transparent;
+        padding: 0;
+        filter: none;
+        padding: 0.4rem;
+      }
+
+      main {
+        margin-top: 7rem;
+        padding: 0 1rem 2rem;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .proj-num {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
+        font-size: 0.8rem;
+      }
+
+      .project-body {
+        margin-left: calc(28px + 0.8rem);
+      }
+
+      .skill-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+      }
+
+      .skill-label {
+        padding-left: 1.5rem;
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      .skill-items {
+        padding-left: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.6rem;
+        width: 100%;
+      }
+
+      .skill-tag {
+        white-space: nowrap;
+      }
     }
-    .top-actions {
-      top: 1rem;
-      right: 4.5rem;
+
+    /* Narrow desktops */
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .topnav {
+        gap: 0.75rem;
+      }
+
+      #themeToggle {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .top-actions {
+        top: 1rem;
+        right: 4.5rem;
+      }
+
+      main {
+        margin-top: 6rem;
+        padding: 0 1.25rem 2.5rem;
+        gap: 1.5rem;
+      }
     }
-    main {
-      margin-top: 6rem;
-      padding: 0 1.25rem 2.5rem;
-      gap: 1.5rem;
-    }
-  }
-</style>
+  </style>
 
-  </head>
-  <body>
-    <svg
-      width="0"
-      height="0"
-      style="position: absolute; opacity: 0"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <symbol id="icon-external" viewBox="0 0 24 24">
-        <path
-          d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </symbol>
-    </svg>
-    <!-- Theme toggle only -->
-    <div id="themeToggle" title="Switch Theme"></div>
+</head>
 
-    <nav class="topnav" aria-label="Site">
-      <a href="index.html">home</a>
-      <a href="about.html">about</a>
-      <a href="resume.html" class="active">resume</a>
-      <a href="contact.html">contact</a>
-    </nav>
-    <div class="top-actions">
-      <a href="1JulietteMangonResume.pdf" target="_blank" class="pdf-link">
-        view PDF version
-      </a>
-    </div>
+<body>
+  <svg width="0" height="0" style="position: absolute; opacity: 0" aria-hidden="true" focusable="false">
+    <symbol id="icon-external" viewBox="0 0 24 24">
+      <path
+        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+  </svg>
+  <!-- Theme toggle only -->
+  <div id="themeToggle" title="Switch Theme"></div>
 
-    <main>
-      <h2>.</h2>
+  <nav class="topnav" aria-label="Site">
+    <a href="index.html">home</a>
+    <a href="about.html">about</a>
+    <a href="resume.html" class="active">resume</a>
+    <a href="paintings.html">paintings</a>
+    <a href="contact.html">contact</a>
+  </nav>
+  <div class="top-actions">
+    <a href="1JulietteMangonResume.pdf" target="_blank" class="pdf-link">
+      view PDF version
+    </a>
+  </div>
 
-      <!-- LEFT COLUMN: Education + Work -->
-      <section aria-label="Left Column">
-        <h3>Education</h3>
-        <ul id="edu-list" class="section-list">
-          <li>
-            <strong>B.A. in Computer Science and Mathematics</strong>, NYU
-            (2023-2025)
-            <p class="description">
-              Coursework: Algorithms, Applied Internet Technology, Natural
-              Language Processing, Numerical Computing, Operating Systems,
-              Mathematical Statistics, Numerical Analysis.
-            </p>
-          </li>
-          <li>
-            <strong
-              >Minor in Business of Entertainment, Media, and Technology</strong
-            >
-            <p class="description">
-              Coursework: Data Analysis in the Music Industry, Business
-              Structure of the Music Industry, Entertainment and Media
-              Industries, Business of Film, Globalization of the Entertainment
-              Industry, Business of Video Games.
-            </p>
-          </li>
-        </ul>
+  <main>
+    <h2>.</h2>
 
-        <h3>Work Experience</h3>
-        <ul id="we-list" class="section-list">
-          <li>
-            <strong>AI/ML Intern</strong>, Enlaye (2025)
-            <p class="description">
-              Working on the agentic architecture of Enlaye's AI-native contract
-              platform, building data-driven query preprocessing and multi-agent
-              reasoning systems deployed on AWS.
-            </p>
-          </li>
-          <li>
-            <strong>Website Developer</strong>, Tryst Restaurant (2025)
-            <p class="description">
-              Rebuilt the restaurant's site with HTML/CSS/JS. Improved UX
-              through responsive layouts, added SEO optimizations, and enhanced
-              accessibility and performance.
-            </p>
-          </li>
-          <li>
-            <strong>USA Mathematical Talent Search Grader</strong>, AOPS (2023-)
-            <p class="description">
-              Evaluating Olympiad-level proofs, assessing complex reasoning and
-              providing detailed written feedback. Collaborating with other
-              graders to standardize scoring and ensure consistency across
-              submissions.
-            </p>
-          </li>
-          <li>
-            <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
-            <p class="description">
-              Developed an AI-powered SwiftUI photo editor using OpenCV;
-              assisted Figma UI design and competitive feature analysis.
-            </p>
-          </li>
-        </ul>
-        <h3>Skills</h3>
-        <div id="skills-ledger">
-          <div class="skill-row">
-            <div class="skill-label">Languages & Frameworks</div>
-            <div class="skill-items">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">C++</span>
-              <span class="skill-tag">C</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">TypeScript</span>
-              <span class="skill-tag">React</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">MATLAB</span>
-              <span class="skill-tag">Assembly</span>
-            </div>
-          </div>
+    <!-- LEFT COLUMN: Education + Work -->
+    <section aria-label="Left Column">
+      <h3>Education</h3>
+      <ul id="edu-list" class="section-list">
+        <li>
+          <strong>B.A. in Computer Science and Mathematics</strong>, NYU
+          (2023-2025)
+          <p class="description">
+            Coursework: Algorithms, Applied Internet Technology, Natural
+            Language Processing, Numerical Computing, Operating Systems,
+            Mathematical Statistics, Numerical Analysis.
+          </p>
+        </li>
+        <li>
+          <strong>Minor in Business of Entertainment, Media, and Technology</strong>
+          <p class="description">
+            Coursework: Data Analysis in the Music Industry, Business
+            Structure of the Music Industry, Entertainment and Media
+            Industries, Business of Film, Globalization of the Entertainment
+            Industry, Business of Video Games.
+          </p>
+        </li>
+      </ul>
 
-          <div class="skill-row">
-            <div class="skill-label">Tools & Platforms</div>
-            <div class="skill-items">
-              <span class="skill-tag">AWS</span>
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">GitHub</span>
-              <span class="skill-tag">Figma</span>
-              <span class="skill-tag">APIs</span>
-              <span class="skill-tag">Vite</span>
-              <span class="skill-tag">Docker</span>
-              <span class="skill-tag">Unix/Linux</span>
-              <span class="skill-tag">LaTeX</span>
-              <span class="skill-tag">Excel</span>
-              <span class="skill-tag">Google Suite</span>
-              <span class="skill-tag">Ollama</span>
-            </div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-label">Data & Visualization</div>
-            <div class="skill-items">
-              <span class="skill-tag">Neo4j</span>
-              <span class="skill-tag">Matplotlib</span>
-              <span class="skill-tag">vis.js</span>
-              <span class="skill-tag">Pandas</span>
-              <span class="skill-tag">Drizzle ORM</span>
-              <span class="skill-tag">SQL</span>
-            </div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-label">Spoken Languages</div>
-            <div class="skill-items">
-              <span class="skill-tag">English</span>
-              <span class="skill-tag">French</span>
-              <span class="skill-tag">Spanish (Conversational)</span>
-            </div>
+      <h3>Work Experience</h3>
+      <ul id="we-list" class="section-list">
+        <li>
+          <strong>AI/ML Intern</strong>, Enlaye (2025)
+          <p class="description">
+            Working on the agentic architecture of Enlaye's AI-native contract
+            platform, building data-driven query preprocessing and multi-agent
+            reasoning systems deployed on AWS.
+          </p>
+        </li>
+        <li>
+          <strong>Website Developer</strong>, Tryst Restaurant (2025)
+          <p class="description">
+            Rebuilt the restaurant's site with HTML/CSS/JS. Improved UX
+            through responsive layouts, added SEO optimizations, and enhanced
+            accessibility and performance.
+          </p>
+        </li>
+        <li>
+          <strong>USA Mathematical Talent Search Grader</strong>, AOPS (2023-)
+          <p class="description">
+            Evaluating Olympiad-level proofs, assessing complex reasoning and
+            providing detailed written feedback. Collaborating with other
+            graders to standardize scoring and ensure consistency across
+            submissions.
+          </p>
+        </li>
+        <li>
+          <strong>Photoville Intern</strong>, Regenerating Inc. (2024)
+          <p class="description">
+            Developed an AI-powered SwiftUI photo editor using OpenCV;
+            assisted Figma UI design and competitive feature analysis.
+          </p>
+        </li>
+      </ul>
+      <h3>Skills</h3>
+      <div id="skills-ledger">
+        <div class="skill-row">
+          <div class="skill-label">Languages & Frameworks</div>
+          <div class="skill-items">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">MATLAB</span>
+            <span class="skill-tag">Assembly</span>
           </div>
         </div>
-      </section>
 
-      <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
-      <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
-      <section aria-label="Right Column">
-        <h3>Projects</h3>
-        <ul id="tp-list" class="projects-list">
-          <!-- Project 1 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">01</span>
+        <div class="skill-row">
+          <div class="skill-label">Tools & Platforms</div>
+          <div class="skill-items">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">APIs</span>
+            <span class="skill-tag">Vite</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Unix/Linux</span>
+            <span class="skill-tag">LaTeX</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">Google Suite</span>
+            <span class="skill-tag">Ollama</span>
+          </div>
+        </div>
 
-                <span class="proj-titlewrap">
-                  <span class="proj-title"
-                    >Music Metadata Aggregation & Insights Tool</span
-                  >
-                  <a
-                    class="proj-link"
-                    href="projects/She%20is%20the%20music.pdf"
-                    target="_blank"
-                    aria-label="Open project"
-                  >
-                    <svg class="icon" aria-hidden="true" focusable="false">
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Selected for
-                <a href="https://sheisthemusic.org/" target="_blank"
-                  ><strong>She Is The Music</strong></a
-                >
-                's Connect TogetHER mentorship program as a music tech mentee
-                under Anna Skelsey, I developed a music analytics platform A&R
-                teams and music professionals to visualize creative networks,
-                uncover contributor relationships, and identify derivative links
-                between songs to support A&R insights and catalog strategy.
-              </p>
+        <div class="skill-row">
+          <div class="skill-label">Data & Visualization</div>
+          <div class="skill-items">
+            <span class="skill-tag">Neo4j</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">vis.js</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Drizzle ORM</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-label">Spoken Languages</div>
+          <div class="skill-items">
+            <span class="skill-tag">English</span>
+            <span class="skill-tag">French</span>
+            <span class="skill-tag">Spanish (Conversational)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
+    <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
+    <section aria-label="Right Column">
+      <h3>Projects</h3>
+      <ul id="tp-list" class="projects-list">
+        <!-- Project 1 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">01</span>
+
+              <span class="proj-titlewrap">
+                <span class="proj-title">Music Metadata Aggregation & Insights Tool</span>
+                <a class="proj-link" href="projects/She%20is%20the%20music.pdf" target="_blank"
+                  aria-label="Open project">
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </span>
             </div>
-          </details>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Selected for
+              <a href="https://sheisthemusic.org/" target="_blank"><strong>She Is The Music</strong></a>
+              's Connect TogetHER mentorship program as a music tech mentee
+              under Anna Skelsey, I developed a music analytics platform A&R
+              teams and music professionals to visualize creative networks,
+              uncover contributor relationships, and identify derivative links
+              between songs to support A&R insights and catalog strategy.
+            </p>
+          </div>
+        </details>
 
-          <!-- Project 2 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">02</span>
+        <!-- Project 2 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">02</span>
 
-                <span class="proj-titlewrap">
-                  <span class="proj-title"
-                    >Essay Plagiarism Detection Project</span
-                  >
-                  <a
-                    class="proj-link"
-                    href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf"
-                    target="_blank"
-                    aria-label="Open project"
-                  >
-                    <svg class="icon" aria-hidden="true" focusable="false">
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Developed and optimized a plagiarism detection system using
-                TF-IDF vectors, cosine similarity, and n-gram models. Verified
-                research findings on trigram-based detection, implemented
-                multiprocessing to reduce runtime by 80%, and adjusted
-                vectorization to improve F-scores and minimize false positives
-                across the text corpora.
-              </p>
+              <span class="proj-titlewrap">
+                <span class="proj-title">Essay Plagiarism Detection Project</span>
+                <a class="proj-link" href="projects/Group%2011%20NLP%20Final%20Paper%20(2).pdf" target="_blank"
+                  aria-label="Open project">
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </span>
             </div>
-          </details>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Developed and optimized a plagiarism detection system using
+              TF-IDF vectors, cosine similarity, and n-gram models. Verified
+              research findings on trigram-based detection, implemented
+              multiprocessing to reduce runtime by 80%, and adjusted
+              vectorization to improve F-scores and minimize false positives
+              across the text corpora.
+            </p>
+          </div>
+        </details>
 
-          <!-- Project 3 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">03</span>
+        <!-- Project 3 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">03</span>
 
-                <span class="proj-titlewrap">
-                  <span class="proj-title"
-                    >Spotify Listening Behavior Case Study</span
-                  >
-                  <a
-                    class="proj-link"
-                    href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf"
-                    target="_blank"
-                    aria-label="Open project"
-                  >
-                    <svg class="icon" aria-hidden="true" focusable="false">
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Explored Spotify's use of machine learning in personalized
-                recommendations, playlist curation, and user engagement features
-                like Wrapped, with analysis of licensing models, AI risks, and
-                global platform strategy.
-              </p>
+              <span class="proj-titlewrap">
+                <span class="proj-title">Spotify Listening Behavior Case Study</span>
+                <a class="proj-link"
+                  href="projects/Spotify%20Case%20Study%20%E2%80%94%20Exploring%20Technology,%20User%20Experience,%20and%20the%20Future%20of%20Music%20Streaming.pdf"
+                  target="_blank" aria-label="Open project">
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </span>
             </div>
-          </details>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Explored Spotify's use of machine learning in personalized
+              recommendations, playlist curation, and user engagement features
+              like Wrapped, with analysis of licensing models, AI risks, and
+              global platform strategy.
+            </p>
+          </div>
+        </details>
 
-          <!-- Project 4 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">04</span>
-                <span class="proj-title"
-                  >Client Website Development Projects</span
-                >
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Built responsive portfolio sites for photographers and visual
-                artists using React, Tailwind CSS, and JavaScript. Emphasized
-                interactive UI components and tailored visual layouts.
-              </p>
-              <ul class="sublist">
-                <li>
-                  <a href="https://amandinemangon.com/" target="_blank">
-                    Amandine Mangon: Postcard-style gallery exploring archival
-                    and personal photography through collaging
-                    <svg
-                      class="icon"
-                      width="16"
-                      height="16"
-                      aria-hidden="true"
-                      focusable="false"
-                      style="vertical-align: middle"
-                    >
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://mateoantoniomartinez.com/" target="_blank">
-                    Mateo Antonio Martinez: Personal photography site with
-                    exhibits, photo essays, and reflective writing
-                    <svg
-                      class="icon"
-                      width="16"
-                      height="16"
-                      aria-hidden="true"
-                      focusable="false"
-                      style="vertical-align: middle"
-                    >
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/"
-                    target="_blank"
-                  >
-                    Chris Fitzgerald: Studio portraits, street photography, and
-                    editorial work
-                    <svg
-                      class="icon"
-                      width="16"
-                      height="16"
-                      aria-hidden="true"
-                      focusable="false"
-                      style="vertical-align: middle"
-                    >
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
+        <!-- Project 4 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">04</span>
+              <span class="proj-title">Client Website Development Projects</span>
             </div>
-          </details>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Built responsive portfolio sites for photographers and visual
+              artists using React, Tailwind CSS, and JavaScript. Emphasized
+              interactive UI components and tailored visual layouts.
+            </p>
+            <ul class="sublist">
+              <li>
+                <a href="https://amandinemangon.com/" target="_blank">
+                  Amandine Mangon: Postcard-style gallery exploring archival
+                  and personal photography through collaging
+                  <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
+                    style="vertical-align: middle">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://mateoantoniomartinez.com/" target="_blank">
+                  Mateo Antonio Martinez: Personal photography site with
+                  exhibits, photo essays, and reflective writing
+                  <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
+                    style="vertical-align: middle">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">
+                  Chris Fitzgerald: Studio portraits, street photography, and
+                  editorial work
+                  <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
+                    style="vertical-align: middle">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </details>
 
-          <!-- Project 5 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">05</span>
+        <!-- Project 5 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">05</span>
 
-                <span class="proj-titlewrap">
-                  <span class="proj-title"
-                    >Proposal: Kering-Branded Fashion Toolkits for UGC
-                    Platforms</span
-                  >
-                  <a
-                    class="proj-link"
-                    href="projects/Businessof%20Video%20games%20final.pdf"
-                    target="_blank"
-                    aria-label="Open project"
-                  >
-                    <svg class="icon" aria-hidden="true" focusable="false">
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Proposed that Kering invest in branded digital fashion toolkits
-                for UGC platforms like Roblox and Fortnite, offering
-                customizable avatar assets, textures, and templates to engage
-                players, expand brand presence in virtual economies, and
-                generate new revenue through creator royalties.
-              </p>
+              <span class="proj-titlewrap">
+                <span class="proj-title">Proposal: Kering-Branded Fashion Toolkits for UGC
+                  Platforms</span>
+                <a class="proj-link" href="projects/Businessof%20Video%20games%20final.pdf" target="_blank"
+                  aria-label="Open project">
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </span>
             </div>
-          </details>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Proposed that Kering invest in branded digital fashion toolkits
+              for UGC platforms like Roblox and Fortnite, offering
+              customizable avatar assets, textures, and templates to engage
+              players, expand brand presence in virtual economies, and
+              generate new revenue through creator royalties.
+            </p>
+          </div>
+        </details>
 
-          <!-- Project 6 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">06</span>
+        <!-- Project 6 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">06</span>
 
-                <span class="proj-titlewrap">
-                  <span class="proj-title"
-                    >Ad Hoc Information Retrieval System</span
-                  >
-                  <a
-                    class="proj-link"
-                    href="https://github.com/juliettemangon2/adhocRetrievalSystem"
-                    target="_blank"
-                    aria-label="Open project"
-                  >
-                    <svg class="icon" aria-hidden="true" focusable="false">
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Built a TF-IDF-based ranking system to match 1,400 document
-                abstracts to 225 custom queries. Used cosine similarity to
-                determine relevance and evaluated system performance using Mean
-                Average Precision to guide algorithm refinements.
-              </p>
+              <span class="proj-titlewrap">
+                <span class="proj-title">Ad Hoc Information Retrieval System</span>
+                <a class="proj-link" href="https://github.com/juliettemangon2/adhocRetrievalSystem" target="_blank"
+                  aria-label="Open project">
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </span>
             </div>
-          </details>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Built a TF-IDF-based ranking system to match 1,400 document
+              abstracts to 225 custom queries. Used cosine similarity to
+              determine relevance and evaluated system performance using Mean
+              Average Precision to guide algorithm refinements.
+            </p>
+          </div>
+        </details>
 
-          <!-- Project 7 -->
-          <details class="project-item" open>
-            <summary role="button" aria-expanded="true">
-              <div class="proj-row">
-                <span class="proj-num">07</span>
+        <!-- Project 7 -->
+        <details class="project-item" open>
+          <summary role="button" aria-expanded="true">
+            <div class="proj-row">
+              <span class="proj-num">07</span>
 
-                <span class="proj-titlewrap">
-                  <span class="proj-title">AI in Music Creation Analysis</span>
-                  <a
-                    class="proj-link"
-                    href="projects/MUSIC%20AI.pdf"
-                    target="_blank"
-                    aria-label="Open project"
-                  >
-                    <svg class="icon" aria-hidden="true" focusable="false">
-                      <use href="#icon-external"></use>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-            </summary>
-            <div class="project-body">
-              <p class="description">
-                Explored how generative AI is changing music creation, raising
-                new questions about authorship, originality, and the role of
-                human input in creative work.
-              </p>
+              <span class="proj-titlewrap">
+                <span class="proj-title">AI in Music Creation Analysis</span>
+                <a class="proj-link" href="projects/MUSIC%20AI.pdf" target="_blank" aria-label="Open project">
+                  <svg class="icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-external"></use>
+                  </svg>
+                </a>
+              </span>
             </div>
-          </details>
-        </ul>
-      </section>
+          </summary>
+          <div class="project-body">
+            <p class="description">
+              Explored how generative AI is changing music creation, raising
+              new questions about authorship, originality, and the role of
+              human input in creative work.
+            </p>
+          </div>
+        </details>
+      </ul>
+    </section>
 
-      <footer>
-        <p
-          style="
+    <footer>
+      <p style="
             text-align: center;
             font-size: 0.9rem;
             color: var(--text);
             margin-bottom: 0.7rem;
             margin-top: 4rem;
-          "
-        >
-          © 2025 Juliette Mangon
-        </p>
-      </footer>
-    </main>
+          ">
+        © 2025 Juliette Mangon
+      </p>
+    </footer>
+  </main>
 
-    <script>
-      // Theme
-      const themes = {
-        default: {
-          "--bg": "#e4e6ff",
-          "--text": "#ff6200",
-          "--highlight": "#4C1E4F",
-          "--text2": "#ff6200",
-        },
-        alt: {
-          "--bg": "#d2e6ff",
-          "--text": "#A70A4E",
-          "--highlight": "#FF9DFF",
-          "--text2": "#A70A4E",
-        },
-        gray: {
-          "--bg": "#FFDCF6",
-          "--text": "#d60b6d",
-          "--highlight": "#83dbd6ff",
-          "--text2": "#d60b6d",
-        },
-        blue: {
-          "--bg": "#20406C",
-          "--text": "#BED8FE",
-          "--highlight": "#D8D34B",
-          "--text2": "#20406C",
-        },
-      };
-      const order = ["blue", "default", "alt", "gray"];
-      function applyTheme(name) {
-        if (!themes[name]) name = "default";
-        for (const [k, v] of Object.entries(themes[name])) {
-          document.documentElement.style.setProperty(k, v);
-        }
-        localStorage.setItem("theme", name);
+  <script>
+    // Theme
+    const themes = {
+      default: {
+        "--bg": "#e4e6ff",
+        "--text": "#ff6200",
+        "--highlight": "#4C1E4F",
+        "--text2": "#ff6200",
+      },
+      alt: {
+        "--bg": "#d2e6ff",
+        "--text": "#A70A4E",
+        "--highlight": "#FF9DFF",
+        "--text2": "#A70A4E",
+      },
+      gray: {
+        "--bg": "#FFDCF6",
+        "--text": "#d60b6d",
+        "--highlight": "#83dbd6ff",
+        "--text2": "#d60b6d",
+      },
+      blue: {
+        "--bg": "#20406C",
+        "--text": "#BED8FE",
+        "--highlight": "#D8D34B",
+        "--text2": "#20406C",
+      },
+    };
+    const order = ["blue", "default", "alt", "gray"];
+    function applyTheme(name) {
+      if (!themes[name]) name = "default";
+      for (const [k, v] of Object.entries(themes[name])) {
+        document.documentElement.style.setProperty(k, v);
       }
-      applyTheme(localStorage.getItem("theme") || "default");
-      document.getElementById("themeToggle").addEventListener("click", () => {
-        const current = localStorage.getItem("theme") || "default";
-        const idx = (order.indexOf(current) + 1) % order.length;
-        applyTheme(order[idx]);
-      });
+      localStorage.setItem("theme", name);
+    }
+    applyTheme(localStorage.getItem("theme") || "default");
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = localStorage.getItem("theme") || "default";
+      const idx = (order.indexOf(current) + 1) % order.length;
+      applyTheme(order[idx]);
+    });
 
-      // Improve a11y state on project toggles
-      document
-        .querySelectorAll("details.project-item > summary")
-        .forEach((s) => {
-          s.addEventListener("click", () => {
-            const d = s.parentElement;
-            setTimeout(() => {
-              s.setAttribute("aria-expanded", d.open ? "true" : "false");
-            }, 0);
-          });
+    // Improve a11y state on project toggles
+    document
+      .querySelectorAll("details.project-item > summary")
+      .forEach((s) => {
+        s.addEventListener("click", () => {
+          const d = s.parentElement;
+          setTimeout(() => {
+            s.setAttribute("aria-expanded", d.open ? "true" : "false");
+          }, 0);
         });
-    </script>
-  </body>
+      });
+  </script>
+</body>
+
 </html>

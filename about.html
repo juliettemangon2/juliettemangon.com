@@ -1,328 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | Juliette Mangon</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Juliette Mangon</title>
 
-    <!-- Snake styles (preserved) -->
-    <link rel="stylesheet" href="snake.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet" />
 
-    <style>
-      :root {
-        --bg: #e1ecff;
-        --text: #80074f;
-        --highlight: #6fc1de;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Instrument Sans", sans-serif;
-        line-height: 1.6;
-        font-size: 1.05rem;
-        overflow-x: hidden;
-      }
+  <!-- Snake styles (preserved) -->
+  <link rel="stylesheet" href="snake.css" />
 
-      /* Theme + simple top nav */
-      #themeToggle {
-        position: fixed;
-        top: 1.5rem;
-        right: 1.5rem;
-        width: 30px;
-        height: 30px;
-        background-color: var(--text);
-        cursor: pointer;
-        z-index: 2000;
-        transition: background-color 0.2s;
-      }
-      #themeToggle:hover {
-        background-color: var(--highlight);
-      }
+  <style>
+    :root {
+      --bg: #e1ecff;
+      --text: #80074f;
+      --highlight: #6fc1de;
+    }
 
-      .topnav {
-        position: fixed;
-        top: 1.5rem;
-        left: 1.5rem;
-        display: flex;
-        gap: 1rem;
-        z-index: 1500;
-      }
-      .topnav a {
-        color: var(--text);
-        text-decoration: none; /* no decoration */
-        font-weight: 600;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      .topnav a::before,
-      .topnav a::after {
-        content: " [ ";
-        opacity: 0;
-      }
-      .topnav a::after {
-        content: " ] ";
-      }
+    html,
+    body {
+      height: 100%;
+    }
 
-      /* Hover or active page link shows brackets */
-      .topnav a:hover::before,
-      .topnav a:hover::after,
-      .topnav a.active::before,
-      .topnav a.active::after {
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Instrument Sans", sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      overflow-x: hidden;
+    }
+
+    /* Theme + simple top nav */
+    #themeToggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: var(--text);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color 0.2s;
+    }
+
+    #themeToggle:hover {
+      background-color: var(--highlight);
+    }
+
+    .topnav {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 1500;
+    }
+
+    .topnav a {
+      color: var(--text);
+      text-decoration: none;
+      /* no decoration */
+      font-weight: 600;
+    }
+
+    .topnav a::before,
+    .topnav a::after {
+      content: " [ ";
+      opacity: 0;
+    }
+
+    .topnav a::after {
+      content: " ] ";
+    }
+
+    /* Hover or active page link shows brackets */
+    .topnav a:hover::before,
+    .topnav a:hover::after,
+    .topnav a.active::before,
+    .topnav a.active::after {
+      opacity: 1;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 6rem auto 3rem;
+      padding: 0 1.25rem;
+      animation: slideIn 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes slideIn {
+      to {
         opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: var(--bg);
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 1.2rem 0 0.6rem;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.1s;
+    }
+
+    a:hover {
+      color: var(--highlight);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+    }
+
+    .photos {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .photos img {
+      width: 100%;
+      max-width: 530px;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s;
+      flex: 1 1 48%;
+    }
+
+    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and avoid overlap */
+    @media (max-width: 900px) {
+
+      /* Stack the nav links vertically in the top-left */
+      .topnav {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        z-index: 1500;
+        /* below theme toggle but above content */
+      }
+
+      .topnav a {
+        display: inline-block;
+        /* larger tap targets without full-width buttons */
+        padding: 0.125rem 0;
+        /* keep layout tight and aligned */
+        line-height: 1.2;
+      }
+
+      /* Keep theme toggle pinned to top-right, slightly tighter on mobile */
+      #themeToggle {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        z-index: 2000;
+      }
+
+      /* Create breathing room below the stacked nav so content never hides behind it */
+      main {
+        margin-top: 7rem;
+        /* adjust if you add/remove nav items */
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      /* Existing page-specific responsive rules */
+      .contact-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .photos img {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Slightly narrow desktops: reduce spacing so layout holds up when not fullscreen */
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .topnav {
+        gap: 0.75rem;
       }
 
       main {
-        max-width: 900px;
-        margin: 6rem auto 3rem;
-        padding: 0 1.25rem;
-        animation: slideIn 0.6s ease forwards;
-        opacity: 0;
-        transform: translateY(30px);
+        margin-top: 6rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
       }
-      @keyframes slideIn {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    }
+  </style>
+</head>
 
-      h2 {
-        color: var(--bg);
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 1.2rem 0 0.6rem;
-      }
-      a {
-        color: var(--text);
-        text-decoration: none;
-        transition: color 0.1s;
-      }
-      a:hover {
-        color: var(--highlight);
-      }
-      p {
-        margin-bottom: 1.5rem;
-        font-size: 1.6rem;
-      }
+<body>
+  <!-- Persistent controls -->
+  <div id="themeToggle" title="Switch Theme"></div>
+  <nav class="topnav" aria-label="Site">
+    <a href="index.html">home</a>
+    <a href="about.html" class="active">about</a>
+    <a href="resume.html">resume</a>
+    <a href="paintings.html">paintings</a>
+    <a href="contact.html">contact</a>
+  </nav>
 
-      .contact-columns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        margin-top: 0.5rem;
-      }
-      .contact-columns > div {
-        border-left: 1.5px solid var(--text);
-        padding-left: 0.75rem;
-      }
-      .contact-columns p {
-        margin: 0;
-      }
+  <main>
+    <!-- About content (preserved text) -->
+    <section>
+      <h2>.</h2>
+      <p>
+        My name is Juliette Mangon. I'm studying Computer
+        Science and Mathematics with a minor in the Business of Entertainment,
+        Media, and Technology at
+        <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a>, graduating in December 2025.
+      </p>
+      <p>
+        I am passionate about how technology can support creative expression
+        and connect people working across media-driven fields. I'm especially
+        interested in building systems that are intuitive and thoughtful in
+        how they shape user experience.
+      </p>
+      <p>
+        Outside of tech, I care deeply about the environment and how
+        innovation impacts sustainability. I also love to paint and spend time
+        outdoors.
+      </p>
+      <p>
+        Check out my painting portfolio
+        <a href="paintings.html"
+          onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>here.</strong></a>
+      </p>
+      <p>
+        Check out my current favorite media
+        <a href="media.html"
+          onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"><strong>here.</strong></a>
+      </p>
+    </section>
 
-      .photos {
-        margin-top: 2rem;
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-      .photos img {
-        width: 100%;
-        max-width: 530px;
-        height: auto;
-        object-fit: cover;
-        transition: transform 0.3s;
-        flex: 1 1 48%;
-      }
-
-      /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and avoid overlap */
-@media (max-width: 900px) {
-  /* Stack the nav links vertically in the top-left */
-  .topnav {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
-    right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    z-index: 1500; /* below theme toggle but above content */
-  }
-  .topnav a {
-    display: inline-block;           /* larger tap targets without full-width buttons */
-    padding: 0.125rem 0;             /* keep layout tight and aligned */
-    line-height: 1.2;
-  }
-
-  /* Keep theme toggle pinned to top-right, slightly tighter on mobile */
-  #themeToggle {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 32px;
-    height: 32px;
-    z-index: 2000;
-  }
-
-  /* Create breathing room below the stacked nav so content never hides behind it */
-  main {
-    margin-top: 7rem;                /* adjust if you add/remove nav items */
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  /* Existing page-specific responsive rules */
-  .contact-columns {
-    grid-template-columns: 1fr;
-  }
-  .photos img {
-    flex: 1 1 100%;
-  }
-}
-
-/* Slightly narrow desktops: reduce spacing so layout holds up when not fullscreen */
-@media (max-width: 1200px) and (min-width: 901px) {
-  .topnav {
-    gap: 0.75rem;
-  }
-  main {
-    margin-top: 6rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-}
-
-    </style>
-  </head>
-  <body>
-    <!-- Persistent controls -->
-    <div id="themeToggle" title="Switch Theme"></div>
-    <nav class="topnav" aria-label="Site">
-      <a href="index.html">home</a>
-      <a href="about.html" class="active">about</a>
-      <a href="resume.html">resume</a>
-      <a href="contact.html">contact</a>
-    </nav>
-
-    <main>
-      <!-- About content (preserved text) -->
-      <section>
-        <h2>.</h2>
-        <p>
-          My name is Juliette Mangon. I'm studying Computer
-          Science and Mathematics with a minor in the Business of Entertainment,
-          Media, and Technology at
-          <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a
-          >, graduating in December 2025.
-        </p>
-        <p>
-          I am passionate about how technology can support creative expression
-          and connect people working across media-driven fields. I'm especially
-          interested in building systems that are intuitive and thoughtful in
-          how they shape user experience.
-        </p>
-        <p>
-          Outside of tech, I care deeply about the environment and how
-          innovation impacts sustainability. I also love to paint and spend time
-          outdoors.
-        </p>
-        <p>
-          Check out my painting portfolio
-          <a
-            href="paintings.html"
-            onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"
-            ><strong>here.</strong></a
-          >
-        </p>
-        <p>
-          Check out my current favorite media
-          <a
-            href="media.html"
-            onclick="localStorage.setItem('theme', localStorage.getItem('theme'))"
-            ><strong>here.</strong></a
-          >
-        </p>
-      </section>
-
-      <section>
-        <div class="photos"></div>
-      </section>
-      <footer>
-        <p
-          style="
+    <section>
+      <div class="photos"></div>
+    </section>
+    <footer>
+      <p style="
             text-align: center;
             font-size: 0.9rem;
             color: var(--text);
             margin-bottom: 0.7rem;
             margin-top: 2rem;
-          "
-        >
-          © 2025 Juliette Mangon
-        </p>
-      </footer>
-    </main>
+          ">
+        © 2025 Juliette Mangon
+      </p>
+    </footer>
+  </main>
 
-    <!-- Snake logic (preserved include) -->
-    <script defer src="snake.js"></script>
+  <!-- Snake logic (preserved include) -->
+  <script defer src="snake.js"></script>
 
-    <script>
-      // THEME
-      const themes = {
-        default: {
-          "--bg": "#e4e6ff",
-          "--text": "#ff6200",
-          "--highlight": "#4C1E4F",
-        },
-        alt: {
-          "--bg": "#d2e6ff",
-          "--text": "#A70A4E",
-          "--highlight": "#FF9DFF",
-        },
-        gray: {
-          "--bg": "#FFDCF6",
-          "--text": "#d60b6d",
-          "--highlight": "#83dbd6ff",
-        },
-        blue: {
-          "--bg": "#20406C",
-          "--text": "#BED8FE",
-          "--highlight": "#D8D34B",
-        },
-      };
-      const order = [ "blue","default", "alt", "gray"];
-      function applyTheme(name) {
-        if (!themes[name]) name = "default";
-        for (const [k, v] of Object.entries(themes[name])) {
-          document.documentElement.style.setProperty(k, v);
-        }
-        localStorage.setItem("theme", name);
+  <script>
+    // THEME
+    const themes = {
+      default: {
+        "--bg": "#e4e6ff",
+        "--text": "#ff6200",
+        "--highlight": "#4C1E4F",
+      },
+      alt: {
+        "--bg": "#d2e6ff",
+        "--text": "#A70A4E",
+        "--highlight": "#FF9DFF",
+      },
+      gray: {
+        "--bg": "#FFDCF6",
+        "--text": "#d60b6d",
+        "--highlight": "#83dbd6ff",
+      },
+      blue: {
+        "--bg": "#20406C",
+        "--text": "#BED8FE",
+        "--highlight": "#D8D34B",
+      },
+    };
+    const order = ["blue", "default", "alt", "gray"];
+    function applyTheme(name) {
+      if (!themes[name]) name = "default";
+      for (const [k, v] of Object.entries(themes[name])) {
+        document.documentElement.style.setProperty(k, v);
       }
-      applyTheme(localStorage.getItem("theme") || "default");
+      localStorage.setItem("theme", name);
+    }
+    applyTheme(localStorage.getItem("theme") || "default");
 
-      document.getElementById("themeToggle").addEventListener("click", () => {
-        const current = localStorage.getItem("theme") || "default";
-        const idx = (order.indexOf(current) + 1) % order.length;
-        applyTheme(order[idx]);
-      });
-    </script>
-  </body>
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = localStorage.getItem("theme") || "default";
+      const idx = (order.indexOf(current) + 1) % order.length;
+      applyTheme(order[idx]);
+    });
+  </script>
+</body>
+
 </html>
