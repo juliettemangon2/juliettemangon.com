@@ -11,6 +11,17 @@ body{
   font-size:1.05rem;
   overflow-x:hidden;
 }
+::selection {
+  color: var(--highlight);
+  background: var(--text);
+  
+
+}
+
+::-moz-selection {
+  color: var(--highlight);
+  background: var(--text);
+}
 
 /* Minimal header present on all pages */
 .site-header{
@@ -22,6 +33,8 @@ body{
 .brand{
   font-weight:700; letter-spacing:.3px; font-size:1.05rem;
 }
+.title-anchor { position: relative; }
+
 .nav{
   display:flex; gap:.6rem;
 }
@@ -66,7 +79,7 @@ a:hover{ color:var(--highlight) }
 
 /* Contact columns */
 .contact-columns{ display:grid; grid-template-columns:1fr 1fr; gap:1rem }
-.contact-columns > div{ border-left:1.5px solid var(--text); padding-left:.75rem }
+.contact-columns > div{ border-left:3.5px solid var(--text); padding-left:.75rem }
 .contact-columns p{ margin:0 }
 @media (max-width:768px){ .contact-columns{ grid-template-columns:1fr } }
 
