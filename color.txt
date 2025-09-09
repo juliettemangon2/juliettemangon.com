@@ -9,6 +9,9 @@
 
 hsla(96, 100%, 27%, 1.00)
 #9bf124ff
+    #ff0000f
+    #ee0073ff
+#e30000ff
 #592e6dff
 #b1b33dff
 #f4f0df
