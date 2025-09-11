@@ -317,6 +317,18 @@
       font-size: 0.95rem;
     }
 
+    /* Show sublist for work experience items */
+    #we-list>li>.sublist {
+      display: block;
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .sublist>li {
+      margin-bottom: 0.7rem;
+    }
+
     /* Skills (ledger style) */
     #skills-ledger {
       margin-top: 0.5rem;
@@ -324,10 +336,10 @@
 
     .skill-row {
       display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 0rem;
+      grid-template-columns: 260px 1fr;
+      gap: 2rem;
       align-items: start;
-      padding: 0.75rem 0;
+      padding: 1rem 0;
     }
 
     .skill-label {
@@ -348,6 +360,26 @@
       font-size: 1.2rem;
       line-height: 1.3;
       white-space: nowrap;
+    }
+
+    #skills-section {
+      border-top: none !important;
+      grid-column: 1 / -1;
+      margin-bottom: 2rem;
+      width: 100%;
+
+    }
+
+    #skills-ledger {
+      margin-top: 0rem;
+      width: 100%;
+      border-top: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+
+    #skills-section h3 {
+      border-bottom: none !important;
     }
 
     footer {
@@ -400,7 +432,7 @@
         margin-top: 7rem;
         grid-template-columns: 1fr;
         gap: 1.25rem;
-        padding-top:2rem;
+        padding-top: 2rem;
 
       }
 
@@ -528,14 +560,55 @@
             reasoning systems deployed on AWS.
           </p>
         </li>
+         <li>
+          <strong>Freelance Website Developer</strong> (2024-)
+          <p class="description">
+            Developed responsive portfolio websites for multidisciplinary artists. Focused on translating each artist's brand identity into distinctive digital experiences with
+            interactive features and custom visual design. Examples include:
+          </p>
+          <ul class="sublist">
+            <li>
+              <a href="https://amandinemangon.com/" target="_blank">
+                Amandine Mangon: Exploring archival and personal photography through collaging and postcard-style
+                galleries.
+                <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
+                  style="vertical-align: middle">
+                  <use href="#icon-external"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://juliamajchrzak.com/" target="_blank">
+                Julia Majchrzak: Designer's portfolio presenting work across mediums with a focus on sustainability and
+                interdisciplinary creativity.
+                <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
+                  style="vertical-align: middle">
+                  <use href="#icon-external"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://mateoantoniomartinez.com/" target="_blank">
+                Mateo Antonio Martinez: Alternative photography site with exhibits, photo essays, and reflective
+                writing.
+                <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
+                  style="vertical-align: middle">
+                  <use href="#icon-external"></use>
+                </svg>
+              </a>
+            </li>
+
+          </ul>
+        </li>
         <li>
           <strong>Website Developer</strong>, Tryst Restaurant (2025)
           <p class="description">
-            Rebuilt the restaurant's site with HTML/CSS/JS. Improved UX
+            Rebuilt the restaurant's site with HTML/CSS/JS/React. Improved UX
             through responsive layouts, added SEO optimizations, and enhanced
             accessibility and performance.
           </p>
         </li>
+       
         <li>
           <strong>USA Mathematical Talent Search Grader</strong>, AOPS (2023-)
           <p class="description">
@@ -553,64 +626,7 @@
           </p>
         </li>
       </ul>
-      <h3>Skills</h3>
-      <div id="skills-ledger">
-        <div class="skill-row">
-          <div class="skill-label">Languages & Frameworks</div>
-          <div class="skill-items">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">C</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">MATLAB</span>
-            <span class="skill-tag">Assembly</span>
-          </div>
-        </div>
 
-        <div class="skill-row">
-          <div class="skill-label">Tools & Platforms</div>
-          <div class="skill-items">
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">GitHub</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">APIs</span>
-            <span class="skill-tag">Vite</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Unix/Linux</span>
-            <span class="skill-tag">LaTeX</span>
-            <span class="skill-tag">Excel</span>
-            <span class="skill-tag">Google Suite</span>
-            <span class="skill-tag">Ollama</span>
-          </div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-label">Data & Visualization</div>
-          <div class="skill-items">
-            <span class="skill-tag">Neo4j</span>
-            <span class="skill-tag">Matplotlib</span>
-            <span class="skill-tag">vis.js</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">Drizzle ORM</span>
-            <span class="skill-tag">SQL</span>
-          </div>
-        </div>
-
-        <div class="skill-row">
-          <div class="skill-label">Spoken Languages</div>
-          <div class="skill-items">
-            <span class="skill-tag">English</span>
-            <span class="skill-tag">French</span>
-            <span class="skill-tag">Spanish (Conversational)</span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
@@ -709,55 +725,6 @@
           <summary role="button" aria-expanded="true">
             <div class="proj-row">
               <span class="proj-num">04</span>
-              <span class="proj-title">Client Website Development Projects</span>
-            </div>
-          </summary>
-          <div class="project-body">
-            <p class="description">
-              Built responsive portfolio sites for photographers and visual
-              artists using React, Tailwind CSS, and JavaScript. Emphasized
-              interactive UI components and tailored visual layouts.
-            </p>
-            <ul class="sublist">
-              <li>
-                <a href="https://amandinemangon.com/" target="_blank">
-                  Amandine Mangon: Postcard-style gallery exploring archival
-                  and personal photography through collaging
-                  <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
-                    style="vertical-align: middle">
-                    <use href="#icon-external"></use>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="https://mateoantoniomartinez.com/" target="_blank">
-                  Mateo Antonio Martinez: Personal photography site with
-                  exhibits, photo essays, and reflective writing
-                  <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
-                    style="vertical-align: middle">
-                    <use href="#icon-external"></use>
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a href="https://juliettemangon2.github.io/chrisfitzgerald-site/#/" target="_blank">
-                  Chris Fitzgerald: Studio portraits, street photography, and
-                  editorial work
-                  <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"
-                    style="vertical-align: middle">
-                    <use href="#icon-external"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </details>
-
-        <!-- Project 5 -->
-        <details class="project-item" open>
-          <summary role="button" aria-expanded="true">
-            <div class="proj-row">
-              <span class="proj-num">05</span>
 
               <span class="proj-titlewrap">
                 <span class="proj-title">Proposal: Kering-Branded Fashion Toolkits for UGC
@@ -786,7 +753,7 @@
         <details class="project-item" open>
           <summary role="button" aria-expanded="true">
             <div class="proj-row">
-              <span class="proj-num">06</span>
+              <span class="proj-num">05</span>
 
               <span class="proj-titlewrap">
                 <span class="proj-title">Ad Hoc Information Retrieval System</span>
@@ -813,7 +780,7 @@
         <details class="project-item" open>
           <summary role="button" aria-expanded="true">
             <div class="proj-row">
-              <span class="proj-num">07</span>
+              <span class="proj-num">06</span>
 
               <span class="proj-titlewrap">
                 <span class="proj-title">AI in Music Creation Analysis</span>
@@ -834,6 +801,68 @@
           </div>
         </details>
       </ul>
+
+    </section>
+    <section id="skills-section">
+      <h3 style="margin-top:0rem;">Skills</h3>
+      <div id="skills-ledger">
+        <div class="skill-row">
+          <div class="skill-label">Languages & Frameworks</div>
+          <div class="skill-items">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">MATLAB</span>
+            <span class="skill-tag">Assembly</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-label">Tools & Platforms</div>
+          <div class="skill-items">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">APIs</span>
+            <span class="skill-tag">Vite</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Unix/Linux</span>
+            <span class="skill-tag">LaTeX</span>
+            <span class="skill-tag">Google Suite</span>
+            <span class="skill-tag">Ollama</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-label">Data & Visualization</div>
+          <div class="skill-items">
+            <span class="skill-tag">Neo4j</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">vis.js</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">Drizzle ORM</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <div class="skill-label">Spoken Languages</div>
+          <div class="skill-items">
+            <span class="skill-tag">English</span>
+            <span class="skill-tag">French</span>
+            <span class="skill-tag">Spanish (Conversational)</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer>

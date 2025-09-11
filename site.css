@@ -106,7 +106,7 @@ a:hover{ color:var(--highlight) }
 /* Skills ledger */
 #skills-ledger{ border-top:1px solid currentColor; margin-top:.5rem }
 .skill-row{
-  display:grid; grid-template-columns:190px 1fr; gap:1rem; align-items:start; padding:.75rem 0
+  display:grid; grid-template-columns:190px 10fr; gap:1rem; align-items:start; padding:.75rem 0
 }
 .skill-label{ font-weight:500; font-size:1.1rem }
 .skill-items{ display:flex; flex-wrap:wrap; gap:.35rem .6rem }
