@@ -297,16 +297,16 @@
     };
     const order = ["blue", "default", "alt", "gray"];
     function applyTheme(name) {
-      if (!themes[name]) name = "default";
+      if (!themes[name]) name = "alt";
       for (const [k, v] of Object.entries(themes[name])) {
         document.documentElement.style.setProperty(k, v);
       }
       localStorage.setItem("theme", name);
     }
-    applyTheme(localStorage.getItem("theme") || "default");
+    applyTheme(localStorage.getItem("theme") || "alt");
 
     document.getElementById("themeToggle").addEventListener("click", () => {
-      const current = localStorage.getItem("theme") || "default";
+      const current = localStorage.getItem("theme") || "alt";
       const idx = (order.indexOf(current) + 1) % order.length;
       applyTheme(order[idx]);
     });
