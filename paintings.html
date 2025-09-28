@@ -12,9 +12,10 @@
 
   <style>
     :root {
-      --bg: #e1ecff;
+      --bg: #e1ffed;
       --text: #80074f;
-      --highlight: #6fc1de;
+      --white: #ffe3e3;
+      --highlight: #d9de6f;
     }
 
     * {
@@ -115,7 +116,6 @@
       animation: fadeUp 0.6s ease forwards;
       margin: 0
     }
-
 
 
 
@@ -435,9 +435,9 @@
         "--highlight": "#FF9DFF",
       },
       gray: {
-        "--bg": "#8686ac",
-        "--text": "#f4f4d2ff",
-        "--highlight": "#0c337cff",
+        "--bg": "#c3d7daff",
+        "--text": "#6c566aff",
+        "--highlight": "#f28bdaff",
       },
       blue: {
         "--bg": "#20406C",
@@ -465,7 +465,7 @@
     }
     function updateLightboxBackground() {
       const highlight = getComputedStyle(document.documentElement)
-        .getPropertyValue("--highlight")
+        .getPropertyValue("--white")
         .trim();
       let rgb = [0, 0, 0];
       if (highlight.startsWith("#")) rgb = hexToRgb(highlight);

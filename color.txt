@@ -1,17 +1,19 @@
 #ffb300ff
 #e75e5eff
-
+#f4ef93ff
 #ffdd00ff
-#f4f4d2ff
-#c9e8ffff
+#6c566aff
+#c3d7daff
 #c8026fff
-#1686a5ff
+#f28bdaff
 
 hsla(96, 100%, 27%, 1.00)
+#ffb300ff
 #9bf124ff
     #ff0000f
     #ffb300ff
     #eedae5ff
+    #ffb300ff
     #ee0073ff
 #b70000ff
 #592e6dff
