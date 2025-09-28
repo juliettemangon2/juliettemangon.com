@@ -95,7 +95,7 @@
     }
 
     main {
-      max-width: 900px;
+      max-width: 950px;
       margin: 6rem auto 3rem;
       padding: 0 1.25rem;
       animation: slideIn 0.6s ease forwards;
@@ -112,9 +112,14 @@
 
     h2 {
       color: var(--bg);
-      font-size: 2rem;
+      font-size: 1.3rem;
       font-weight: 700;
       margin: 1.2rem 0 0.6rem;
+    }
+
+    .highlightname {
+      color: var(--highlight);
+      background: var(--text);
     }
 
     a {
@@ -230,23 +235,23 @@
   <main>
     <!-- About content (preserved text) -->
     <section>
-      <h2>.</h2>
       <p>
-        My name is <strong>Juliette Mangon</strong>. I'm studying Computer
+        My name is <span class="highlightname">Juliette Mangon</span>. I'm studying Computer
         Science and Mathematics with a minor in the Business of Entertainment,
         Media, and Technology at
-        <a href="https://www.nyu.edu" target="_blank"><strong>NYU</strong></a>, graduating in December 2025.
+        NYU, graduating in December 2025.
       </p>
       <p>
-        I am passionate about how technology can support creative expression
-        and connect people working across media-driven fields. I'm especially
-        interested in building systems that are intuitive and thoughtful in
-        how they shape user experience.
+        I am passionate about <span class="highlightname">building technology that strengthens creative fields</span>,
+        with a particular focus on the music sector. I am interested in developing platforms that streamline operations, <span
+          class="highlightname">enabling teams to focus on their most impactful work</span>. I am also interested in 
+        designing algorithms and leveraging data to allow for <span class="highlightname"> more precise segmentation,
+          accurate forecasting, and strategic decision-making</span>  across the industry.
       </p>
+
       <p>
-        I care deeply about the environment and how
-        innovation impacts sustainability. I also love to paint, spend time
-        outdoors, and add fun features to my website (click on the square in the top right corner).
+        I care deeply about the environment and aim to approach my work with sustainability in mind. I love paint, spend time outdoors, and add fun features to my website (click on the square in the top right
+        corner).
       </p>
       <p>
         Check out my painting portfolio
@@ -283,7 +288,7 @@
       default: {
         "--bg": "#eedae5ff",
         "--text": "#ff6200",
-        "--highlight": "#ffb300ff",
+        "--highlight": "#ffdd00ff",
       },
       alt: {
         "--bg": "#d2e6ff",
@@ -297,8 +302,8 @@
       },
       blue: {
         "--bg": "#20406C",
-        "--text": "#BED8FE",
-        "--highlight": "#b1b33dff",
+        "--text": "#cee1ffff",
+        "--highlight": "#a5a719ff",
       },
     };
     const order = ["blue", "default", "alt", "gray"];
