@@ -201,8 +201,7 @@
     #lightbox img {
       max-width: 90vw;
       max-height: 90vh;
-      border: 3px solid var(--bg);
-      background: #fff;
+      border: 5px solid var(--highlight);
     }
 
     #lightbox .close {
@@ -418,6 +417,7 @@
           font-size: 0.9rem;
           color: var(--text);
           margin-bottom: 0.7rem;
+          padding-bottom: 2rem;
           margin-top: 2rem;
         ">
       © 2025 Juliette Mangon
@@ -436,21 +436,25 @@
       default: {
         "--bg": "#eedae5ff",
         "--text": "#ff6200",
+        "--white": "#ffe3e3",
         "--highlight": "#ffdd00ff",
       },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
+       "--white": "#ffe3e3",
         "--highlight": "#FF9DFF",
       },
       gray: {
         "--bg": "#c3d7daff",
         "--text": "#6c566aff",
+        "--white": "#ffe3e3",
         "--highlight": "#f28bdaff",
       },
       blue: {
         "--bg": "#20406C",
        "--text": "#cee1ffff",
+       "--white": "#ffe3e3",
         "--highlight": "#a5a719ff",
       },
     };
@@ -474,7 +478,7 @@
     }
     function updateLightboxBackground() {
       const highlight = getComputedStyle(document.documentElement)
-        .getPropertyValue("--white")
+        .getPropertyValue("--bg")
         .trim();
       let rgb = [0, 0, 0];
       if (highlight.startsWith("#")) rgb = hexToRgb(highlight);
