@@ -1,6 +1,6 @@
 #ffb300ff
 #e75e5eff
-#f4ef93ff
+#fffde0ff
 #ffdd00ff
 #6c566aff
 #c3d7daff

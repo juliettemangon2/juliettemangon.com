@@ -13,7 +13,6 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 
-
   <style>
     :root {
       --bg: #e1ecff;
@@ -38,10 +37,11 @@
       font-family: "Instrument Sans", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
-      overflow-x: hidden;
+      overflow: hidden;
+      /* no scroll on this page */
     }
 
-    /* Theme + simple top nav */
+    /* ===== THEME + NAV (copied from contact, unchanged) ===== */
     #themeToggle {
       position: fixed;
       top: 1.5rem;
@@ -70,7 +70,6 @@
     .topnav a {
       color: var(--text);
       text-decoration: none;
-      /* no decoration */
       font-weight: 600;
     }
 
@@ -84,7 +83,6 @@
       content: " ] ";
     }
 
-    /* Hover or active page link shows brackets */
     .topnav a:hover::before,
     .topnav a:hover::after,
     .topnav a.active::before,
@@ -92,40 +90,52 @@
       opacity: 1;
     }
 
+    /* ===== end copied nav ===== */
+
+    /* Main fills viewport without margins to avoid scroll */
     main {
-      max-width: 900px;
-      margin: 6rem auto 3rem;
-      padding: 0 1.25rem;
-      animation: slideIn 0.6s ease forwards;
+      height: 100svh;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      opacity: 1;
+      /* no animation here */
+    }
+
+    .name-section {
+      position: fixed;
+      bottom: 3.5rem;
+      right: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      z-index: 1000;
+      animation: slideUp 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
     }
 
-    @keyframes slideIn {
+    @keyframes slideUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
+    h1,
     h2 {
-      font-size: 10rem;
-      font-weight: 600;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      /* aligns to right */
       line-height: 0.9;
-      /* reduces vertical space between lines */
-      margin: 0;
-      padding-left: 67rem;
-      padding-top: 20rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      font-size: clamp(3rem, 12vw, 12rem);
+      text-align: right;
     }
-
-    h2 span {
-      display: block;
-    }
-
 
     a {
       color: var(--text);
@@ -137,26 +147,8 @@
       color: var(--highlight);
     }
 
-    p {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    @media (max-width: 768px) {
-      .contact-columns {
-        grid-template-columns: 1fr;
-      }
-
-      .photos img {
-        flex: 1 1 100%;
-      }
-    }
-
-    /* Mobile-only adjustments */
-    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and place name bottom-right */
+    /* Mobile nav behavior (copied from contact, unchanged) */
     @media (max-width: 900px) {
-
-      /* Stack the nav links vertically in the top-left */
       .topnav {
         position: fixed;
         top: 0.75rem;
@@ -167,7 +159,6 @@
         align-items: flex-start;
         gap: 0.25rem;
         z-index: 1500;
-        /* below theme toggle but above content */
       }
 
       .topnav a {
@@ -176,79 +167,36 @@
         line-height: 1.2;
       }
 
-      /* Keep theme toggle pinned to top-right */
       #themeToggle {
         top: 0.75rem;
         right: 0.75rem;
         width: 32px;
         height: 32px;
         z-index: 2000;
+        position: fixed;
       }
 
-      /* Fill the viewport and anchor the name bottom-right */
-      main {
-        margin: 0;
-        padding: 0 1rem;
-      }
-
+      /* Keep the name tucked in the corner on phones too */
       .name-section {
-        min-height: 100svh;
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        padding: 4rem 1rem 1.75rem;
-        line-height: 1;
-        /* leaves room for stacked nav */
-      }
-
-      /* Scale name and remove desktop offsets */
-      h2 {
-        font-size: clamp(3rem, 14vw, 7rem);
-        line-height: 0.92;
-        letter-spacing: -0.01em;
-        padding-left: 0;
-        padding-top: 0;
+        bottom: 1rem;
+        right: 1rem;
       }
     }
 
-    /* Very small phones */
-    @media (max-width: 380px) {
-      .name-section {
-        padding: 3.5rem 0.9rem 1.25rem;
-      }
-
-      h2 {
-        font-size: clamp(2.5rem, 16vw, 6rem);
-      }
-    }
-
-    /* Slightly narrow desktops or when window isn't fullscreen:
-   keep layout strong without brittle large paddings */
+    /* Slightly narrow desktops (copied nav tweaks) */
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
       }
 
-      /* Use flexible positioning instead of large paddings */
-      .name-section {
-        min-height: calc(100vh - 6rem);
-        /* accounts for top controls */
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        padding: 2rem 2rem;
-      }
-
-      h2 {
-        font-size: clamp(5rem, 10vw, 9rem);
-        line-height: 0.9;
-        padding-left: 0;
-        /* override desktop hard offsets */
-        padding-top: 0;
-        /* override desktop hard offsets */
+      #themeToggle {
+        top: 1rem;
+        right: 1rem;
       }
     }
   </style>
+
+
 </head>
 
 <body>
@@ -266,8 +214,8 @@
   <main>
     <section class="name-section">
       <h2>
-        <span class="first">juliette</span>
-        <span class="last">mangon</span>
+        <span class="first">Juliette</span>
+        <span class="last">Mangon</span>
       </h2>
     </section>
   </main>
