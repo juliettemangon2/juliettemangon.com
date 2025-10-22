@@ -4,7 +4,7 @@
 #ffdd00ff
 #6c566aff
 #c3d7daff
-#c8026fff
+#c82302ff
 #d2e6ff
 #eedae5ff
 #f28bdaff
@@ -13,7 +13,7 @@
 #a5a719ff
 #cee1ffff
 #ffb300ff
-#9bf124ff
+#cbff82ff
 #ffb300ff
 #eedae5ff
 #ffb300ff
