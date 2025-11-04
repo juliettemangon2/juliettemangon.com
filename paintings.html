@@ -392,11 +392,6 @@
           <p>Acrylic &ndash; 20&quot; × 16&quot;</p>
         </div>
       </a>
-     
-      
-
-
-     
        <a class="item" href="./images/roomie.jpg">
         <img src="./images/roomie.jpg" alt="Roommates, NYC" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
@@ -555,15 +550,6 @@
       const img = link.querySelector("img");
       const thumb = full.replace("/images/", "/images/thumbs/"); // e.g., /images/thumbs/cards.jpeg
 
-      // attempt to use thumbnail; if 404, fall back silently
-      const tryThumb = new Image();
-      tryThumb.onload = () => {
-        img.src = thumb;
-      };
-      tryThumb.onerror = () => {
-        img.src = img.src || full;
-      };
-      tryThumb.src = thumb;
 
       // also provide responsive hints if you add resized versions later
       img.sizes = "(max-width: 600px) 45vw, (max-width: 1200px) 30vw, 300px";

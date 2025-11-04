@@ -17,7 +17,6 @@ body{
   
 
 }
-
 ::-moz-selection {
   color: var(--highlight);
   background: var(--text);
