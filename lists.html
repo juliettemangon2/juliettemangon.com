@@ -41,7 +41,7 @@
 
         /* ===== THEME + NAV ===== */
         #themeToggle {
-            position: fixed;
+            position: absolute;
             top: 1.5rem;
             right: 1.5rem;
             width: 30px;
@@ -57,7 +57,7 @@
         }
 
         .topnav {
-            position: fixed;
+            position: absolute;
             top: 1.5rem;
             left: 1.5rem;
             display: flex;
@@ -93,7 +93,7 @@
             display: flex;
             min-height: 100vh;
             padding-top: 10rem;
-            gap: 3rem;
+            gap: 0rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -101,7 +101,7 @@
         /* LEFT SIDE - BUTTONS */
         .list-nav {
             flex-shrink: 0;
-            width: 180px;
+            width: 280px;
             display: flex;
             flex-direction: column;
             gap: 1rem;
@@ -109,12 +109,11 @@
         }
 
         .list-button {
-            padding: 1rem 1rem;
+            padding: 1rem rem;
             background: transparent;
             border: transparent;
             color: var(--text);
             text-align: left;
-
             font-size: 1.25rem;
             font-weight: 500;
             letter-spacing: -0.01em;
@@ -129,9 +128,7 @@
         }
 
         .list-button.active {
-            background: var(--highlight);
-
-            color: var(--contrast);
+            text-decoration: underline;
         }
 
         /* RIGHT SIDE - CONTENT */
@@ -293,7 +290,7 @@
 
 
         .list-intro {
-            position: fixed;
+            position: absolute;
             top: 6rem;
             left: 0;
             right: 0;
@@ -670,24 +667,19 @@
             <button class="list-button" onclick="showList('media')">
                 favorite media
             </button>
+            <button class="list-button" onclick="showList('more')">
+                what i want to do more of
+            </button>
 
         </div>
 
         <!-- RIGHT: LIST CONTENT -->
         <div class="list-content">
             <div class="list-intro">
-                <p class="intro-text">(I am starting to make lists; this is where i will store them.)</p>
+                <p class="intro-text">(I am starting to make lists. This is where i will store them.)</p>
                 <p class="media-hint" id="mediaHint" style="display: none;">(click on the item to read more)</p>
             </div>
-            <div id="goals" class="list-section">
-                <div class="simple-list">
-                    <div class="simple-item">Make more art</div>
-                    <div class="simple-item">Have an optimistic mindset</div>
-                    <div class="simple-item">Answer texts faster</div>
-                    <div class="simple-item">Grocery shop more</div>
 
-                </div>
-            </div>
 
             <!-- FAVORITES LIST -->
             <div id="favorites" class="list-section active">
@@ -702,6 +694,26 @@
                     <div class="simple-item">Blistex lip medex</div>
                     <div class="simple-item">Olives</div>
                     <div class="simple-item">Red nail polish</div>
+                </div>
+            </div>
+            <!-- more of this-->
+            <div id="more" class="list-section">
+                <div class="simple-list">
+                    <div class="simple-item">Making art</div>
+                    <div class="simple-item">Laundry</div>
+                    <div class="simple-item">Making food and coffee at home</div>
+                    <div class="simple-item">Exercise</div>
+                    <div class="simple-item">Calling/texting long distance friends and family</div>
+                    <div class="simple-item">Weighing small decisions less</div>
+                    
+                </div>
+            </div>
+
+             <div id="opinions" class="list-section">
+                <div class="simple-list">
+                    <div class="simple-item">Nothing should ever be kept in the fridge uncovered</div>
+                    <div class="simple-item">Laundry</div>
+                    
                 </div>
             </div>
 
