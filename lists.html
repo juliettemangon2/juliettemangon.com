@@ -88,6 +88,10 @@
             opacity: 1;
         }
 
+        a:hover {
+            color: var(--highlight);
+        }
+
         /* ===== MAIN LAYOUT ===== */
         main {
             display: flex;
@@ -123,8 +127,8 @@
         }
 
         .list-button:hover {
-            background: var(--text);
-            color: var(--bg);
+            background: var(--highlight);
+            color: var(--contrast);
         }
 
         .list-button.active {
@@ -408,241 +412,242 @@
                 right: 1rem;
             }
         }
+
         @media (max-width: 900px) {
-    .topnav {
-        position: absolute;
-        top: 0.75rem;
-        left: 0.75rem;
-        right: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-        z-index: 1500;
-    }
+            .topnav {
+                position: absolute;
+                top: 0.75rem;
+                left: 0.75rem;
+                right: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+                z-index: 1500;
+            }
 
-    .topnav a {
-        display: inline-block;
-        padding: 0.125rem 0;
-        line-height: 1.2;
-    }
+            .topnav a {
+                display: inline-block;
+                padding: 0.125rem 0;
+                line-height: 1.2;
+            }
 
-    #themeToggle {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 32px;
-        height: 32px;
-        z-index: 2000;
-    }
+            #themeToggle {
+                position: absolute;
+                top: 0.75rem;
+                right: 0.75rem;
+                width: 32px;
+                height: 32px;
+                z-index: 2000;
+            }
 
-    /* Adjust intro position for mobile */
-    .list-intro {
-        position: static;
-        margin: 0 auto 2rem;
-        padding: 0 1rem;
-    }
+            /* Adjust intro position for mobile */
+            .list-intro {
+                position: static;
+                margin: 0 auto 2rem;
+                padding: 0 1rem;
+            }
 
-    main {
-        flex-direction: column;
-        padding: 12rem 1.5rem 3rem;
-        gap: 2rem;
-        margin: 0;
-    }
+            main {
+                flex-direction: column;
+                padding: 12rem 1.5rem 3rem;
+                gap: 2rem;
+                margin: 0;
+            }
 
-    .list-nav {
-        width: 100%;
-        padding-top: 0;
-        gap: 1rem;
-    }
+            .list-nav {
+                width: 100%;
+                padding-top: 0;
+                gap: 1rem;
+            }
 
-    .list-button {
-        padding: 1.25rem 1.5rem;
-        font-size: 1.1rem;
-    }
+            .list-button {
+                padding: 1.25rem 1.5rem;
+                font-size: 1.1rem;
+            }
 
-    .list-button:hover {
-        transform: translateX(4px);
-    }
+            .list-button:hover {
+                transform: translateX(4px);
+            }
 
-    /* Simple list adjustments */
-    .simple-list {
-        padding: 0 0.5rem;
-    }
+            /* Simple list adjustments */
+            .simple-list {
+                padding: 0 0.5rem;
+            }
 
-    .simple-item {
-        font-size: 1rem;
-    }
+            .simple-item {
+                font-size: 1rem;
+            }
 
-    /* In/Out grid to single column */
-    .in-out-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
+            /* In/Out grid to single column */
+            .in-out-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
 
-    .in-section h2,
-    .out-section h2 {
-        font-size: 1.5rem;
-    }
+            .in-section h2,
+            .out-section h2 {
+                font-size: 1.5rem;
+            }
 
-    /* Media columns to single column */
-    .media-columns {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+            /* Media columns to single column */
+            .media-columns {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
 
-    .media-item-header {
-        padding: 0.85rem 0.75rem;
-        letter-spacing: 0.015em;
-    }
+            .media-item-header {
+                padding: 0.85rem 0.75rem;
+                letter-spacing: 0.015em;
+            }
 
-    .media-number {
-        width: 26px;
-        height: 26px;
-        font-size: 0.75rem;
-    }
+            .media-number {
+                width: 26px;
+                height: 26px;
+                font-size: 0.75rem;
+            }
 
-    .media-title {
-        font-size: clamp(0.95rem, 4.2vw, 1.15rem);
-    }
+            .media-title {
+                font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+            }
 
-    .media-label {
-        font-size: clamp(0.75rem, 3.4vw, 0.95rem);
-    }
+            .media-label {
+                font-size: clamp(0.75rem, 3.4vw, 0.95rem);
+            }
 
-    .media-desc {
-        padding: 0 0.75rem;
-        font-size: 0.95rem;
-    }
+            .media-desc {
+                padding: 0 0.75rem;
+                font-size: 0.95rem;
+            }
 
-    .media-desc.open {
-        padding: 0.85rem 0.75rem;
-        max-height: 600px;
-    }
-}
+            .media-desc.open {
+                padding: 0.85rem 0.75rem;
+                max-height: 600px;
+            }
+        }
 
-@media (max-width: 480px) {
-    body {
-        font-size: 1rem;
-    }
+        @media (max-width: 480px) {
+            body {
+                font-size: 1rem;
+            }
 
-    .list-intro {
-        margin-bottom: 1.5rem;
-    }
+            .list-intro {
+                margin-bottom: 1.5rem;
+            }
 
-    .intro-text {
-        font-size: 1rem;
-    }
+            .intro-text {
+                font-size: 1rem;
+            }
 
-    .media-hint {
-        font-size: 0.9rem;
-    }
+            .media-hint {
+                font-size: 0.9rem;
+            }
 
-    main {
-        padding: 12rem 1rem 2rem;
-    }
+            main {
+                padding: 12rem 1rem 2rem;
+            }
 
-    .list-button {
-        padding: 1rem 1.2rem;
-        font-size: 1rem;
-    }
+            .list-button {
+                padding: 1rem 1.2rem;
+                font-size: 1rem;
+            }
 
-    .simple-list {
-        gap: 0.4rem;
-        padding: 0 0.25rem;
-    }
+            .simple-list {
+                gap: 0.4rem;
+                padding: 0 0.25rem;
+            }
 
-    .simple-item {
-        font-size: 0.95rem;
-    }
+            .simple-item {
+                font-size: 0.95rem;
+            }
 
-    .in-section h2,
-    .out-section h2 {
-        font-size: 1.3rem;
-        margin-bottom: 1.5rem;
-    }
+            .in-section h2,
+            .out-section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
 
-    .media-item-header {
-        padding: 0.75rem 0.6rem;
-        flex-wrap: nowrap;
-    }
+            .media-item-header {
+                padding: 0.75rem 0.6rem;
+                flex-wrap: nowrap;
+            }
 
-    .media-title {
-        font-size: 0.9rem;
-        flex: 1;
-        min-width: 0;
-        margin: 0 0.5rem;
-    }
+            .media-title {
+                font-size: 0.9rem;
+                flex: 1;
+                min-width: 0;
+                margin: 0 0.5rem;
+            }
 
-    .media-label {
-        font-size: 0.7rem;
-    }
+            .media-label {
+                font-size: 0.7rem;
+            }
 
-    .media-number {
-        width: 24px;
-        height: 24px;
-        font-size: 0.7rem;
-        flex-shrink: 0;
-    }
+            .media-number {
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
+                flex-shrink: 0;
+            }
 
-    .media-desc {
-        font-size: 0.9rem;
-    }
-}
+            .media-desc {
+                font-size: 0.9rem;
+            }
+        }
 
-@media (max-width: 380px) {
-    main {
-        padding: 12rem 0.9rem 2rem;
-    }
+        @media (max-width: 380px) {
+            main {
+                padding: 12rem 0.9rem 2rem;
+            }
 
-    .list-button {
-        font-size: 0.95rem;
-        padding: 0.9rem 1rem;
-    }
+            .list-button {
+                font-size: 0.95rem;
+                padding: 0.9rem 1rem;
+            }
 
-    .media-title {
-        font-size: 0.85rem;
-    }
+            .media-title {
+                font-size: 0.85rem;
+            }
 
-    .media-label {
-        font-size: 0.65rem;
-    }
-}
+            .media-label {
+                font-size: 0.65rem;
+            }
+        }
 
-@media (max-width: 1200px) and (min-width: 901px) {
-    .topnav {
-        position: absolute;
-        gap: 0.75rem;
-    }
+        @media (max-width: 1200px) and (min-width: 901px) {
+            .topnav {
+                position: absolute;
+                gap: 0.75rem;
+            }
 
-    #themeToggle {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-    }
+            #themeToggle {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
 
-    .list-intro {
-        top: 5rem;
-    }
+            .list-intro {
+                top: 5rem;
+            }
 
-    main {
-        padding-top: 8rem;
-        gap: 2rem;
-    }
+            main {
+                padding-top: 8rem;
+                gap: 2rem;
+            }
 
-    .list-nav {
-        width: 160px;
-    }
+            .list-nav {
+                width: 160px;
+            }
 
-    .list-button {
-        font-size: 1.1rem;
-        padding: 0.9rem;
-    }
+            .list-button {
+                font-size: 1.1rem;
+                padding: 0.9rem;
+            }
 
-    .media-columns {
-        gap: 2.5rem;
-    }
-}
+            .media-columns {
+                gap: 2.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -705,15 +710,15 @@
                     <div class="simple-item">Exercise</div>
                     <div class="simple-item">Calling/texting long distance friends and family</div>
                     <div class="simple-item">Weighing small decisions less</div>
-                    
+
                 </div>
             </div>
 
-             <div id="opinions" class="list-section">
+            <div id="opinions" class="list-section">
                 <div class="simple-list">
                     <div class="simple-item">Nothing should ever be kept in the fridge uncovered</div>
                     <div class="simple-item">Laundry</div>
-                    
+
                 </div>
             </div>
 
@@ -1040,7 +1045,7 @@
                 "--bg": "#d2e6ff",
                 "--text": "#A70A4E",
                 "--highlight": "#ff85c2ff ",
-                "--contrast": "#A70A4E",
+                "--contrast": "#d2e6ff",
 
             },
             gray: {
