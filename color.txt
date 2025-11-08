@@ -7,9 +7,11 @@
 #c82302ff
 #d2e6ff
 #eedae5ff
-#f28bdaff
-#FF9DFF 
-#ffdd00ff
+#2d6d9eff
+#4c354aff
+#ff85c2ff
+#ffb5d4ff 
+#c9f5ffff
 #a5a719ff
 #cee1ffff
 #ffb300ff

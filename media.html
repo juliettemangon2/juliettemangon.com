@@ -31,7 +31,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Instrument Sans", sans-serif;
+      font-family: "Inter", sans-serif;
       margin: 0;
       padding: 4rem 0 2rem;
       display: flex;
@@ -579,7 +579,8 @@
             <div class="media-desc">
               Started watching this show after the Emmys. This is the kind of show you need to watch 3 times because the
               jokes are so fast and constant that you miss half of them the first time. I am so impressed by the writing
-              and I often actually need to pause the show because I am in so much awe of how they even came up with the line
+              and I often actually need to pause the show because I am in so much awe of how they even came up with the
+              line
               that was just said. Great balance of comedy and plot.
             </div>
           </div>
@@ -611,7 +612,7 @@
           default: {
             "--bg": "#eedae5ff",
             "--text": "#ff6200",
-            "--highlight": "#ffdd00ff",
+            "--highlight": "#c9f5ffff",
             "--square": "#ff6200",
           },
           alt: {
@@ -623,7 +624,7 @@
 
           gray: {
             "--bg": "#c3d7daff",
-            "--text": "#6c566aff",
+            "--text": "#4c354aff",
             "--highlight": "#f28bdaff",
             "--square": "#6c566aff",
 
@@ -635,8 +636,15 @@
             "--square": "#BED8FE",
             "--highlight": "#c82302ff",
           },
+          beige: {
+            "--bg": "#F5F1E8",
+            "--text": "#2A2A2A",
+            "--square": "#FF5722",
+            "--highlight": "#FF5722",
+
+          }
         };
-        const order = ["blue", "default", "alt", "gray"];
+        const order = ["blue", "default", "alt", "gray", "beige"];
 
         function applyTheme(name) {
           if (!themes[name]) name = "default";

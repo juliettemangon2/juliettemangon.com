@@ -32,7 +32,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Instrument Sans", sans-serif;
+      font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
       overflow-x: hidden;
@@ -289,6 +289,7 @@
     <a href="about.html">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html" class="active">paintings</a>
+    <a href="lists.html">lists</a>
     <a href="contact.html">contact</a>
   </nav>
   <div id="themeToggle" title="Switch Theme"></div>
@@ -458,28 +459,35 @@
         "--bg": "#eedae5ff",
         "--text": "#ff6200",
         "--white": "#ffe3e3",
-        "--highlight": "#ffdd00ff",
+        "--highlight": "#c9f5ffff",
       },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
         "--white": "#ffe3e3",
-        "--highlight": "#FF9DFF",
+        "--highlight": "#ff85c2ff ",
       },
       gray: {
         "--bg": "#c3d7daff",
-        "--text": "#6c566aff",
+        "--text": "#4c354aff",
         "--white": "#ffe3e3",
         "--highlight": "#f28bdaff",
       },
       blue: {
-        "--bg": "#20406C",
+        "--bg": "#2d6d9eff",
         "--text": "#cee1ffff",
         "--white": "#ffe3e3",
         "--highlight": "#c82302ff",
       },
+    beige: {
+        "--bg": "#F5F1E8",
+        "--text": "#2A2A2A",
+        "--highlight": "#FF5722",
+        "--white": "#ffe3e3",
+        
+      }
     };
-    const order = ["blue", "default", "alt", "gray"];
+    const order = ["blue", "default", "alt", "gray", "beige"];
     function applyTheme(name) {
       Object.entries(themes[name]).forEach(([k, v]) =>
         document.documentElement.style.setProperty(k, v)

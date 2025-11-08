@@ -34,7 +34,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Instrument Sans", sans-serif;
+      font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
       overflow: hidden;
@@ -99,7 +99,28 @@
       margin: 0;
       padding: 0;
       opacity: 1;
+      position: relative;
       /* no animation here */
+    }
+
+    /* Orange circle */
+    .decorative-circle {
+      position: fixed;
+      width: clamp(400px, 50vw, 700px);
+      height: clamp(400px, 50vw, 700px);
+      background-color: var(--circle-color);
+      border-radius: 50%;
+      bottom: -20%;
+      right: 15%;
+      z-index: 500;
+      opacity: 0;
+      animation: fadeIn 0.8s ease 0.2s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     .name-section {
@@ -115,6 +136,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
+
 
     @keyframes slideUp {
       to {
@@ -181,6 +203,14 @@
         bottom: 1rem;
         right: 1rem;
       }
+
+      /* Adjust circle for mobile */
+      .decorative-circle {
+        width: clamp(180px, 45vw, 300px);
+        height: clamp(180px, 45vw, 300px);
+        right: clamp(8rem, 20vw, 15rem);
+        bottom: clamp(1rem, 5vw, 3rem);
+      }
     }
 
     /* Slightly narrow desktops (copied nav tweaks) */
@@ -207,11 +237,12 @@
     <a href="about.html">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
-
+    <a href="lists.html">lists</a>
     <a href="contact.html">contact</a>
   </nav>
 
   <main>
+    <div class="decorative-circle"></div>
     <section class="name-section">
       <h2>
         <span class="first">Juliette</span>
@@ -226,36 +257,46 @@
       default: {
         "--bg": "#eedae5ff",
         "--text": "#ff6200",
-        "--highlight": "#ffdd00ff",
+        "--highlight": "#c9f5ffff",
+        "--circle-color": "#c9f5ffff"
       },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
-        "--highlight": "#FF9DFF",
+        "--highlight": "#ff85c2ff ",
+        "--circle-color": "#ff85c2ff "
       },
       gray: {
         "--bg": "#c3d7daff",
-        "--text": "#6c566aff",
+        "--text": "#4c354aff",
         "--highlight": "#f28bdaff",
+        "--circle-color": "#f28bdaff"
       },
       blue: {
-        "--bg": "#20406C",
+        "--bg": "#2d6d9eff",
         "--text": "#cee1ffff",
         "--highlight": "#c82302ff",
+        "--circle-color": "#c82302ff"
       },
+      beige: {
+        "--bg": "#F5F1E8",
+        "--text": "#2A2A2A",
+        "--highlight": "#FF5722",
+        "--circle-color": "#FF5722"
+      }
     };
-    const order = ["blue", "default", "alt", "gray"];
+    const order = ["gray",  "beige", "blue", "default","alt", ];
     function applyTheme(name) {
-      if (!themes[name]) name = "alt";
+      if (!themes[name]) name = "gray";
       for (const [k, v] of Object.entries(themes[name])) {
         document.documentElement.style.setProperty(k, v);
       }
       localStorage.setItem("theme", name);
     }
-    applyTheme(localStorage.getItem("theme") || "alt");
+    applyTheme(localStorage.getItem("theme") || "gray");
 
     document.getElementById("themeToggle").addEventListener("click", () => {
-      const current = localStorage.getItem("theme") || "alt";
+      const current = localStorage.getItem("theme") || "gray";
       const idx = (order.indexOf(current) + 1) % order.length;
       applyTheme(order[idx]);
     });

@@ -35,7 +35,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Instrument Sans", sans-serif;
+      font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
       overflow-x: hidden;
@@ -515,6 +515,7 @@
     <a href="about.html">about</a>
     <a href="resume.html" class="active">resume</a>
     <a href="paintings.html">paintings</a>
+    <a href="lists.html">lists</a>
 
     <a href="contact.html">contact</a>
   </nav>
@@ -898,28 +899,34 @@
       default: {
         "--bg": "#eedae5ff",
         "--text": "#ff6200",
-        "--highlight": "#ffdd00ff",
+        "--highlight": "#c9f5ffff",
         "--text2": "#ff6200",
       },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
-        "--highlight": "#FF9DFF",
+        "--highlight": "#ff85c2ff ",
         "--text2": "#A70A4E",
       },
       gray: {
         "--bg": "#c3d7daff",
-        "--text": "#6c566aff",
+        "--text": "#4c354aff",
         "--highlight": "#f28bdaff",
       },
       blue: {
-        "--bg": "#20406C",
+        "--bg": "#2d6d9eff",
         "--text": "#cee1ffff",
         "--highlight": "#c82302ff",
         "--text2": "#20406C",
       },
+    beige: {
+        "--bg": "#F5F1E8",
+        "--text": "#2A2A2A",
+        "--highlight": "#FF5722",
+        
+      }
     };
-    const order = ["blue", "default", "alt", "gray"];
+    const order = ["blue", "default", "alt", "gray", "beige"];
     function applyTheme(name) {
       if (!themes[name]) name = "default";
       for (const [k, v] of Object.entries(themes[name])) {

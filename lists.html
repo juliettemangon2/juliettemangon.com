@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lists | Juliette Mangon</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="site.css" />
+
+    <style>
+        :root {
+            --bg: #e1ecff;
+            --text: #80074f;
+            --highlight: #6fc1de;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        /* ===== THEME + NAV ===== */
+        #themeToggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 30px;
+            height: 30px;
+            background-color: var(--text);
+            cursor: pointer;
+            z-index: 2000;
+            transition: background-color 0.2s;
+        }
+
+        #themeToggle:hover {
+            background-color: var(--highlight);
+        }
+
+        .topnav {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1500;
+        }
+
+        .topnav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .topnav a::before,
+        .topnav a::after {
+            content: " [ ";
+            opacity: 0;
+        }
+
+        .topnav a::after {
+            content: " ] ";
+        }
+
+        .topnav a:hover::before,
+        .topnav a:hover::after,
+        .topnav a.active::before,
+        .topnav a.active::after {
+            opacity: 1;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        main {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 10rem;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* LEFT SIDE - BUTTONS */
+        .list-nav {
+            flex-shrink: 0;
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 2rem;
+        }
+
+        .list-button {
+            padding: 1rem 1rem;
+            background: transparent;
+            border: transparent;
+            color: var(--text);
+            text-align: left;
+
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .list-button:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .list-button.active {
+            background: var(--highlight);
+
+            color: var(--contrast);
+        }
+
+        /* RIGHT SIDE - CONTENT */
+        .list-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .list-section {
+            padding-top: 3rem;
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .list-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SHARED MINIMAL LIST STYLING */
+        .simple-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-top: 1.2rem;
+        }
+
+        .simple-item {
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* IN/OUT LIST SPECIFIC STYLING */
+        .in-out-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .in-section,
+        .out-section {
+            position: relative;
+        }
+
+        .in-section h2,
+        .out-section h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        .in-section h2 {
+            color: var(--text);
+        }
+
+        /* MEDIA LIST SPECIFIC STYLING */
+        .media-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .media-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .media-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-block {
+            margin: 0;
+            border-left: 2px solid var(--text);
+            border-bottom: 2px solid var(--text);
+        }
+
+        .media-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .media-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .media-title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .media-number {
+            font-weight: 400;
+            color: var(--text);
+            border-radius: 50%;
+            border: 1.5px solid var(--text);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 28px;
+            height: 28px;
+            font-size: 0.8rem;
+        }
+
+        .media-desc {
+            padding: 0 1rem;
+            display: block;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            line-height: 1.5;
+            font-weight: 500;
+            transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+        }
+
+        .media-desc.open {
+            max-height: 500px;
+            opacity: 1;
+            padding: 1rem 1rem;
+        }
+
+        .media-desc a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .media-desc a:hover {
+            color: var(--highlight);
+        }
+
+        /* Add this in your style section, after the .list-content rules */
+
+
+        .list-intro {
+            position: fixed;
+            top: 6rem;
+            left: 0;
+            right: 0;
+            margin-left: 3rem;
+            text-align: left;
+            z-index: 100;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-hint {
+            font-size: 1rem;
+            font-weight: 400;
+
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 900px) {
+            .topnav {
+                position: fixed;
+                top: 0.75rem;
+                left: 0.75rem;
+                right: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+                z-index: 1500;
+            }
+
+            .topnav a {
+                display: inline-block;
+                padding: 0.125rem 0;
+                line-height: 1.2;
+            }
+
+            #themeToggle {
+                top: 0.75rem;
+                right: 0.75rem;
+                width: 32px;
+                height: 32px;
+            }
+
+            main {
+                flex-direction: column;
+                padding: 8rem 1.5rem 3rem;
+                gap: 2rem;
+            }
+
+            .list-nav {
+                width: 100%;
+                padding-top: 0;
+                gap: 1rem;
+            }
+
+            .list-button {
+                padding: 1.25rem 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            .list-button:hover {
+                transform: translateX(4px);
+            }
+
+            .in-out-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .media-columns {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .media-item-header {
+                padding: 0.85rem 0.75rem;
+                letter-spacing: 0.015em;
+            }
+
+            .media-number {
+                width: 26px;
+                height: 26px;
+                font-size: 0.75rem;
+            }
+
+            .media-title {
+                font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+            }
+
+            .media-label {
+                font-size: clamp(0.75rem, 3.4vw, 0.95rem);
+            }
+
+            .media-desc {
+                padding: 0 0.75rem;
+            }
+
+            .media-desc.open {
+                padding: 0.85rem 0.75rem;
+                max-height: 600px;
+            }
+        }
+
+        @media (max-width: 1200px) and (min-width: 901px) {
+            .topnav {
+                gap: 0.75rem;
+            }
+
+            #themeToggle {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+        @media (max-width: 900px) {
+    .topnav {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        z-index: 1500;
+    }
+
+    .topnav a {
+        display: inline-block;
+        padding: 0.125rem 0;
+        line-height: 1.2;
+    }
+
+    #themeToggle {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        z-index: 2000;
+    }
+
+    /* Adjust intro position for mobile */
+    .list-intro {
+        position: static;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+    }
+
+    main {
+        flex-direction: column;
+        padding: 12rem 1.5rem 3rem;
+        gap: 2rem;
+        margin: 0;
+    }
+
+    .list-nav {
+        width: 100%;
+        padding-top: 0;
+        gap: 1rem;
+    }
+
+    .list-button {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .list-button:hover {
+        transform: translateX(4px);
+    }
+
+    /* Simple list adjustments */
+    .simple-list {
+        padding: 0 0.5rem;
+    }
+
+    .simple-item {
+        font-size: 1rem;
+    }
+
+    /* In/Out grid to single column */
+    .in-out-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .in-section h2,
+    .out-section h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Media columns to single column */
+    .media-columns {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .media-item-header {
+        padding: 0.85rem 0.75rem;
+        letter-spacing: 0.015em;
+    }
+
+    .media-number {
+        width: 26px;
+        height: 26px;
+        font-size: 0.75rem;
+    }
+
+    .media-title {
+        font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+    }
+
+    .media-label {
+        font-size: clamp(0.75rem, 3.4vw, 0.95rem);
+    }
+
+    .media-desc {
+        padding: 0 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .media-desc.open {
+        padding: 0.85rem 0.75rem;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 1rem;
+    }
+
+    .list-intro {
+        margin-bottom: 1.5rem;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+    }
+
+    .media-hint {
+        font-size: 0.9rem;
+    }
+
+    main {
+        padding: 12rem 1rem 2rem;
+    }
+
+    .list-button {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .simple-list {
+        gap: 0.4rem;
+        padding: 0 0.25rem;
+    }
+
+    .simple-item {
+        font-size: 0.95rem;
+    }
+
+    .in-section h2,
+    .out-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .media-item-header {
+        padding: 0.75rem 0.6rem;
+        flex-wrap: nowrap;
+    }
+
+    .media-title {
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 0;
+        margin: 0 0.5rem;
+    }
+
+    .media-label {
+        font-size: 0.7rem;
+    }
+
+    .media-number {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        flex-shrink: 0;
+    }
+
+    .media-desc {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 380px) {
+    main {
+        padding: 12rem 0.9rem 2rem;
+    }
+
+    .list-button {
+        font-size: 0.95rem;
+        padding: 0.9rem 1rem;
+    }
+
+    .media-title {
+        font-size: 0.85rem;
+    }
+
+    .media-label {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+    .topnav {
+        position: absolute;
+        gap: 0.75rem;
+    }
+
+    #themeToggle {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .list-intro {
+        top: 5rem;
+    }
+
+    main {
+        padding-top: 8rem;
+        gap: 2rem;
+    }
+
+    .list-nav {
+        width: 160px;
+    }
+
+    .list-button {
+        font-size: 1.1rem;
+        padding: 0.9rem;
+    }
+
+    .media-columns {
+        gap: 2.5rem;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <!-- Persistent controls -->
+    <div id="themeToggle" title="Switch Theme"></div>
+    <nav class="topnav" aria-label="Site">
+        <a href="index.html">home</a>
+        <a href="about.html">about</a>
+        <a href="resume.html">resume</a>
+        <a href="paintings.html">paintings</a>
+        <a href="lists.html" class="active">lists</a>
+        <a href="contact.html">contact</a>
+    </nav>
+
+    <main>
+        <!-- LEFT: NAVIGATION BUTTONS -->
+        <div class="list-nav">
+            <button class="list-button active" onclick="showList('favorites')">
+                favorite things
+            </button>
+            <button class="list-button" onclick="showList('media')">
+                favorite media
+            </button>
+
+        </div>
+
+        <!-- RIGHT: LIST CONTENT -->
+        <div class="list-content">
+            <div class="list-intro">
+                <p class="intro-text">(I am starting to make lists; this is where i will store them.)</p>
+                <p class="media-hint" id="mediaHint" style="display: none;">(click on the item to read more)</p>
+            </div>
+            <div id="goals" class="list-section">
+                <div class="simple-list">
+                    <div class="simple-item">Make more art</div>
+                    <div class="simple-item">Have an optimistic mindset</div>
+                    <div class="simple-item">Answer texts faster</div>
+                    <div class="simple-item">Grocery shop more</div>
+
+                </div>
+            </div>
+
+            <!-- FAVORITES LIST -->
+            <div id="favorites" class="list-section active">
+                <div class="simple-list">
+                    <div class="simple-item">Iced cappucino with whole milk and vanilla or similar syrup</div>
+                    <div class="simple-item">Todd Snyder baggy jeans</div>
+                    <div class="simple-item">Group theory</div>
+                    <div class="simple-item">Minimalistic websites</div>
+                    <div class="simple-item">Glass antiques</div>
+                    <div class="simple-item">Carrot, orange, ginger juice variations</div>
+                    <div class="simple-item">Diptyque candles</div>
+                    <div class="simple-item">Blistex lip medex</div>
+                    <div class="simple-item">Olives</div>
+                    <div class="simple-item">Red nail polish</div>
+                </div>
+            </div>
+
+            <!-- CURRENT MEDIA LIST -->
+            <div id="media" class="list-section">
+
+                <div class="media-container">
+                    <div class="media-columns">
+                        <!-- LEFT COLUMN: Albums + Artists -->
+                        <div class="media-column">
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">01</span>
+                                    <span class="media-title">Choke Enough</span>
+                                    <span class="media-label">ALBUM</span>
+                                </div>
+                                <div class="media-desc">
+                                    Choke Enough by Oklou is one of my favorite albums right now. She
+                                    just sounds so light and soft like she is floating over the music.
+                                    The album explores themes of self discovery emotional
+                                    vulnerability, and listening to it is an entirely immersive
+                                    experience.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">02</span>
+                                    <span class="media-title">This Is Happening</span>
+                                    <span class="media-label">ALBUM</span>
+                                </div>
+                                <div class="media-desc">
+                                    James Murphy pairs devastating lyrics with upbeat, almost
+                                    celebratory arrangements. Each song layers chaotic and contrasting
+                                    sounds that compliment each other perfectly. It's clever, sad,
+                                    danceable, and comforting.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">03</span>
+                                    <span class="media-title">The Bends</span>
+                                    <span class="media-label">ALBUM</span>
+                                </div>
+                                <div class="media-desc">
+                                    Just an extremely well done album. No skips, and has some of
+                                    my favorite Radiohead songs of all time. I have been listening to
+                                    this album a lot in the car recently, it just sounds so good, and
+                                    is even better when you know the lyrics.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">04</span>
+                                    <span class="media-title">Punisher</span>
+                                    <span class="media-label">ALBUM</span>
+                                </div>
+                                <div class="media-desc">
+                                    Front to back, Punisher is a masterpiece. Its a great time capsule of 2020: a year
+                                    full of fear,
+                                    uncertainty, and
+                                    isolation, which Phoebe Bridgers captures so well. Every few months I hyperfixate on
+                                    a song off of this
+                                    album and learn to appreciate her artistry even more.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">05</span>
+                                    <span class="media-title">Ivan Pokidyshev</span>
+                                    <span class="media-label">ARTIST</span>
+                                </div>
+                                <div class="media-desc">
+                                    Uses thermography to take photos of people then paint them into these glowing
+                                    figures. Explores themes of
+                                    science, life, love, and religion. Checkout his
+                                    instragram
+                                    <a href="https://www.instagram.com/pokidyshev_art/"
+                                        target="_blank"><strong>here</strong></a>.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">06</span>
+                                    <span class="media-title">Amy Renee Webb</span>
+                                    <span class="media-label">ARTIST</span>
+                                </div>
+                                <div class="media-desc">
+                                    Her glass looking religious iconography is unreal. Also, she shares my love for neon
+                                    green. Checkout her
+                                    instragram
+                                    <a href="https://www.instagram.com/aunt.ag0ny/ "
+                                        target="_blank"><strong>here</strong></a>.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">07</span>
+                                    <span class="media-title">Laura Footes</span>
+                                    <span class="media-label">ARTIST</span>
+                                </div>
+                                <div class="media-desc">
+                                    Really inspiring painter for me. I love her figures so much. Checkout her instragram
+                                    <a href="https://www.instagram.com/laurafootes/"
+                                        target="_blank"><strong>here</strong></a>.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">08</span>
+                                    <span class="media-title">Dylan Rheingold</span>
+                                    <span class="media-label">ARTIST</span>
+                                </div>
+                                <div class="media-desc">
+                                    My friend Santi worked with her, super cool and fun paintings. Checkout her website
+                                    <a href="https://www.dylanroserheingold.com/"
+                                        target="_blank"><strong>here</strong></a>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT COLUMN: Movies + TV -->
+                        <div class="media-column">
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">09</span>
+                                    <span class="media-title">Call Me by Your Name</span>
+                                    <span class="media-label">MOVIE</span>
+                                </div>
+                                <div class="media-desc">
+                                    Everything is so visually beautiful. I love the all of the shots
+                                    and the lighting and the scenery. Timothée Chalamet was the
+                                    perfect cast for Elio, he perfectly captures teenage embarrassment
+                                    and emotion. The mix of languages and cultures is also done really
+                                    well.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">10</span>
+                                    <span class="media-title">Love Lies Bleeding</span>
+                                    <span class="media-label">MOVIE</span>
+                                </div>
+                                <div class="media-desc">
+                                    My favorite shot is the egg yolks and cigarettes going into the
+                                    trash. Kristen Stewart and Katy O'Brian play off of each other
+                                    fabulously. At times, the timeline can be a little confusing, but
+                                    you realize by the end that they are not very concerned with
+                                    delivering a realistic storyline.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">11</span>
+                                    <span class="media-title">Parasite</span>
+                                    <span class="media-label">MOVIE</span>
+                                </div>
+                                <div class="media-desc">
+                                    Such a great story with amazing character development. This movie
+                                    makes me anxious and uncomfortable in the best way. It feels like
+                                    I'm always bracing for something bad to happen, and then it hits
+                                    out of nowhere. The characters are so interesting, with traits
+                                    that are both relatable and frustrating. Visually, it's beautiful
+                                    too.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">12</span>
+                                    <span class="media-title">Gone Girl</span>
+                                    <span class="media-label">MOVIE</span>
+                                </div>
+                                <div class="media-desc">
+                                    Such a good thriller. I love the way the story is told. Rosamund Pike is
+                                    such an incredible lead, all of her monologues are iconic.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">13</span>
+                                    <span class="media-title">Money Heist</span>
+                                    <span class="media-label">TV</span>
+                                </div>
+                                <div class="media-desc">
+                                    The first few seasons are so well done. Each character is
+                                    developed so carefully, and the plot is intricate and satisfying,
+                                    even when things go wrong. It feels like a constant game of ping
+                                    pong.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">14</span>
+                                    <span class="media-title">Schitt's Creek</span>
+                                    <span class="media-label">TV</span>
+                                </div>
+                                <div class="media-desc">
+                                    Schitt's creek is probably the funniest show I've ever watched,
+                                    and it is comedic in such an intelligent way. I actually laugh out
+                                    loud so often. I was surprised by how visually pleasing it is too.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">15</span>
+                                    <span class="media-title">Sex and the City</span>
+                                    <span class="media-label">TV</span>
+                                </div>
+                                <div class="media-desc">
+                                    So much more fabulous than people give it credit for. Everyone
+                                    knows about the fashion, but every detail, down to what meal they
+                                    are eating during what scene is perfect. I know Carrie gets a lot of hate but she is
+                                    so funny and
+                                    entertaining to me.
+                                </div>
+                            </div>
+
+                            <div class="media-block">
+                                <div class="media-item-header" onclick="toggleMediaDesc(this)">
+                                    <span class="media-number">16</span>
+                                    <span class="media-title">Hacks</span>
+                                    <span class="media-label">TV</span>
+                                </div>
+                                <div class="media-desc">
+                                    Started watching this show after the Emmys. This is the kind of show you need to
+                                    watch 3 times because the
+                                    jokes are so fast and constant that you miss half of them the first time. I am so
+                                    impressed by the writing
+                                    and I often actually need to pause the show because I am in so much awe of how they
+                                    even came up with the line
+                                    that was just said. Great balance of comedy and plot.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- IN & OUT LIST -->
+        <div id="inout" class="list-section">
+            <div class="in-out-container">
+                <div class="in-section">
+                    <h2>In</h2>
+                    <div class="simple-list">
+                        <div class="simple-item">Oatmeal</div>
+                        <div class="simple-item">Statement necklaces</div>
+                        <div class="simple-item">Writing your phone number on a napkin</div>
+                        <div class="simple-item">Honey crisp apples</div>
+                    </div>
+                </div>
+
+                <div class="out-section">
+                    <h2>Out</h2>
+                    <div class="simple-list">
+                        <div class="simple-item">Imported slideshow themes</div>
+                        <div class="simple-item">Energy drinks</div>
+                        <div class="simple-item">Talking about your dreams</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </main>
+
+    <script>
+        // LIST SWITCHING
+        function showList(listId) {
+            // Hide all lists
+            document.querySelectorAll('.list-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active from all buttons
+            document.querySelectorAll('.list-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected list
+            document.getElementById(listId).classList.add('active');
+
+            // Show/hide media hint
+            const mediaHint = document.getElementById('mediaHint');
+            if (listId === 'media') {
+                mediaHint.style.display = 'block';
+            } else {
+                mediaHint.style.display = 'none';
+            }
+
+            // Activate clicked button
+            event.target.classList.add('active');
+        }
+
+        // MEDIA DESCRIPTION TOGGLE
+        function toggleMediaDesc(el) {
+            const desc = el.nextElementSibling;
+            desc.classList.toggle("open");
+        }
+
+        // THEME
+        const themes = {
+            default: {
+                "--bg": "#eedae5ff",
+                "--text": "#ff6200",
+                "--highlight": "#c9f5ffff",
+                "--contrast": "#ff6200",
+            },
+            alt: {
+                "--bg": "#d2e6ff",
+                "--text": "#A70A4E",
+                "--highlight": "#ff85c2ff ",
+                "--contrast": "#A70A4E",
+
+            },
+            gray: {
+                "--bg": "#c3d7daff",
+                "--text": "#4c354aff",
+                "--highlight": "#f28bdaff",
+                "--contrast": "#4c354aff",
+            },
+            blue: {
+                "--bg": "#2d6d9eff",
+                "--text": "#cee1ffff",
+                "--highlight": "#c82302ff",
+                "--contrast": "#cee1ffff",
+            },
+            beige: {
+                "--bg": "#F5F1E8",
+                "--text": "#2A2A2A",
+                "--highlight": "#FF5722",
+                "--contrast": "#F5F1E8",
+
+            }
+        };
+        const order = ["blue", "default", "alt", "gray", "beige"];
+        function applyTheme(name) {
+            if (!themes[name]) name = "alt";
+            for (const [k, v] of Object.entries(themes[name])) {
+                document.documentElement.style.setProperty(k, v);
+            }
+            localStorage.setItem("theme", name);
+        }
+        applyTheme(localStorage.getItem("theme") || "alt");
+
+        document.getElementById("themeToggle").addEventListener("click", () => {
+            const current = localStorage.getItem("theme") || "alt";
+            const idx = (order.indexOf(current) + 1) % order.length;
+            applyTheme(order[idx]);
+        });
+    </script>
+</body>
+
+</html>
