@@ -355,13 +355,10 @@
             }
 
             .list-button {
-                padding: 1.25rem 1.5rem;
                 font-size: 1.1rem;
             }
 
-            .list-button:hover {
-                transform: translateX(4px);
-            }
+
 
             .in-out-container {
                 grid-template-columns: 1fr;
@@ -457,18 +454,17 @@
 
             .list-nav {
                 width: 100%;
-                padding-top: 0;
+                
                 gap: 1rem;
             }
 
+
             .list-button {
-                padding: 1.25rem 1.5rem;
+                padding-left: 1rem;
                 font-size: 1.1rem;
             }
 
-            .list-button:hover {
-                transform: translateX(4px);
-            }
+
 
             /* Simple list adjustments */
             .simple-list {
@@ -602,7 +598,7 @@
 
             .list-button {
                 font-size: 0.95rem;
-                padding: 0.9rem 1rem;
+                
             }
 
             .media-title {
@@ -641,7 +637,6 @@
 
             .list-button {
                 font-size: 1.1rem;
-                padding: 0.9rem;
             }
 
             .media-columns {
@@ -664,6 +659,10 @@
     </nav>
 
     <main>
+        <div class="list-intro">
+                <p class="intro-text">(I am starting to make lists. This is where i will store them.)</p>
+                <p class="media-hint" id="mediaHint" style="display: none;">(click on the item to read more)</p>
+            </div>
         <!-- LEFT: NAVIGATION BUTTONS -->
         <div class="list-nav">
             <button class="list-button active" onclick="showList('favorites')">
@@ -677,13 +676,11 @@
             </button>
 
         </div>
+        
 
         <!-- RIGHT: LIST CONTENT -->
         <div class="list-content">
-            <div class="list-intro">
-                <p class="intro-text">(I am starting to make lists. This is where i will store them.)</p>
-                <p class="media-hint" id="mediaHint" style="display: none;">(click on the item to read more)</p>
-            </div>
+            
 
 
             <!-- FAVORITES LIST -->
