@@ -251,6 +251,7 @@
       }
 
       .spotify-widget {
+
         flex-direction: column;
         text-align: center;
       }
@@ -258,6 +259,84 @@
       .spotify-widget img {
         width: 80px;
         height: 80px;
+      }
+
+      .spotify-section {
+        padding-top: 5rem;
+      }
+      .media-intro{
+        padding-top: 5rem;
+      }
+
+    }
+
+    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and tighten contact text */
+    @media (max-width: 900px) {
+      .spotify-section {
+        padding-top: 5rem;
+      }
+
+      /* Stack the nav links vertically in the top-left */
+      .topnav {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        z-index: 1500;
+        /* below theme toggle but above content */
+      }
+
+      .media-intro {
+        padding-top: 5rem;
+      }
+
+      .topnav a {
+        display: inline-block;
+        padding: 0.125rem 0;
+        line-height: 1.2;
+      }
+
+      /* Keep theme toggle pinned to top-right */
+      #themeToggle {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        z-index: 2000;
+        position: fixed;
+        /* ensure it stays pinned */
+      }
+
+      /* Create breathing room below the stacked nav so content never hides behind it */
+      main {
+        margin-top: 7rem;
+        /* adjust if nav items change */
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+      }
+
+
+    }
+
+    /* Slightly narrow desktops or when window isn't fullscreen:
+   keep layout strong without overlap */
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .topnav {
+        gap: 0.75rem;
+      }
+
+      #themeToggle {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      main {
+        margin-top: 6rem;
+        padding: 0 1.25rem 2rem;
       }
     }
   </style>
