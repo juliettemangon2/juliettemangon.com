@@ -576,13 +576,13 @@
         const artistName = document.getElementById("artistName");
 
         if (data.isPlaying) {
-          albumArt.src = data.albumImageUrl;
+          albumArt.src = data.albumArt;
           trackTitle.innerHTML = `<strong>${data.title}</strong>`;
           artistName.textContent = data.artist;
         } else {
           trackTitle.textContent = "Not currently playing";
           artistName.textContent = "";
-          albumArt.src = "placeholder.png"; // optional placeholder
+          albumArt.src = ""; // optional placeholder
         }
       } catch (err) {
         console.error("Error fetching now playing:", err);
