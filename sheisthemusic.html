@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Juliette Mangon</title>
+  <title>About | Juliette Mangon</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +13,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 
+  <!-- Snake styles (preserved) -->
+  <link rel="stylesheet" href="snake.css" />
 
   <style>
     :root {
@@ -59,12 +61,13 @@
     }
 
     .topnav {
-      position: fixed;
+      position: absolute;
       top: 1.5rem;
       left: 1.5rem;
       display: flex;
       gap: 1rem;
       z-index: 1500;
+      background: var(--highlight);
     }
 
     .topnav a {
@@ -73,7 +76,6 @@
       /* no decoration */
       font-weight: 600;
     }
-
 
     .topnav a::before,
     .topnav a::after {
@@ -94,7 +96,7 @@
     }
 
     main {
-      max-width: 900px;
+      max-width: 920px;
       margin: 6rem auto 3rem;
       padding: 0 1.25rem;
       animation: slideIn 0.6s ease forwards;
@@ -110,16 +112,21 @@
     }
 
     h2 {
-      color: var(--bg);
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 1.2rem 0 4.6rem;
+      font-size: 3.5rem;
+      font-weight: 500;
+      margin: 1.2rem 0 0.6rem;
+    }
+
+    .highlightname {
+      color: var(--highlight);
+      background: var(--text2);
+      text-decoration: underline;
     }
 
     a {
-      color: var(--text);
+      color: var(--texxt);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.1s;
     }
 
     a:hover {
@@ -127,29 +134,32 @@
     }
 
     p {
-      margin-bottom: 0.5rem;
-      font-size: 3.2rem;
-      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.45rem;
     }
 
-    .contact-columns {
-
-      display: grid;
-      grid-template-columns: 1fr 0fr;
-      gap: 0;
-      margin-top: 4rem;
+    .photos {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
-    .contact-columns p {
-      margin: 0;
+    .photos img {
+      width: 100%;
+      max-width: 530px;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s;
+      flex: 1 1 48%;
     }
 
-    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and tighten contact text */
+    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and avoid overlap */
     @media (max-width: 900px) {
 
       /* Stack the nav links vertically in the top-left */
       .topnav {
-        position: fixed;
+        position: absolute;
         top: 0.75rem;
         left: 0.75rem;
         right: auto;
@@ -163,59 +173,51 @@
 
       .topnav a {
         display: inline-block;
+        /* larger tap targets without full-width buttons */
         padding: 0.125rem 0;
+        /* keep layout tight and aligned */
         line-height: 1.2;
       }
 
-      /* Keep theme toggle pinned to top-right */
+      /* Keep theme toggle pinned to top-right, slightly tighter on mobile */
       #themeToggle {
+        position: absolute;
         top: 0.75rem;
         right: 0.75rem;
         width: 32px;
         height: 32px;
         z-index: 2000;
-        position: fixed;
-        /* ensure it stays pinned */
       }
 
       /* Create breathing room below the stacked nav so content never hides behind it */
       main {
-        margin-top: 7rem;
-        /* adjust if nav items change */
-        margin-bottom: 2rem;
-        padding: 0 1rem;
+        margin-top: 10rem;
+        /* adjust if you add/remove nav items */
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
 
-      /* Contact typography: prevent oversized lines on small screens */
-      .contact-section p {
-        font-size: clamp(1.25rem, 6vw, 2.2rem);
-        text-align: center;
-        /* optional: left-align for readability on mobile */
-      }
-
-      /* Columns: single column on mobile */
+      /* Existing page-specific responsive rules */
       .contact-columns {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
-        margin-top: 2rem;
+      }
+
+      .photos img {
+        flex: 1 1 100%;
       }
     }
 
-    /* Slightly narrow desktops or when window isn't fullscreen:
-   keep layout strong without overlap */
+    /* Slightly narrow desktops: reduce spacing so layout holds up when not fullscreen */
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
       }
 
-      #themeToggle {
-        top: 1rem;
-        right: 1rem;
-      }
 
       main {
         margin-top: 6rem;
-        padding: 0 1.25rem 2rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
       }
     }
   </style>
@@ -226,42 +228,57 @@
   <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html">home</a>
-    <a href="about.html">about</a>
+    <a href="about.html" >about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
-    <a href="media.html">media</a>
-
-    <a href="contact.html" class="active">contact</a>
+    <a href="lists.html">lists</a>
+    <a href="contact.html">contact</a>
   </nav>
 
   <main>
-    <section class="contact-section">
-      <h2>.</h2>
-      <div class="contact-columns">
-        <div>
-          <p>
-            <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a>
-          </p>
-          <p>
-            <a href="https://github.com/juliettemangon2" target="_blank">GitHub</a>
-          </p>
-          <p>
-            <a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a>
-          </p>
-          <p>
-            <a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">She Is The Music</a>
-          </p>
+    <!-- About content (preserved text) -->
+    <section>
+      <h2>Music metadata analytics tool</h2>
+      <p>
+        I began developing this tool during my time as a music tech mentee in  <a href="https://sheisthemusic.org/" target="_blank"> <span class="highlightname">She Is The Music</span></a>'s Connect TogetHER mentorship program. 
+      </p>
+      <p>
+        I am passionate about <span class="highlightname">building technology that strengthens creative fields,
+        with a focus on the music sector. I am interested in developing platforms that
+        optimize how media is created, distributed, and
+          experienced, and in designing algorithms and leveraging data for more precise segmentation,
+forecasting, and strategic decision-making.
+      </p>
+      <p>I have experience <span class="highlightname"> building digital identities</span> for artists, <span class="highlightname">developing products</span> from concept to production,
+        and <span class="highlightname">analyzing and visualizing music industry metadata</span> to uncover patterns and derive insights
+        that inform creative and business decisions.</p>
 
+      <p>
+        I care deeply about the environment and aim to approach my work with sustainability in mind. In my free time, I love to paint, spend
+        time outdoors, and add fun features to my website (click on the square in the top right
+        corner).
+      </p>
 
-        </div>
-      </div>
+      
+    </section>
+
+    <section>
+      <div class="photos"></div>
     </section>
     <footer>
-      <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; padding-top: 10.5rem;">
+      <p style="
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.7rem;
+            margin-top: 1rem;
+            padding-bottom: 2rem;
+          ">
         © 2025 Juliette Mangon
       </p>
     </footer>
   </main>
+
 
   <script>
     // THEME
@@ -269,28 +286,34 @@
       default: {
         "--bg": "#eedae5ff",
         "--text": "#ff6200",
+        "--text2": "#ff6200",
         "--highlight": "#c9f5ffff",
+        
       },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
-        "--highlight": "#ff85c2ff ",
+        "--text2": "#A70A4E",
+       "--highlight": "#ff85c2ff ",
       },
       gray: {
         "--bg": "#c3d7daff",
-        "--text": "#4c354aff",
+       "--text": "#4c354aff",
+       "--text2": "#4c354aff",
         "--highlight": "#f28bdaff",
       },
       blue: {
-        "--bg": "#2d6d9eff",
+         "--bg": "#2d6d9eff",
         "--text": "#cee1ffff",
+        "--text2": "#cee1ffff",
         "--highlight": "#c82302ff",
       },
       beige: {
         "--bg": "#F5F1E8",
         "--text": "#2A2A2A",
-        "--highlight": "#FF5722",
-
+        "--text2": "#2A2A2A",
+        "--highlight": "#dbb6caff",
+        
       }
     };
     const order = ["blue", "default", "alt", "gray", "beige"];
