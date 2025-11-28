@@ -568,7 +568,7 @@
     // SPOTIFY FETCH
     async function fetchNowPlaying() {
       try {
-        const res = await fetch("https://juliettemangon.com/api/now-playing");
+        const res = await fetch("/api/now-playing");
         const data = await res.json();
 
         const albumArt = document.getElementById("albumArt");
