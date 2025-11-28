@@ -665,12 +665,13 @@
             </div>
         <!-- LEFT: NAVIGATION BUTTONS -->
         <div class="list-nav">
-            <button class="list-button active" onclick="showList('favorites')">
+            <button class="list-button active" onclick="showList('media')">
+                current favorite media
+            </button>
+            <button class="list-button " onclick="showList('favorites')">
                 favorite things
             </button>
-            <button class="list-button" onclick="showList('media')">
-                favorite media
-            </button>
+            
             <button class="list-button" onclick="showList('more')">
                 what i want to do more of
             </button>
@@ -685,7 +686,7 @@
 
 
             <!-- FAVORITES LIST -->
-            <div id="favorites" class="list-section active">
+            <div id="favorites" class="list-section ">
                 <div class="simple-list">
                     <div class="simple-item">Iced cappuccino with whole milk and vanilla or similar syrup</div>
                     <div class="simple-item">Todd Snyder baggy jeans</div>
@@ -711,21 +712,9 @@
 
                 </div>
             </div>
-             <!-- coffee-->
-            <div id="more" class="list-section">
-                <div class="simple-list">
-                    <div class="simple-item">3 jewels (NYC):</div>
-                    <div class="simple-item">Laundry</div>
-                    <div class="simple-item">Making food and coffee at home</div>
-                    <div class="simple-item">Exercise</div>
-                    <div class="simple-item">Calling/texting long distance friends and family</div>
-                    <div class="simple-item">Weighing small decisions less</div>
-
-                </div>
-            </div>
 
             <!-- CURRENT MEDIA LIST -->
-            <div id="media" class="list-section">
+            <div id="media" class="list-section active">
 
                 <div class="media-container">
                     <div class="media-columns">
@@ -734,11 +723,11 @@
                             <div class="media-block">
                                 <div class="media-item-header" onclick="toggleMediaDesc(this)">
                                     <span class="media-number">01</span>
-                                    <span class="media-title">Choke Enough</span>
+                                    <span class="media-title">Choke Enough (Deluxe)</span>
                                     <span class="media-label">ALBUM</span>
                                 </div>
                                 <div class="media-desc">
-                                    Choke Enough by Oklou is one of my favorite albums right now. She
+                                    choke enough (Deluxe) by Oklou is one of my favorite albums right now. She
                                     just sounds so light and soft like she is floating over the music.
                                     The album explores themes of self discovery emotional
                                     vulnerability, and listening to it is an entirely immersive
@@ -781,10 +770,7 @@
                                     <span class="media-label">ALBUM</span>
                                 </div>
                                 <div class="media-desc">
-                                    Front to back, Punisher is a masterpiece. Its a great time capsule of 2020: a year
-                                    full of fear,
-                                    uncertainty, and
-                                    isolation, which Phoebe Bridgers captures so well. Every few months I hyperfixate on
+                                    Front to back, Punisher is a masterpiece. Its a great time capsule of 2020. Every few months I hyperfixate on
                                     a song off of this
                                     album and learn to appreciate her artistry even more.
                                 </div>
