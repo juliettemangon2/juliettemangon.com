@@ -113,7 +113,7 @@
     }
 
     .media-intro p {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 500;
       margin-top: 0.25rem;
     }
@@ -159,20 +159,20 @@
 
     .spotify-info a {
       color: var(--text);
-      font-weight: 600;
+      font-weight: 500;
       text-decoration: underline;
     }
 
     .spotify-heading {
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
       margin-bottom: 1rem;
       color: var(--text);
       text-align: left;
     }
 
-    
+
     /* ===== FAVORITE MEDIA ===== */
     .media-columns {
       display: grid;
@@ -235,6 +235,7 @@
     .media-desc a:hover {
       color: var(--highlight);
     }
+
     .media-heading {
       font-size: 1.3rem;
       font-weight: 500;
@@ -274,23 +275,24 @@
   </nav>
 
   <main>
-    <section class="media-intro">
-      <p>A record of albums, films, TV shows, and artists I’ve been into recently.
-    </section>
+
 
     <!-- Spotify Widget -->
-           <h2 class="spotify-heading">CURRENTLY LISTENING TO</h2>
+    <div id="spotify-section">
+      <h2 class="spotify-heading">CURRENTLY LISTENING TO</h2>
+      <section class="spotify-widget">
+        <img id="albumArt" src="" alt="Album art" />
+        <div class="spotify-info">
+          <p id="trackTitle"><strong>Loading...</strong></p>
+          <p id="artistName"></p>
+        </div>
+      </section>
+    </div>
 
-    <section class="spotify-widget">
-      <img id="albumArt" src="" alt="Album art" />
-      <div class="spotify-info">
-        <p id="trackTitle"><strong>Loading...</strong></p>
-        <p id="artistName"></p>
-      </div>
+
+    <section class="media-intro">
+      <p>A record of albums, films, TV shows, and artists I’ve been into recently. Click an item to read more.
     </section>
-
-    <!-- Favorite Media -->
-     <h2 class="media-heading">Current favorite media. Click item to read more.</h2>
 
     <section class="favorite-media">
       <div class="media-columns" id="mediaColumns">
@@ -588,6 +590,7 @@
     });
 
     // SPOTIFY FETCH
+    // SPOTIFY FETCH
     async function fetchNowPlaying() {
       try {
         const res = await fetch("/api/now-playing");
@@ -596,22 +599,26 @@
         const albumArt = document.getElementById("albumArt");
         const trackTitle = document.getElementById("trackTitle");
         const artistName = document.getElementById("artistName");
+        const spotifySection = document.getElementById("spotify-section");
 
         if (data.isPlaying) {
+          spotifySection.style.display = "block";
           albumArt.src = data.albumArt;
           trackTitle.innerHTML = `<strong>${data.title}</strong>`;
           artistName.textContent = data.artist;
         } else {
-          trackTitle.textContent = "Not currently playing";
-          artistName.textContent = "";
-          albumArt.src = ""; // optional placeholder
+          spotifySection.style.display = "none";
         }
       } catch (err) {
         console.error("Error fetching now playing:", err);
+        // Hide section on error too
+        const spotifySection = document.getElementById("spotify-section");
+        spotifySection.style.display = "none";
       }
     }
 
     fetchNowPlaying();
+
 
     // Expandable media descriptions
     function toggleMediaDesc(el) {
