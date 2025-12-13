@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Juliette Mangon</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+
+  <!-- Snake styles (preserved) -->
+  <link rel="stylesheet" href="snake.css" />
+
+  <style>
+    :root {
+      --bg: #e1ecff;
+      --text: #80074f;
+      --highlight: #6fc1de;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      overflow-x: hidden;
+    }
+
+    /* Theme + simple top nav */
+    #themeToggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: var(--text);
+      cursor: pointer;
+      z-index: 2000;
+      transition: background-color 0.2s;
+    }
+
+    #themeToggle:hover {
+      background-color: var(--highlight);
+    }
+
+    .topnav {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 1500;
+      background: var(--highlight);
+    }
+
+    .topnav a {
+      color: var(--text);
+      text-decoration: none;
+      /* no decoration */
+      font-weight: 600;
+    }
+
+    .topnav a::before,
+    .topnav a::after {
+      content: " [ ";
+      opacity: 0;
+    }
+
+    .topnav a::after {
+      content: " ] ";
+    }
+
+    /* Hover or active page link shows brackets */
+    .topnav a:hover::before,
+    .topnav a:hover::after,
+    .topnav a.active::before,
+    .topnav a.active::after {
+      opacity: 1;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 6rem auto 3rem;
+      padding: 0 1.25rem;
+      animation: slideIn 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      font-weight: 500;
+      margin: 1.2rem 0 0.6rem;
+    }
+
+    .highlightname {
+      color: var(--highlight);
+      background: var(--text2);
+      text-decoration: underline;
+    }
+
+    a {
+      color: var(--texxt);
+      text-decoration: none;
+      transition: color 0.1s;
+    }
+
+    a:hover {
+      color: var(--highlight);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.45rem;
+    }
+
+    .photos {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .photos img {
+      width: 100%;
+      max-width: 530px;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s;
+      flex: 1 1 48%;
+    }
+
+    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and avoid overlap */
+    @media (max-width: 900px) {
+
+      /* Stack the nav links vertically in the top-left */
+      .topnav {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        z-index: 1500;
+        /* below theme toggle but above content */
+      }
+
+      .topnav a {
+        display: inline-block;
+        /* larger tap targets without full-width buttons */
+        padding: 0.125rem 0;
+        /* keep layout tight and aligned */
+        line-height: 1.2;
+      }
+
+      /* Keep theme toggle pinned to top-right, slightly tighter on mobile */
+      #themeToggle {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 32px;
+        height: 32px;
+        z-index: 2000;
+      }
+
+      /* Create breathing room below the stacked nav so content never hides behind it */
+      main {
+        margin-top: 10rem;
+        /* adjust if you add/remove nav items */
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      /* Existing page-specific responsive rules */
+      .contact-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .photos img {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Slightly narrow desktops: reduce spacing so layout holds up when not fullscreen */
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .topnav {
+        gap: 0.75rem;
+      }
+
+
+      main {
+        margin-top: 6rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Persistent controls -->
+  <div id="themeToggle" title="Switch Theme"></div>
+  <nav class="topnav" aria-label="Site">
+    <a href="index.html">home</a>
+    <a href="about.html" >about</a>
+    <a href="resume.html">resume</a>
+    <a href="paintings.html">paintings</a>
+    <a href="lists.html">lists</a>
+    <a href="contact.html">contact</a>
+  </nav>
+
+  <main>
+    <!-- About content (preserved text) -->
+    <section>
+      <h2>Music metadata analytics tool</h2>
+      <p>
+        I began developing this tool during my time as a music tech mentee in  <a href="https://sheisthemusic.org/" target="_blank"> <span class="highlightname">She Is The Music</span></a>'s Connect TogetHER mentorship program. 
+      </p>
+      <p>
+        I am passionate about <span class="highlightname">building technology that strengthens creative fields,
+        with a focus on the music sector. I am interested in developing platforms that
+        optimize how media is created, distributed, and
+          experienced, and in designing algorithms and leveraging data for more precise segmentation,
+forecasting, and strategic decision-making.
+      </p>
+      <p>I have experience <span class="highlightname"> building digital identities</span> for artists, <span class="highlightname">developing products</span> from concept to production,
+        and <span class="highlightname">analyzing and visualizing music industry metadata</span> to uncover patterns and derive insights
+        that inform creative and business decisions.</p>
+
+      <p>
+        I care deeply about the environment and aim to approach my work with sustainability in mind. In my free time, I love to paint, spend
+        time outdoors, and add fun features to my website (click on the square in the top right
+        corner).
+      </p>
+
+      
+    </section>
+
+    <section>
+      <div class="photos"></div>
+    </section>
+    <footer>
+      <p style="
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.7rem;
+            margin-top: 1rem;
+            padding-bottom: 2rem;
+          ">
+        © 2025 Juliette Mangon
+      </p>
+    </footer>
+  </main>
+
+
+  <script>
+    // THEME
+    const themes = {
+      default: {
+        "--bg": "#eedae5ff",
+        "--text": "#ff6200",
+        "--text2": "#ff6200",
+        "--highlight": "#c9f5ffff",
+        
+      },
+      alt: {
+        "--bg": "#d2e6ff",
+        "--text": "#A70A4E",
+        "--text2": "#A70A4E",
+       "--highlight": "#ff85c2ff ",
+      },
+      gray: {
+        "--bg": "#c3d7daff",
+       "--text": "#4c354aff",
+       "--text2": "#4c354aff",
+        "--highlight": "#f28bdaff",
+      },
+      blue: {
+         "--bg": "#2d6d9eff",
+        "--text": "#cee1ffff",
+        "--text2": "#cee1ffff",
+        "--highlight": "#c82302ff",
+      },
+      beige: {
+        "--bg": "#F5F1E8",
+        "--text": "#2A2A2A",
+        "--text2": "#2A2A2A",
+        "--highlight": "#dbb6caff",
+        
+      }
+    };
+    const order = ["blue", "default", "alt", "gray", "beige"];
+    function applyTheme(name) {
+      if (!themes[name]) name = "default";
+      for (const [k, v] of Object.entries(themes[name])) {
+        document.documentElement.style.setProperty(k, v);
+      }
+      localStorage.setItem("theme", name);
+    }
+    applyTheme(localStorage.getItem("theme") || "default");
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const current = localStorage.getItem("theme") || "default";
+      const idx = (order.indexOf(current) + 1) % order.length;
+      applyTheme(order[idx]);
+    });
+  </script>
+</body>
+
+</html>
