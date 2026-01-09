@@ -112,7 +112,7 @@
     }
 
     h2 {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       font-weight: 500;
       margin: 1.2rem 0 0.6rem;
     }
@@ -130,7 +130,8 @@
     }
 
     a:hover {
-      color: var(--highlight);
+      background-color: var(--highlight);
+      color: var(--bg);
     }
 
     p {
@@ -238,26 +239,170 @@
   <main>
     <!-- About content (preserved text) -->
     <section>
-      <h2>Music metadata analytics tool</h2>
-      <p>
-        I began developing this tool during my time as a music tech mentee in  <a href="https://sheisthemusic.org/" target="_blank"> <span class="highlightname">She Is The Music</span></a>'s Connect TogetHER mentorship program. 
-      </p>
-      <p>
-        I am passionate about <span class="highlightname">building technology that strengthens creative fields,
-        with a focus on the music sector. I am interested in developing platforms that
-        optimize how media is created, distributed, and
-          experienced, and in designing algorithms and leveraging data for more precise segmentation,
-forecasting, and strategic decision-making.
-      </p>
-      <p>I have experience <span class="highlightname"> building digital identities</span> for artists, <span class="highlightname">developing products</span> from concept to production,
-        and <span class="highlightname">analyzing and visualizing music industry metadata</span> to uncover patterns and derive insights
-        that inform creative and business decisions.</p>
+     <section>
+  <h2>Music metadata analytics tool</h2>
 
-      <p>
-        I care deeply about the environment and aim to approach my work with sustainability in mind. In my free time, I love to paint, spend
-        time outdoors, and add fun features to my website (click on the square in the top right
-        corner).
-      </p>
+  <p>
+    I began developing this tool during my time as a music tech mentee in
+    <a href="https://sheisthemusic.org/" target="_blank">
+      <span class="highlightname">She Is The Music</span>
+    </a>'s Connect TogetHER mentorship program.
+    What started as an exploration of music collaboration networks has since evolved into a focused
+    metadata analytics product for understanding who actually shapes the sound of modern music.
+  </p>
+
+  <p>
+    The core idea is simple: many creative decisions in the music industry are driven by taste,
+    intuition, and pattern recognition, yet the data needed to inspect those patterns is fragmented
+    across platforms and difficult to analyze at scale.
+    This tool aggregates and normalizes music metadata to surface contributor-level signals that are
+    otherwise invisible when looking at songs or artists in isolation.
+  </p>
+</section>
+
+<section>
+  <h2>The problem</h2>
+
+  <p>
+    Music discovery and hiring decisions are often made by listening rather than by reading credits.
+    A playlist might have a cohesive sound or emotional through-line that is difficult to articulate,
+    yet highly consistent. Translating that intuition into actionable insight requires hours of manual
+    research across Spotify, liner notes, label databases, and third-party sites.
+  </p>
+
+  <p>
+    Credits data is also structurally fragmented. Contributors appear under different naming
+    conventions across platforms, roles are inconsistently labeled, and there is no single place to
+    view how frequently a given songwriter, producer, or musician appears across a body of work.
+    As a result, contributor-level patterns remain hidden, even though they often explain why a set
+    of songs feels connected.
+  </p>
+</section>
+
+<section>
+  <h2>Primary use case</h2>
+
+  <p>
+    A representative use case is talent discovery through contributors rather than artists.
+    Suppose a music team has a playlist of 100 songs that share a particular sound they cannot quite
+    describe. Individually, the songs span different artists, labels, and release years, but
+    collectively they feel cohesive.
+  </p>
+
+  <p>
+    By ingesting the playlist into the system, the tool aggregates metadata for each track and
+    resolves all contributors across the dataset. When contributors are ranked by frequency, clear
+    patterns often emerge: the same songwriter appears on a large subset of tracks, a specific
+    drummer or producer recurs across unrelated artists, or a small group of collaborators forms a
+    dense creative cluster.
+  </p>
+
+  <p>
+    This allows teams to move from intuition to evidence. Instead of hiring based solely on artist
+    adjacency or genre labels, they can identify the individuals most responsible for shaping the
+    sound they are responding to, and make informed hiring, staffing, or collaboration decisions.
+  </p>
+</section>
+
+<section>
+  <h2>What the system does</h2>
+
+  <p>
+    The tool ingests song-level metadata and surfaces contributor-level insights across an arbitrary
+    collection of tracks. All contributors exposed by the underlying APIs are included, meaning the
+    system is as expressive as the available metadata allows.
+  </p>
+
+  <p>
+    Contributors are ranked by frequency of appearance across the input set, enabling quick
+    identification of recurring creative roles. The system does not infer taste, quality, or success;
+    it strictly analyzes metadata relationships and recurrence patterns.
+  </p>
+
+  <p>
+    The result is a structured view of who is involved, how often they appear, and how contributors
+    relate to one another across songs, artists, and labels.
+  </p>
+</section>
+
+<section>
+  <h2>How it works</h2>
+
+  <p>
+    At a high level, the system follows a pipeline of ingestion, normalization, aggregation, and
+    analysis.
+  </p>
+
+  <p>
+    Song data is first retrieved using the Spotify API as an entry point, then enriched using
+    MusicBrainz and Discogs to gather detailed credits and release metadata. Contributor names are
+    normalized to reduce duplication caused by formatting or platform-specific differences.
+  </p>
+
+  <p>
+    All metadata is stored in a MongoDB database, allowing the system to persist historical inputs,
+    recompute insights across larger datasets, and generate contributor statistics efficiently.
+    Contributors are ranked by frequency across the selected corpus, and derived insights are
+    generated directly from these counts.
+  </p>
+
+  <p>
+    The frontend presents both raw metadata and aggregated insights, making it possible to inspect
+    individual songs while also understanding broader contributor-level patterns.
+  </p>
+</section>
+
+<section>
+  <h2>Technical architecture</h2>
+
+  <p>
+    The frontend is built in Next.js and is responsible for user input, data visualization, and
+    presenting derived insights. The backend is an Express application that orchestrates API calls,
+    handles normalization logic, and manages persistence.
+  </p>
+
+  <p>
+    The system integrates the Spotify API, MusicBrainz API, and Discogs API. Only metadata is used;
+    no audio features or machine learning models are involved at this stage. Contributor ranking is
+    based on frequency rather than probabilistic inference, by design, to keep results interpretable
+    and verifiable.
+  </p>
+
+  <p>
+    The application is deployed on Render. Access requires API credentials for the integrated
+    services.
+  </p>
+</section>
+
+<section>
+  <h2>Limitations and next steps</h2>
+
+  <p>
+    The system is bounded by the quality and completeness of available metadata. Contributor matching
+    is only as accurate as the upstream data sources, and discrepancies across platforms can still
+    introduce noise.
+  </p>
+
+  <p>
+    Future iterations could incorporate more robust entity resolution, role-specific weighting,
+    temporal analysis, or integration with additional rights and credits databases. The current
+    version intentionally prioritizes transparency and traceability over predictive modeling.
+  </p>
+</section>
+
+<section>
+  <h2>Running the project</h2>
+
+  <p>
+    The application requires valid API credentials for Spotify, MusicBrainz, and Discogs.
+    To run locally, users must create developer accounts for these services, configure environment
+    variables, and start both the Express backend and the Next.js frontend.
+  </p>
+
+  <p>
+    Full setup instructions and source code are available in the project repository.
+  </p>
+</section>
 
       
     </section>
