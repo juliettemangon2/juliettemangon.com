@@ -172,6 +172,8 @@
       color: var(--text);
     }
 
+
+
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -219,6 +221,39 @@
       line-height: 1;
       user-select: none;
     }
+
+    /* Collaborators section */
+    .collaborators {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .collaborators-title {
+      font-family: "Instrument Sans", sans-serif;
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .collaborators-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+
+
+    .collaborators-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .collaborators-list span {
+      white-space: nowrap;
+    }
+
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -347,19 +382,26 @@
         </div>
       </a>
 
-       <a class="item" href="./images/partyscene2.jpeg">
+      <a class="item" href="./images/partyscene2.jpeg">
         <img src="./images/partyscene2.jpeg" alt="Angel" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
           <h2>Party Scene 2 (WIP)</h2>
-          <p>Acrylic &ndash; 18&quot; x 24&quot;</p>
+          <p>Acrylic and glass beads &ndash; 24&quot; x 18&quot;</p>
         </div>
       </a>
-      
+      <a class="item" href="./images/partyscene3.jpeg">
+        <img src="./images/partyscene3.jpeg" alt="Bedroom" loading="lazy" decoding="async" fetchpriority="low" />
+        <div class="text-block">
+          <h2>Party Scene 3 (2025)</h2>
+          <p>Acrylic &ndash; 20&quot; x 16&quot;</p>
+        </div>
+      </a>
+
       <a class="item" href="./images/bedroom.jpeg">
         <img src="./images/bedroom.jpeg" alt="Bedroom" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
           <h2>Bedroom (2025)</h2>
-          <p>Oil &ndash; 12&quot; x 16&quot;</p>
+          <p>Acrylic &ndash; 20&quot; x 16&quot;</p>
         </div>
       </a>
       <a class="item" href="./images/swimming.jpeg">
@@ -393,17 +435,7 @@
       </a>
 
 
-
-
-
-
-      <a class="item" href="./images/IMG_2230.jpeg">
-        <img src="./images/IMG_2230.jpeg" alt="Seaside, Cascais" loading="lazy" decoding="async" fetchpriority="low" />
-        <div class="text-block">
-          <h2>Untitled Abstract 1 (2025)</h2>
-          <p>Acrylic &ndash; 20&quot; × 16&quot;</p>
-        </div>
-      </a>
+      
       <a class="item" href="./images/roomie.jpg">
         <img src="./images/roomie.jpg" alt="Roommates, NYC" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
@@ -425,6 +457,13 @@
           <p>Acrylic &ndash; 20&quot; x 16&quot;</p>
         </div>
       </a>
+      <a class="item" href="./images/IMG_2230.jpeg">
+        <img src="./images/IMG_2230.jpeg" alt="Seaside, Cascais" loading="lazy" decoding="async" fetchpriority="low" />
+        <div class="text-block">
+          <h2>Untitled Abstract 1 (2025)</h2>
+          <p>Acrylic &ndash; 20&quot; × 16&quot;</p>
+        </div>
+      </a>
 
 
 
@@ -442,6 +481,26 @@
       imaginatively and approach challenges with different perspectives.
     </p>
   </div>
+
+  <div class="collaborators">
+    <div class="collaborators-title">Collaborators</div>
+    <div class="collaborators-subtitle">
+      Collaborating on art has taught me how to work through differing perspectives, communicate ideas clearly,
+      and be adaptable during the creative process. I am grateful to be surrounded by such a creative group of people with whom I get to explore and create art.
+    </div>
+
+    <div class="collaborators-list">
+      <span>Riley Daggs - <em>Charmed</em></span>
+      <span>Julia Majchrzak - <em>Swimmers</em>, <em>Party Scene 2</em>, <em>Garden</em></span>
+      <span>Mila Baumann - <em>Bedroom</em>, <em>Angel</em></span>
+      <span>Amandine Mangon - <em>Untitled Abstract 1</em></span>
+      <span>Lucas De Moura - <em>Landscape</em></span>
+      <span>Nika Yarov - <em>Landscape</em></span>
+      <span>Maggie Gaudian - <em>Circle of Life</em></span>
+
+    </div>
+  </div>
+
   <footer>
     <p style="
           text-align: center;
