@@ -319,6 +319,52 @@
         gap: 0.75rem;
       }
     }
+
+    /* Lightbox nav arrows */
+    #lightbox .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: 0;
+      padding: 0.25rem 0.4rem;
+      cursor: pointer;
+      color: var(--text);
+      font: inherit;
+      font-size: 2rem;
+      line-height: 1;
+      opacity: 0.65;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #lightbox .nav:hover {
+      opacity: 1;
+      color: var(--highlight);
+    }
+
+    /* Make them easy to click without looking big */
+    #lightbox .nav::before {
+      content: "";
+      position: absolute;
+      inset: -18px;
+      /* increases hit area */
+    }
+
+    #lightbox .prev {
+      left: 1.2rem;
+    }
+
+    #lightbox .next {
+      right: 1.2rem;
+    }
+
+    /* Optional: hide arrows on very small screens */
+    @media (max-width: 500px) {
+      #lightbox .nav {
+        font-size: 1.75rem;
+      }
+    }
   </style>
 </head>
 
@@ -404,13 +450,7 @@
           <p>Acrylic &ndash; 20&quot; x 16&quot;</p>
         </div>
       </a>
-      <a class="item" href="./images/swimming.jpeg">
-        <img src="./images/swimming.jpeg" alt="Swimmers" loading="lazy" decoding="async" fetchpriority="low" />
-        <div class="text-block">
-          <h2>Swimmers (2025)</h2>
-          <p>Acrylic &ndash; 24&quot; x 36&quot;</p>
-        </div>
-      </a>
+
 
       <a class="item" href="./images/picnic.jpeg">
         <img src="./images/picnic.jpeg" alt="Seaside Picnic" loading="lazy" decoding="async" fetchpriority="low" />
@@ -433,9 +473,17 @@
           <p>Acrylic &ndash; 10&quot; × 8&quot;</p>
         </div>
       </a>
+      <a class="item" href="./images/swimming.jpeg">
+        <img src="./images/swimming.jpeg" alt="Swimmers" loading="lazy" decoding="async" fetchpriority="low" />
+        <div class="text-block">
+          <h2>Swimmers (2025)</h2>
+          <p>Acrylic &ndash; 24&quot; x 36&quot;</p>
+        </div>
+      </a>
 
 
-      
+
+
       <a class="item" href="./images/roomie.jpg">
         <img src="./images/roomie.jpg" alt="Roommates, NYC" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
@@ -457,6 +505,13 @@
           <p>Acrylic &ndash; 16&quot; x 12&quot;</p>
         </div>
       </a>
+      <a class="item" href="./images/partyscene1.jpeg">
+        <img src="./images/partyscene1.jpeg" alt="Angel" loading="lazy" decoding="async" fetchpriority="low" />
+        <div class="text-block">
+          <h2>Party Scene 1 (WIP)</h2>
+          <p>Acrylic and glass beads &ndash; 24&quot; x 18&quot;</p>
+        </div>
+      </a>
       <a class="item" href="./images/circle.jpeg">
         <img src="./images/circle.jpeg" alt="Circle of Life" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
@@ -475,7 +530,7 @@
         <img src="./images/snow.jpeg" alt="Angel" loading="lazy" decoding="async" fetchpriority="low" />
         <div class="text-block">
           <h2>Winter break (2026)</h2>
-          <p>Acrylic & spackling paste  &ndash; <br> 16&quot; x 12&quot;</p>
+          <p>Acrylic & spackling paste &ndash; <br> 16&quot; x 12&quot;</p>
         </div>
       </a>
 
@@ -500,7 +555,8 @@
     <div class="collaborators-title">Collaborators</div>
     <div class="collaborators-subtitle">
       Collaborating on art has taught me how to work through differing perspectives, communicate ideas clearly,
-      and be adaptable during the creative process. I am grateful to be surrounded by such a creative group of people with whom I get to explore and create art.
+      and be adaptable during the creative process. I am grateful to be surrounded by such a creative group of people
+      with whom I get to explore and create art.
     </div>
 
     <div class="collaborators-list">
@@ -529,10 +585,14 @@
   </footer>
 
   <!-- Lightbox -->
-  <div id="lightbox">
-    <span class="close" aria-label="Close">&times;</span>
+  <div id="lightbox" aria-hidden="true">
+    <button class="close" aria-label="Close" type="button">&times;</button>
+
+    <button class="nav prev" aria-label="Previous image" type="button">‹</button>
     <img src="" alt="" />
+    <button class="nav next" aria-label="Next image" type="button">›</button>
   </div>
+
 
   <script>
     /* Theme toggle */
@@ -609,30 +669,84 @@
     });
 
     /* Lightbox */
+    /* Lightbox */
     const lightbox = document.getElementById("lightbox");
     const lightImg = lightbox.querySelector("img");
     const closeBtn = lightbox.querySelector(".close");
+    const prevBtn = lightbox.querySelector(".prev");
+    const nextBtn = lightbox.querySelector(".next");
 
-    document.querySelectorAll(".item").forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const img = link.querySelector("img");
-        lightImg.src = link.getAttribute("href"); // full image
-        lightImg.alt = img.alt || "";
-        lightbox.classList.add("open");
-      });
-    });
+    const items = Array.from(document.querySelectorAll(".item"));
+    let currentIndex = -1;
+
+    function openAt(index) {
+      currentIndex = (index + items.length) % items.length;
+
+      const link = items[currentIndex];
+      const img = link.querySelector("img");
+
+      lightImg.src = link.getAttribute("href");
+      lightImg.alt = img?.alt || "";
+
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+
+      // Minimal affordance: hide arrows if only 1 item
+      const showNav = items.length > 1;
+      prevBtn.style.display = showNav ? "" : "none";
+      nextBtn.style.display = showNav ? "" : "none";
+    }
+
     function closeLightbox() {
       lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
       lightImg.src = "";
+      currentIndex = -1;
     }
+
+    function nextImage() {
+      if (currentIndex === -1) return;
+      openAt(currentIndex + 1);
+    }
+
+    function prevImage() {
+      if (currentIndex === -1) return;
+      openAt(currentIndex - 1);
+    }
+
+    items.forEach((link, idx) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        openAt(idx);
+      });
+    });
+
     closeBtn.addEventListener("click", closeLightbox);
+
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      prevImage();
+    });
+
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      nextImage();
+    });
+
+    // Click outside image closes; clicking arrows/buttons should not
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
+
     document.addEventListener("keydown", (e) => {
+      // only handle keys when open
+      if (!lightbox.classList.contains("open")) return;
+
       if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
     });
+
 
     /* Performance: try thumbnail first, fall back to full if missing */
     document.querySelectorAll(".item").forEach((link) => {
