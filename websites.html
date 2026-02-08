@@ -47,23 +47,7 @@
             overflow-x: hidden;
         }
 
-        /* Controls */
-        #themeToggle {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 30px;
-            height: 30px;
-            background-color: var(--text);
-            cursor: pointer;
-            z-index: 2000;
-            transition: background-color 0.2s;
-        }
-
-        #themeToggle:hover {
-            background-color: var(--highlight);
-        }
-
+       
         .topnav {
             position: absolute;
             top: 1.5rem;
@@ -114,7 +98,6 @@
             }
         }
 
-        /* Header */
         .header {
             position: relative;
             padding: 1.25rem 1.25rem 1.5rem;
@@ -228,7 +211,6 @@
             color: var(--text);
         }
 
-        /* Project list */
         .projects {
             background: transparent;
             padding: 0;
@@ -438,20 +420,17 @@
         @media (max-width: 768px) {
             main {
                 margin: 6.5rem auto 3rem;
-                /* was 10rem on mobile */
                 padding: 0 1rem;
             }
 
             .grid {
                 grid-template-columns: 1fr;
-                /* stack */
                 margin-bottom: 1.25rem;
                 padding-bottom: 1.25rem;
             }
 
             .rail {
                 position: static;
-                /* disable sticky */
                 top: auto;
             }
 
@@ -469,7 +448,6 @@
         <a href="resume.html">← Back</a>
     </nav>
 
-    <!-- External-link icon -->
     <svg width="0" height="0" style="position: absolute; opacity: 0" aria-hidden="true" focusable="false">
         <symbol id="icon-external" viewBox="0 0 24 24">
             <path

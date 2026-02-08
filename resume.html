@@ -41,58 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* Theme toggle */
-    #themeToggle {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.2s;
-    }
-
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
-    /* Top nav */
-    .topnav {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 1500;
-    }
-
-    .topnav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .topnav a::before,
-    .topnav a::after {
-      content: " [ ";
-      opacity: 0;
-    }
-
-    .topnav a::after {
-      content: " ] ";
-    }
-
-    /* Hover or active page link shows brackets */
-    .topnav a:hover::before,
-    .topnav a:hover::after,
-    .topnav a.active::before,
-    .topnav a.active::after {
-      opacity: 1;
-    }
-
-    /* Layout */
     main {
       max-width: 1450px;
       margin: 6rem auto 3rem;
@@ -100,7 +48,6 @@
       animation: slideIn 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
-
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 2rem;
@@ -143,7 +90,6 @@
       font-size: 1.2rem;
     }
 
-    /* Container for PDF + toggle */
     .top-actions {
       position: absolute;
       top: 1.4rem;
@@ -176,10 +122,8 @@
 
     .top-actions:hover .pdf-link {
       color: var(--highlight);
-
     }
 
-    /* Lists and descriptions */
     .section-list {
       list-style: none;
       padding-left: 1.5rem;
@@ -200,7 +144,6 @@
       font-size: 1.1rem;
     }
 
-    /* Work Experience boxes */
     #we-list.section-list>li {
       border: 1px solid currentColor;
       padding: 0.85rem 0.9rem;
@@ -212,7 +155,6 @@
       margin-top: 0.35rem;
     }
 
-    /* Projects list */
     #tp-list.projects-list {
       list-style: none;
       padding-left: 0;
@@ -242,7 +184,6 @@
       display: none;
     }
 
-    /* Row */
     .proj-row {
       display: flex;
       align-items: center;
@@ -262,12 +203,10 @@
       font-size: 0.85rem;
     }
 
-    /* Title + icon cluster */
     .proj-titlewrap {
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      /* space between title and icon */
       min-width: 0;
     }
 
@@ -277,10 +216,8 @@
       font-weight: 500;
     }
 
-    /* Icon link next to title */
     .proj-link {
       margin-left: 0;
-      /* previously auto; keep it tight beside title */
       display: inline-flex;
       width: 22px;
       height: 22px;
@@ -296,7 +233,6 @@
       transform: translateY(-1px);
     }
 
-    /* Shared icon sizing/alignment */
     .icon {
       width: 22px;
       height: 22px;
@@ -318,7 +254,6 @@
       font-size: 0.95rem;
     }
 
-    /* Show sublist for work experience items */
     #we-list>li>.sublist {
       display: block;
       margin-top: 0.5rem;
@@ -330,9 +265,12 @@
       margin-bottom: 0.7rem;
     }
 
-    /* Skills (ledger style) */
     #skills-ledger {
-      margin-top: 0.5rem;
+      margin-top: 0rem;
+      width: 100%;
+      border-top: none !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
     }
 
     .skill-row {
@@ -371,13 +309,7 @@
 
     }
 
-    #skills-ledger {
-      margin-top: 0rem;
-      width: 100%;
-      border-top: none !important;
-      border-bottom: none !important;
-      box-shadow: none !important;
-    }
+    
 
     #skills-section h3 {
       border-bottom: none !important;
@@ -389,7 +321,6 @@
       margin-top: 3rem;
     }
 
-    /* Mobile */
     @media (max-width: 900px) {
       .topnav {
         position: absolute;
@@ -618,7 +549,6 @@
 
     </section>
 
-    <!-- RIGHT COLUMN: Mentorship + Projects + Skills -->
     <section aria-label="Right Column">
       <h3>Projects</h3>
       <ul id="tp-list" class="projects-list">

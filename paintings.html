@@ -38,57 +38,6 @@
       overflow-x: hidden;
     }
 
-    /* Theme + simple top nav */
-    #themeToggle {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.2s;
-    }
-
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
-    .topnav {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 1500;
-    }
-
-    .topnav a {
-      color: var(--text);
-      text-decoration: none;
-      /* no decoration */
-      font-weight: 600;
-    }
-
-    .topnav a::before,
-    .topnav a::after {
-      content: " [ ";
-      opacity: 0;
-    }
-
-    .topnav a::after {
-      content: " ] ";
-    }
-
-    /* Hover or active page link shows brackets */
-    .topnav a:hover::before,
-    .topnav a:hover::after,
-    .topnav a.active::before,
-    .topnav a.active::after {
-      opacity: 1;
-    }
-
     main {
       margin: 6rem auto 3rem;
       padding: 0 1.25rem;
@@ -185,7 +134,6 @@
       }
     }
 
-    /* Lightbox */
     #lightbox {
       position: fixed;
       inset: 0;
@@ -269,7 +217,6 @@
     @media (max-width: 900px) {
       .gallery {
         padding-top: 12rem;
-        /* ensures gallery starts below nav bar */
       }
 
       .topnav {
@@ -290,7 +237,6 @@
         line-height: 1.2;
       }
 
-      /* Keep theme toggle pinned to top-right */
       #themeToggle {
         position: absolute;
         top: 0.75rem;
@@ -300,7 +246,6 @@
         z-index: 2000;
       }
 
-      /* Fill the viewport and anchor the name bottom-right */
       main {
         margin: 0;
         padding: 0 1rem;
@@ -308,15 +253,34 @@
     }
 
     @media (max-width: 380px) {
+
       .name-section {
         padding: 3.5rem 0.9rem 1.25rem;
       }
 
     }
 
+    @media (max-width:450px) {
+      .collaborators-list {
+        max-width: 420px;
+        font-size: 0.9rem;
+
+
+      }
+      
+    }
+
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .collaborators-list span {
+        white-space: normal;
+        /* Allow wrapping */
+        line-height: 1.5;
       }
     }
 
@@ -343,12 +307,10 @@
       color: var(--highlight);
     }
 
-    /* Make them easy to click without looking big */
     #lightbox .nav::before {
       content: "";
       position: absolute;
       inset: -18px;
-      /* increases hit area */
     }
 
     #lightbox .prev {
@@ -359,7 +321,6 @@
       right: 1.2rem;
     }
 
-    /* Optional: hide arrows on very small screens */
     @media (max-width: 500px) {
       #lightbox .nav {
         font-size: 1.75rem;
@@ -535,9 +496,6 @@
       </a>
 
 
-
-
-
     </section>
   </main>
 
@@ -564,7 +522,7 @@
       <span>Julia Majchrzak - <em>Swimmers</em>, <em>Party Scene 2</em>, <em>Garden</em></span>
       <span>Mila Baumann - <em>Bedroom</em>, <em>Angel</em></span>
       <span>Amandine Mangon - <em>Untitled Abstract 1, Party Scene 3</em></span>
-      <span>Lucas De Moura - <em>Landscape, Party Scene 3</em></span>
+      <span>Lucas De Moura - <em>Landscape, Party Scene 3, Winter Break</em></span>
       <span>Nika Yarov - <em>Landscape</em></span>
       <span>Maggie Gaudian - <em>Circle of Life</em></span>
 
@@ -595,7 +553,6 @@
 
 
   <script>
-    /* Theme toggle */
     const themes = {
       default: {
         "--bg": "#eedae5ff",
@@ -669,7 +626,6 @@
     });
 
     /* Lightbox */
-    /* Lightbox */
     const lightbox = document.getElementById("lightbox");
     const lightImg = lightbox.querySelector("img");
     const closeBtn = lightbox.querySelector(".close");
@@ -691,7 +647,6 @@
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
 
-      // Minimal affordance: hide arrows if only 1 item
       const showNav = items.length > 1;
       prevBtn.style.display = showNav ? "" : "none";
       nextBtn.style.display = showNav ? "" : "none";
@@ -733,13 +688,11 @@
       nextImage();
     });
 
-    // Click outside image closes; clicking arrows/buttons should not
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
 
     document.addEventListener("keydown", (e) => {
-      // only handle keys when open
       if (!lightbox.classList.contains("open")) return;
 
       if (e.key === "Escape") closeLightbox();
@@ -748,17 +701,11 @@
     });
 
 
-    /* Performance: try thumbnail first, fall back to full if missing */
     document.querySelectorAll(".item").forEach((link) => {
-      const full = link.getAttribute("href"); // e.g., /images/cards.jpeg
+      const full = link.getAttribute("href");
       const img = link.querySelector("img");
-      const thumb = full.replace("/images/", "/images/thumbs/"); // e.g., /images/thumbs/cards.jpeg
-
-
-      // also provide responsive hints if you add resized versions later
+      const thumb = full.replace("/images/", "/images/thumbs/");
       img.sizes = "(max-width: 600px) 45vw, (max-width: 1200px) 30vw, 300px";
-      // If you generate different widths, set something like:
-      // img.srcset = `${thumb.replace('.', '_480.')} 480w, ${thumb.replace('.', '_800.')} 800w, ${full} 1200w`;
     });
   </script>
 </body>

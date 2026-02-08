@@ -27,36 +27,11 @@ body {
 ::selection {
   color: var(--highlight);
   background: var(--text);
-
-
 }
 
 ::-moz-selection {
   color: var(--highlight);
   background: var(--text);
-}
-
-/* Minimal header present on all pages */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 1.2rem;
-  z-index: 1000;
-}
-
-.brand {
-  font-weight: 700;
-  letter-spacing: .3px;
-  font-size: 1.05rem;
-}
-
-.title-anchor {
-  position: relative;
 }
 
 .nav {
@@ -78,18 +53,6 @@ body {
   color: var(--highlight)
 }
 
-#themeToggle {
-  width: 28px;
-  height: 28px;
-  background: var(--text);
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-#themeToggle:hover {
-  background: var(--highlight)
-}
 
 /* Page containers */
 .wrapper {
@@ -164,7 +127,6 @@ a:hover {
   color: var(--highlight)
 }
 
-/* Contact columns */
 .contact-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -186,7 +148,6 @@ a:hover {
   }
 }
 
-/* Projects list (resume page) */
 .projects-list {
   list-style: none;
   padding-left: 0;
@@ -296,9 +257,27 @@ a:hover {
     grid-template-columns: 1fr;
     gap: .4rem
   }
+
+  .topnav {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    z-index: 1500;
+  }
+
+  .topnav a {
+    display: inline-block;
+    padding: 0.125rem 0;
+    line-height: 1.2;
+  }
+
 }
 
-/* Snake card alignment on About page */
 .snake-card {
   margin-top: .6rem;
   display: flex;
@@ -307,7 +286,6 @@ a:hover {
   align-items: flex-start
 }
 
-/* Slide-in on first paint */
 .slide-in {
   animation: slideIn .4s ease-out both;
 }
@@ -324,9 +302,60 @@ a:hover {
   }
 }
 
-/* Footer */
 footer p {
   text-align: center;
   font-size: .9rem;
   margin: 2rem 0 .7rem
+}
+
+.topnav {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1500;
+}
+
+.topnav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.topnav a::before,
+.topnav a::after {
+  content: " [ ";
+  opacity: 0;
+}
+
+.topnav a::after {
+  content: " ] ";
+}
+
+.topnav a:hover::before,
+.topnav a:hover::after,
+.topnav a.active::before,
+.topnav a.active::after {
+  opacity: 1;
+}
+
+a:hover {
+  color: var(--highlight);
+}
+
+#themeToggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 30px;
+  height: 30px;
+  background-color: var(--text);
+  cursor: pointer;
+  z-index: 2000;
+  transition: background-color 0.2s;
+}
+
+#themeToggle:hover {
+  background-color: var(--highlight);
 }

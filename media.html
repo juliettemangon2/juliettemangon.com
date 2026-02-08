@@ -40,60 +40,6 @@
       font-size: 1.05rem;
     }
 
-    /* ===== NAV + THEME ===== */
-    #themeToggle {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.2s;
-    }
-
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
-    .topnav {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 1500;
-    }
-
-    .topnav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .topnav a::before,
-    .topnav a::after {
-      content: " [ ";
-      opacity: 0;
-    }
-
-    .topnav a::after {
-      content: " ] ";
-    }
-
-    .topnav a:hover::before,
-    .topnav a:hover::after,
-    .topnav a.active::before,
-    .topnav a.active::after {
-      opacity: 1;
-    }
-
-    a:hover {
-      color: var(--highlight);
-    }
-
-    /* ===== MAIN LAYOUT ===== */
     main {
       max-width: 1200px;
       margin: 0 auto;
@@ -118,7 +64,6 @@
       margin-top: 0.25rem;
     }
 
-    /* ===== SPOTIFY WIDGET ===== */
     .spotify-widget {
       max-width: 800px;
       display: flex;
@@ -172,9 +117,6 @@
       color: var(--text);
       text-align: left;
     }
-
-
-    /* ===== FAVORITE MEDIA ===== */
     .media-columns {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -272,7 +214,6 @@
 
     }
 
-    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and tighten contact text */
     @media (max-width: 900px) {
       .spotify-section {
         padding-top: 7rem;
@@ -282,7 +223,6 @@
         padding-top: 5rem;
       }
 
-      /* Stack the nav links vertically in the top-left */
       .topnav {
         position: absolute;
         top: 0.75rem;
@@ -293,7 +233,6 @@
         align-items: flex-start;
         gap: 0.25rem;
         z-index: 1500;
-        /* below theme toggle but above content */
       }
 
       .media-intro {
@@ -306,7 +245,6 @@
         line-height: 1.2;
       }
 
-      /* Keep theme toggle pinned to top-right */
       #themeToggle {
         top: 0.75rem;
         right: 0.75rem;
@@ -314,13 +252,10 @@
         height: 32px;
         z-index: 2000;
         position: fixed;
-        /* ensure it stays pinned */
       }
 
-      /* Create breathing room below the stacked nav so content never hides behind it */
       main {
         margin-top: 7rem;
-        /* adjust if nav items change */
         margin-bottom: 2rem;
         padding: 0 1rem;
       }
@@ -328,8 +263,6 @@
 
     }
 
-    /* Slightly narrow desktops or when window isn't fullscreen:
-   keep layout strong without overlap */
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
@@ -360,9 +293,6 @@
   </nav>
 
   <main>
-
-
-    <!-- Spotify Widget -->
     <div id="spotify-section">
       <h2 class="spotify-heading">CURRENTLY LISTENING TO</h2>
       <section class="spotify-widget">
@@ -417,7 +347,7 @@
               <span class="media-label">ALBUM</span>
             </div>
             <div class="media-desc">
-              Very into The Blue Nile right now. Not much to say, a cult classic for a reason.
+              Very into The Blue Nile right now.
             </div>
           </div>
 

@@ -12,16 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
-
-  <!-- Snake styles (preserved) -->
   <link rel="stylesheet" href="snake.css" />
 
   <style>
-    :root {
-      --bg: #e1ecff;
-      --text: #80074f;
-      --highlight: #6fc1de;
-    }
 
     * {
       margin: 0;
@@ -41,57 +34,6 @@
       line-height: 1.6;
       font-size: 1.05rem;
       overflow-x: hidden;
-    }
-
-    /* Theme + simple top nav */
-    #themeToggle {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.2s;
-    }
-
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
-    .topnav {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 1500;
-    }
-
-    .topnav a {
-      color: var(--text);
-      text-decoration: none;
-      /* no decoration */
-      font-weight: 600;
-    }
-
-    .topnav a::before,
-    .topnav a::after {
-      content: " [ ";
-      opacity: 0;
-    }
-
-    .topnav a::after {
-      content: " ] ";
-    }
-
-    /* Hover or active page link shows brackets */
-    .topnav a:hover::before,
-    .topnav a:hover::after,
-    .topnav a.active::before,
-    .topnav a.active::after {
-      opacity: 1;
     }
 
     main {
@@ -137,26 +79,9 @@
       font-size: 1.45rem;
     }
 
-    .photos {
-      margin-top: 2rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+  
 
-    .photos img {
-      width: 100%;
-      max-width: 530px;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.3s;
-      flex: 1 1 48%;
-    }
-
-    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and avoid overlap */
     @media (max-width: 900px) {
-
-      /* Stack the nav links vertically in the top-left */
       .topnav {
         position: absolute;
         top: 0.75rem;
@@ -167,18 +92,14 @@
         align-items: flex-start;
         gap: 0.25rem;
         z-index: 1500;
-        /* below theme toggle but above content */
       }
 
       .topnav a {
         display: inline-block;
-        /* larger tap targets without full-width buttons */
         padding: 0.125rem 0;
-        /* keep layout tight and aligned */
         line-height: 1.2;
       }
 
-      /* Keep theme toggle pinned to top-right, slightly tighter on mobile */
       #themeToggle {
         position: absolute;
         top: 0.75rem;
@@ -188,27 +109,18 @@
         z-index: 2000;
       }
 
-      /* Create breathing room below the stacked nav so content never hides behind it */
       main {
         margin-top: 10rem;
-        /* adjust if you add/remove nav items */
         padding-left: 1rem;
         padding-right: 1rem;
       }
 
-
-
-      .photos img {
-        flex: 1 1 100%;
-      }
     }
 
-    /* Slightly narrow desktops: reduce spacing so layout holds up when not fullscreen */
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
       }
-
 
       main {
         margin-top: 6rem;
@@ -217,10 +129,10 @@
       }
     }
   </style>
+  
 </head>
 
 <body>
-  <!-- Persistent controls -->
   <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html">home</a>
@@ -232,7 +144,6 @@
   </nav>
 
   <main>
-    <!-- About content (preserved text) -->
     <section>
       <h2>About Me</h2>
       <p>
@@ -260,10 +171,6 @@
       </p>
 
 
-    </section>
-
-    <section>
-      <div class="photos"></div>
     </section>
     <footer>
       <p style="

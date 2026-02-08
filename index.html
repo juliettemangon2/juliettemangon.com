@@ -45,57 +45,7 @@
       overflow: hidden;
     }
 
-    /* ===== THEME + NAV (copied from contact, unchanged) ===== */
-    #themeToggle {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.2s;
-    }
 
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
-    .topnav {
-      position: fixed;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 1500;
-    }
-
-    .topnav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .topnav a::before,
-    .topnav a::after {
-      content: " [ ";
-      opacity: 0;
-    }
-
-    .topnav a::after {
-      content: " ] ";
-    }
-
-    .topnav a:hover::before,
-    .topnav a:hover::after,
-    .topnav a.active::before,
-    .topnav a.active::after {
-      opacity: 1;
-    }
-
-
-    /* Main fills viewport without margins to avoid scroll */
     main {
       height: 100svh;
       width: 100%;
@@ -187,7 +137,6 @@
         position: fixed;
       }
 
-      /* Keep the name tucked in the corner on phones too */
       .name-section {
         bottom: 1rem;
         right: 1rem;
@@ -196,7 +145,6 @@
 
     }
 
-    /* Slightly narrow desktops (copied nav tweaks) */
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
@@ -208,7 +156,6 @@
       }
     }
 
-    /* Base circle styles */
     .decorative-circle {
       position: fixed;
       width: clamp(400px, 50vw, 700px);
@@ -265,7 +212,6 @@
       }
     }
 
-    /* Mobile adjustments */
     @media (max-width: 900px) {
       .decorative-circle {
         width: clamp(200px, 60vw, 350px);
@@ -294,7 +240,6 @@
       }
     }
 
-    /* Small phones */
     @media (max-width: 480px) {
       .decorative-circle {
         width: 250px;
@@ -312,7 +257,6 @@
 </head>
 
 <body>
-  <!-- Persistent controls -->
   <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html" class="active">home</a>
@@ -371,6 +315,7 @@
         "--highlight": "#dbb6caff",
         "--circle-color": "#FF5722"
       }
+      
     };
     const order = ["gray", "beige", "blue", "default", "alt",];
     function applyTheme(name) {

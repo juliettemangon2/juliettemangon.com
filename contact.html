@@ -41,58 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* Theme + simple top nav */
-    #themeToggle {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 30px;
-      height: 30px;
-      background-color: var(--text);
-      cursor: pointer;
-      z-index: 2000;
-      transition: background-color 0.2s;
-    }
-
-    #themeToggle:hover {
-      background-color: var(--highlight);
-    }
-
-    .topnav {
-      position: fixed;
-      top: 1.5rem;
-      left: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 1500;
-    }
-
-    .topnav a {
-      color: var(--text);
-      text-decoration: none;
-      /* no decoration */
-      font-weight: 600;
-    }
-
-
-    .topnav a::before,
-    .topnav a::after {
-      content: " [ ";
-      opacity: 0;
-    }
-
-    .topnav a::after {
-      content: " ] ";
-    }
-
-    /* Hover or active page link shows brackets */
-    .topnav a:hover::before,
-    .topnav a:hover::after,
-    .topnav a.active::before,
-    .topnav a.active::after {
-      opacity: 1;
-    }
-
     main {
       max-width: 900px;
       margin: 6rem auto 3rem;
@@ -133,7 +81,6 @@
     }
 
     .contact-columns {
-
       display: grid;
       grid-template-columns: 1fr 0fr;
       gap: 0;
@@ -144,10 +91,8 @@
       margin: 0;
     }
 
-    /* Mobile & narrow desktops: stack nav, keep clear of theme toggle, and tighten contact text */
     @media (max-width: 900px) {
 
-      /* Stack the nav links vertically in the top-left */
       .topnav {
         position: fixed;
         top: 0.75rem;
@@ -158,7 +103,6 @@
         align-items: flex-start;
         gap: 0.25rem;
         z-index: 1500;
-        /* below theme toggle but above content */
       }
 
       .topnav a {
@@ -167,7 +111,6 @@
         line-height: 1.2;
       }
 
-      /* Keep theme toggle pinned to top-right */
       #themeToggle {
         top: 0.75rem;
         right: 0.75rem;
@@ -175,25 +118,19 @@
         height: 32px;
         z-index: 2000;
         position: fixed;
-        /* ensure it stays pinned */
       }
 
-      /* Create breathing room below the stacked nav so content never hides behind it */
       main {
         margin-top: 7rem;
-        /* adjust if nav items change */
         margin-bottom: 2rem;
         padding: 0 1rem;
       }
 
-      /* Contact typography: prevent oversized lines on small screens */
       .contact-section p {
         font-size: clamp(1.25rem, 6vw, 2.2rem);
         text-align: center;
-        /* optional: left-align for readability on mobile */
       }
 
-      /* Columns: single column on mobile */
       .contact-columns {
         grid-template-columns: 1fr;
         gap: 0.5rem;
@@ -201,8 +138,6 @@
       }
     }
 
-    /* Slightly narrow desktops or when window isn't fullscreen:
-   keep layout strong without overlap */
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
@@ -264,7 +199,6 @@
   </main>
 
   <script>
-    // THEME
     const themes = {
       default: {
         "--bg": "#eedae5ff",
