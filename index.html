@@ -23,6 +23,8 @@
       --bg: #e1ecff;
       --text: #80074f;
       --highlight: #6fc1de;
+       --frame-gap: 0.75rem;   /* matches your nav/toggle offsets */
+  --frame-w: 2px;
     }
 
     * {
@@ -55,6 +57,9 @@
       position: relative;
     }
 
+    
+
+
 
 
     @keyframes fadeIn {
@@ -66,16 +71,19 @@
     .name-section {
       position: fixed;
       bottom: 3.5rem;
-      right: 2.5rem;
+      left: 2.5rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-end;
+      align-items: flex-start;
+      /* changed */
+      justify-content: flex-start;
+      /* changed */
       z-index: 1000;
       animation: slideUp 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
     }
+
 
 
     @keyframes slideUp {
@@ -91,12 +99,12 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
       line-height: 0.9;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      font-size: clamp(3rem, 12vw, 12rem);
-      text-align: right;
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      font-size: clamp(3rem, 12vw, 8rem);
+      text-align: left;
     }
 
     a {
@@ -139,9 +147,13 @@
 
       .name-section {
         bottom: 1rem;
-        right: 1rem;
+        left: 1rem;
       }
 
+      h1,
+      h2 {
+        font-size: clamp(2.5rem, 10vw, 4.5rem);
+      }
 
     }
 
@@ -268,16 +280,11 @@
   </nav>
 
   <main>
-    <div class="decorative-circle">
-      <span class="ripple"></span>
-      <span class="ripple"></span>
-      <span class="ripple"></span>
-      <span class="ripple"></span>
-    </div>
     <section class="name-section">
       <h2>
-        <span class="first">Juliette</span>
-        <span class="last">Mangon</span>
+        <span class="first">Juliette </span>
+        <span class="last">Mangon's</span>
+        <span class="last">Personal Website</span>
       </h2>
     </section>
   </main>
@@ -315,7 +322,7 @@
         "--highlight": "#dbb6caff",
         "--circle-color": "#FF5722"
       }
-      
+
     };
     const order = ["gray", "beige", "blue", "default", "alt",];
     function applyTheme(name) {
