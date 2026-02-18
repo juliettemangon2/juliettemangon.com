@@ -23,8 +23,8 @@
       --bg: #e1ecff;
       --text: #80074f;
       --highlight: #6fc1de;
-       --frame-gap: 0.75rem;   /* matches your nav/toggle offsets */
-  --frame-w: 2px;
+      --frame-gap: 0.75rem;
+      --frame-w: 2px;
     }
 
     * {
@@ -57,11 +57,6 @@
       position: relative;
     }
 
-    
-
-
-
-
     @keyframes fadeIn {
       to {
         opacity: 1;
@@ -75,9 +70,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      /* changed */
       justify-content: flex-start;
-      /* changed */
       z-index: 1000;
       animation: slideUp 0.6s ease forwards;
       opacity: 0;
@@ -165,102 +158,6 @@
       #themeToggle {
         top: 1rem;
         right: 1rem;
-      }
-    }
-
-    .decorative-circle {
-      position: fixed;
-      width: clamp(400px, 50vw, 700px);
-      height: clamp(400px, 50vw, 700px);
-      background-color: var(--circle-color);
-      border-radius: 50%;
-      bottom: -20%;
-      right: 15%;
-      z-index: 500;
-      opacity: 0;
-      animation: fadeIn 0.8s ease 0.2s forwards;
-    }
-
-    .ripple {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: clamp(30px, 8vw, 100px) solid var(--circle-color);
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      animation: ripple 16s ease-out infinite;
-    }
-
-    .ripple:nth-child(1) {
-      animation-delay: 0s;
-    }
-
-    .ripple:nth-child(2) {
-      animation-delay: 4s;
-    }
-
-    .ripple:nth-child(3) {
-      animation-delay: 8s;
-    }
-
-    .ripple:nth-child(4) {
-      animation-delay: 12s;
-    }
-
-    @keyframes ripple {
-      0% {
-        width: 100%;
-        height: 100%;
-        opacity: 0.9;
-      }
-
-      100% {
-        width: 270%;
-        height: 270%;
-        opacity: 0;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .decorative-circle {
-        width: clamp(200px, 60vw, 350px);
-        height: clamp(200px, 60vw, 350px);
-        right: 50%;
-        bottom: -5%;
-        transform: translateX(50%);
-      }
-
-      .ripple {
-        border-width: clamp(15px, 5vw, 40px);
-      }
-
-      @keyframes ripple {
-        0% {
-          width: 100%;
-          height: 100%;
-          opacity: 0.9;
-        }
-
-        100% {
-          width: 220%;
-          height: 220%;
-          opacity: 0;
-        }
-      }
-    }
-
-    @media (max-width: 480px) {
-      .decorative-circle {
-        width: 250px;
-        height: 250px;
-        bottom: 0%;
-      }
-
-      .ripple {
-        border-width: 20px;
       }
     }
   </style>
