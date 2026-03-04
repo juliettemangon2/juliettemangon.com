@@ -189,12 +189,6 @@
   <script>
     // THEME
     const themes = {
-      default: {
-        "--bg": "#eedae5ff",
-        "--text": "#ff6200",
-        "--highlight": "#c9f5ffff",
-        "--circle-color": "#c9f5ffff"
-      },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
@@ -208,20 +202,20 @@
         "--circle-color": "#f28bdaff"
       },
       blue: {
-        "--bg": "#2d6d9eff",
+        "--bg": "#3c3c82ff",
         "--text": "#cee1ffff",
-        "--highlight": "#c82302ff",
+        "--highlight": "#b70000ff",
         "--circle-color": "#c82302ff"
       },
       beige: {
-        "--bg": "#F5F1E8",
-        "--text": "#2A2A2A",
-        "--highlight": "#dbb6caff",
+        "--bg": "#2A2A2A",
+        "--text": "#dbb6caff",
+        "--highlight": "#F5F1E8",
         "--circle-color": "#FF5722"
       }
 
     };
-    const order = ["gray", "beige", "blue", "default", "alt",];
+    const order = ["gray", "beige", "blue", "alt",];
     function applyTheme(name) {
       if (!themes[name]) name = "gray";
       for (const [k, v] of Object.entries(themes[name])) {

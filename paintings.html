@@ -554,39 +554,33 @@
 
   <script>
     const themes = {
-      default: {
-        "--bg": "#eedae5ff",
-        "--text": "#ff6200",
-        "--white": "#ffe3e3",
-        "--highlight": "#c9f5ffff",
-      },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
-        "--white": "#ffe3e3",
         "--highlight": "#ff85c2ff ",
+        "--circle-color": "#ff85c2ff "
       },
       gray: {
         "--bg": "#c3d7daff",
         "--text": "#4c354aff",
-        "--white": "#ffe3e3",
         "--highlight": "#f28bdaff",
+        "--circle-color": "#f28bdaff"
       },
       blue: {
-        "--bg": "#2d6d9eff",
+        "--bg": "#3c3c82ff",
         "--text": "#cee1ffff",
-        "--white": "#ffe3e3",
-        "--highlight": "#c82302ff",
+        "--highlight": "#b70000ff",
+        "--circle-color": "#c82302ff"
       },
       beige: {
-        "--bg": "#F5F1E8",
-        "--text": "#2A2A2A",
-        "--highlight": "#dbb6caff",
-        "--white": "#ffe3e3",
-
+        "--bg": "#2A2A2A",
+        "--text": "#dbb6caff",
+        "--highlight": "#F5F1E8",
+        "--circle-color": "#FF5722"
       }
+
     };
-    const order = ["blue", "default", "alt", "gray", "beige"];
+    const order = ["gray", "beige", "blue", "alt",];
     function applyTheme(name) {
       Object.entries(themes[name]).forEach(([k, v]) =>
         document.documentElement.style.setProperty(k, v)

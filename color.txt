@@ -31,4 +31,7 @@
 #ff7700ff
 #58125dff 
 #d23c00ff
-#484874ff
+#3e3f86ff
+#c3d7daff
+#d2e6ff
+#eedae5ff

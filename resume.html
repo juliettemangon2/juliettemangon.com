@@ -818,37 +818,33 @@
   <script>
     // Theme
     const themes = {
-      default: {
-        "--bg": "#eedae5ff",
-        "--text": "#ff6200",
-        "--highlight": "#c9f5ffff",
-        "--text2": "#ff6200",
-      },
       alt: {
         "--bg": "#d2e6ff",
         "--text": "#A70A4E",
         "--highlight": "#ff85c2ff ",
-        "--text2": "#A70A4E",
+        "--circle-color": "#ff85c2ff "
       },
       gray: {
         "--bg": "#c3d7daff",
         "--text": "#4c354aff",
         "--highlight": "#f28bdaff",
+        "--circle-color": "#f28bdaff"
       },
       blue: {
-        "--bg": "#2d6d9eff",
+        "--bg": "#3c3c82ff",
         "--text": "#cee1ffff",
-        "--highlight": "#c82302ff",
-        "--text2": "#20406C",
+        "--highlight": "#b70000ff",
+        "--circle-color": "#c82302ff"
       },
       beige: {
-        "--bg": "#F5F1E8",
-        "--text": "#2A2A2A",
-        "--highlight": "#dbb6caff",
-
+        "--bg": "#2A2A2A",
+        "--text": "#dbb6caff",
+        "--highlight": "#F5F1E8",
+        "--circle-color": "#FF5722"
       }
+
     };
-    const order = ["blue", "default", "alt", "gray", "beige"];
+    const order = ["gray", "beige", "blue", "alt",];
     function applyTheme(name) {
       if (!themes[name]) name = "default";
       for (const [k, v] of Object.entries(themes[name])) {
