@@ -1,7 +1,12 @@
 :root {
-  --bg: #e4e6ff;
-  --text: #ff6200;
-  --highlight: #e9ffa8;
+  --bg1: #a6bbc4;
+  --text1: #fff;
+  --bg2: #e2cad4;
+  --text2: #595959;
+  --bg3: #18182b;
+  --text3: #bfbfbf;
+  --bg4: #e6d93e;
+  --text4: #000;
 }
 
 * {
