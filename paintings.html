@@ -11,12 +11,6 @@
   <link rel="stylesheet" href="site.css" />
 
   <style>
-    :root {
-      --bg: #e1ffed;
-      --text: #80074f;
-      --white: #ffe3e3;
-      --highlight: #d9de6f;
-    }
 
     * {
       margin: 0;
@@ -30,8 +24,8 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--gray);
+      color: var(--red);
       font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
@@ -118,7 +112,7 @@
 
     .text-block p {
       font-size: 1rem;
-      color: var(--text);
+      color: var(--red);
     }
 
 
@@ -164,7 +158,7 @@
       right: 1.5rem;
       font-size: 2.2rem;
       font-weight: 700;
-      color: var(--text);
+      color: var(--red);
       cursor: pointer;
       line-height: 1;
       user-select: none;
@@ -293,7 +287,7 @@
       border: 0;
       padding: 0.25rem 0.4rem;
       cursor: pointer;
-      color: var(--text);
+      color: var(--red);
       font: inherit;
       font-size: 2rem;
       line-height: 1;
@@ -336,9 +330,10 @@
     <a href="resume.html">resume</a>
     <a href="paintings.html" class="active">paintings</a>
     <a href="media.html">media</a>
+        <a href="websites.html">websites</a>
+
     <a href="contact.html">contact</a>
   </nav>
-  <div id="themeToggle" title="Switch Theme"></div>
 
 
   <main>
@@ -533,7 +528,7 @@
     <p style="
           text-align: center;
           font-size: 0.9rem;
-          color: var(--text);
+          color: var(--red);
           margin-bottom: 0.7rem;
           padding-bottom: 2rem;
           margin-top: 2rem;
@@ -553,41 +548,7 @@
 
 
   <script>
-    const themes = {
-      alt: {
-        "--bg": "#d2e6ff",
-        "--text": "#A70A4E",
-        "--highlight": "#ff85c2ff ",
-        "--circle-color": "#ff85c2ff "
-      },
-      gray: {
-        "--bg": "#c3d7daff",
-        "--text": "#4c354aff",
-        "--highlight": "#f28bdaff",
-        "--circle-color": "#f28bdaff"
-      },
-      blue: {
-        "--bg": "#18182b",
-        "--text": "#bfbfbf",
-        "--highlight": "#b70000ff",
-        "--circle-color": "#c82302ff"
-      },
-      beige: {
-        "--bg": "#2A2A2A",
-        "--text": "#dbb6caff",
-        "--highlight": "#F5F1E8",
-        "--circle-color": "#FF5722"
-      }
-
-    };
-    const order = ["gray", "beige", "blue", "alt",];
-    function applyTheme(name) {
-      Object.entries(themes[name]).forEach(([k, v]) =>
-        document.documentElement.style.setProperty(k, v)
-      );
-      localStorage.setItem("theme", name);
-      updateLightboxBackground();
-    }
+   
     function hexToRgb(hex) {
       hex = hex.replace("#", "");
       if (hex.length === 3)
@@ -600,7 +561,7 @@
     }
     function updateLightboxBackground() {
       const highlight = getComputedStyle(document.documentElement)
-        .getPropertyValue("--bg")
+        .getPropertyValue("--gray")
         .trim();
       let rgb = [0, 0, 0];
       if (highlight.startsWith("#")) rgb = hexToRgb(highlight);
@@ -612,13 +573,7 @@
         ","
       )},0.75)`;
     }
-    applyTheme(localStorage.getItem("theme") || "default");
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const idx =
-        (order.indexOf(localStorage.getItem("theme")) + 1) % order.length;
-      applyTheme(order[idx]);
-    });
-
+   
     /* Lightbox */
     const lightbox = document.getElementById("lightbox");
     const lightImg = lightbox.querySelector("img");

@@ -15,12 +15,6 @@
 
 
   <style>
-    :root {
-      --bg: #e1ecff;
-      --text: #80074f;
-      --highlight: #6fc1de;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -33,18 +27,17 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Inter", sans-serif;
+      background: var(--gray);
+      color: var(--red);
       line-height: 1.6;
       font-size: 1.05rem;
       overflow-x: hidden;
     }
 
     main {
-      max-width: 900px;
+      max-width: 700px;
       margin: 6rem auto 3rem;
-      padding: 0 1.25rem;
+      padding: 0rem;
       animation: slideIn 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
@@ -58,14 +51,14 @@
     }
 
     h2 {
-      color: var(--bg);
+      color: var(--gray);
       font-size: 2rem;
       font-weight: 700;
       margin: 1.2rem 0 4.6rem;
     }
 
     a {
-      color: var(--text);
+      color: var(--red);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -77,10 +70,11 @@
     p {
       margin-bottom: 0.5rem;
       font-size: 3.2rem;
-      text-align: center;
+      text-align: justify;
     }
 
     .contact-columns {
+      padding-right: 2rem;
       display: grid;
       grid-template-columns: 1fr 0fr;
       gap: 0;
@@ -90,6 +84,16 @@
     .contact-columns p {
       margin: 0;
     }
+
+    .contact-columns p:nth-of-type(odd) {
+      text-align: left;
+
+    }
+
+    .contact-columns p:nth-of-type(even) {
+      text-align: left;
+    }
+
 
     @media (max-width: 900px) {
 
@@ -111,14 +115,7 @@
         line-height: 1.2;
       }
 
-      #themeToggle {
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 32px;
-        height: 32px;
-        z-index: 2000;
-        position: fixed;
-      }
+
 
       main {
         margin-top: 7rem;
@@ -128,7 +125,6 @@
 
       .contact-section p {
         font-size: clamp(1.25rem, 6vw, 2.2rem);
-        text-align: center;
       }
 
       .contact-columns {
@@ -143,10 +139,7 @@
         gap: 0.75rem;
       }
 
-      #themeToggle {
-        top: 1rem;
-        right: 1rem;
-      }
+
 
       main {
         margin-top: 6rem;
@@ -158,14 +151,13 @@
 
 <body>
   <!-- Persistent controls -->
-  <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html">home</a>
     <a href="about.html">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
     <a href="media.html">media</a>
-
+    <a href="websites.html">websites</a>
     <a href="contact.html" class="active">contact</a>
   </nav>
 
@@ -174,73 +166,31 @@
       <h2>.</h2>
       <div class="contact-columns">
         <div>
-          <p>
-            <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a>
-          </p>
-          <p>
+       
+         
+        
+           <p>
             <a href="https://github.com/juliettemangon2" target="_blank">GitHub</a>
           </p>
-          <p>
+            <p>
             <a href="https://www.linkedin.com/in/juliette-mangon" target="_blank">LinkedIn</a>
           </p>
           <p>
             <a href="https://sheisthemusic.org/profile/juliette-mangongmail-com/" target="_blank">She Is The Music</a>
+          </p>
+             <p>
+            <a href="mailto:juliette.mangon@gmail.com">juliette.mangon@gmail.com</a>
           </p>
 
 
         </div>
       </div>
     </section>
-    <footer>
-      <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; padding-top: 10.5rem;">
-        © 2025 Juliette Mangon
-      </p>
-    </footer>
+
   </main>
 
   <script>
-    const themes = {
-      alt: {
-        "--bg": "#d2e6ff",
-        "--text": "#A70A4E",
-        "--highlight": "#ff85c2ff ",
-        "--circle-color": "#ff85c2ff "
-      },
-      gray: {
-        "--bg": "#c3d7daff",
-        "--text": "#4c354aff",
-        "--highlight": "#f28bdaff",
-        "--circle-color": "#f28bdaff"
-      },
-      blue: {
-        "--bg": "#18182b",
-        "--text": "#bfbfbf",
-        "--highlight": "#b70000ff",
-        "--circle-color": "#c82302ff"
-      },
-      beige: {
-        "--bg": "#2A2A2A",
-        "--text": "#dbb6caff",
-        "--highlight": "#F5F1E8",
-        "--circle-color": "#FF5722"
-      }
 
-    };
-    const order = ["gray", "beige", "blue", "alt",];
-    function applyTheme(name) {
-      if (!themes[name]) name = "default";
-      for (const [k, v] of Object.entries(themes[name])) {
-        document.documentElement.style.setProperty(k, v);
-      }
-      localStorage.setItem("theme", name);
-    }
-    applyTheme(localStorage.getItem("theme") || "default");
-
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const current = localStorage.getItem("theme") || "default";
-      const idx = (order.indexOf(current) + 1) % order.length;
-      applyTheme(order[idx]);
-    });
   </script>
 </body>
 

@@ -14,13 +14,6 @@
   <link rel="stylesheet" href="site.css" />
 
   <style>
-    :root {
-      --bg: #e1ecff;
-      --text: #80074f;
-      --highlight: #6fc1de;
-      --contrast: #80074f;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -33,8 +26,8 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--gray);
+      color: var(--red);
       font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
@@ -70,10 +63,10 @@
       align-items: center;
       gap: 1rem;
       background-color: var(--highlight);
-      color: var(--text);
+      color: #fff;
       padding: 1rem;
       margin-bottom: 4rem;
-      border: 3px solid var(--text);
+      border: 3px solid var(--red);
     }
 
     .spotify-widget img {
@@ -104,7 +97,7 @@
 
 
     .spotify-info a {
-      color: var(--text);
+      color: #fff;
       font-weight: 500;
       text-decoration: underline;
     }
@@ -114,7 +107,7 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
       margin-bottom: 1rem;
-      color: var(--text);
+      color: #fff;
       text-align: left;
     }
 
@@ -126,8 +119,8 @@
 
     .media-block {
       margin: 0;
-      border-left: 2px solid var(--text);
-      border-bottom: 2px solid var(--text);
+      border-left: 2px solid var(--red);
+      border-bottom: 2px solid var(--red);
     }
 
     .media-item-header {
@@ -135,17 +128,18 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      font-weight: 700;
+      font-weight: 500;
       cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0em;
+      font-size: 1.3rem;
+      color: var(--highlight);
     }
 
     .media-number {
-      font-weight: 400;
-      color: var(--text);
+      font-weight: 600;
+      color: var(--highlight);
       border-radius: 50%;
-      border: 1.5px solid var(--text);
+      border: 1.6px solid var(--highlight);
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -155,6 +149,7 @@
     }
 
     .media-desc {
+      color: var(--highlight);
       padding: 0 1rem;
       display: block;
       max-height: 0;
@@ -185,7 +180,7 @@
       font-weight: 500;
       text-transform: none;
       margin-bottom: 2rem;
-      color: var(--text);
+      color: var(--red);
       text-align: left;
     }
 
@@ -267,25 +262,23 @@
         gap: 0.5rem;
         margin-top: 2rem;
         padding-top: 0;
+        padding-bottom: 0rem;
       }
 
       .list-nav::after {
         display: none;
-        /* remove the vertical line */
       }
 
       .list-button {
-        border: 2px solid var(--text);
+        border: 2px solid var(--red);
         padding: 0.4rem 0.9rem;
         font-size: 0.9rem;
-        border-radius: 999px;
-        /* pill shape */
         white-space: nowrap;
       }
 
       .list-button.active {
-        background: var(--text);
-        color: var(--bg);
+        background: var(--red);
+        color: var(--gray);
         text-decoration: none;
       }
 
@@ -333,14 +326,17 @@
       position: absolute;
       right: 0;
       top: 0;
-      height: 300%;
-      border-right: 3px solid var(--highlight);
+      height: 100%;
+      border-right: 3px solid var(--red);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+
     }
 
     .list-button {
-      padding: 1rem rem;
+      padding: 1rem 1rem;
       background: transparent;
-      color: var(--text);
+      color: var(--highlight);
       border: transparent;
       text-align: left;
       font-size: 1.25rem;
@@ -352,8 +348,8 @@
     }
 
     .list-button:hover {
-      background: var(--highlight);
-      color: var(--text);
+      color: var(--red);
+      background: #fff;
     }
 
     .list-button.active {
@@ -377,6 +373,7 @@
     }
 
     .simple-list {
+      color: var(--highlight);
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
@@ -417,7 +414,7 @@
     }
 
     .in-section h2 {
-      color: var(--text);
+      color: var(--red);
     }
 
     .list-intro {
@@ -437,6 +434,25 @@
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
+
+    .date {
+      top: 6rem;
+      left: 0;
+      right: 0;
+      margin-top: 2rem;
+      text-align:right;
+      z-index: 100;
+      margin-bottom: 1rem;
+      padding-top: 2rem;
+    }
+
+
+    .date-text {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
 
 
     @media (max-width: 900px) {
@@ -490,6 +506,11 @@
 
       .intro-text {
         font-size: 1rem;
+      }
+      .date-text{
+        font-size: 1rem;
+        padding-bottom: 2rem;
+
       }
 
       .list-button {
@@ -547,6 +568,7 @@
       gap: 2rem;
       margin-top: 2rem;
       align-items: flex-start;
+      padding-bottom: 5rem;
     }
 
     @media (max-width: 900px) {
@@ -570,17 +592,16 @@
       }
 
       .list-button {
-        border: 2px solid var(--text);
+        border: 2px solid var(--red);
         padding: 0.4rem 0.9rem;
         font-size: 0.9rem;
-        border-radius: 999px;
         white-space: nowrap;
         width: auto;
       }
 
       .list-button.active {
-        background: var(--text);
-        color: var(--bg);
+        background: var(--red);
+        color: var(--gray);
         text-decoration: none;
       }
 
@@ -593,13 +614,14 @@
 </head>
 
 <body>
-  <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html">home</a>
     <a href="about.html">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
     <a href="media.html" class="active">media</a>
+    <a href="websites.html">websites</a>
+
     <a href="contact.html">contact</a>
   </nav>
 
@@ -627,23 +649,22 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">01</span>
               <span class="media-title">Choke Enough (Deluxe)</span>
-              <span class="media-label">ALBUM</span>
+              <span class="media-label">Album</span>
             </div>
             <div class="media-desc">
               I love Oklou as an artist because her sound feels truly unique. It sits at an intersection of gentleness,
               hyperpop, and femininity in a way that feels very distinct. choke enough (Deluxe) is especially striking
-              and might be one of my favorite albums of all time. It is hard to describe, but her voice and the
+              and might be one of my favorite Albums of all time. It is hard to describe, but her voice and the
               production feel incredibly delicate and and atmospheric, like being suspended in a light blue, cloudlike
               world.
-              The album explores themes of self-discovery and emotional vulnerability, and listening to it feels like a
-              fully immersive experience.
+
             </div>
           </div>
           <div class="media-block">
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">02</span>
               <span class="media-title">Better Oblivion Community Center</span>
-              <span class="media-label">ALBUM</span>
+              <span class="media-label">Album</span>
             </div>
             <div class="media-desc">
               Phoebe Bridgers and Conor Oberst's love child. What more could I ask for. This album is me, I am this
@@ -654,25 +675,24 @@
           <div class="media-block">
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">03</span>
-              <span class="media-title">Hats</span>
-              <span class="media-label">ALBUM</span>
+              <span class="media-title">333</span>
+              <span class="media-label">Album</span>
             </div>
             <div class="media-desc">
-              Very into The Blue Nile right now.
+              333 is my go to Bladee album. However, I haven't listened to it in a few months, and I just got back into
+              it again. Just as good as I remembered.
             </div>
           </div>
 
           <div class="media-block">
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">04</span>
-              <span class="media-title">The Bends</span>
-              <span class="media-label">ALBUM</span>
+              <span class="media-title">Solar Power</span>
+              <span class="media-label">Album</span>
             </div>
             <div class="media-desc">
-              Just an extremely well done album. No skips, and has some of
-              my favorite Radiohead songs of all time. I have been listening to
-              this album a lot in the car recently, it just sounds so good, and
-              is even better when you know the lyrics.
+              This may be an unpopular opinion but I love this album. Super good for the brunettes who like to hangout
+              alone in the sun and feel optimistic.
             </div>
           </div>
 
@@ -682,7 +702,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">05</span>
               <span class="media-title">Ivan Pokidyshev</span>
-              <span class="media-label">ARTIST</span>
+              <span class="media-label">Artist</span>
             </div>
             <div class="media-desc">
               Ivan Pokidyshev is one of the first contemporary painters who really stuck with me. He uses thermography
@@ -698,7 +718,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">06</span>
               <span class="media-title">Laura Footes</span>
-              <span class="media-label">ARTIST</span>
+              <span class="media-label">Artist</span>
             </div>
             <div class="media-desc">
               Laura Foote is a really inspiring painter for me. She paints entirely without reference, using only memory
@@ -713,7 +733,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">07</span>
               <span class="media-title">Amy Renee Webb</span>
-              <span class="media-label">ARTIST</span>
+              <span class="media-label">Artist</span>
             </div>
             <div class="media-desc">
               Her glass looking religious iconography is unreal. Also, she shares my love for neon
@@ -727,7 +747,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">08</span>
               <span class="media-title">Lorenzo Amos</span>
-              <span class="media-label">ARTIST</span>
+              <span class="media-label">Artist</span>
             </div>
             <div class="media-desc">
               His current work makes an effort to "capture the life of his surroundings". Generally, I really like his
@@ -745,7 +765,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">09</span>
               <span class="media-title">Love Lies Bleeding</span>
-              <span class="media-label">film</span>
+              <span class="media-label">Film</span>
             </div>
             <div class="media-desc">
               My favorite shot is the egg yolks and cigarettes going into the
@@ -759,7 +779,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">10</span>
               <span class="media-title">Call Me by Your Name</span>
-              <span class="media-label">film</span>
+              <span class="media-label">Film</span>
             </div>
             <div class="media-desc">
               Everything is so visually beautiful. I love the all of the shots
@@ -777,7 +797,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">11</span>
               <span class="media-title">Parasite</span>
-              <span class="media-label">film</span>
+              <span class="media-label">Film</span>
             </div>
             <div class="media-desc">
               I don't need to need to overexplain this one it literally won best picture. Overall just a great story
@@ -789,7 +809,7 @@
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">12</span>
               <span class="media-title">Gone Girl</span>
-              <span class="media-label">film</span>
+              <span class="media-label">Film</span>
             </div>
             <div class="media-desc">
               Such a good thriller. I love the way the story is told. Rosamund Pike is
@@ -827,12 +847,12 @@
           <div class="media-block">
             <div class="media-item-header" onclick="toggleMediaDesc(this)">
               <span class="media-number">15</span>
-              <span class="media-title">Too Much</span>
+              <span class="media-title">The L word Generation Q</span>
               <span class="media-label">TV</span>
             </div>
             <div class="media-desc">
-              A comedy show with an engaging plot and fabulous cinematography. Right up my alley. I started this a few
-              weeks ago.
+              Just finished this. Extremely surprised at how much I liked it. This is also criticism for the O.G. L word
+              but can we see character growth why do they keep making the same mistakes!? Good other than that.
             </div>
           </div>
 
@@ -875,6 +895,9 @@
         <button class="list-button" onclick="showList('inout', this)">
           ins and outs
         </button>
+        <button class="list-button" onclick="showList('favoritefoods', this)">
+          favorite foods
+        </button>
       </div>
 
       <div class="list-content">
@@ -888,18 +911,25 @@
             <div class="simple-item">Carrot, orange, ginger juice variations</div>
             <div class="simple-item">Diptyque candles</div>
             <div class="simple-item">Blistex lip medex</div>
-            <div class="simple-item">Olives</div>
-            <div class="simple-item">Red nail polish</div>
             <div class="simple-item">Orchids</div>
           </div>
         </div>
 
         <div id="more" class="list-section">
           <div class="simple-list">
-            <div class="simple-item">Make more art</div>
+            <div class="simple-item">Finish more art</div>
             <div class="simple-item">Cook at home more</div>
             <div class="simple-item">Keep in touch with long distance friends and family</div>
             <div class="simple-item">Wake up early</div>
+          </div>
+        </div>
+        <div id="favoritefoods" class="list-section">
+          <div class="simple-list">
+            <div class="simple-item">Ikura</div>
+            <div class="simple-item">Nasu Dengaku</div>
+            <div class="simple-item">tomato + olive oil + vinegar + burrata + basil + arugula</div>
+            <div class="simple-item">Pico de gallo</div>
+            <div class="simple-item">Olives (brown or black)</div>
           </div>
         </div>
 
@@ -927,62 +957,16 @@
         </div>
       </div>
     </div>
+     <div class="date">
+      <p class="date-text">Page last updated 10:55PM EST, March 9 2026.</p>
 
-    <footer>
-      <p style="text-align: center; font-size: 0.9rem; color: var(--text); margin-bottom: 0.7rem; padding-top: 6rem;">
-        © 2025 Juliette Mangon
-      </p>
-    </footer>
+    </div>
+
+
   </main>
 
   <script>
-    // THEME SYSTEM
-    const themes = {
-      alt: {
-        "--bg": "#d2e6ff",
-        "--text": "#A70A4E",
-        "--highlight": "#ff85c2ff ",
-        "--circle-color": "#ff85c2ff "
-      },
-      gray: {
-        "--bg": "#c3d7daff",
-        "--text": "#4c354aff",
-        "--highlight": "#f28bdaff",
-        "--circle-color": "#f28bdaff"
-      },
-       blue: {
-        "--bg": "#18182b",
-        "--text": "#bfbfbf",
-        "--highlight": "#b70000ff",
-        "--circle-color": "#c82302ff"
-      },
-      beige: {
-        "--bg": "#2A2A2A",
-        "--text": "#dbb6caff",
-        "--highlight": "#F5F1E8",
-        "--circle-color": "#FF5722"
-      }
 
-    };
-    const order = ["gray", "beige", "blue", "alt",];
-
-    function applyTheme(name) {
-      if (!themes[name]) name = "alt";
-      for (const [k, v] of Object.entries(themes[name])) {
-        document.documentElement.style.setProperty(k, v);
-      }
-      localStorage.setItem("theme", name);
-    }
-
-    applyTheme(localStorage.getItem("theme") || "alt");
-
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const current = localStorage.getItem("theme") || "alt";
-      const idx = (order.indexOf(current) + 1) % order.length;
-      applyTheme(order[idx]);
-    });
-
-    // SPOTIFY FETCH
     // SPOTIFY FETCH
     async function fetchNowPlaying() {
       try {

@@ -20,9 +20,9 @@
 
   <style>
     :root {
-      --bg: #e1ecff;
-      --text: #80074f;
-      --highlight: #6fc1de;
+      --red: #e93030;
+      --gray: #e1e9eb;
+      --highlight: #000000;
       --frame-gap: 0.75rem;
       --frame-w: 2px;
     }
@@ -39,8 +39,8 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--gray);
+      color: var(--red);
       font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
@@ -66,10 +66,10 @@
     .name-section {
       position: fixed;
       bottom: 3.5rem;
-      left: 2.5rem;
+      right: 2.5rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-end;
       justify-content: flex-start;
       z-index: 1000;
       animation: slideUp 0.6s ease forwards;
@@ -92,16 +92,20 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: justify;
       line-height: 0.9;
       font-weight: 500;
       letter-spacing: -0.05em;
-      font-size: clamp(3rem, 12vw, 8rem);
-      text-align: left;
+      font-size: clamp(2rem, 10vw, 7rem);
+      text-align: justify;
+    }
+
+    .first {
+      margin-bottom: 2rem;
     }
 
     a {
-      color: var(--text);
+      color: var(--red);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -119,23 +123,15 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.25rem;
+        gap: 0.15rem;
         z-index: 1500;
+        font-size: 1rem;
       }
 
       .topnav a {
         display: inline-block;
-        padding: 0.125rem 0;
+        padding: 0.15rem 0;
         line-height: 1.2;
-      }
-
-      #themeToggle {
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 32px;
-        height: 32px;
-        z-index: 2000;
-        position: fixed;
       }
 
       .name-section {
@@ -148,16 +144,16 @@
         font-size: clamp(2.5rem, 10vw, 4.5rem);
       }
 
+      body > main {
+        margin-top: 0;
+        height: 100svh;
+      }
+
     }
 
     @media (max-width: 1200px) and (min-width: 901px) {
       .topnav {
         gap: 0.75rem;
-      }
-
-      #themeToggle {
-        top: 1rem;
-        right: 1rem;
       }
     }
   </style>
@@ -166,70 +162,29 @@
 </head>
 
 <body>
-  <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html" class="active">home</a>
     <a href="about.html">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
     <a href="media.html">media</a>
+    <a href="websites.html">websites</a>
     <a href="contact.html">contact</a>
   </nav>
 
   <main>
     <section class="name-section">
       <h2>
-        <span class="first">Juliette </span>
-        <span class="last">Mangon's</span>
+
+        
+        <span class="first">Juliette Mangon's</span>
         <span class="last">Personal Website</span>
       </h2>
     </section>
   </main>
 
   <script>
-    // THEME
-    const themes = {
-      alt: {
-        "--bg": "#d2e6ff",
-        "--text": "#A70A4E",
-        "--highlight": "#ff85c2ff ",
-        "--circle-color": "#ff85c2ff "
-      },
-      gray: {
-        "--bg": "#c3d7daff",
-        "--text": "#4c354aff",
-        "--highlight": "#f28bdaff",
-        "--circle-color": "#f28bdaff"
-      },
-      blue: {
-        "--bg": "#18182b",
-        "--text": "#bfbfbf",
-        "--highlight": "#b70000ff",
-        "--circle-color": "#c82302ff"
-      },
-      beige: {
-        "--bg": "#2A2A2A",
-        "--text": "#dbb6caff",
-        "--highlight": "#F5F1E8",
-        "--circle-color": "#FF5722"
-      }
 
-    };
-    const order = ["gray", "beige", "blue", "alt",];
-    function applyTheme(name) {
-      if (!themes[name]) name = "gray";
-      for (const [k, v] of Object.entries(themes[name])) {
-        document.documentElement.style.setProperty(k, v);
-      }
-      localStorage.setItem("theme", name);
-    }
-    applyTheme(localStorage.getItem("theme") || "gray");
-
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const current = localStorage.getItem("theme") || "gray";
-      const idx = (order.indexOf(current) + 1) % order.length;
-      applyTheme(order[idx]);
-    });
   </script>
 </body>
 

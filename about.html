@@ -27,8 +27,8 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--gray);
+      color: var(--red);
       font-family: "Inter", sans-serif;
       line-height: 1.6;
       font-size: 1.05rem;
@@ -36,9 +36,8 @@
     }
 
     main {
-      max-width: 920px;
-      margin: 6rem auto 3rem;
-      padding: 0 1.25rem;
+      margin: 6rem 0 3rem;
+      padding: 0;
       animation: slideIn 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
@@ -52,15 +51,14 @@
     }
 
     h2 {
-      color: var(--bg);
+      color: var(--gray);
       font-size: 1.5rem;
       font-weight: 700;
       margin: 1.2rem 0 0.6rem;
     }
 
     .highlightname {
-      color: var(--highlight);
-      background: var(--text);
+      color: var(--navy);
     }
 
     a {
@@ -76,6 +74,40 @@
     p {
       margin-bottom: 1.5rem;
       font-size: 1.4rem;
+    }
+
+    section {
+      margin-top: 12rem;
+    }
+
+    section p {
+      max-width: 800px;
+    }
+
+    section p:nth-of-type(odd) {
+      margin-left: 1rem;
+      margin-right: auto;
+            text-align: justify;
+
+    }
+
+    section p:nth-of-type(even) {
+      margin-left: auto;
+      margin-right: 1rem;
+      text-align: justify;
+    }
+
+    @media (max-width: 900px) {
+      section {
+        margin-top: 0;
+      }
+
+      section p {
+        max-width: 100%;
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+        text-align: left !important;
+      }
     }
 
 
@@ -109,9 +141,7 @@
       }
 
       main {
-        margin-top: 10rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        margin-top: 20rem;
       }
 
     }
@@ -123,8 +153,6 @@
 
       main {
         margin-top: 6rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
       }
     }
   </style>
@@ -132,29 +160,33 @@
 </head>
 
 <body>
-  <div id="themeToggle" title="Switch Theme"></div>
   <nav class="topnav" aria-label="Site">
     <a href="index.html">home</a>
     <a href="about.html" class="active">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
     <a href="media.html">media</a>
+    <a href="websites.html">websites</a>
+
     <a href="contact.html">contact</a>
   </nav>
 
   <main>
     <section>
-      <h2>About Me</h2>
       <p>
         My name is <span class="highlightname">Juliette Mangon</span>. I build products that strengthens creative
         industries. I'm interested in how we can leverage technology to shape the way media is created, distributed, and
-        experienced. I approach that from two angles: building products that solve real problems for users in the
+        experienced.
+      </p>
+      <p>
+        I approach that from two angles: building products that solve real problems for users in the
         media and entertainment, and exploring technology as a creative medium itself. In both, I prioritize strong
         logic and
         clean architecture.
       </p>
       <p>
-        Right now, I'm building Heritage, an app that helps aspirational people achieve their goals by putting them in the
+        Right now, I'm building Heritage, an app that helps aspirational people achieve their goals by putting them in
+        the
         right rooms with the right people,
         and doing an AI
         and media strategy residency with Spinach Media Group. I also build websites for clients across the music, film,
@@ -164,72 +196,18 @@
         Computer Science and Mathematics and a minor in the Business of Entertainment, Media, and Technology.</p>
       <p>
 
-        I care deeply about the environment and aim to approach my work with sustainability in mind. In my free time, I
-        love to make art (usually painting) and add fun features to my website (click on the square in the top right
-        corner).
+        I care deeply about the environment and aim to approach my work with sustainability in mind. My favorite colors are red and blue. In my free time, I love making art, listening to music, and making websites.
       </p>
 
 
     </section>
-    <footer>
-      <p style="
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text);
-            margin-bottom: 0.7rem;
-            margin-top: 1rem;
-            padding-bottom: 2rem;
-          ">
-        © 2025 Juliette Mangon
-      </p>
-    </footer>
+    
   </main>
 
 
   <script>
-    // THEME
-    const themes = {
-      alt: {
-        "--bg": "#d2e6ff",
-        "--text": "#A70A4E",
-        "--highlight": "#ff85c2ff ",
-        "--circle-color": "#ff85c2ff "
-      },
-      gray: {
-        "--bg": "#c3d7daff",
-        "--text": "#4c354aff",
-        "--highlight": "#f28bdaff",
-        "--circle-color": "#f28bdaff"
-      },
-      blue: {
-        "--bg": "#18182b",
-        "--text": "#bfbfbf",
-        "--highlight": "#b70000ff",
-        "--circle-color": "#c82302ff"
-      },
-      beige: {
-        "--bg": "#2A2A2A",
-        "--text": "#dbb6caff",
-        "--highlight": "#F5F1E8",
-        "--circle-color": "#FF5722"
-      }
 
-    };
-    const order = ["gray", "beige", "blue", "alt",];
-    function applyTheme(name) {
-      if (!themes[name]) name = "default";
-      for (const [k, v] of Object.entries(themes[name])) {
-        document.documentElement.style.setProperty(k, v);
-      }
-      localStorage.setItem("theme", name);
-    }
-    applyTheme(localStorage.getItem("theme") || "default");
 
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const current = localStorage.getItem("theme") || "default";
-      const idx = (order.indexOf(current) + 1) % order.length;
-      applyTheme(order[idx]);
-    });
   </script>
 </body>
 
