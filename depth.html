@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth | Juliette Mangon</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background: #0c4a68;
+        }
+
+        /* Override site.css nav color for dark page */
+        .topnav a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .topnav a:hover,
+        .topnav a.active {
+            color: white;
+        }
+
+        /* ── FIXED LAYERS ─────────────────────── */
+
+        #bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            will-change: background;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── SURFACE ──────────────────────────── */
+
+        #surface {
+            position: relative;
+        }
+
+        .light-rays {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .light-rays::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220%;
+            height: 65%;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 65%);
+            animation: rayPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes rayPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .caustics {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .caustics::before,
+        .caustics::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            animation: causticMove 9s ease-in-out infinite;
+        }
+
+        .caustics::before {
+            width: 380px;
+            height: 170px;
+            top: 16%;
+            left: 12%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+        }
+
+        .caustics::after {
+            width: 500px;
+            height: 240px;
+            top: 40%;
+            right: 6%;
+            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+            animation-delay: -3.5s;
+            animation-duration: 13s;
+        }
+
+        @keyframes causticMove {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: scale(1.4) rotate(20deg);
+                opacity: 0.75;
+            }
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 2rem 1.5rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: clamp(5rem, 18vw, 16rem);
+            line-height: 0.88;
+            letter-spacing: -0.05em;
+            color: white;
+            opacity: 0;
+            transform: translateY(35px);
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            letter-spacing: -0.01em;
+            color: rgba(255, 255, 255, 0.65);
+            margin-top: 1.5rem;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(20px);
+            max-width: 1400px;     
+            margin-left: 1rem;
+
+
+
+        }
+
+        .scroll-hint {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0;
+            max-width: 1400px;
+            margin-left: 1rem;
+            animation: fadeIn 1s ease 2s forwards, floatDown 2.2s ease-in-out 2s infinite;
+        }
+
+        .scroll-hint span {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatDown {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(6px);
+            }
+        }
+
+        /* Photo grid */
+
+        .photo-section {
+            position: relative;
+            z-index: 1;
+            padding: 0 1.5rem 8rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .photo-card {
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            will-change: transform;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .photo-card:hover {}
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .card-dad {
+            grid-row: 1 / 3;
+        }
+
+        .photo-caption {
+            padding: 0.85rem 0 0;
+            font-size: 1.7rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .col-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* ── WATER TRANSITION ─────────────────── */
+
+        #water-transition {
+            padding: 6rem 1.5rem 7rem;
+            overflow: hidden;
+        }
+
+        .transition-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.8rem, 4.5vw, 4.5rem);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+            opacity: 0;
+            transform: translateY(28px);
+        }
+
+        .transition-subtitle {
+            font-weight: 500;
+            font-size: 1.5rem;
+            margin: 0 auto 5rem;
+
+            margin-bottom: 1rem;
+            max-width: 1400px;
+
+        }
+
+        .ai-water-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .ai-water-cell {
+            overflow: hidden;
+            opacity: 0;
+            will-change: transform;
+        }
+
+        .ai-water-cell img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.9) saturate(1.1);
+            transition: filter 0.4s ease;
+        }
+
+        .ai-water-cell:hover img {
+            filter: brightness(1.05) saturate(1.25);
+        }
+
+        .ai-water-cell:nth-child(1) {
+            margin-top: 60px;
+        }
+
+        .ai-water-cell:nth-child(3) {
+            margin-top: -30px;
+        }
+
+        /* ── MID DEPTH ────────────────────────── */
+
+        #mid-depth {
+            padding: 6rem 1.5rem 4rem;
+        }
+
+        .mid-header {
+            margin-bottom: 7rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-marker {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 0.8rem;
+        }
+
+        .mid-header h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: clamp(3rem, 7vw, 7rem);
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .image-pair {
+            max-width: 1400px;
+            margin: 0 auto 9rem;
+        }
+
+        .pair-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .pair-image-wrap {
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(45px);
+        }
+
+        .pair-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            will-change: transform;
+        }
+
+        .pair-image-wrap.sway img {
+            animation: sway 7s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        .pair-image-wrap.sway-alt img {
+            animation: swayAlt 9s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        @keyframes sway {
+
+            0%,
+            100% {
+                transform: rotate(-0.5deg) translateX(-3px) scale(1.02);
+            }
+
+            35% {
+                transform: rotate(0.3deg) translateX(2px) scale(1.02);
+            }
+
+            68% {
+                transform: rotate(0.5deg) translateX(3px) scale(1.02);
+            }
+        }
+
+        @keyframes swayAlt {
+
+            0%,
+            100% {
+                transform: rotate(0.4deg) translateX(2px) scale(1.02);
+            }
+
+            40% {
+                transform: rotate(-0.3deg) translateX(-2px) scale(1.02);
+            }
+
+            72% {
+                transform: rotate(-0.5deg) translateX(-3px) scale(1.02);
+            }
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 0.7rem;
+            left: 0.8rem;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #000;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.2rem 0.5rem;
+        }
+
+        .pair-text {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .pair-label {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 0.9rem;
+        }
+
+        .pair-main {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.6rem, 3.5vw, 3rem);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: rgba(255, 255, 255, 0.88);
+            margin-bottom: 1.1rem;
+        }
+
+        .pair-body {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* ── DEEP ─────────────────────────────── */
+
+        #deep {
+            padding: 6rem 1.5rem 8rem;
+        }
+
+        .deep-intro {
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .depth-marker {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(0, 225, 180, 0.55);
+            margin-bottom: 0.9rem;
+        }
+
+        .deep-intro h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: clamp(3rem, 7vw, 7rem);
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .deep-intro h3 {
+            font-weight: 500;
+            margin-top: 1rem;
+            font-size: 2rem;
+
+        }
+
+        .artifacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .artifact-wrap {
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .artifact-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.88) saturate(1.15);
+            transition: filter 0.5s ease;
+        }
+
+        .artifact-wrap:hover img {
+            filter: brightness(1.05) saturate(1.35);
+        }
+
+        .artifact-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 60%, rgba(0, 225, 180, 0.07), transparent 65%);
+            pointer-events: none;
+            animation: glowPulse 4.5s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .deep-text {
+            margin: 5rem 0 0;
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        .deep-text p {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.2rem;
+        }
+
+        /* ── FLOOR ────────────────────────────── */
+
+        #floor {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 6rem 1.5rem 5rem;
+        }
+
+        .statement {
+            max-width: 860px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .floor-marker {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .statement h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+
+        .statement p {
+            font-size: clamp(1rem, 1.6vw, 1.3rem);
+            line-height: 1.75;
+            color: #fff;
+            max-width: 65ch;
+            margin-bottom: 1.2rem;
+        }
+
+
+
+        .back-link {
+            font-size: 1.3rem;
+            color: #fff;
+
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .back-link:hover {
+            color: rgba(0, 225, 180, 1);
+        }
+
+        /* ── RESPONSIVE ───────────────────────── */
+
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-dad {
+                grid-row: auto;
+            }
+
+            .col-right {
+                gap: 1rem;
+            }
+
+            .bottom-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-water-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-water-cell:nth-child(1),
+            .ai-water-cell:nth-child(3) {
+                margin: 0;
+            }
+
+            .pair-images {
+                grid-template-columns: 1fr;
+            }
+
+            .artifacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="bg-gradient"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <main>
+
+        <!-- ══════════════════════════════════
+         SURFACE
+         ══════════════════════════════════ -->
+        <section id="surface">
+            <div class="light-rays"></div>
+            <div class="caustics"></div>
+
+            <div class="hero">
+                <h1>Depth</h1>
+                <p class="hero-tagline">An exploration of nature, art, and technology beneath the surface.</p>
+                <div class="scroll-hint">
+                    <span>Dive in</span>
+                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+                        <polyline points="1,1 7,8 13,1" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+
+
+            <div class="photo-section">
+                <div class="photo-grid">
+                    <!-- Dad — left column, spans 2 rows -->
+                    <div class="photo-card card-dad">
+                        <img src="depth/shallow/dad.jpeg" alt="Diving with my dad" loading="lazy">
+                        <p class="photo-caption">
+                            When I was 11, my dad introduced me to his life long passion for scubadiving.
+                            He immersed me into the underwater world, where I found comfort in the silence, and a
+                            sanctuary of beautifully intricate ecosystems to observe. <br> This project uses Gemini AI
+                            to combine his scubadiving photos with my water related paintings to imagine a world where
+                            humans, nature, and technology can coexist.
+                        </p>
+                    </div>
+
+                    <!-- Right column -->
+                    <div class="col-right">
+                        <div class="photo-card">
+                            <img src="depth/shallow/hammerhead.jpeg" alt="Hammerhead shark" loading="lazy">
+                        </div>
+                        <div class="photo-card">
+                            <img src="depth/shallow/hammerheads.jpeg" alt="Hammerhead sharks" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-row">
+                    <div class="photo-card">
+                        <img src="depth/shallow/sharks.jpeg" alt="Sharks" loading="lazy">
+                    </div>
+                    <div class="photo-card">
+                        <img src="depth/shallow/sharkandfish.jpeg" alt="Shark among fish" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+         WATER TRANSITION
+         ══════════════════════════════════ -->
+        <section id="water-transition">
+            <p class="transition-text">
+                The camera captures what exists. The machine imagines what could.
+            </p>
+
+           
+
+            <div class="ai-water-grid">
+                <div class="ai-water-cell">
+                    <img src="depth/ai-water/ai-water1.png" alt="AI water study 1" loading="lazy">
+                </div>
+                <div class="ai-water-cell">
+                    <img src="depth/ai-water/ai-water2.jpg" alt="AI water study 2" loading="lazy">
+                </div>
+                <div class="ai-water-cell">
+                    <img src="depth/ai-water/ai-water3.png" alt="AI water study 3" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+         MID DEPTH
+         ══════════════════════════════════ -->
+        <section id="mid-depth">
+
+            <div class="mid-header">
+                <p class="section-marker">30–150 meters · Mesopelagic Zone</p>
+                <h2>Mid Water</h2>
+            </div>
+
+            <!-- Pair 1 -->
+            <div class="image-pair">
+                <div class="pair-text">
+                    <p class="pair-label">01 / Swimmers</p>
+                  
+                </div>
+                <div class="pair-images">
+                    <div class="pair-image-wrap sway">
+                        <img src="depth/mid/source1.jpeg" alt="Underwater photograph 1" loading="lazy">
+                        <span class="image-label">Painting</span>
+                    </div>
+                    <div class="pair-image-wrap sway-alt">
+                        <img src="depth/mid/painting-water1.png" alt="AI transformed 1" loading="lazy">
+                        <span class="image-label">AI&nbsp;transformed</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pair 2 -->
+            <div class="image-pair">
+                <div class="pair-text">
+                    <p class="pair-label">02 / Waterside Cigarette</p>
+
+                </div>
+                <div class="pair-images">
+                    <div class="pair-image-wrap sway">
+                        <img src="depth/mid/source2.jpeg" alt="Underwater photograph 2" loading="lazy">
+                        <span class="image-label">Painting</span>
+                    </div>
+                    <div class="pair-image-wrap sway-alt">
+                        <img src="depth/mid/painting-water2.png" alt="AI transformed 2" loading="lazy">
+                        <span class="image-label">AI&nbsp;transformed</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pair 3 -->
+            <div class="image-pair">
+                <div class="pair-text">
+                    <p class="pair-label">03 / Seaside, Caiscais</p>
+
+                </div>
+                <div class="pair-images">
+                    <div class="pair-image-wrap sway">
+                        <img src="depth/mid/source3.jpeg" alt="Underwater photograph 3" loading="lazy">
+                        <span class="image-label">Painting</span>
+                    </div>
+                    <div class="pair-image-wrap sway-alt">
+                        <img src="depth/mid/painting-water3.jpg" alt="AI transformed 3" loading="lazy">
+                        <span class="image-label">AI&nbsp;transformed</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ══════════════════════════════════
+         DEEP
+         ══════════════════════════════════ -->
+        <section id="deep">
+
+            <div class="deep-intro">
+                <p class="depth-marker">200+ meters · The Twilight Zone</p>
+                <h2>Where light dissolves<br>and meaning is made</h2>
+                <h3>Painting and photograph lose their borders here. What's left isn't natural or artificial. It's just new.</h3>
+
+            </div>
+
+            <div class="artifacts-grid">
+                <div class="artifact-wrap">
+                    <img src="depth/final-artifact/first.png" alt="Final artifact — first" loading="lazy">
+                    <div class="artifact-glow"></div>
+                </div>
+                <div class="artifact-wrap">
+                    <img src="depth/final-artifact/second.png" alt="Final artifact — second" loading="lazy">
+                    <div class="artifact-glow"></div>
+                </div>
+            </div>
+
+            <div class="deep-text">
+                <p>
+                    At this depth, the distinction between nature, human, and machine
+                    begins to dissolve. What remains is only pattern, light, and the
+                    persistent search for meaning in the dark.
+                </p>
+                <p>
+                    These are not photographs. They are not paintings. They're something that neither my hand nor the
+                    algorithm could have made alone.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- ══════════════════════════════════
+         FLOOR
+         ══════════════════════════════════ -->
+        <section id="floor">
+            <div class="statement">
+                <p class="floor-marker">Artist Statement</p>
+                <h2>About<br>the work</h2>
+                <p>
+                    I'm Juliette Mangon, a computer scientist, mathematician, painter, and diver. I work where
+                    technology, creativity, and the natural world overlap.
+                </p>
+                <p>
+                    This project started with my dad's diving photos. Images from a world I grew up in, full of silence
+                    and weird, beautiful light. I wanted to see what happens when that world meets a machine that's
+                    absorbed centuries of human art about the ocean.
+                </p>
+                <p>
+                    What comes back isn't just a stylized image.
+                    It's something that feels like a shared memory —
+                    as if the machine, too, has dreamed of the deep.
+                </p>
+                <div class="statement-divider"></div>
+                <a href="/" class="back-link">juliettemangon.com</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ═══════════════════════════════
+           BACKGROUND
+           ═══════════════════════════════ */
+
+        const bgEl = document.getElementById('bg-gradient');
+
+        const colorStops = [
+            [0.00, '#c2e8f6', '#1888ba'],
+            [0.10, '#0e6e98', '#064f72'],
+            [0.26, '#053c6a', '#021c38'],
+            [0.46, '#021124', '#010b16'],
+            [0.68, '#01090f', '#000406'],
+            [1.00, '#000000', '#000102'],
+        ];
+
+        function hexToRgb(h) {
+            return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+        }
+        function rgbToHex(r, g, b) {
+            return '#' + [r, g, b].map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
+        }
+        function lerpColor(c1, c2, t) {
+            const [r1, g1, b1] = hexToRgb(c1), [r2, g2, b2] = hexToRgb(c2);
+            return rgbToHex(r1 + (r2 - r1) * t, g1 + (g2 - g1) * t, b1 + (b2 - b1) * t);
+        }
+
+        function updateBg(p) {
+            let lo = colorStops[0], hi = colorStops[colorStops.length - 1];
+            for (let i = 0; i < colorStops.length - 1; i++) {
+                if (p >= colorStops[i][0] && p <= colorStops[i + 1][0]) { lo = colorStops[i]; hi = colorStops[i + 1]; break; }
+            }
+            const t = hi[0] === lo[0] ? 0 : (p - lo[0]) / (hi[0] - lo[0]);
+            bgEl.style.background = `linear-gradient(to bottom, ${lerpColor(lo[1], hi[1], t)}, ${lerpColor(lo[2], hi[2], t)})`;
+        }
+
+        updateBg(0);
+        ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => updateBg(self.progress) });
+
+        /* ═══════════════════════════════
+           PARTICLES
+           ═══════════════════════════════ */
+
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let scrollProg = 0;
+        window.addEventListener('scroll', () => {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProg = max > 0 ? window.scrollY / max : 0;
+        }, { passive: true });
+
+        class Bubble {
+            constructor() { this.reset(true); }
+            reset(init = false) {
+                this.x = Math.random() * W;
+                this.y = init ? Math.random() * H : H + 15;
+                this.r = Math.random() * 14 + 4;
+                this.vy = -(Math.random() * 0.55 + 0.22);
+                this.wb = Math.random() * Math.PI * 2;
+                this.ws = Math.random() * 0.022 + 0.007;
+                this.a = Math.random() * 0.4 + 0.07;
+            }
+            step() {
+                this.y += this.vy; this.wb += this.ws; this.x += Math.sin(this.wb) * 0.38;
+                if (this.y < -this.r * 5) this.reset();
+                if (this.x < -20) this.x = W + 20;
+                if (this.x > W + 20) this.x = -20;
+            }
+            draw() {
+                const a = this.a * Math.max(0, 1 - scrollProg * 2.8);
+                if (a < 0.005) return;
+                ctx.save(); ctx.globalAlpha = a;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(195,232,255,0.9)'; ctx.lineWidth = 0.75; ctx.stroke();
+                ctx.beginPath(); ctx.arc(this.x - this.r * 0.3, this.y - this.r * 0.3, this.r * 0.22, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        class LightRay {
+            constructor(angle, width, alpha) {
+                this.angle = angle; this.width = width; this.baseA = alpha;
+                this.pulse = Math.random() * Math.PI * 2; this.ps = Math.random() * 0.01 + 0.005;
+            }
+            step() { this.pulse += this.ps; }
+            draw() {
+                const a = this.baseA * (0.45 + Math.sin(this.pulse) * 0.55) * Math.max(0, 1 - scrollProg * 6);
+                if (a < 0.005) return;
+                ctx.save(); ctx.globalAlpha = a; ctx.translate(W * 0.5, 0); ctx.rotate(this.angle);
+                const g = ctx.createLinearGradient(0, 0, 0, H * 0.75);
+                g.addColorStop(0, 'rgba(255,255,255,0.2)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = g; ctx.beginPath();
+                ctx.moveTo(-this.width * 0.5, 0); ctx.lineTo(this.width * 0.5, 0);
+                ctx.lineTo(this.width * 2.2, H); ctx.lineTo(-this.width * 2.2, H);
+                ctx.closePath(); ctx.fill(); ctx.restore();
+            }
+        }
+
+        class BioParticle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * W; this.y = Math.random() * H;
+                this.r = Math.random() * 1.4 + 0.3; this.gr = this.r * (Math.random() * 4 + 3.5);
+                this.pulse = Math.random() * Math.PI * 2; this.ps = Math.random() * 0.024 + 0.007;
+                this.a = Math.random() * 0.5 + 0.12;
+                this.dx = (Math.random() - 0.5) * 0.14; this.dy = (Math.random() - 0.5) * 0.08;
+                const g = Math.floor(165 + Math.random() * 90), b = Math.floor(155 + Math.random() * 100);
+                this.col = `0,${g},${b}`;
+            }
+            step() {
+                this.pulse += this.ps; this.x += this.dx; this.y += this.dy;
+                if (this.x < -20) this.x = W + 20; if (this.x > W + 20) this.x = -20;
+                if (this.y < -20) this.y = H + 20; if (this.y > H + 20) this.y = -20;
+            }
+            draw() {
+                const vis = Math.max(0, (scrollProg - 0.32) * 3.2);
+                const a = this.a * (0.45 + Math.sin(this.pulse) * 0.55) * vis;
+                if (a < 0.005) return;
+                ctx.save(); ctx.globalAlpha = a;
+                const gr = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.gr);
+                gr.addColorStop(0, `rgba(${this.col},0.6)`); gr.addColorStop(0.35, `rgba(${this.col},0.15)`); gr.addColorStop(1, `rgba(${this.col},0)`);
+                ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(this.x, this.y, this.gr, 0, Math.PI * 2); ctx.fill();
+                ctx.globalAlpha = a * 0.9; ctx.fillStyle = `rgba(${this.col},1)`;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const bubbles = Array.from({ length: 40 }, () => new Bubble());
+        const rays = [new LightRay(-0.28, 28, 0.08), new LightRay(-0.1, 20, 0.06), new LightRay(0.05, 33, 0.07), new LightRay(0.2, 24, 0.05), new LightRay(0.36, 14, 0.04)];
+        const bioParticles = Array.from({ length: 55 }, () => new BioParticle());
+
+        (function loop() {
+            requestAnimationFrame(loop);
+            ctx.clearRect(0, 0, W, H);
+            if (scrollProg < 0.28) rays.forEach(r => { r.step(); r.draw(); });
+            bubbles.forEach(b => { b.step(); b.draw(); });
+            bioParticles.forEach(p => { p.step(); p.draw(); });
+        })();
+
+        /* ═══════════════════════════════
+           GSAP ANIMATIONS
+           ═══════════════════════════════ */
+
+        // Hero
+        gsap.fromTo('.hero h1', { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 1.8, ease: 'power3.out', delay: 0.3 });
+        gsap.fromTo('.hero-tagline', { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', delay: 1.0 });
+
+        // Photos
+        gsap.fromTo('.photo-card',
+            { opacity: 0, y: 40 },
+            {
+                opacity: 1, y: 0, duration: 1, ease: 'power2.out', stagger: 0.12,
+                scrollTrigger: { trigger: '.photo-section', start: 'top 82%' }
+            }
+        );
+
+        document.querySelectorAll('.photo-card').forEach((c, i) => {
+            gsap.to(c, {
+                y: (i % 2 === 0 ? -20 : 20), ease: 'none',
+                scrollTrigger: { trigger: '#surface', start: 'top top', end: 'bottom top', scrub: 1 }
+            });
+        });
+
+        // Transition
+        gsap.fromTo('.transition-text',
+            { opacity: 0, y: 28 },
+            {
+                opacity: 1, y: 0, duration: 1.1, ease: 'power2.out',
+                scrollTrigger: { trigger: '#water-transition', start: 'top 72%' }
+            }
+        );
+
+        gsap.fromTo('.ai-water-cell',
+            { opacity: 0, y: 35 },
+            {
+                opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', stagger: 0.2,
+                scrollTrigger: { trigger: '.ai-water-grid', start: 'top 80%' }
+            }
+        );
+
+        [[-22], [-38], [-16]].forEach(([speed], i) => {
+            gsap.to(document.querySelectorAll('.ai-water-cell')[i], {
+                y: speed, ease: 'none',
+                scrollTrigger: { trigger: '#water-transition', start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+            });
+        });
+
+        // Mid header
+        gsap.fromTo('.mid-header',
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+                scrollTrigger: { trigger: '.mid-header', start: 'top 80%' }
+            }
+        );
+
+        // Pairs
+        document.querySelectorAll('.image-pair').forEach(pair => {
+            const wraps = pair.querySelectorAll('.pair-image-wrap');
+            const text = pair.querySelector('.pair-text');
+
+            gsap.fromTo(wraps, { opacity: 0, y: 45 },
+                {
+                    opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', stagger: 0.18,
+                    scrollTrigger: { trigger: pair, start: 'top 78%' }
+                });
+
+            gsap.fromTo(text, { opacity: 0, y: 20 },
+                {
+                    opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+                    scrollTrigger: { trigger: pair, start: 'top 65%' }
+                });
+
+            wraps.forEach((w, j) => {
+                gsap.to(w, {
+                    y: j === 0 ? -15 : 15, ease: 'none',
+                    scrollTrigger: { trigger: pair, start: 'top bottom', end: 'bottom top', scrub: 1 }
+                });
+            });
+        });
+
+        // Deep
+        gsap.fromTo('.deep-intro', { opacity: 0, y: 30 },
+            {
+                opacity: 1, y: 0, duration: 1.2, ease: 'power2.out',
+                scrollTrigger: { trigger: '#deep', start: 'top 76%' }
+            });
+
+        gsap.fromTo('.artifact-wrap', { opacity: 0, y: 50 },
+            {
+                opacity: 1, y: 0, duration: 1.4, ease: 'power2.out', stagger: 0.25,
+                scrollTrigger: { trigger: '.artifacts-grid', start: 'top 78%' }
+            });
+
+        document.querySelectorAll('.artifact-wrap').forEach((a, i) => {
+            gsap.to(a, {
+                y: i === 0 ? -25 : -12, ease: 'none',
+                scrollTrigger: { trigger: '.artifacts-grid', start: 'top bottom', end: 'bottom top', scrub: 1 }
+            });
+        });
+
+        gsap.fromTo('.deep-text', { opacity: 0, y: 25 },
+            {
+                opacity: 1, y: 0, duration: 1.2, ease: 'power2.out',
+                scrollTrigger: { trigger: '.deep-text', start: 'top 82%' }
+            });
+
+        // Floor
+        gsap.fromTo('.statement', { opacity: 0, y: 30 },
+            {
+                opacity: 1, y: 0, duration: 1.5, ease: 'power2.out',
+                scrollTrigger: { trigger: '#floor', start: 'top 72%' }
+            });
+
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+    </script>
+</body>
+
+</html>
