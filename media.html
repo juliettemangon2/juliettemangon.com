@@ -377,7 +377,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      max-width: 700px;
+      max-width: 1200px;
       margin-left: auto;
       margin-right: 0;
 
@@ -393,7 +393,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      max-width: 600px;
+      max-width: 1200px;
       margin: 0 auto;
       margin-right: 2rem;
     }
@@ -440,7 +440,7 @@
       left: 0;
       right: 0;
       margin-top: 2rem;
-      text-align:right;
+      text-align: right;
       z-index: 100;
       margin-bottom: 1rem;
       padding-top: 2rem;
@@ -507,7 +507,8 @@
       .intro-text {
         font-size: 1rem;
       }
-      .date-text{
+
+      .date-text {
         font-size: 1rem;
         padding-bottom: 2rem;
 
@@ -898,6 +899,9 @@
         <button class="list-button" onclick="showList('favoritefoods', this)">
           favorite foods
         </button>
+         <button class="list-button" onclick="showList('cafes', this)">
+          cafes
+        </button>
       </div>
 
       <div class="list-content">
@@ -955,9 +959,38 @@
             </div>
           </div>
         </div>
+        <div id="cafes" class="list-section">
+          <div class="in-out-container">
+            <div class="in-section">
+              <h2>Cafes I'm a regular at</h2>
+              <div class="simple-list">
+                <div class="simple-item">3 jewels</div>
+                <div class="simple-item">La Colombe</div>
+                <div class="simple-item">Thayer</div>
+                <div class="simple-item">9th Street Espresso</div>
+                <div class="simple-item">Smør</div>
+                <div class="simple-item">Librae</div>
+
+              </div>
+            </div>
+            <div class="out-section">
+              <h2>My order</h2>
+              <div class="simple-list">
+                <div class="simple-item">Iced cappuccino with strawberry </div>
+                <div class="simple-item">Iced flat white with vanilla</div>
+                <div class="simple-item">Iced cortado with snickerdoodle</div>
+                <div class="simple-item">Iced quad shot with regular milk and honey</div>
+                <div class="simple-item">Iced cappuccino with cardamom or lavender</div>
+                <div class="simple-item">Iced flat white with cardamom</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-     <div class="date">
+    <div class="date">
       <p class="date-text">Page last updated 10:55PM EST, March 9 2026.</p>
 
     </div>
