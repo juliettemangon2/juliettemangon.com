@@ -182,7 +182,7 @@
             line-height: 1.5;
             opacity: 0;
             transform: translateY(20px);
-            max-width: 1400px;     
+            max-width: 1400px;
             margin-left: 1rem;
 
 
@@ -248,7 +248,6 @@
             transition: box-shadow 0.4s ease;
         }
 
-        .photo-card:hover {}
 
         .photo-card img {
             width: 100%;
@@ -353,7 +352,7 @@
         }
 
         .mid-header {
-            margin-bottom: 7rem;
+            margin-bottom: 2rem;
             max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
@@ -364,7 +363,8 @@
         .section-marker {
             font-size: 2rem;
             color: rgba(255, 255, 255, 0.35);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0rem;
+            padding-bottom:0rem;
         }
 
         .mid-header h2 {
@@ -403,15 +403,7 @@
             will-change: transform;
         }
 
-        .pair-image-wrap.sway img {
-            animation: sway 7s ease-in-out infinite;
-            transform-origin: center bottom;
-        }
 
-        .pair-image-wrap.sway-alt img {
-            animation: swayAlt 9s ease-in-out infinite;
-            transform-origin: center bottom;
-        }
 
         @keyframes sway {
 
@@ -499,10 +491,8 @@
         }
 
         .depth-marker {
-            font-size: 0.7rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: rgba(0, 225, 180, 0.55);
+            font-size: 1.7rem;
+            color: #fff;
             margin-bottom: 0.9rem;
         }
 
@@ -518,7 +508,7 @@
         .deep-intro h3 {
             font-weight: 500;
             margin-top: 1rem;
-            font-size: 2rem;
+            font-size: 2.4rem;
 
         }
 
@@ -712,10 +702,13 @@
                     <div class="photo-card card-dad">
                         <img src="depth/shallow/dad.jpeg" alt="Diving with my dad" loading="lazy">
                         <p class="photo-caption">
-                            When I was 11, my dad introduced me to his life long passion for scubadiving.
-                            He immersed me into the underwater world, where I found comfort in the silence, and a
-                            sanctuary of beautifully intricate ecosystems to observe. <br> This project uses Gemini AI
-                            to combine his scubadiving photos with my water related paintings to imagine a world where
+                            When I was 11, my dad introduced me to his life long passion for scuba diving.
+                            He immersed me in the underwater world, where I found comfort in the silence, and a
+                            sanctuary of intricate ecosystems to observe. <br>
+
+                            <br> This project uses Gemini AI
+                            to combine his scuba diving photos, some of which are displayed here, with my water related
+                            paintings to imagine a world where
                             humans, nature, and technology can coexist.
                         </p>
                     </div>
@@ -747,10 +740,10 @@
          ══════════════════════════════════ -->
         <section id="water-transition">
             <p class="transition-text">
-                The camera captures what exists. The machine imagines what could.
+                Photos taken by human, reimagined with AI.
             </p>
 
-           
+
 
             <div class="ai-water-grid">
                 <div class="ai-water-cell">
@@ -762,6 +755,9 @@
                 <div class="ai-water-cell">
                     <img src="depth/ai-water/ai-water3.png" alt="AI water study 3" loading="lazy">
                 </div>
+                  <div class="ai-water-cell">
+                    <img src="depth/ai-water/ai-water4.png" alt="AI water study 3" loading="lazy">
+                </div>
             </div>
         </section>
 
@@ -772,18 +768,38 @@
 
             <div class="mid-header">
                 <p class="section-marker">30–150 meters · Mesopelagic Zone</p>
-                <h2>Mid Water</h2>
+            </div>
+            <p class="transition-text">
+                Photos taken by human, paintings by humans, combined and reimagined with AI.
+            </p>
+
+              <div class="image-pair">
+                <div class="pair-text">
+                    <p class="pair-label">01 / Cliffs</p>
+
+                </div>
+                <div class="pair-images">
+                    <div class="pair-image-wrap sway">
+                        <img src="images/cliffs.jpeg" alt="Underwater photograph 1" loading="lazy">
+                        <span class="image-label">Painting</span>
+                    </div>
+                    <div class="pair-image-wrap sway-alt">
+                        <img src="depth/mid/painting-water4.png" alt="AI transformed 1" loading="lazy">
+                        <span class="image-label">AI&nbsp;transformed</span>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Pair 1 -->
             <div class="image-pair">
                 <div class="pair-text">
-                    <p class="pair-label">01 / Swimmers</p>
-                  
+                    <p class="pair-label">02 / Swimmers</p>
+
                 </div>
                 <div class="pair-images">
                     <div class="pair-image-wrap sway">
-                        <img src="depth/mid/source1.jpeg" alt="Underwater photograph 1" loading="lazy">
+                        <img src="images/swimming.jpeg" alt="Underwater photograph 1" loading="lazy">
                         <span class="image-label">Painting</span>
                     </div>
                     <div class="pair-image-wrap sway-alt">
@@ -797,7 +813,7 @@
             <!-- Pair 2 -->
             <div class="image-pair">
                 <div class="pair-text">
-                    <p class="pair-label">02 / Waterside Cigarette</p>
+                    <p class="pair-label">03 / Poolside </p>
 
                 </div>
                 <div class="pair-images">
@@ -816,7 +832,7 @@
             <!-- Pair 3 -->
             <div class="image-pair">
                 <div class="pair-text">
-                    <p class="pair-label">03 / Seaside, Caiscais</p>
+                    <p class="pair-label">04 / Seaside, Caiscais</p>
 
                 </div>
                 <div class="pair-images">
@@ -841,8 +857,8 @@
 
             <div class="deep-intro">
                 <p class="depth-marker">200+ meters · The Twilight Zone</p>
-                <h2>Where light dissolves<br>and meaning is made</h2>
-                <h3>Painting and photograph lose their borders here. What's left isn't natural or artificial. It's just new.</h3>
+                <h3>Painting and photograph lose their borders here. What's left isn't natural or artificial. It's just
+                    new.</h3>
 
             </div>
 
@@ -857,18 +873,7 @@
                 </div>
             </div>
 
-            <div class="deep-text">
-                <p>
-                    At this depth, the distinction between nature, human, and machine
-                    begins to dissolve. What remains is only pattern, light, and the
-                    persistent search for meaning in the dark.
-                </p>
-                <p>
-                    These are not photographs. They are not paintings. They're something that neither my hand nor the
-                    algorithm could have made alone.
-                </p>
-            </div>
-
+           
         </section>
 
         <!-- ══════════════════════════════════
@@ -879,18 +884,18 @@
                 <p class="floor-marker">Artist Statement</p>
                 <h2>About<br>the work</h2>
                 <p>
-                    I'm Juliette Mangon, a computer scientist, mathematician, painter, and diver. I work where
-                    technology, creativity, and the natural world overlap.
+                    I'm Juliette Mangon, I am 21 years old and I live in New York City. I'm interested in how we can leverage technology to shape the way media is created, distributed, and experienced. I am focused on where
+                    technology, art, and the natural world overlap.
                 </p>
                 <p>
-                    This project started with my dad's diving photos. Images from a world I grew up in, full of silence
-                    and weird, beautiful light. I wanted to see what happens when that world meets a machine that's
-                    absorbed centuries of human art about the ocean.
+                    This project started with my paintings, and dad's diving photos. 
                 </p>
                 <p>
-                    What comes back isn't just a stylized image.
-                    It's something that feels like a shared memory —
-                    as if the machine, too, has dreamed of the deep.
+                   I rarely see AI generated art that I like, so I wanted to test the threshold of how much human art should be used in tandem with the ai to create a new piece that is enjoyable. 
+                   Let alone something that actually compounds in value?!
+                   </p>
+                   <p>
+                   Additionally, I did some fun prompt engineering to test different outputs, and I used AI to make about 80% of this page.
                 </p>
                 <div class="statement-divider"></div>
                 <a href="/" class="back-link">juliettemangon.com</a>
