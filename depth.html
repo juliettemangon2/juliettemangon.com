@@ -172,14 +172,13 @@
 
         .hero {
             min-height: 100vh;
-            display: flex;
+            display: flex !important;
             flex-direction: column;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 2rem 0 4rem;
+            padding: 2rem 0 6rem;
             position: relative;
             z-index: 1;
-            padding-bottom: 6rem;
         }
 
         .hero h1 {
@@ -680,7 +679,7 @@
         }
 
         .statement {
-            max-width: 75%;
+            max-width: 60%;
             opacity: 0;
             transform: translateY(30px);
         }
@@ -807,7 +806,65 @@
 
         /* ── RESPONSIVE ───────────────────────── */
 
+        /* Tablets: stack pair images before they start overlapping */
+        @media (max-width: 1024px) {
+            .pair-images {
+                grid-template-columns: 1fr;
+            }
+
+            .pair-image-wrap {
+                position: relative;
+                top: auto;
+            }
+
+            .pair-image-wrap img {
+                height: auto;
+            }
+
+            .ai-water-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .ai-water-cell:nth-child(1),
+            .ai-water-cell:nth-child(3) {
+                margin: 0;
+            }
+
+            /* Keep hero content from sitting at the very bottom on tablets */
+            .hero {
+                justify-content: center;
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            .hero-tagline {
+                padding: 0.5rem 0;
+                margin-top: 0.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            #surface {
+                position: relative;
+            }
+
+            .hero {
+                justify-content: flex-start;
+                min-height: 100svh;
+                padding-top: 4rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-tagline {
+                padding: 0.4rem 0;
+                margin-top: 0.4rem;
+            }
+
+            .hero-orb {
+                width: 120vw;
+                top: 40%;
+            }
+
             .container {
                 width: 94%;
             }
@@ -841,6 +898,15 @@
                 grid-template-columns: 1fr;
             }
 
+            .pair-image-wrap {
+                position: relative;
+                top: auto;
+            }
+
+            .pair-image-wrap img {
+                height: auto;
+            }
+
             .panorama-container {
                 height: 100vh;
                 height: 100svh;
@@ -852,6 +918,23 @@
             .deep-body,
             .statement {
                 max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.5rem, 16vw, 7rem);
+            }
+
+            .image-label {
+                font-size: 1rem;
+                padding: 0.4rem 0;
+            }
+
+            .selected {
+                font-size: 2rem;
+            }
+
+            .pair-label {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -1153,36 +1236,54 @@
 
                 <h2>Artist<br>Statement</h2>
                 <p>
-                    I'm Juliette Mangon. My dad introduced me to scuba diving when I was 11. He showed me a world that
-                    operates on its own terms, where everything is connected, and where humans are guests. After I began
-                    diving, I grew a new appreciation for animals, which led me to becoming vegetarian in that following
-                    year.
-                    Being vegetarian and caring for the environment has shaped how I think about everything, including
-                    technology. This project imagines a world where human
-                    innovation supports the entire planet, not just our own species.
+                    I'm Juliette Mangon, I am 21 years old and I live in NYC. In December of 2025, I graduated from NYU
+                    in Computer Science and Math.
                 </p>
                 <p>
-                    I rarely see AI-generated art that I like, which made me curious about what was missing. The answer
-                    I found wasn't the prompt or amount of AI used, it was about better
-                    inputs. This project feeds my paintings and my dad's underwater photography into Gemini in different
-                    combinations, layering source material and iterating through rounds of prompting. What comes out
-                    depends entirely on what goes in. The pieces I created are fascinating to look at, and I can
+                    I like approaching things from more than one angle. This project carries two ideas: experimenting
+                    with human-AI collaboration, and what would it look like if technology grew in favor of the
+                    environment.
+
+                </p>
+                <p>
+                    My dad introduced me to scuba diving when I was 11. After I began
+                    diving, I grew a new appreciation for animals, and in the following year I became vegetarian.
+                    Since then, being vegetarian and caring for the environment has shaped how I think about everything.
+                </p>
+                <p>
+                    I started this project because I rarely see AI-generated content that I like, so I wanted to test
+                    different inputs evaluate what types of inputs would give me a result that I actually enjoyed.
+                    I decided to use my dad's underwater photography as well as my own paintings as inputs.
+
+                    I fed my material into Gemini in different combinations, layering source material and iterating
+                    through rounds of prompting. I was shocked to see that what came out depended almost entirely on the
+                    material itself, rather than the prompt I used.
+
+                    The pieces I created are fascinating to look at, and I can
                     honestly say that this is the first time I've felt that AI added value to an artwork.
-
-                </p>
-                <p>
-                    I tend to approach things from more than one angle. This project has two: a creative question about
-                    human-AI collaboration, and a vision for coexistence between nature, humans, and machines. That
-                    mirrors how I think about my work more broadly. I'm interested in how technology shapes the way
-                    media is created, distributed, and experienced. I approach that from two angles: building products
-                    that solve real problems, and exploring technology as a creative medium itself.
                 </p>
 
-                <div class="statement-divider"></div>
                 <p class="collective-note">
-                    <!-- [INSY NOTE: Co-founder of I Never See You, a collective exploring new forms of coexistence between nature, humans, and machines. One sentence, with a link if you have one.] -->
-                    Co-founder of <a href="https://ineverseeyou.com/">I Never See You</a> — a collective imagining new
-                    forms of coexistence between nature, humans, and machines.
+                    On the other side of things, I wanted to use this project as an opportunity to envision coexistence
+                    between nature, humans, and machines.
+
+                    I often think about why so many people seem to lack care for our environment, and one conclusion
+                    I've come to is that we are missing a lot of visuals in this conversation, and it is often more
+                    moving to see things than to just hear about them. This conclusion is usually addressed by showing
+                    people photos of coral bleaching, ice melting, etc. But I wanted to take the more optimistic
+                    approach. Instead of showing what we have already done negatively, I wanted to use visuals to
+                    highlight the extraordinary sea life that still exists (like a rush to preserve it), and show off the magic of what
+                    what Earth <em>could</em> be like if we all came together and starting innovating in a way that helps the world around us. 
+
+
+                    I recently cofounded <a href="https://ineverseeyou.com/">I Never See You</a>, a
+                    collective of creative individuals interested in art and technology across disciplines. Our work
+                    imagines new forms of coexistence between nature, humans, and machines.
+
+                    We work in cycles. Each cycle has a designated theme, and our first theme is origin. I thought this
+                    was a great opportunity to create a piece for our first cycle.
+
+
                 </p>
                 <a href="/" class="back-link">juliettemangon.com</a>
             </div>
