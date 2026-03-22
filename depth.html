@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css" />
 
 
     <style>
@@ -380,9 +379,9 @@
             transform: translate(-50%, -50%);
             z-index: 7;
             font-family: var(--font-main);
-            font-size: 1rem;
+            font-size: 1.3rem;
             letter-spacing: 0.06em;
-            color: var(--white-50);
+            color: #fff;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.6s ease;
@@ -830,17 +829,7 @@
                 margin: 0;
             }
 
-            /* Keep hero content from sitting at the very bottom on tablets */
-            .hero {
-                justify-content: center;
-                padding-top: 4rem;
-                padding-bottom: 4rem;
-            }
 
-            .hero-tagline {
-                padding: 0.5rem 0;
-                margin-top: 0.5rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -851,7 +840,7 @@
             .hero {
                 justify-content: flex-start;
                 min-height: 100svh;
-                padding-top: 4rem;
+                padding-top: 10rem;
                 padding-bottom: 3rem;
             }
 
@@ -1056,7 +1045,7 @@
             <div class="container">
                 <div class="section-intro reveal">
                     <p class="section-headline">
-                        Photos taken by human, paintings by human,<br>combined and reimagined with AI.
+                        Photos by human, paintings by human,<br>combined and reimagined with AI.
                     </p>
                 </div>
 
@@ -1131,8 +1120,8 @@
                 <div class="section-intro reveal">
                     <p class="zone-label">1000-4000 meters · Bathypelagic Zone</p>
                     <p class="deep-intro-text">
-                        Here's where it gets fun. Let's use our augmented paintings to create full scenes of a world
-                        where technology, nature, and humans coexist.
+                        Now, let's use our augmented paintings to imagine full scenes of humans, wildlife and technology
+                        working in tandem.
                     </p>
 
                 </div>
@@ -1179,6 +1168,9 @@
 
                 <div class="pano-title-block">
                     <p class="zone-label">4000+ meters · Abyssalpelagic Zone</p>
+                    <p class="deep-intro-text">
+                        One world, surface to ocean floor.
+                    </p>
 
                     <h2 class="pano-title">Surface Level</h2>
                 </div>
@@ -1196,7 +1188,10 @@
         <section id="between-zone">
 
             <div class="between-zone-inner">
-                <h2 class="between-zone-title">Everything in Between</h2>
+                <h2 class="between-zone-title">What's already here</h2>
+                <p class="deep-intro-text">
+                    No AI. These are some of the photos my dad has taken over years of diving, and the source material
+                    behind this project. </p>
                 <div class="between-gallery">
                     <img src="depth/shallow/eel.JPG" alt="Eel" loading="lazy">
                     <img src="depth/shallow/herd.JPEG" alt="Hammerhead shark" loading="lazy">
@@ -1204,8 +1199,18 @@
                     <img src="depth/shallow/whalething.jpeg" alt="Sharks" loading="lazy">
                     <img src="depth/shallow/barracuda.JPG" alt="Eel" loading="lazy">
                     <img src="depth/shallow/whalesharks.JPG" alt="Eel" loading="lazy">
-                    <img src="depth/shallow/ray.jpeg" alt="Eel" loading="lazy">
+                                        <img src="depth/shallow/puffer.JPG" alt="Hammerhead sharks" loading="lazy">
+
                     <img src="depth/shallow/hammerheads.jpeg" alt="Hammerhead sharks" loading="lazy">
+                                        <img src="depth/shallow/ray.jpeg" alt="Eel" loading="lazy">
+
+                    <img src="depth/shallow/hammerhead.jpeg" alt="Hammerhead sharks" loading="lazy">
+                    <img src="depth/shallow/sharks.jpeg" alt="Hammerhead sharks" loading="lazy">
+
+                    <img src="depth/shallow/lobster.JPG" alt="Hammerhead sharks" loading="lazy">
+
+
+
 
 
                 </div>
@@ -1251,38 +1256,27 @@
                     Since then, being vegetarian and caring for the environment has shaped how I think about everything.
                 </p>
                 <p>
-                    I started this project because I rarely see AI-generated content that I like, so I wanted to test
-                    different inputs evaluate what types of inputs would give me a result that I actually enjoyed.
-                    I decided to use my dad's underwater photography as well as my own paintings as inputs.
-
-                    I fed my material into Gemini in different combinations, layering source material and iterating
-                    through rounds of prompting. I was shocked to see that what came out depended almost entirely on the
-                    material itself, rather than the prompt I used.
-
-                    The pieces I created are fascinating to look at, and I can
-                    honestly say that this is the first time I've felt that AI added value to an artwork.
+                    I started this project because I rarely connect with AI-generated content, and I wanted to
+                    understand
+                    why. I decided to test what happens when the inputs themselves carry real weight, using my dad's
+                    underwater photography and my own paintings, rather than relying on elaborate prompting. I fed the
+                    material into Gemini in different combinations, layering sources and iterating across rounds. What
+                    surprised me was that the output depended almost entirely on the material itself, not the language I
+                    used to prompt it. These pieces are the first time I've felt that AI genuinely added something to an
+                    artwork rather than flattening it.
+                </p>
+                <p>
+                    On the other side, I wanted to take an optimistic approach to the conversation around our
+                    environment. Rather than showing damage already done, I wanted to highlight the extraordinary life
+                    that still exists underwater and imagine what the world could look like if we built with nature in
+                    mind.
                 </p>
 
                 <p class="collective-note">
-                    On the other side of things, I wanted to use this project as an opportunity to envision coexistence
-                    between nature, humans, and machines.
-
-                    I often think about why so many people seem to lack care for our environment, and one conclusion
-                    I've come to is that we are missing a lot of visuals in this conversation, and it is often more
-                    moving to see things than to just hear about them. This conclusion is usually addressed by showing
-                    people photos of coral bleaching, ice melting, etc. But I wanted to take the more optimistic
-                    approach. Instead of showing what we have already done negatively, I wanted to use visuals to
-                    highlight the extraordinary sea life that still exists (like a rush to preserve it), and show off the magic of what
-                    what Earth <em>could</em> be like if we all came together and starting innovating in a way that helps the world around us. 
-
-
-                    I recently cofounded <a href="https://ineverseeyou.com/">I Never See You</a>, a
-                    collective of creative individuals interested in art and technology across disciplines. Our work
-                    imagines new forms of coexistence between nature, humans, and machines.
-
-                    We work in cycles. Each cycle has a designated theme, and our first theme is origin. I thought this
-                    was a great opportunity to create a piece for our first cycle.
-
+                    This project is also my first contribution to <a href="https://ineverseeyou.com/">I Never See
+                        You</a>, a collective I co-founded that explores the intersection of art and technology. Our
+                    first cycle's theme is origin, and this felt like the
+                    right place to start.
 
                 </p>
                 <a href="/" class="back-link">juliettemangon.com</a>
