@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Depth | Juliette Mangon</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css" />
+
 
     <style>
         *,
@@ -22,21 +21,29 @@
             padding: 0;
         }
 
+        :root {
+            --font-main: 'Inter', system-ui, sans-serif;
+            --white: #ffffff;
+            --white-90: rgba(255, 255, 255, 0.9);
+            --white-70: rgba(255, 255, 255, 0.7);
+            --white-50: rgba(255, 255, 255, 0.5);
+            --white-30: rgba(255, 255, 255, 0.3);
+            --white-15: rgba(255, 255, 255, 0.15);
+            --white-08: rgba(255, 255, 255, 0.08);
+            --accent: rgba(140, 210, 220, 0.8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            color: white;
+            font-family: var(--font-main);
+            color: var(--white);
             overflow-x: hidden;
-            background: #0c4a68;
-        }
-
-        /* Override site.css nav color for dark page */
-        .topnav a {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .topnav a:hover,
-        .topnav a.active {
-            color: white;
+            background: #f0ece2;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* ── FIXED LAYERS ─────────────────────── */
@@ -61,10 +68,24 @@
             z-index: 2;
         }
 
+        /* ── UTILITY ──────────────────────────── */
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
         /* ── SURFACE ──────────────────────────── */
 
         #surface {
             position: relative;
+            background: linear-gradient(to bottom, #f0ece2 0%, #f0ece2 60vh, #c2e8f6 100vh, transparent 100vh);
+            z-index: 1;
         }
 
         .light-rays {
@@ -155,54 +176,41 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 2rem 1.5rem 4rem;
+            padding: 2rem 0 4rem;
             position: relative;
             z-index: 1;
+            padding-bottom: 6rem;
         }
 
         .hero h1 {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-main);
             font-weight: 600;
-            font-size: clamp(5rem, 18vw, 16rem);
-            line-height: 0.88;
+            font-size: clamp(5.5rem, 18vw, 16rem);
+            line-height: 0.85;
             letter-spacing: -0.05em;
-            color: white;
+            color: var(--white);
             opacity: 0;
             transform: translateY(35px);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero-tagline {
-            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 2rem 0 2rem;
+            position: relative;
+            font-family: var(--font-main);
             font-weight: 400;
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
             letter-spacing: -0.01em;
-            color: rgba(255, 255, 255, 0.65);
-            margin-top: 1.5rem;
-            line-height: 1.5;
+            color: var(--white);
+            line-height: 1.6;
             opacity: 0;
             transform: translateY(20px);
-            max-width: 1400px;
-            margin-left: 1rem;
+            margin-top: 2rem;
 
-
-
-        }
-
-        .scroll-hint {
-            margin-top: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            opacity: 0;
-            max-width: 1400px;
-            margin-left: 1rem;
-            animation: fadeIn 1s ease 2s forwards, floatDown 2.2s ease-in-out 2s infinite;
-        }
-
-        .scroll-hint span {
-            font-size: 2rem;
-            color: rgba(255, 255, 255, 0.7);
         }
 
         @keyframes fadeIn {
@@ -228,16 +236,14 @@
         .photo-section {
             position: relative;
             z-index: 1;
-            padding: 0 1.5rem 8rem;
+            padding: 0 0 6rem;
         }
 
         .photo-grid {
             display: grid;
             grid-template-columns: 1.15fr 1fr;
-            gap: 1.5rem;
+            gap: 1.25rem;
             align-items: start;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .photo-card {
@@ -245,9 +251,7 @@
             opacity: 0;
             transform: translateY(40px);
             will-change: transform;
-            transition: box-shadow 0.4s ease;
         }
-
 
         .photo-card img {
             width: 100%;
@@ -260,62 +264,226 @@
         }
 
         .photo-caption {
-            padding: 0.85rem 0 0;
-            font-size: 1.7rem;
-            color: #fff;
-            line-height: 1.6;
+            padding: 1rem 0 0;
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--white-70);
+            line-height: 1.7;
+            max-width: 65%;
+            padding-bottom: 0rem;
+            margin-bottom: 0rem;
         }
 
         .col-right {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.25rem;
+
         }
+
 
         .bottom-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            max-width: 1400px;
-            margin: 1.5rem auto 0;
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .col-left {}
+
+        /* ── PANORAMA (flat draggable) ────────── */
+
+        .panorama-section {
+            position: relative;
+            width: 100%;
+            margin: 0;
+        }
+
+        .panorama-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            height: 60svh;
+            overflow: hidden;
+            cursor: grab;
+            touch-action: pan-y;
+            user-select: none;
+        }
+
+        .panorama-container:active {
+            cursor: grabbing;
+        }
+
+        .panorama-container canvas {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+
+
+
+        .pano-title {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: clamp(3rem, 9vw, 9rem);
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .pano-subtitle {
+            font-family: var(--font-main);
+            font-weight: 300;
+            font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--white-60, rgba(255, 255, 255, 0.6));
+        }
+
+        /* Drag label */
+        .panorama-label {
+            position: absolute;
+            bottom: 1.25rem;
+            right: 1.5rem;
+            z-index: 7;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-main);
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--white-70);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 0.85rem;
+            pointer-events: none;
+            border-radius: 2px;
+        }
+
+        .panorama-label .drag-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 1;
+        }
+
+        .panorama-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 7;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            letter-spacing: 0.06em;
+            color: var(--white-50);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            white-space: nowrap;
+        }
+
+        .panorama-hint.visible {
+            opacity: 1;
+            animation: hintPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes hintPulse {
+
+            0%,
+            100% {
+                opacity: 0.45;
+            }
+
+            50% {
+                opacity: 0.85;
+            }
+        }
+
+        /* ── BETWEEN ZONE ─────────────────────── */
+
+        #between-zone {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 5rem 0;
+        }
+
+        .between-zone-inner {
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .between-zone-label {
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white-30);
+            margin-bottom: 1rem;
+        }
+
+        .between-zone-title {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: clamp(1.6rem, 3.5vw, 3rem);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            color: var(--white-70);
+            margin-bottom: 2.5rem;
+        }
+
+        .between-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .between-gallery img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+
+
+        @media (max-width: 700px) {
+            .between-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* ── WATER TRANSITION ─────────────────── */
 
         #water-transition {
-            padding: 6rem 1.5rem 7rem;
+            padding: 6rem 0 5rem;
             overflow: hidden;
         }
 
         .transition-text {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-main);
             font-weight: 600;
-            font-size: clamp(1.8rem, 4.5vw, 4.5rem);
+            font-size: clamp(1.8rem, 4.5vw, 4rem);
             letter-spacing: -0.04em;
-            line-height: 1.1;
-            color: rgba(255, 255, 255, 0.82);
-            max-width: 1400px;
-            margin: 0 auto 5rem;
-            opacity: 0;
-            transform: translateY(28px);
-        }
-
-        .transition-subtitle {
-            font-weight: 500;
-            font-size: 1.5rem;
-            margin: 0 auto 5rem;
-
-            margin-bottom: 1rem;
-            max-width: 1400px;
-
+            line-height: 1.15;
+            color: var(--white-70);
+            margin-bottom: 4rem;
         }
 
         .ai-water-grid {
             display: grid;
             grid-template-columns: 1fr 1.3fr 1fr;
-            gap: 1.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 1.25rem;
             align-items: start;
         }
 
@@ -329,7 +497,6 @@
             width: 100%;
             height: auto;
             display: block;
-            filter: brightness(0.9) saturate(1.1);
             transition: filter 0.4s ease;
         }
 
@@ -338,212 +505,144 @@
         }
 
         .ai-water-cell:nth-child(1) {
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
         .ai-water-cell:nth-child(3) {
-            margin-top: -30px;
+            margin-top: -25px;
         }
 
         /* ── MID DEPTH ────────────────────────── */
 
         #mid-depth {
-            padding: 6rem 1.5rem 4rem;
+            padding: 6rem 0 4rem;
         }
 
-        .mid-header {
+        .section-intro {
             margin-bottom: 2rem;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
-        .section-marker {
-            font-size: 2rem;
-            color: rgba(255, 255, 255, 0.35);
-            margin-bottom: 0rem;
-            padding-bottom:0rem;
+        .zone-label {
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--white-70);
+            margin-bottom: 0.75rem;
         }
 
-        .mid-header h2 {
-            font-family: 'Inter', sans-serif;
+        .section-headline {
+            font-family: var(--font-main);
             font-weight: 600;
-            font-size: clamp(3rem, 7vw, 7rem);
-            letter-spacing: -0.05em;
-            line-height: 0.9;
-            color: rgba(255, 255, 255, 0.88);
+            font-size: clamp(1.8rem, 4.5vw, 4rem);
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            color: var(--white-70);
+            margin-bottom: 4rem;
         }
 
-        .image-pair {
-            max-width: 1400px;
-            margin: 0 auto 9rem;
+        /* Image Pairs — side by side, fit viewport */
+
+        .comparison-pair {
+            margin-bottom: 6rem;
+        }
+
+        .pair-label {
+            color: var(--white-70);
+
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .selected {
+            color: var(--white-70);
+
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
         .pair-images {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1.25rem;
             align-items: start;
-            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(40px);
         }
 
         .pair-image-wrap {
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(45px);
+            align-self: start;
+            position: sticky;
+            top: 2rem;
         }
 
         .pair-image-wrap img {
             width: 100%;
-            height: auto;
+            height: 70vh;
+            object-fit: contain;
+            object-position: top;
             display: block;
-            will-change: transform;
-        }
-
-
-
-        @keyframes sway {
-
-            0%,
-            100% {
-                transform: rotate(-0.5deg) translateX(-3px) scale(1.02);
-            }
-
-            35% {
-                transform: rotate(0.3deg) translateX(2px) scale(1.02);
-            }
-
-            68% {
-                transform: rotate(0.5deg) translateX(3px) scale(1.02);
-            }
-        }
-
-        @keyframes swayAlt {
-
-            0%,
-            100% {
-                transform: rotate(0.4deg) translateX(2px) scale(1.02);
-            }
-
-            40% {
-                transform: rotate(-0.3deg) translateX(-2px) scale(1.02);
-            }
-
-            72% {
-                transform: rotate(-0.5deg) translateX(-3px) scale(1.02);
-            }
         }
 
         .image-label {
-            position: absolute;
-            bottom: 0.7rem;
-            left: 0.8rem;
-            font-size: 0.62rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: #000;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
-            padding: 0.2rem 0.5rem;
-        }
-
-        .pair-text {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .pair-label {
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 0.9rem;
-        }
-
-        .pair-main {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: clamp(1.6rem, 3.5vw, 3rem);
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            color: rgba(255, 255, 255, 0.88);
-            margin-bottom: 1.1rem;
-        }
-
-        .pair-body {
-            font-size: 1rem;
-            line-height: 1.75;
-            color: rgba(255, 255, 255, 0.45);
+            display: block;
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            color: var(--white-40);
+            padding: 0.3rem 0;
+            text-align: center;
         }
 
         /* ── DEEP ─────────────────────────────── */
 
         #deep {
-            padding: 6rem 1.5rem 8rem;
+            padding: 6rem 0 4rem;
         }
 
-        .deep-intro {
-            max-width: 1400px;
-            margin: 0 auto 5rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .depth-marker {
-            font-size: 1.7rem;
-            color: #fff;
-            margin-bottom: 0.9rem;
-        }
-
-        .deep-intro h2 {
-            font-family: 'Inter', sans-serif;
+        .deep-intro-text {
+            font-family: var(--font-main);
             font-weight: 600;
-            font-size: clamp(3rem, 7vw, 7rem);
-            letter-spacing: -0.05em;
-            line-height: 0.9;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1.5rem, 3.5vw, 3rem);
+            letter-spacing: -0.04em;
+            line-height: 1.2;
+            color: var(--white-70);
+            margin-bottom: 4rem;
         }
 
-        .deep-intro h3 {
-            font-weight: 500;
-            margin-top: 1rem;
-            font-size: 2.4rem;
-
-        }
-
-        .artifacts-grid {
+        .deep-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 1.25rem;
             align-items: start;
+            margin-bottom: 4rem;
         }
 
-        .artifact-wrap {
+        .deep-cell {
+            padding-bottom: 2rem;
             position: relative;
             overflow: hidden;
             opacity: 0;
             transform: translateY(50px);
         }
 
-        .artifact-wrap img {
+        .deep-cell img {
             width: 100%;
             height: auto;
             display: block;
-            filter: brightness(0.88) saturate(1.15);
             transition: filter 0.5s ease;
         }
 
-        .artifact-wrap:hover img {
+        .deep-cell:hover img {
             filter: brightness(1.05) saturate(1.35);
         }
 
-        .artifact-glow {
+        .deep-cell .glow {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 50% 60%, rgba(0, 225, 180, 0.07), transparent 65%);
+            background: radial-gradient(ellipse at 50% 60%, rgba(0, 225, 180, 0.06), transparent 65%);
             pointer-events: none;
             animation: glowPulse 4.5s ease-in-out infinite;
         }
@@ -560,18 +659,14 @@
             }
         }
 
-        .deep-text {
-            margin: 5rem 0 0;
-            opacity: 0;
-            transform: translateY(25px);
-        }
-
-        .deep-text p {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 1.2rem;
+        .deep-body {
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            line-height: 1.75;
+            color: var(--white-50);
+            max-width: 65%;
+            margin-bottom: 2rem;
         }
 
         /* ── FLOOR ────────────────────────────── */
@@ -585,62 +680,144 @@
         }
 
         .statement {
-            max-width: 860px;
+            max-width: 75%;
             opacity: 0;
             transform: translateY(30px);
         }
 
-        .floor-marker {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
+        .floor-label {
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white-30);
+            margin-bottom: 2rem;
         }
 
         .statement h2 {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-main);
             font-weight: 600;
-            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-size: clamp(2.8rem, 6vw, 5rem);
             letter-spacing: -0.05em;
-            line-height: 0.9;
-            color: #fff;
-            margin-bottom: 3rem;
+            line-height: 0.92;
+            color: var(--white-90);
+            margin-bottom: 2.5rem;
         }
 
         .statement p {
-            font-size: clamp(1rem, 1.6vw, 1.3rem);
-            line-height: 1.75;
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            line-height: 1.8;
             color: #fff;
-            max-width: 65ch;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        p {
+            font-size: 1.3rem;
         }
 
 
 
-        .back-link {
-            font-size: 1.3rem;
+        .collective-note {
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 0.85rem;
             color: #fff;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
 
+        .collective-note a {
+            color: #fff;
             text-decoration: none;
+            border-bottom: 2px solid var(--white-30);
+            transition: color 0.25s, border-color 0.25s;
+        }
+
+        .collective-note a:hover {
+            color: var(--white-70);
+            border-color: var(--white-30);
+        }
+
+        .back-link {
+            font-family: var(--font-main);
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.05em;
             transition: color 0.25s;
         }
 
         .back-link:hover {
-            color: rgba(0, 225, 180, 1);
+            color: var(--white-70);
+        }
+
+        /* Override the hero area to be cream with dark text */
+        #surface {
+            position: relative;
+            background: #003b60;
+            z-index: 1;
+        }
+
+        .hero {
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            /* change to black */
+            color: #00214f;
+        }
+
+        .hero-tagline {
+            color: #00214f;
+        }
+
+        /* Big centered orb */
+        .hero-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85vw;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbBreathe 16s ease-in-out infinite;
+        }
+
+        .hero-orb img {
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes orbBreathe {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.04);
+            }
         }
 
         /* ── RESPONSIVE ───────────────────────── */
 
         @media (max-width: 768px) {
+            .container {
+                width: 94%;
+            }
+
             .photo-grid {
                 grid-template-columns: 1fr;
             }
 
             .card-dad {
                 grid-row: auto;
-            }
-
-            .col-right {
-                gap: 1rem;
             }
 
             .bottom-row {
@@ -656,12 +833,25 @@
                 margin: 0;
             }
 
+            .deep-grid {
+                grid-template-columns: 1fr;
+            }
+
             .pair-images {
                 grid-template-columns: 1fr;
             }
 
-            .artifacts-grid {
-                grid-template-columns: 1fr;
+            .panorama-container {
+                height: 100vh;
+                height: 100svh;
+                min-height: 400px;
+            }
+
+            .photo-caption,
+            .deep-intro-text,
+            .deep-body,
+            .statement {
+                max-width: 100%;
             }
         }
     </style>
@@ -669,47 +859,52 @@
 
 <body>
 
-
     <div id="bg-gradient"></div>
     <canvas id="particle-canvas"></canvas>
 
     <main>
 
-        <!-- ══════════════════════════════════
-         SURFACE
-         ══════════════════════════════════ -->
+        <!-- ══════════════════════════════════════════
+             SURFACE — The Familiar
+             ══════════════════════════════════════════ -->
         <section id="surface">
+
             <div class="light-rays"></div>
             <div class="caustics"></div>
-
-            <div class="hero">
-                <h1>Depth</h1>
-                <p class="hero-tagline">An exploration of nature, art, and technology beneath the surface.</p>
-                <div class="scroll-hint">
-                    <span>Dive in</span>
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                        <polyline points="1,1 7,8 13,1" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+            <div class="hero container">
+                <div class="hero-orb">
+                    <img src="depth/orbs/lightblue.svg" alt="" aria-hidden="true">
                 </div>
+                <h1>Depth</h1>
+                <p class="hero-tagline">
+                    <!-- [TAGLINE: One line that sets up the journey — something about exploring what lives beneath the surface where nature, art, and technology meet. Keep it quiet, not grand.] -->
+
+                    An exploration of nature, art, and technology.
+                </p>
+                <p class="hero-tagline">
+
+                    By Juliette Mangon
+                </p>
             </div>
 
 
 
-            <div class="photo-section">
+            <div class="photo-section container">
+                <p class="zone-label">0-200 meters · Epipelagic Zone</p>
+
                 <div class="photo-grid">
                     <!-- Dad — left column, spans 2 rows -->
                     <div class="photo-card card-dad">
                         <img src="depth/shallow/dad.jpeg" alt="Diving with my dad" loading="lazy">
-                        <p class="photo-caption">
-                            When I was 11, my dad introduced me to his life long passion for scuba diving.
-                            He immersed me in the underwater world, where I found comfort in the silence, and a
-                            sanctuary of intricate ecosystems to observe. <br>
-
-                            <br> This project uses Gemini AI
-                            to combine his scuba diving photos, some of which are displayed here, with my water related
-                            paintings to imagine a world where
-                            humans, nature, and technology can coexist.
+                        <p>
+                            When I was 11, my dad introduced me to his life long passion for scuba diving. He immersed
+                            me in the underwater world, where I found comfort in the silence, and a sanctuary of
+                            intricate ecosystems to observe.
+                        </p>
+                        <p>
+                            This project uses Gemini AI to combine his scuba diving photos, some of which are displayed
+                            here, with my water related paintings to imagine a world where humans, nature, and
+                            technology can coexist.
                         </p>
                     </div>
 
@@ -726,7 +921,7 @@
 
                 <div class="bottom-row">
                     <div class="photo-card">
-                        <img src="depth/shallow/sharks.jpeg" alt="Sharks" loading="lazy">
+                        <img style="margin-top: 0rem;" src="depth/shallow/sharks.jpeg" alt="Sharks" loading="lazy">
                     </div>
                     <div class="photo-card">
                         <img src="depth/shallow/sharkandfish.jpeg" alt="Shark among fish" loading="lazy">
@@ -735,185 +930,280 @@
             </div>
         </section>
 
-        <!-- ══════════════════════════════════
-         WATER TRANSITION
-         ══════════════════════════════════ -->
+
+        <!-- ══════════════════════════════════════════
+             WATER TRANSITION
+             ══════════════════════════════════════════ -->
         <section id="water-transition">
-            <p class="transition-text">
-                Photos taken by human, reimagined with AI.
-            </p>
+            <div class="container">
+                <p class="zone-label">200-1000 meters · Mesopelagic Zone</p>
 
+                <p class="transition-text reveal">
+                    Photos taken by human, reimagined with AI.
+                </p>
 
+                <div class="ai-water-grid">
+                    <div class="ai-water-cell">
+                        <img src="depth/ai-water/ai-water1.png" alt="AI water study 1" loading="lazy">
+                    </div>
+                    <div class="ai-water-cell">
+                        <img src="depth/ai-water/ai-water5.png" alt="AI water study 3" loading="lazy">
+                    </div>
+                    <div class="ai-water-cell">
+                        <img src="depth/ai-water/ai-water2.jpg" alt="AI water study 2" loading="lazy">
+                    </div>
+                    <div class="ai-water-cell">
+                        <img src="depth/ai-water/ai-water3.png" alt="AI water study 3" loading="lazy">
+                    </div>
+                    <div class="ai-water-cell">
+                        <img src="depth/ai-water/ai-water4.png" alt="AI water study 3" loading="lazy">
+                    </div>
+                    <div class="ai-water-cell">
+                        <img src="depth/ai-water/ai-water6.png" alt="AI water study 3" loading="lazy">
+                    </div>
 
-            <div class="ai-water-grid">
-                <div class="ai-water-cell">
-                    <img src="depth/ai-water/ai-water1.png" alt="AI water study 1" loading="lazy">
-                </div>
-                <div class="ai-water-cell">
-                    <img src="depth/ai-water/ai-water2.jpg" alt="AI water study 2" loading="lazy">
-                </div>
-                <div class="ai-water-cell">
-                    <img src="depth/ai-water/ai-water3.png" alt="AI water study 3" loading="lazy">
-                </div>
-                  <div class="ai-water-cell">
-                    <img src="depth/ai-water/ai-water4.png" alt="AI water study 3" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- ══════════════════════════════════
-         MID DEPTH
-         ══════════════════════════════════ -->
+        <!-- ══════════════════════════════════════════
+             MID DEPTH — Painting meets AI
+             ══════════════════════════════════════════ -->
         <section id="mid-depth">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <p class="section-headline">
+                        Photos taken by human, paintings by human,<br>combined and reimagined with AI.
+                    </p>
+                </div>
 
-            <div class="mid-header">
-                <p class="section-marker">30–150 meters · Mesopelagic Zone</p>
-            </div>
-            <p class="transition-text">
-                Photos taken by human, paintings by humans, combined and reimagined with AI.
-            </p>
-
-              <div class="image-pair">
-                <div class="pair-text">
+                <!-- Pair 1: Cliffs -->
+                <div class="comparison-pair">
                     <p class="pair-label">01 / Cliffs</p>
-
-                </div>
-                <div class="pair-images">
-                    <div class="pair-image-wrap sway">
-                        <img src="images/cliffs.jpeg" alt="Underwater photograph 1" loading="lazy">
-                        <span class="image-label">Painting</span>
+                    <div class="pair-images">
+                        <div class="pair-image-wrap">
+                            <img src="images/cliffs.jpeg" alt="Cliffs — original painting" loading="lazy">
+                            <span class="image-label">Painting</span>
+                        </div>
+                        <div class="pair-image-wrap">
+                            <img src="depth/mid/painting-water4.png" alt="Cliffs — AI transformed" loading="lazy">
+                            <span class="image-label">AI transformed</span>
+                        </div>
                     </div>
-                    <div class="pair-image-wrap sway-alt">
-                        <img src="depth/mid/painting-water4.png" alt="AI transformed 1" loading="lazy">
-                        <span class="image-label">AI&nbsp;transformed</span>
-                    </div>
                 </div>
 
-            </div>
-
-            <!-- Pair 1 -->
-            <div class="image-pair">
-                <div class="pair-text">
+                <!-- Pair 2: Swimmers -->
+                <div class="comparison-pair">
                     <p class="pair-label">02 / Swimmers</p>
-
-                </div>
-                <div class="pair-images">
-                    <div class="pair-image-wrap sway">
-                        <img src="images/swimming.jpeg" alt="Underwater photograph 1" loading="lazy">
-                        <span class="image-label">Painting</span>
+                    <div class="pair-images">
+                        <div class="pair-image-wrap">
+                            <img src="images/swimming.jpeg" alt="Swimmers — original painting" loading="lazy">
+                            <span class="image-label">Painting</span>
+                        </div>
+                        <div class="pair-image-wrap">
+                            <img src="depth/mid/painting-water1.png" alt="Swimmers — AI transformed" loading="lazy">
+                            <span class="image-label">AI transformed</span>
+                        </div>
                     </div>
-                    <div class="pair-image-wrap sway-alt">
-                        <img src="depth/mid/painting-water1.png" alt="AI transformed 1" loading="lazy">
-                        <span class="image-label">AI&nbsp;transformed</span>
+                </div>
+
+                <!-- Pair 3: Poolside -->
+                <div class="comparison-pair">
+                    <p class="pair-label">03 / Poolside</p>
+                    <div class="pair-images">
+                        <div class="pair-image-wrap">
+                            <img src="depth/mid/source2.jpeg" alt="Poolside — original painting" loading="lazy">
+                            <span class="image-label">Painting</span>
+                        </div>
+                        <div class="pair-image-wrap">
+                            <img src="depth/mid/painting-water2.png" alt="Poolside — AI transformed" loading="lazy">
+                            <span class="image-label">AI transformed</span>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Pair 4: Seaside, Cascais -->
+                <div class="comparison-pair">
+                    <p class="pair-label">04 / Seaside, Cascais</p>
+                    <div class="pair-images">
+                        <div class="pair-image-wrap">
+                            <img src="depth/mid/source3.jpeg" alt="Seaside — original painting" loading="lazy">
+                            <span class="image-label">Painting</span>
+                        </div>
+
+                        <div class="pair-image-wrap">
+                            <img src="depth/mid/painting-water3.jpg" alt="Seaside — AI transformed" loading="lazy">
+                            <span class="image-label">AI transformed</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Pair 2 -->
-            <div class="image-pair">
-                <div class="pair-text">
-                    <p class="pair-label">03 / Poolside </p>
-
-                </div>
-                <div class="pair-images">
-                    <div class="pair-image-wrap sway">
-                        <img src="depth/mid/source2.jpeg" alt="Underwater photograph 2" loading="lazy">
-                        <span class="image-label">Painting</span>
-                    </div>
-                    <div class="pair-image-wrap sway-alt">
-                        <img src="depth/mid/painting-water2.png" alt="AI transformed 2" loading="lazy">
-                        <span class="image-label">AI&nbsp;transformed</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Pair 3 -->
-            <div class="image-pair">
-                <div class="pair-text">
-                    <p class="pair-label">04 / Seaside, Caiscais</p>
-
-                </div>
-                <div class="pair-images">
-                    <div class="pair-image-wrap sway">
-                        <img src="depth/mid/source3.jpeg" alt="Underwater photograph 3" loading="lazy">
-                        <span class="image-label">Painting</span>
-                    </div>
-                    <div class="pair-image-wrap sway-alt">
-                        <img src="depth/mid/painting-water3.jpg" alt="AI transformed 3" loading="lazy">
-                        <span class="image-label">AI&nbsp;transformed</span>
-                    </div>
-                </div>
-
-            </div>
-
         </section>
 
-        <!-- ══════════════════════════════════
-         DEEP
-         ══════════════════════════════════ -->
+        <!-- ══════════════════════════════════════════
+             DEEP — The Twilight Zone
+             ══════════════════════════════════════════ -->
         <section id="deep">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <p class="zone-label">1000-4000 meters · Bathypelagic Zone</p>
+                    <p class="deep-intro-text">
+                        Here's where it gets fun. Let's use our augmented paintings to create full scenes of a world
+                        where technology, nature, and humans coexist.
+                    </p>
 
-            <div class="deep-intro">
-                <p class="depth-marker">200+ meters · The Twilight Zone</p>
-                <h3>Painting and photograph lose their borders here. What's left isn't natural or artificial. It's just
-                    new.</h3>
+                </div>
+                <div class="deep-cell">
+                    <img src="depth/deep/fourth.png" alt="AI imagined deep ocean — coexistence" loading="lazy">
+                    <div class="glow"></div>
+                </div>
+                <div class="deep-cell">
+                    <img src="depth/deep/second.png" alt="AI imagined deep ocean — technology and reef" loading="lazy">
+                    <div class="glow"></div>
+                </div>
+
+                <div class="deep-grid">
+
+
+
+                    <div class="deep-cell">
+                        <img src="depth/deep/first.png" alt="AI imagined deep ocean — coexistence" loading="lazy">
+                        <div class="glow"></div>
+                    </div>
+                    <div class="deep-cell">
+                        <img src="depth/deep/third.png" alt="AI imagined deep ocean — technology and reef"
+                            loading="lazy">
+                        <div class="glow"></div>
+                    </div>
+                </div>
+
+
+
+
+                <p class="deep-body reveal">
+                    <!-- [TEXT: 1-2 sentences about the creative question — can human art combined with AI produce something you actually like? What did this process teach you about the threshold between human and machine contribution?] -->
+                </p>
+            </div>
+        </section>
+        <!-- ══════════════════════════════════════════
+             SURFACE PANORAMA
+             ══════════════════════════════════════════ -->
+
+
+        <div class="panorama-section" id="pano-section-surface">
+            <div class="container">
+
+
+                <div class="pano-title-block">
+                    <p class="zone-label">4000+ meters · Abyssalpelagic Zone</p>
+
+                    <h2 class="pano-title">Surface Level</h2>
+                </div>
+            </div>
+            <div class="panorama-container" id="panorama-surface" data-src="/depth/panorama/surface-1.png">
+                <div class="panorama-hint visible" id="hint-surface">← drag to explore →</div>
 
             </div>
+        </div>
 
-            <div class="artifacts-grid">
-                <div class="artifact-wrap">
-                    <img src="depth/final-artifact/first.png" alt="Final artifact — first" loading="lazy">
-                    <div class="artifact-glow"></div>
-                </div>
-                <div class="artifact-wrap">
-                    <img src="depth/final-artifact/second.png" alt="Final artifact — second" loading="lazy">
-                    <div class="artifact-glow"></div>
+
+        <!-- ══════════════════════════════════════════
+             BETWEEN ZONE — fish, divers, creatures
+             ══════════════════════════════════════════ -->
+        <section id="between-zone">
+
+            <div class="between-zone-inner">
+                <h2 class="between-zone-title">Everything in Between</h2>
+                <div class="between-gallery">
+                    <img src="depth/shallow/eel.JPG" alt="Eel" loading="lazy">
+                    <img src="depth/shallow/herd.JPEG" alt="Hammerhead shark" loading="lazy">
+                    <img src="depth/shallow/sharkandfish.jpeg" alt="Shark among fish" loading="lazy">
+                    <img src="depth/shallow/whalething.jpeg" alt="Sharks" loading="lazy">
+                    <img src="depth/shallow/barracuda.JPG" alt="Eel" loading="lazy">
+                    <img src="depth/shallow/whalesharks.JPG" alt="Eel" loading="lazy">
+                    <img src="depth/shallow/ray.jpeg" alt="Eel" loading="lazy">
+                    <img src="depth/shallow/hammerheads.jpeg" alt="Hammerhead sharks" loading="lazy">
+
+
                 </div>
             </div>
-
-           
         </section>
 
-        <!-- ══════════════════════════════════
-         FLOOR
-         ══════════════════════════════════ -->
+        <!-- ══════════════════════════════════════════
+             OCEAN FLOOR PANORAMA
+             ══════════════════════════════════════════ -->
+        <div class="panorama-section" id="pano-section-deep">
+            <div class="container">
+                <div class="pano-title-block">
+                    <h2 class="pano-title">Ocean Floor</h2>
+                </div>
+            </div>
+            <div class="panorama-container" id="panorama-deep" data-src="/depth/panorama/deep-1.png">
+                <div class="panorama-hint visible" id="hint-deep">← drag to explore →</div>
+
+            </div>
+        </div>
+
+
+        <!-- ══════════════════════════════════════════
+             FLOOR — Artist Statement
+             ══════════════════════════════════════════ -->
         <section id="floor">
             <div class="statement">
-                <p class="floor-marker">Artist Statement</p>
-                <h2>About<br>the work</h2>
+
+                <h2>Artist<br>Statement</h2>
                 <p>
-                    I'm Juliette Mangon, I am 21 years old and I live in New York City. I'm interested in how we can leverage technology to shape the way media is created, distributed, and experienced. I am focused on where
-                    technology, art, and the natural world overlap.
+                    I'm Juliette Mangon. My dad introduced me to scuba diving when I was 11. He showed me a world that
+                    operates on its own terms, where everything is connected, and where humans are guests. After I began
+                    diving, I grew a new appreciation for animals, which led me to becoming vegetarian in that following
+                    year.
+                    Being vegetarian and caring for the environment has shaped how I think about everything, including
+                    technology. This project imagines a world where human
+                    innovation supports the entire planet, not just our own species.
                 </p>
                 <p>
-                    This project started with my paintings, and dad's diving photos. 
+                    I rarely see AI-generated art that I like, which made me curious about what was missing. The answer
+                    I found wasn't the prompt or amount of AI used, it was about better
+                    inputs. This project feeds my paintings and my dad's underwater photography into Gemini in different
+                    combinations, layering source material and iterating through rounds of prompting. What comes out
+                    depends entirely on what goes in. The pieces I created are fascinating to look at, and I can
+                    honestly say that this is the first time I've felt that AI added value to an artwork.
+
                 </p>
                 <p>
-                   I rarely see AI generated art that I like, so I wanted to test the threshold of how much human art should be used in tandem with the ai to create a new piece that is enjoyable. 
-                   Let alone something that actually compounds in value?!
-                   </p>
-                   <p>
-                   Additionally, I did some fun prompt engineering to test different outputs, and I used AI to make about 80% of this page.
+                    I tend to approach things from more than one angle. This project has two: a creative question about
+                    human-AI collaboration, and a vision for coexistence between nature, humans, and machines. That
+                    mirrors how I think about my work more broadly. I'm interested in how technology shapes the way
+                    media is created, distributed, and experienced. I approach that from two angles: building products
+                    that solve real problems, and exploring technology as a creative medium itself.
                 </p>
+
                 <div class="statement-divider"></div>
+                <p class="collective-note">
+                    <!-- [INSY NOTE: Co-founder of I Never See You, a collective exploring new forms of coexistence between nature, humans, and machines. One sentence, with a link if you have one.] -->
+                    Co-founder of <a href="https://ineverseeyou.com/">I Never See You</a> — a collective imagining new
+                    forms of coexistence between nature, humans, and machines.
+                </p>
                 <a href="/" class="back-link">juliettemangon.com</a>
             </div>
         </section>
 
     </main>
 
-    <!-- GSAP -->
+    <!-- ═══════════════════════════════════════════
+         SCRIPTS
+         ═══════════════════════════════════════════ -->
+
+    <!-- GSAP + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        /* ═══════════════════════════════
-           BACKGROUND
-           ═══════════════════════════════ */
+        /* ═══════════════════════════════════
+           BACKGROUND GRADIENT
+           ═══════════════════════════════════ */
 
         const bgEl = document.getElementById('bg-gradient');
 
@@ -949,9 +1239,9 @@
         updateBg(0);
         ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => updateBg(self.progress) });
 
-        /* ═══════════════════════════════
-           PARTICLES
-           ═══════════════════════════════ */
+        /* ═══════════════════════════════════
+           PARTICLES (bubbles, rays, bio)
+           ═══════════════════════════════════ */
 
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
@@ -1057,13 +1347,138 @@
             bioParticles.forEach(p => { p.step(); p.draw(); });
         })();
 
-        /* ═══════════════════════════════
-           GSAP ANIMATIONS
-           ═══════════════════════════════ */
+        /* ═══════════════════════════════════
+           FLAT PANORAMA — drag to scroll X
+           ═══════════════════════════════════ */
+
+        function initFlatPanorama(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const imgSrc = container.dataset.src;
+            const hintEl = container.querySelector('.panorama-hint');
+
+            const canvas = document.createElement('canvas');
+            container.insertBefore(canvas, container.firstChild);
+            const ctx = canvas.getContext('2d');
+
+            const img = new Image();
+            let imgDrawW = 0;
+            let cW = 0, cH = 0;
+            let offsetX = 0;
+            let isDragging = false;
+            let prevX = 0;
+            let velocity = 0;
+            let interacted = false;
+
+            function sizeCanvas() {
+                const dpr = window.devicePixelRatio || 1;
+                cW = container.clientWidth;
+                cH = container.clientHeight;
+                canvas.width = cW * dpr;
+                canvas.height = cH * dpr;
+                canvas.style.width = cW + 'px';
+                canvas.style.height = cH + 'px';
+                ctx.scale(dpr, dpr);
+                if (img.naturalHeight > 0) {
+                    imgDrawW = img.naturalWidth * (cH / img.naturalHeight);
+                }
+            }
+
+            function draw() {
+                if (!imgDrawW) return;
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.clearRect(0, 0, cW, cH);
+                // wrap offset
+                offsetX = ((offsetX % imgDrawW) + imgDrawW) % imgDrawW;
+                // draw with seamless wrap
+                const x0 = -offsetX;
+                ctx.drawImage(img, x0, 0, imgDrawW, cH);
+                ctx.drawImage(img, x0 + imgDrawW, 0, imgDrawW, cH);
+                if (x0 + imgDrawW * 2 < cW) {
+                    ctx.drawImage(img, x0 + imgDrawW * 2, 0, imgDrawW, cH);
+                }
+            }
+
+            function tick() {
+                requestAnimationFrame(tick);
+                if (!isDragging && Math.abs(velocity) > 0.05) {
+                    offsetX += velocity;
+                    velocity *= 0.94;
+                    draw();
+                }
+            }
+
+            img.onload = () => {
+                sizeCanvas();
+                draw();
+                tick();
+                const ro = new ResizeObserver(() => { sizeCanvas(); draw(); });
+                ro.observe(container);
+            };
+            img.onerror = () => {
+                sizeCanvas();
+                ctx.fillStyle = '#071520';
+                ctx.fillRect(0, 0, cW, cH);
+            };
+            img.src = imgSrc;
+
+            // Drag — pointer events
+            container.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                prevX = e.clientX;
+                velocity = 0;
+                container.setPointerCapture(e.pointerId);
+                if (!interacted) {
+                    interacted = true;
+                    if (hintEl) hintEl.classList.remove('visible');
+                }
+            });
+
+            container.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                const dx = e.clientX - prevX;
+                offsetX -= dx;
+                velocity = -dx * 0.6;
+                prevX = e.clientX;
+                draw();
+            });
+
+            container.addEventListener('pointerup', () => { isDragging = false; });
+            container.addEventListener('pointercancel', () => { isDragging = false; });
+        }
+
+        initFlatPanorama('panorama-surface');
+        initFlatPanorama('panorama-deep');
+
+        /* ═══════════════════════════════════
+           IMAGE PAIRS — scroll animations
+           ═══════════════════════════════════ */
+
+        document.querySelectorAll('.pair-images').forEach(pair => {
+            gsap.fromTo(pair,
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1, y: 0, duration: 1.2, ease: 'power2.out',
+                    scrollTrigger: { trigger: pair, start: 'top 78%' }
+                }
+            );
+        });
+
+        /* ═══════════════════════════════════
+           GSAP SCROLL ANIMATIONS
+           ═══════════════════════════════════ */
 
         // Hero
-        gsap.fromTo('.hero h1', { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 1.8, ease: 'power3.out', delay: 0.3 });
-        gsap.fromTo('.hero-tagline', { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', delay: 1.0 });
+        gsap.fromTo('.hero h1',
+            { opacity: 0, y: 35 },
+            { opacity: 1, y: 0, duration: 1.8, ease: 'power3.out', delay: 0.3 }
+        );
+        gsap.fromTo('.hero-tagline',
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', delay: 1.0 }
+        );
 
         // Photos
         gsap.fromTo('.photo-card',
@@ -1081,15 +1496,18 @@
             });
         });
 
-        // Transition
-        gsap.fromTo('.transition-text',
-            { opacity: 0, y: 28 },
-            {
-                opacity: 1, y: 0, duration: 1.1, ease: 'power2.out',
-                scrollTrigger: { trigger: '#water-transition', start: 'top 72%' }
-            }
-        );
+        // Generic reveal elements
+        document.querySelectorAll('.reveal').forEach(el => {
+            gsap.fromTo(el,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1, y: 0, duration: 1.1, ease: 'power2.out',
+                    scrollTrigger: { trigger: el, start: 'top 78%' }
+                }
+            );
+        });
 
+        // AI water cells
         gsap.fromTo('.ai-water-cell',
             { opacity: 0, y: 35 },
             {
@@ -1099,78 +1517,47 @@
         );
 
         [[-22], [-38], [-16]].forEach(([speed], i) => {
-            gsap.to(document.querySelectorAll('.ai-water-cell')[i], {
-                y: speed, ease: 'none',
-                scrollTrigger: { trigger: '#water-transition', start: 'top bottom', end: 'bottom top', scrub: 1.2 }
-            });
-        });
-
-        // Mid header
-        gsap.fromTo('.mid-header',
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1, y: 0, duration: 1, ease: 'power2.out',
-                scrollTrigger: { trigger: '.mid-header', start: 'top 80%' }
+            const cell = document.querySelectorAll('.ai-water-cell')[i];
+            if (cell) {
+                gsap.to(cell, {
+                    y: speed, ease: 'none',
+                    scrollTrigger: { trigger: '#water-transition', start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+                });
             }
-        );
+        });
 
-        // Pairs
-        document.querySelectorAll('.image-pair').forEach(pair => {
-            const wraps = pair.querySelectorAll('.pair-image-wrap');
-            const text = pair.querySelector('.pair-text');
-
-            gsap.fromTo(wraps, { opacity: 0, y: 45 },
-                {
-                    opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', stagger: 0.18,
-                    scrollTrigger: { trigger: pair, start: 'top 78%' }
-                });
-
-            gsap.fromTo(text, { opacity: 0, y: 20 },
-                {
-                    opacity: 1, y: 0, duration: 1, ease: 'power2.out',
-                    scrollTrigger: { trigger: pair, start: 'top 65%' }
-                });
-
-            wraps.forEach((w, j) => {
-                gsap.to(w, {
-                    y: j === 0 ? -15 : 15, ease: 'none',
-                    scrollTrigger: { trigger: pair, start: 'top bottom', end: 'bottom top', scrub: 1 }
-                });
+        // Image pairs parallax
+        document.querySelectorAll('.pair-image-wrap').forEach((w, j) => {
+            gsap.to(w, {
+                y: -12, ease: 'none',
+                scrollTrigger: { trigger: w.closest('.comparison-pair'), start: 'top bottom', end: 'bottom top', scrub: 1 }
             });
         });
 
-        // Deep
-        gsap.fromTo('.deep-intro', { opacity: 0, y: 30 },
-            {
-                opacity: 1, y: 0, duration: 1.2, ease: 'power2.out',
-                scrollTrigger: { trigger: '#deep', start: 'top 76%' }
-            });
-
-        gsap.fromTo('.artifact-wrap', { opacity: 0, y: 50 },
-            {
-                opacity: 1, y: 0, duration: 1.4, ease: 'power2.out', stagger: 0.25,
-                scrollTrigger: { trigger: '.artifacts-grid', start: 'top 78%' }
-            });
-
-        document.querySelectorAll('.artifact-wrap').forEach((a, i) => {
-            gsap.to(a, {
+        // Deep cells
+        document.querySelectorAll('.deep-cell').forEach((cell, i) => {
+            const trigger = cell.closest('.deep-grid') || cell;
+            gsap.fromTo(cell,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1, y: 0, duration: 1.4, ease: 'power2.out', delay: i * 0.1,
+                    scrollTrigger: { trigger, start: 'top 78%' }
+                }
+            );
+            gsap.to(cell, {
                 y: i === 0 ? -25 : -12, ease: 'none',
-                scrollTrigger: { trigger: '.artifacts-grid', start: 'top bottom', end: 'bottom top', scrub: 1 }
+                scrollTrigger: { trigger, start: 'top bottom', end: 'bottom top', scrub: 1 }
             });
         });
-
-        gsap.fromTo('.deep-text', { opacity: 0, y: 25 },
-            {
-                opacity: 1, y: 0, duration: 1.2, ease: 'power2.out',
-                scrollTrigger: { trigger: '.deep-text', start: 'top 82%' }
-            });
 
         // Floor
-        gsap.fromTo('.statement', { opacity: 0, y: 30 },
+        gsap.fromTo('.statement',
+            { opacity: 0, y: 30 },
             {
                 opacity: 1, y: 0, duration: 1.5, ease: 'power2.out',
                 scrollTrigger: { trigger: '#floor', start: 'top 72%' }
-            });
+            }
+        );
 
         window.addEventListener('load', () => ScrollTrigger.refresh());
     </script>

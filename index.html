@@ -65,16 +65,18 @@
 
     .name-section {
       position: fixed;
-      bottom: 3.5rem;
-      right: 2.5rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, calc(-50% + 30px));
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-start;
+      align-items: center;
+      justify-content: center;
       z-index: 1000;
       animation: slideUp 0.6s ease forwards;
       opacity: 0;
-      transform: translateY(30px);
+      text-align: center;
+      width: 100vw;
     }
 
 
@@ -82,7 +84,7 @@
     @keyframes slideUp {
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, -50%);
       }
     }
 
@@ -96,12 +98,13 @@
       line-height: 0.9;
       font-weight: 500;
       letter-spacing: -0.05em;
-      font-size: clamp(2rem, 10vw, 7rem);
-      text-align: justify;
+      font-size: 5rem;
+      text-align: center;
     }
 
     .first {
       margin-bottom: 0rem;
+      color: var(--red);
     }
 
     a {
@@ -112,6 +115,24 @@
 
     a:hover {
       color: var(--highlight);
+    }
+
+    /* Big centered orb */
+    .hero-orb {
+      position: absolute;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75vw;
+      pointer-events: none;
+      z-index: 0;
+      animation: orbBreathe 16s ease-in-out infinite;
+
+    }
+
+    .hero-orb img {
+      width: 100%;
+      height: auto;
     }
 
     @media (max-width: 900px) {
@@ -135,16 +156,36 @@
       }
 
       .name-section {
-        bottom: 1rem;
-        left: 1rem;
+        top: auto;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(30px);
+        width: 90vw;
+      }
+
+      @keyframes slideUp {
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
       }
 
       h1,
       h2 {
         font-size: clamp(2.5rem, 10vw, 4.5rem);
+        color: var(--red);
       }
 
-      body > main {
+      .first {
+        color: var(--red);
+      }
+
+      .hero-orb {
+        width: 100vw;
+        opacity: 1.0;
+      }
+
+      body>main {
         margin-top: 0;
         height: 100svh;
       }
@@ -173,11 +214,12 @@
   </nav>
 
   <main>
+    <div class="hero-orb">
+      <img src="depth/orbs/darkblue.svg" alt="" aria-hidden="true">
+    </div>
     <section class="name-section">
       <h2>
-
-        
-        <span class="first">Juliette Mangon</span>
+        <span class="first">juliette  mangon</span>
       </h2>
     </section>
   </main>
