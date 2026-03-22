@@ -119,22 +119,11 @@ a:hover {
   color: var(--highlight)
 }
 
-.contact-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem
-}
 
 
-
-.contact-columns p {
-  margin: 0
-}
 
 @media (max-width:768px) {
-  .contact-columns {
-    grid-template-columns: 1fr
-  }
+
 }
 
 .projects-list {
@@ -299,6 +288,8 @@ footer p {
 }
 
 .topnav {
+        text-transform: uppercase;
+
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;

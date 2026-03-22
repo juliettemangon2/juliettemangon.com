@@ -39,6 +39,7 @@
     }
 
     body {
+      text-transform: uppercase;
       background: var(--gray);
       color: var(--red);
       font-family: "Inter", sans-serif;
@@ -65,17 +66,17 @@
 
     .name-section {
       position: fixed;
-      top: 50%;
+      bottom: 0%;
       left: 50%;
       transform: translate(-50%, calc(-50% + 30px));
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: left;
+      justify-content: left;
       z-index: 1000;
       animation: slideUp 0.6s ease forwards;
       opacity: 0;
-      text-align: center;
+      text-align: left;
       width: 100vw;
     }
 
@@ -94,18 +95,18 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      align-items: justify;
+      align-items: left;
       line-height: 0.9;
       font-weight: 500;
       letter-spacing: -0.05em;
       font-size: 5rem;
-      text-align: center;
+      text-align: left;
+      margin-bottom:1rem;
+      margin-left: 2rem;
+
     }
 
-    .first {
-      margin-bottom: 0rem;
-      color: var(--red);
-    }
+
 
     a {
       color: var(--red);
@@ -160,7 +161,9 @@
         bottom: 2rem;
         left: 50%;
         transform: translateX(-50%) translateY(30px);
-        width: 90vw;
+        width: 100vw;
+        padding: 0rem;
+        margin-left:0rem;
       }
 
       @keyframes slideUp {
@@ -174,11 +177,11 @@
       h2 {
         font-size: clamp(2.5rem, 10vw, 4.5rem);
         color: var(--red);
+                margin-left:1rem;
+
       }
 
-      .first {
-        color: var(--red);
-      }
+
 
       .hero-orb {
         width: 100vw;
@@ -218,9 +221,9 @@
       <img src="depth/orbs/darkblue.svg" alt="" aria-hidden="true">
     </div>
     <section class="name-section">
-      <h2>
-        <span class="first">juliette  mangon</span>
-      </h2>
+      <h2> juliette mangon</h2>
+
+
     </section>
   </main>
 
