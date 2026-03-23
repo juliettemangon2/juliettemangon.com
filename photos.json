@@ -1,0 +1,25 @@
+[
+
+  { "src": "projects/totem/totemMoodboard.JPEG", "alt": "Everloom Trifold 1", "folder": "totemBoard" },
+
+  { "src": "projects/totem/blueLong1.jpeg", "alt": "Totem necklace", "folder": "totem" },
+  { "src": "projects/totem/blueLong4.jpeg", "alt": "Totem necklace", "folder": "totem" },
+  { "src": "projects/totem/brown2.jpeg", "alt": "Totem necklace", "folder": "totem" },
+  { "src": "projects/totem/brown4.jpeg", "alt": "Totem necklace", "folder": "totem" },
+    { "src": "projects/totem/tealWhite2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+
+  { "src": "projects/totem/blueShort1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+  { "src": "projects/totem/brown3.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+    { "src": "projects/totem/double1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+
+  { "src": "projects/totem/blueLong3.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+  { "src": "projects/totem/double2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+
+    { "src": "projects/totem/blueLong2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+        { "src": "projects/totem/blueShort2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+                { "src": "projects/totem/brown1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+                    { "src": "projects/totem/tealWhite1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" }
+
+
+
+]

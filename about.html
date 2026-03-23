@@ -66,18 +66,38 @@
       text-decoration: none;
       transition: color 0.1s;
     }
+    .hero-orb {
+      position: absolute;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70vw;
+      pointer-events: none;
+      z-index: 0;
+      animation: orbBreathe 16s ease-in-out infinite;
+    }
+
+    .hero-orb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     a:hover {
       color: var(--highlight);
     }
 
     p {
+           
+
       margin-bottom: 1.5rem;
       font-size: 1.4rem;
     }
 
     section {
       margin-top: 12rem;
+      position: relative;
+      z-index: 1;
     }
 
     section p {
@@ -113,6 +133,12 @@
 
 
     @media (max-width: 900px) {
+      .hero-orb {
+        top: 33%;
+
+        width: 130vw;
+        opacity: 0;
+      }
       .topnav {
         position: absolute;
         top: 0.75rem;
@@ -165,14 +191,20 @@
     <a href="about.html" class="active">about</a>
     <a href="resume.html">resume</a>
     <a href="paintings.html">paintings</a>
+    <a href="objects.html">objects</a>
     <a href="media.html">media</a>
     <a href="websites.html">websites</a>
 
     <a href="contact.html">contact</a>
   </nav>
 
+  <div class="hero-orb">
+    <img src="depth/orbs/white.svg" alt="" />
+  </div>
+
   <main>
     <section>
+     
       <p>
         My name is <span class="highlightname">Juliette Mangon</span>. I build products that strengthens creative
         industries. I'm interested in how we can leverage technology to shape the way media is created, distributed, and
