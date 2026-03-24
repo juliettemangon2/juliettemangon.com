@@ -33,8 +33,9 @@
 
     main {
       max-width: 1200px;
-      margin: 7rem auto 4rem;
+      margin: 4rem auto 4rem;
       padding: 0 2rem;
+      
       animation: slideIn 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
@@ -63,7 +64,6 @@
 
     /* Each collection block */
     .collection {
-      border-top: 5px solid var(--highlight);
       padding-top: 0rem;
       margin-bottom: 7rem;
     }
@@ -81,7 +81,7 @@
 
     .collection-info {
       flex: 0 0 55%;
-      padding-top: 3rem;
+      padding-top: 4rem;
     }
 
     .collection-name {
@@ -91,16 +91,22 @@
       line-height: 1.05;
       margin-bottom: 0.75rem;
       color: var(--navy);
-      letter-spacing: -0.1rem;
+      letter-spacing: -0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .collection-name {
+        letter-spacing: -0.1rem;
+      }
 
     }
 
     .collection-desc {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
 
       line-height: 1.75;
-      max-width: 90%;
-      color: var(--navy);
+      max-width: 100%;
+      color: var(--highlight);
       text-align: justify;
     }
 
@@ -112,7 +118,7 @@
 
     .moodboard img {
       padding-right: 6rem;
-            align-items: left;
+      align-items: left;
 
       width: 100%;
       height: auto;
@@ -140,6 +146,11 @@
 
     /* Mobile */
     @media (max-width: 900px) {
+
+      .collection {
+        margin-top: 15rem;
+      }
+
       main {
         margin-top: 0;
         padding: 0 1rem;
@@ -194,8 +205,9 @@
       font-weight: 700;
       /* thicker */
     }
+
     p {
-            margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
 
     }
 
@@ -212,7 +224,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    
   </style>
 </head>
 
@@ -229,9 +240,7 @@
   </nav>
 
   <main>
-    <header class="page-header">
-      <h1 class="page-title">Objects</h1>
-    </header>
+
 
     <!-- Collection I: Totem -->
     <section class="collection" id="totem">
@@ -245,36 +254,33 @@
             M
           </h2>
           <p class="collection-desc">
-            This collection explores organic form, material history.
-          </p>
-          <p class="collection-desc"> Each bead is either
+            This collection explores organic form and material history. Each bead is either
             hand-formed in molten glass at the torch or carefully sourced from discarded objects and recontextualized
             within new designs. </p>
 
-          <p class="collection-desc"> Inspired by lichen, mineral layers, bark, and moss.
-            Each piece is assembled to highlight tactility, natural textures, the beauty of irregular forms.
+          <p class="collection-desc"> Inspired by lichen, mineral layers, bark, and moss,
+            each piece is assembled to highlight tactility, natural textures, and the beauty of irregular forms.
           </p>
-          <p class="collection-desc"> 
-            Jewelry photographed on disposable cameras in New York.
-          </p>
-          
-          <p style="color:var(--highlight);" class="collection-desc">
-            Design by Julia Majchrzak and Juliette Mangon.
-          </p>
-          <p style="color:var(--highlight);"  class="collection-desc">
-            Creative Direction and Photography by Amandine Mangon and Juliette Mangon.
+          <p class="collection-desc">
+            Jewelry shoot photographed on disposable cameras in New York City.
           </p>
         </div>
-        
+
+
         <div class="moodboard">
-          <h2 style="color: var(--gray); text-align:justify;"  class="collection-name">
-            
-           JM
+          <h2 style="color: var(--gray); text-align:justify; " class="collection-name">
+
+            JM
           </h2>
           <img src="projects/totem/totemMoodboard.JPEG" alt="Totem collection moodboard" loading="eager" />
         </div>
       </div>
-
+      <p style="color:var(--highlight); text-align:right;" class="collection-desc">
+        Jewelry design by Julia Majchrzak and Juliette Mangon.
+      </p>
+      <p style="color:var(--highlight); text-align:right;" class="collection-desc">
+        Creative Direction and Photography by Amandine Mangon and Juliette Mangon.
+      </p>
       <div class="gallery-mount" data-folder="totem"></div>
     </section>
 

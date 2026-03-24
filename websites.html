@@ -75,7 +75,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             color: var(--red);
         }
 
@@ -154,20 +154,28 @@
             display: grid;
             grid-template-columns: 110px 1fr;
             font-size: 1.2rem;
-            gap: 2rem;
+            gap: 1rem;
+
 
         }
 
         .metaItem .label {
+            border-right: 5px solid var(--red);
+
             color: var(--highlight);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-size: 0.8rem;
+            letter-spacing: 0em;
+            font-size: 1.4rem;
             padding-top: 0.15rem;
         }
 
         .metaItem .value {
             color: var(--highlight);
+        }
+
+        .value {
+
+            color: var(--highlight);
+            font-size: 1.3rem;
         }
 
         .projects {
@@ -279,7 +287,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-weight: 650;
+            font-size: 1.2rem;
+            font-weight: 500;
             letter-spacing: 0.01em;
             color: var(--highlight);
             text-decoration: none;
@@ -415,11 +424,15 @@
                     had strong bodies of work but no clear place to host them. What started as helping friends publish
                     their work grew into client projects across art, film, and creative campaigns.
                 </p>
-                <p style="margin-top: 1rem;" class="lede">Because these sites often serve as the primary interface
-                    between the work and its
-                    audience, I focus on translating each client’s identity into a clear, responsive digital system.
-                    Through this work, I have learned to iterate on design, balance functionality with aesthetics, and
+                <p style="margin-top: 1rem;" class="lede"> Often serving as the primary interface
+                    between the work and its audience, these sites are focused on translating each client’s identity
+                    into a responsive digital system.
+
+                <p style="margin-top: 1rem;" class="lede">
+                    Building websites has taught me how to iterate on design, balance functionality with aesthetics, and
                     account for performance, media handling, and deployment details that matter in production.</p>
+
+                </p>
             </section>
 
             <section class="header">
@@ -433,14 +446,12 @@
                     </div>
                     <div class="metaItem">
                         <div class="label">Tools</div>
-                        <div class="value">Figma, Cloudflare, Vercel, Github, Firebase</div>
+                        <div class="value">Figma, Cloudflare, Vercel, Github, Firebase, APIs</div>
                     </div>
-                    <div class="metaItem">
-                        <div class="label">Delivery</div>
-                        <div class="value">I develop websites by creating initial design concepts and translate them
-                            into production builds, iterating on layout and functionality with client feedback, and
-                            handling deployment, maintenance, and ongoing updates.</div>
-                    </div>
+
+                    <div class="value">I develop websites by creating initial design concepts then translating them
+                        into code, then iterating on layout and functionality with client feedback, and
+                        handling deployment, maintenance, and ongoing updates.</div>
                 </div>
             </section>
 
@@ -457,7 +468,8 @@
                     <div class="cardInner">
                         <div class="cardTop">
                             <div class="siteName">
-                                <a href="https://spinach-recordings.vercel.app/" target="_blank" rel="noopener noreferrer">
+                                <a href="https://spinach-recordings.vercel.app/" target="_blank"
+                                    rel="noopener noreferrer">
                                     Spinach Records
                                 </a>
                             </div>
@@ -476,20 +488,18 @@
                         </div>
 
                         <p class="desc">
-                            Website for Spinach Media Group's record label. 
+                            Website for Spinach Media Group's record label.
                         </p>
 
 
                         <div class="thumgrayrid" aria-label="Thumbnails">
                             <a class="thumbLink" href="https://spinach-recordings.vercel.app/" target="_blank"
                                 rel="noopener noreferrer">
-                                <img class="thumbImg" src="assets/websites/spinach-1.webp"
-                                    alt="spin" loading="lazy" />
+                                <img class="thumbImg" src="assets/websites/spinach-1.webp" alt="spin" loading="lazy" />
                             </a>
                             <a class="thumbLink" href="https://spinach-recordings.vercel.app/" target="_blank"
                                 rel="noopener noreferrer">
-                                <img class="thumbImg" src="assets/websites/spinach-2.webp"
-                                    alt="spin" loading="lazy" />
+                                <img class="thumbImg" src="assets/websites/spinach-2.webp" alt="spin" loading="lazy" />
                             </a>
                             <a class="thumbLink" href="https://spinach-recordings.vercel.app/" target="_blank"
                                 rel="noopener noreferrer">
@@ -625,7 +635,8 @@
                         </div>
 
                         <p class="desc">
-                            Short film currently in production. Website was used to raise funding for the film's production, reaching 102% of initial goal.
+                            Short film currently in production. Website was used to raise funding for the film's
+                            production, reaching 102% of initial goal.
                         </p>
 
 
@@ -704,11 +715,12 @@
                     </div>
                 </li>
 
-                      <li class="card">
+                <li class="card">
                     <div class="cardInner">
                         <div class="cardTop">
                             <div class="siteName">
-                                <a href="https://juliettemangon2.github.io/ephemeral/" target="_blank" rel="noopener noreferrer">
+                                <a href="https://juliettemangon2.github.io/ephemeral/" target="_blank"
+                                    rel="noopener noreferrer">
                                     Ephemeral
                                 </a>
                             </div>
@@ -735,18 +747,18 @@
                         <div class="thumgrayrid" aria-label="Thumbnails">
                             <a class="thumbLink" href="https://juliettemangon2.github.io/ephemeral/" target="_blank"
                                 rel="noopener noreferrer">
-                                <img class="thumbImg" src="assets/websites/ephemeral-1.webp" alt="amandine site screenshot"
-                                    loading="lazy" />
+                                <img class="thumbImg" src="assets/websites/ephemeral-1.webp"
+                                    alt="amandine site screenshot" loading="lazy" />
                             </a>
                             <a class="thumbLink" href="https://juliettemangon2.github.io/ephemeral/" target="_blank"
                                 rel="noopener noreferrer">
-                                <img class="thumbImg" src="assets/websites/ephemeral-2.webp" alt="amandine site screenshot"
-                                    loading="lazy" />
+                                <img class="thumbImg" src="assets/websites/ephemeral-2.webp"
+                                    alt="amandine site screenshot" loading="lazy" />
                             </a>
                             <a class="thumbLink" href="https://juliettemangon2.github.io/ephemeral/" target="_blank"
                                 rel="noopener noreferrer">
-                                <img class="thumbImg" src="assets/websites/ephemeral-3.webp" alt="amandine site screenshot"
-                                    loading="lazy" />
+                                <img class="thumbImg" src="assets/websites/ephemeral-3.webp"
+                                    alt="amandine site screenshot" loading="lazy" />
                             </a>
                         </div>
                     </div>

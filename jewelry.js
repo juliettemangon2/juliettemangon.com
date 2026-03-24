@@ -38,10 +38,39 @@ const closeOverlay = () => {
 overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeOverlay();
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeOverlay(); return; }
+  if (overlay.style.display === 'none') return;
+  if (e.key === 'ArrowRight') showLightboxItem((currentIndex + 1) % currentItems.length);
+  if (e.key === 'ArrowLeft') showLightboxItem((currentIndex - 1 + currentItems.length) % currentItems.length);
+});
 document.addEventListener('DOMContentLoaded', () => document.body.appendChild(overlay));
 
 let allImages = [];
+let currentItems = [];
+let currentIndex = -1;
+
+function showLightboxItem(index) {
+  const x = currentItems[index];
+  if (!x) return;
+  currentIndex = index;
+
+  if (isVideo(x.src, x.type)) {
+    bigImg.style.display = 'none';
+    bigImg.removeAttribute('src');
+    bigVid.style.display = 'block';
+    bigVid.src = x.src;
+    overlay.style.display = 'flex';
+    bigVid.play().catch(() => {});
+  } else {
+    bigVid.pause();
+    bigVid.style.display = 'none';
+    bigVid.removeAttribute('src');
+    bigImg.style.display = 'block';
+    bigImg.src = x.src;
+    overlay.style.display = 'flex';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const containers = Array.from(document.querySelectorAll(SELECTOR));
@@ -120,7 +149,9 @@ function showGallery(container, folder) {
   container.style.gap = '12px';
   container.style.justifyContent = 'center';
 
-  items.forEach(x => {
+  currentItems = items;
+
+  items.forEach((x, i) => {
     const fig = document.createElement('figure');
     fig.style.margin = '0';
     fig.style.cursor = 'zoom-in';
@@ -143,14 +174,7 @@ function showGallery(container, folder) {
       source.src = x.src;
       vid.appendChild(source);
 
-      vid.addEventListener('click', () => {
-        bigImg.style.display = 'none';
-        bigImg.removeAttribute('src');
-        bigVid.style.display = 'block';
-        bigVid.src = x.src;
-        overlay.style.display = 'flex';
-        bigVid.play().catch(() => {});
-      });
+      vid.addEventListener('click', () => showLightboxItem(i));
 
       fig.appendChild(vid);
     } else {
@@ -163,14 +187,7 @@ function showGallery(container, folder) {
       img.style.height = 'auto';
       img.style.display = 'block';
 
-      img.addEventListener('click', () => {
-        bigVid.pause();
-        bigVid.style.display = 'none';
-        bigVid.removeAttribute('src');
-        bigImg.style.display = 'block';
-        bigImg.src = x.src;
-        overlay.style.display = 'flex';
-      });
+      img.addEventListener('click', () => showLightboxItem(i));
 
       fig.appendChild(img);
     }
