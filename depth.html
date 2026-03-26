@@ -307,6 +307,7 @@
             cursor: grab;
             touch-action: pan-y;
             user-select: none;
+            margin-top:3rem;
         }
 
         .panorama-container:active {
@@ -384,7 +385,7 @@
             color: #fff;
             background: rgb(16, 110, 142);
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0;
             transition: opacity 0.6s ease;
             white-space: nowrap;
         }
@@ -1186,6 +1187,9 @@
                 <div class="panorama-hint visible" id="hint-surface">← drag to explore →</div>
 
             </div>
+            
+            
+            
         </div>
 
 
@@ -1193,6 +1197,7 @@
              BETWEEN ZONE — fish, divers, creatures
              ══════════════════════════════════════════ -->
         <section id="between-zone">
+            
 
             <div class="between-zone-inner">
                 <h2 class="pano-title">What's already here</h2>
@@ -1229,7 +1234,7 @@
                     <h2 class="pano-title">Ocean Floor</h2>
                 </div>
             </div>
-            <div class="panorama-container" id="panorama-deep" data-src="/depth/panorama/deep-1.png">
+            <div class="panorama-container" id="panorama-deep" data-src="/depth/panorama/deep-2.png">
                 <div class="panorama-hint visible" id="hint-deep">← drag to explore →</div>
 
             </div>
@@ -1544,6 +1549,7 @@
         }
 
         initFlatPanorama('panorama-surface');
+         initFlatPanorama('panorama-surface2');
         initFlatPanorama('panorama-deep');
 
         /* ═══════════════════════════════════
