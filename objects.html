@@ -32,10 +32,10 @@
     }
 
     main {
-      max-width: 1200px;
+      max-width: 80%;
       margin: 4rem auto 4rem;
       padding: 0 2rem;
-      
+
       animation: slideIn 0.6s ease forwards;
       opacity: 0;
       transform: translateY(30px);
@@ -80,7 +80,7 @@
     }
 
     .collection-info {
-      flex: 0 0 55%;
+      flex: 0 0 50%;
       padding-top: 4rem;
     }
 
@@ -102,22 +102,25 @@
     }
 
     .collection-desc {
-      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-size: 1.7rem;
 
       line-height: 1.4;
       max-width: 100%;
       color: var(--highlight);
-      text-align: justify;
+      text-align: left;
     }
 
     /* Moodboard */
     .moodboard {
-      flex: 0 0 50%;
+      flex: 0 0 60%;
       padding-top: 3rem;
     }
 
     .moodboard img {
-      padding-right: 6rem;
+            margin-top: 1rem;
+
+      padding-right: 10rem;
       align-items: left;
 
       width: 100%;
@@ -144,8 +147,38 @@
       transform: scale(1.02);
     }
 
+    .intro {
+      text-align: left;
+      margin-bottom: 3rem;
+      padding-top: 5rem;
+    }
+
+    .intro p {
+      font-size: 1.4rem;
+      font-weight: 500;
+
+    }
+
     /* Mobile */
     @media (max-width: 900px) {
+
+      .moodboard img {
+        padding-right: 0rem;
+        align-items: left;
+
+        width: 100%;
+        height: auto;
+        max-height: 100vh;
+        object-fit: contain;
+        object-position: left;
+        display: block;
+      }
+
+      .intro {
+        padding-top: 5rem;
+
+      }
+
 
       .collection {
         margin-top: 15rem;
@@ -170,6 +203,7 @@
         flex: 1 1 100%;
         padding-top: 1.5rem;
       }
+
 
 
 
@@ -240,25 +274,66 @@
   </nav>
 
   <main>
+    <section class="intro">
+      <p>
+        A series of necklace collections that focus on texture, natural form, and how jewelry sits on the body.
+      </p>
+      <p>
+        Across collections, each piece is made of cut leather and beads. Each bead is either hand-formed in molten glass
+        at the torch or carefully sourced from discarded objects and recontextualized within new designs.
+      </p>
+    </section>
+    <section class="collection" id="fern">
+      <div class="collection-meta">
+        <div class="collection-info">
+          <h2 style="color: var(--red);"class="collection-name">
+            01 / FERN
+          </h2>
+          <p class="collection-desc">
+            Exploring balance and contrast.
+
+          <p style="color:var(--highlight);" class="collection-desc">
+            Creative Direction by Juliette Mangon.
+          </p>
+          <p style="color:var(--highlight); " class="collection-desc">
+            Jewelry design by Julia Majchrzak and Juliette Mangon.
+          </p>
+
+          <p style="color:var(--highlight);" class="collection-desc">
+            Photography by Juliette Mangon, Julia Majchrzak, and Mila Baumann.
+          </p>
+        </div>
 
 
+        <div class="moodboard">
+          <h2 style="color: var(--gray); text-align:justify; " class="collection-name">
+
+            JM
+          </h2>
+          <img src="projects/fern/moodboard.jpg" alt="Totem collection moodboard" loading="eager" />
+        </div>
+      </div>
+
+      <div class="gallery-mount" data-folder="fern"></div>
+    </section>
     <!-- Collection I: Totem -->
     <section class="collection" id="totem">
       <div class="collection-meta">
         <div class="collection-info">
           <h2 class="collection-name">
-           TOTEM
+            02 / TOTEM
           </h2>
           <p class="collection-desc">
-            This collection explores organic form and material history. Each bead is either
-            hand-formed in molten glass at the torch or carefully sourced from discarded objects and recontextualized
-            within new designs. </p>
+            Inspired by lichen, mineral layers, bark, and
+            moss,
+            each piece is assembled to highlight tactility, natural textures, and the beauty of irregular forms.</p>
 
-          <p class="collection-desc"> Inspired by lichen, mineral layers, bark, and moss,
-            each piece is assembled to highlight tactility, natural textures, and the beauty of irregular forms.
+
+          <p style="color:var(--highlight); " class="collection-desc">
+            Jewelry design by Julia Majchrzak and Juliette Mangon.
           </p>
-          <p class="collection-desc">
-            Jewelry shoot photographed on disposable cameras in New York.
+          <p style="color:var(--highlight); " class="collection-desc">
+            Creative Direction and Photography by Amandine Mangon and Juliette Mangon.
           </p>
         </div>
 
@@ -271,14 +346,41 @@
           <img src="projects/totem/totemMoodboard.JPEG" alt="Totem collection moodboard" loading="eager" />
         </div>
       </div>
-      <p style="color:var(--highlight); text-align:right;" class="collection-desc">
-        Jewelry design by Julia Majchrzak and Juliette Mangon.
-      </p>
-      <p style="color:var(--highlight); text-align:right;" class="collection-desc">
-        Creative Direction and Photography by Amandine Mangon and Juliette Mangon.
-      </p>
+
       <div class="gallery-mount" data-folder="totem"></div>
     </section>
+
+    <section class="collection" id="nymphaea">
+      <div class="collection-meta">
+        <div class="collection-info">
+          <h2 style="color: var(--purple);"class="collection-name">
+           03 / NYMPHAEA
+          </h2>
+          <p class="collection-desc">
+            Exploring blues and purples, inspired by winged animals and florals.</p>
+
+          <p style="color:var(--highlight); " class="collection-desc">
+            Jewelry design by Julia Majchrzak and Juliette Mangon.
+          </p>
+          <p style="color:var(--highlight); " class="collection-desc">
+            Creative Direction and Photography by Juliette Mangon and Julia Majchrzak.
+          </p>
+        </div>
+
+
+        <div class="moodboard">
+          <h2 style="color: var(--gray); text-align:justify; " class="collection-name">
+
+            JM
+          </h2>
+          <img src="projects/nymphaea/moodboard.jpg" alt="Totem collection moodboard" loading="eager" />
+        </div>
+      </div>
+
+      <div class="gallery-mount" data-folder="nymphaea"></div>
+    </section>
+
+
 
     <!-- Future collections slot in as additional <section class="collection"> blocks here -->
 

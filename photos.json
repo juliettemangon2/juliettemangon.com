@@ -1,5 +1,28 @@
 [
 
+
+{ "src": "projects/nymphaea/moodboard.jpg", "alt": "Everloom Trifold 1", "folder": "nymphaeaBoard" },
+
+{ "src": "projects/nymphaea/milaFloor.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+{ "src": "projects/nymphaea/purpleCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+{ "src": "projects/nymphaea/blue.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+{ "src": "projects/nymphaea/blueCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+{ "src": "projects/nymphaea/milaCouch.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+
+
+
+
+
+  { "src": "projects/fern/moodboard.jpg", "alt": "Everloom Trifold 1", "folder": "fernBoard" },
+
+  { "src": "projects/fern/greenWhite.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+  { "src": "projects/fern/redBlack.jpeg", "alt": "Totem necklace", "folder": "fern" },
+  { "src": "projects/fern/greenRed.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+    { "src": "projects/fern/redBlack2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+        { "src": "projects/fern/greenBlack.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+
+
+
   { "src": "projects/totem/totemMoodboard.JPEG", "alt": "Everloom Trifold 1", "folder": "totemBoard" },
 
   { "src": "projects/totem/brown1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
