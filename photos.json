@@ -16,6 +16,9 @@
 
 
 { "src": "projects/fern/blackStanding.jpeg", "alt": "Everloom Trifold 1", "folder": "fernVertical" },
+{ "src": "projects/fern/redStanding.jpeg", "alt": "Everloom Trifold 1", "folder": "fernVertical" },
+
+{ "src": "projects/fern/redSkinny.jpeg", "alt": "Everloom Trifold 1", "folder": "fernVertical" },
 
    { "src": "projects/jm3/whitepink3.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3Vertical" },
 
@@ -42,9 +45,11 @@
   { "src": "projects/fern/blackWide.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
     { "src": "projects/fern/redBlack2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+        { "src": "projects/fern/greenWhite.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+    { "src": "projects/fern/greenRed2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+
     { "src": "projects/fern/black2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
-    { "src": "projects/fern/greenRed2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
   
 
   { "src": "projects/totem/totemMoodboard.JPEG", "alt": "Everloom Trifold 1", "folder": "totemBoard" },
