@@ -1,16 +1,28 @@
 [
 
 
-{ "src": "projects/nymphaea/moodboard.jpg", "alt": "Everloom Trifold 1", "folder": "nymphaeaBoard" },
+{ "src": "projects/jm3/moodboard.jpg", "alt": "Everloom Trifold 1", "folder": "jm3Board" },
 
-{ "src": "projects/nymphaea/milaFloor.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
-{ "src": "projects/nymphaea/purpleCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
-{ "src": "projects/nymphaea/whitepink.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+{ "src": "projects/jm3/milaFloor.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
+{ "src": "projects/jm3/purpleCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
+{ "src": "projects/jm3/pinCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
+{ "src": "projects/jm3/blueCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
 
-{ "src": "projects/nymphaea/blueCloseUp.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
-{ "src": "projects/nymphaea/milaCouch.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
-{ "src": "projects/nymphaea/blue.jpeg", "alt": "Everloom Trifold 1", "folder": "nymphaea" },
+{ "src": "projects/jm3/whitepink.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
+{ "src": "projects/jm3/blue.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
 
+{ "src": "projects/jm3/milaCouch.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
+   { "src": "projects/fern/whitepink.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3" },
+
+
+{ "src": "projects/fern/blackStanding.jpeg", "alt": "Everloom Trifold 1", "folder": "fernVertical" },
+
+   { "src": "projects/jm3/whitepink3.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3Vertical" },
+
+
+{ "src": "projects/jm3/pin.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3Vertical" },
+
+   { "src": "projects/jm3/partyVert.jpeg", "alt": "Everloom Trifold 1", "folder": "jm3Vertical" },
 
 
 
@@ -18,22 +30,22 @@
 
 
   { "src": "projects/fern/moodboard.jpg", "alt": "Everloom Trifold 1", "folder": "fernBoard" },
+  { "src": "projects/fern/black3.jpeg", "alt": "Totem necklace", "folder": "fern" },
 
-  { "src": "projects/fern/greenWhite.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
   { "src": "projects/fern/redBlack.jpeg", "alt": "Totem necklace", "folder": "fern" },
-            { "src": "projects/fern/redblue.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+      { "src": "projects/fern/black.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+
 
   { "src": "projects/fern/greenRed.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
   
-                    { "src": "projects/fern/whitepink.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+  { "src": "projects/fern/blackWide.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
     { "src": "projects/fern/redBlack2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
-      { "src": "projects/fern/greenBlack.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+    { "src": "projects/fern/black2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
-
-
-
+    { "src": "projects/fern/greenRed2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+  
 
   { "src": "projects/totem/totemMoodboard.JPEG", "alt": "Everloom Trifold 1", "folder": "totemBoard" },
 
@@ -42,27 +54,26 @@
   { "src": "projects/totem/tealWhite1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
 
   { "src": "projects/totem/double1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+        { "src": "projects/totem/brown3.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+
     { "src": "projects/totem/blueShort2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
-      { "src": "projects/totem/brown3.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+  { "src": "projects/totem/blueLong2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
+        { "src": "projects/totem/tealWhite2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
 
+    { "src": "projects/totem/brown2.jpeg", "alt": "Totem necklace", "folder": "totem" },
+  { "src": "projects/totem/blueShort1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
 
-  { "src": "projects/totem/blueShort3.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
     { "src": "projects/totem/blueLong3.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
 
 
-    { "src": "projects/totem/brown2.jpeg", "alt": "Totem necklace", "folder": "totem" },
 
-    { "src": "projects/totem/brown4.jpeg", "alt": "Totem necklace", "folder": "totem" },
 
   { "src": "projects/totem/double2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
-  { "src": "projects/totem/blueLong2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
 
 
-  { "src": "projects/totem/blueLong1.jpeg", "alt": "Totem necklace", "folder": "totem" },
 
-  { "src": "projects/totem/blueShort1.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" },
-        { "src": "projects/totem/tealWhite2.jpeg", "alt": "Everloom Trifold 1", "folder": "totem" }
 
+            { "src": "projects/jm4/redblue.jpeg", "alt": "Everloom Trifold 1", "folder": "jm4" }
 
 
 
