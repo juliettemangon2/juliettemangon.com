@@ -1,4 +1,3 @@
-// gallery.js
 const JSON_URL = 'photos.json';
 const SELECTOR = '[data-folder]'; // ← support multiple containers
 
@@ -39,10 +38,20 @@ overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeOverlay();
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeOverlay(); return; }
-  if (overlay.style.display === 'none') return;
-  if (e.key === 'ArrowRight') showLightboxItem((currentIndex + 1) % currentItems.length);
-  if (e.key === 'ArrowLeft') showLightboxItem((currentIndex - 1 + currentItems.length) % currentItems.length);
+  if (e.key === 'Escape') {
+    closeOverlay();
+    return;
+  }
+
+  if (overlay.style.display === 'none' || !currentItems.length) return;
+
+  if (e.key === 'ArrowRight') {
+    showLightboxItem(currentItems, (currentIndex + 1) % currentItems.length);
+  }
+
+  if (e.key === 'ArrowLeft') {
+    showLightboxItem(currentItems, (currentIndex - 1 + currentItems.length) % currentItems.length);
+  }
 });
 document.addEventListener('DOMContentLoaded', () => document.body.appendChild(overlay));
 
@@ -50,18 +59,19 @@ let allImages = [];
 let currentItems = [];
 let currentIndex = -1;
 
-function showLightboxItem(index) {
-  const x = currentItems[index];
+function showLightboxItem(items, index) {
+  const x = items[index];
   if (!x) return;
-  currentIndex = index;
+  currentItems = items;
 
+  currentIndex = index;
   if (isVideo(x.src, x.type)) {
     bigImg.style.display = 'none';
     bigImg.removeAttribute('src');
     bigVid.style.display = 'block';
     bigVid.src = x.src;
     overlay.style.display = 'flex';
-    bigVid.play().catch(() => {});
+    bigVid.play().catch(() => { });
   } else {
     bigVid.pause();
     bigVid.style.display = 'none';
@@ -156,41 +166,21 @@ function showGallery(container, folder) {
     fig.style.margin = '0';
     fig.style.cursor = 'zoom-in';
 
-    const isVid = isVideo(x.src, x.type);
 
-    if (isVid) {
-      const vid = document.createElement('video');
-      vid.muted = true;
-      vid.loop = true;
-      vid.autoplay = true;
-      vid.playsInline = true;
-      vid.preload = 'metadata';
-      vid.style.width = '100%';
-      vid.style.height = 'auto';
-      vid.style.display = 'block';
-      if (x.poster) vid.poster = x.poster;
 
-      const source = document.createElement('source');
-      source.src = x.src;
-      vid.appendChild(source);
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.alt = x.alt || '';
+    img.src = x.src;
+    img.style.width = '100%';
+    img.style.height = 'auto';
+    img.style.display = 'block';
 
-      vid.addEventListener('click', () => showLightboxItem(i));
+    img.addEventListener('click', () => showLightboxItem(items, i));
 
-      fig.appendChild(vid);
-    } else {
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.alt = x.alt || '';
-      img.src = x.src;
-      img.style.width = '100%';
-      img.style.height = 'auto';
-      img.style.display = 'block';
+    fig.appendChild(img);
 
-      img.addEventListener('click', () => showLightboxItem(i));
-
-      fig.appendChild(img);
-    }
 
     container.appendChild(fig);
   });
