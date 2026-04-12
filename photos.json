@@ -36,6 +36,8 @@
 
   { "src": "projects/fern/moodboard.jpg", "alt": "Everloom Trifold 1", "folder": "fernBoard" },
   { "src": "projects/fern/black3.jpeg", "alt": "Totem necklace", "folder": "fern" },
+    { "src": "projects/fern/whitecord.jpeg", "alt": "Totem necklace", "folder": "fern" },
+
 
 
   { "src": "projects/fern/redBlack.jpeg", "alt": "Totem necklace", "folder": "fern" },
@@ -49,10 +51,11 @@
   
 
     { "src": "projects/fern/redBlack2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
-      { "src": "projects/fern/blackWide2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+        { "src": "projects/fern/blackwide2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+
     { "src": "projects/fern/greenRed2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
-            { "src": "projects/fern/black2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+
 
 
 
