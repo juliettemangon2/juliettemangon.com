@@ -12,6 +12,8 @@
   --navy: #343e78;
     --highlight: #000;
     --purple: #51144e;
+    --pink: #384a82;
+    --fonthighlight: #e1ddd2;
   
 }
 
@@ -36,13 +38,13 @@ body {
 }
 
 ::selection {
-  color: var(--text4);
-  background: var(--bg4);
+  color: var(--fonthighlight);
+  background: var(--pink);
 }
 
 ::-moz-selection {
-    color: var(--text4);
-  background: var(--bg4);
+    color: var(--fonthighlight);
+  background: var(--pink);
 }
 
 
