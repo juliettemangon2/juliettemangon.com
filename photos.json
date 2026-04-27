@@ -56,11 +56,10 @@
 
 
   
-        { "src": "projects/fern/blackwide2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
+        { "src": "projects/fern/blackwide2.jpeg", "alt": "", "folder": "fern" },
 
     { "src": "projects/fern/redBlack2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
-    { "src": "projects/fern/greenRed2.jpeg", "alt": "Everloom Trifold 1", "folder": "fern" },
 
 
 
