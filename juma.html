@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juma | Juliette Mangon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--gray);
+      color: var(--highlight);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      overflow-x: hidden;
+    }
+
+    main {
+      padding: 9rem 0 4rem;
+
+      animation: slideIn 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Wordmark */
+    .juma-wordmark {
+      font-size: clamp(2.75rem, 8vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-align: center;
+      color: #000;
+      margin: 0 clamp(1rem, 2vw, 2rem) clamp(3rem, 8vw, 5rem);
+    }
+
+    /* Photo grids — uncropped, responsive, no borders */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(0.75rem, 2vw, 1.75rem);
+      margin: 0 clamp(1rem, 2vw, 2rem) clamp(3rem, 8vw, 5.5rem);
+    }
+
+    .photo-grid.bottom {
+      margin: clamp(3rem, 8vw, 5.5rem) clamp(1rem, 2vw, 2rem) 0;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: none;
+      outline: none;
+    }
+
+    /* Intro copy */
+    .intro {
+      margin: 0 clamp(2rem, 4vw, 4rem);
+    }
+
+    .intro-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+
+    .intro-label:not(:first-child) {
+      margin-top: 2.75rem;
+    }
+
+    .intro p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--highlight);
+      margin-bottom: 2rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      main {
+        padding: 15rem 0 3rem;
+      }
+
+      .juma-wordmark {
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 0.6rem;
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+      }
+
+      .intro {
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+      }
+
+      .intro p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 1200px) and (min-width: 901px) {
+      main {
+        padding-top: 7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="topnav" aria-label="Site">
+    <a href="index.html">home</a>
+    <a href="about.html">about</a>
+    <a href="resume.html">resume</a>
+    <a href="websites.html">websites</a>
+    <a href="juma.html" class="active">juma</a>
+      <a href="paintings.html">paintings</a>
+    <a href="media.html">media</a>
+    <a href="contact.html">contact</a>
+  </nav>
+
+  <main>
+    <h1 class="juma-wordmark">juma jewelry</h1>
+
+    <div class="photo-grid top">
+
+      <img src="projects/juma/2.jpeg" alt="Juma jewelry" loading="eager" />
+      <img src="projects/juma/1.jpeg" alt="Juma jewelry" loading="eager" />
+      <img src="projects/juma/8.jpeg" alt="Juma jewelry" loading="lazy" />
+
+
+    </div>
+
+    <!-- Placeholder copy — replace with Juma's actual story, description, and mission -->
+    <section class="intro">
+      <p>
+        Juma is a jewelry brand I co-founded with Julia Majchrzak. Each piece is made from handmade glass beads and
+        pendants, cord cut from leather and suede, and a range of found materials. At its core, Juma is an attempt to
+        rethink what jewelry can be beyond an accessory: a form of wearable art, where color and shape play out
+        on the body the way they would on a canvas.
+      </p>
+      <p>
+        Two principles guide our work. The first is that jewelry should be for everyone. Our pieces are unisex by
+        design, conceived from the outset to be worn by anyone. The second is a
+        commitment to sustainability and versatility. We work with with found objects, secondhand leather and suede, and
+        remnant glass wherever possible, and we design each necklace to be worn in more than one way: cords can be tied
+        differently, beads can be added or removed, and individual pieces can be combined with one another to create new
+        looks.
+      </p>
+
+      <p>
+        I take part in every stage of the process, from beadmaking and material sourcing then designing jewelry to directing campaign photography.
+        
+      </p>
+
+     
+    </section>
+
+    <div class="photo-grid bottom">
+      <img src="projects/juma/12.jpeg" alt="Juma jewelry" loading="lazy" />
+      <img src="projects/juma/9.jpeg" alt="Juma jewelry" loading="eager" />
+      <img src="projects/juma/11.jpeg" alt="Juma jewelry" loading="lazy" />
+
+
+
+    </div>
+     <div class="photo-grid bottom">
+      <img src="projects/juma/3.jpeg" alt="Juma jewelry" loading="lazy" />
+      <img src="projects/juma/13.jpeg" alt="Juma jewelry" loading="eager" />
+            <img src="projects/juma/14.jpeg" alt="Juma jewelry" loading="eager" />
+
+
+      
+
+
+    </div>
+  </main>
+
+  <footer>
+    <p
+      style="text-align:center;font-size:0.9rem;color:var(--red);margin-bottom:0.7rem;padding-bottom:2rem;margin-top:2rem;">
+      © 2025 Juliette Mangon
+    </p>
+  </footer>
+</body>
+
+</html>
