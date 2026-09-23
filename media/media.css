@@ -1,0 +1,680 @@
+/*
+  media.html — constellation page.
+  Loaded after site.css; everything is scoped to body.constellation so no
+  other page is affected.
+*/
+
+.constellation {
+  --cn-bg: #1d1d1c;
+  --cn-fill: transparent;
+  --cn-ink: #000000;
+  --gray: #e1e9eb;
+  /* the site red, lifted a touch so small text stays readable on charcoal */
+  --cn-font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+
+  background: var(--gray);
+  color: var(--highlight);
+  font-family: var(--cn-font);
+  overscroll-behavior: none;
+}
+
+.constellation ::selection {
+  color: var(--cn-bg);
+  background: var(--cn-ink);
+}
+
+/* ---------- site nav, recoloured for the dark page ---------- */
+
+/* A normal page: the header (nav + intro) sits at the top and scrolls away,
+   and the constellation is a full-screen block underneath it. The two never
+   overlap because the constellation is clipped to its own box. */
+.cn-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: calc(1.5rem + var(--safe-t)) calc(1.5rem + var(--safe-r)) 0.75rem calc(1.5rem + var(--safe-l));
+  position: relative;
+  z-index: 1500;
+}
+
+.constellation .topnav {
+  position: static;
+  font-weight: 200;
+}
+
+
+
+.constellation .topnav a:hover,
+.constellation .topnav a.active {
+  color: var(--cn-ink);
+}
+
+.constellation a:hover {
+  color: var(--cn-red);
+}
+
+/* ---------- intro sentence ---------- */
+
+.cn-intro {
+  max-width: 35rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: var(--cn-ink-soft);
+}
+
+/* Phones/tablets: site.css stacks the nav vertically, so put the intro
+   beside it instead of underneath. */
+@media (max-width: 900px) {
+  .cn-header {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: calc(0.75rem + var(--safe-t)) calc(0.9rem + var(--safe-r)) 0.5rem calc(0.75rem + var(--safe-l));
+  }
+
+  .cn-intro {
+    max-width: min(46vw, 17rem);
+    font-size: clamp(0.72rem, 0.6rem + 0.6vw, 0.85rem);
+    text-align: right;
+  }
+}
+
+/* Phones on their side: a vertical nav would eat most of the height, so
+   lay it out in a row here. */
+@media (max-width: 900px) and (max-height: 500px) {
+  .constellation .topnav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 0.9rem;
+  }
+}
+
+/* ---------- stage + world ---------- */
+
+.constellation > main.cn-stage {
+  margin: 0;
+  padding: 0;
+}
+
+.cn-stage {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overflow: clip;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  background-color: var(--gray);
+  /* paper grain + a soft vignette */
+}
+
+.cn-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.cn-world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  --inv: 1;
+}
+
+.cn-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: visible;
+  pointer-events: none;
+  --sw: 2.25px;
+}
+
+.cn-line {
+  stroke: var(--cn-ink);
+  stroke-width: var(--sw);
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.cn-dot-mark {
+  fill: var(--cn-ink);
+}
+
+.cn-shape-path {
+  fill: var(--cn-fill);
+  stroke: var(--cn-ink);
+  stroke-width: var(--sw);
+  stroke-linejoin: round;
+}
+
+.cn-particle {
+  fill: var(--cn-ink);
+}
+
+/* ---------- ring dot buttons (44px hit area at any zoom) ---------- */
+
+.cn-dots,
+.cn-labels,
+.cn-bubbles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.cn-dot {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform: scale(var(--inv));
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cn-dot:focus {
+  outline: none;
+}
+
+.cn-dot:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: -9px;
+}
+
+/* ---------- titles along the lines ---------- */
+
+.cn-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* rotate around the point where the title attaches to its line */
+  transform-origin: 0 0;
+  white-space: nowrap;
+  pointer-events: none;
+  font-size: clamp(0.78rem, 0.55rem + 0.75vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.cn-label span {
+  display: block;
+  padding: 0.35em 0.4em;
+  opacity: 0;
+  transform: translateY(0.4em);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.cn-label.is-shown {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.cn-label.is-shown span {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- opened circles ---------- */
+
+.cn-bubble {
+  position: absolute;
+  left: 0;
+  top: 0;
+  --d: 480px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+}
+
+.cn-bubble-body {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: auto;
+}
+
+.cn-bubble.is-open .cn-bubble-body {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.constellation .cn-bubble-title {
+  position: absolute;
+  top: calc(var(--d) * 0.1);
+  left: 50%;
+  width: calc(var(--d) * 0.6);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: center;
+  font-size: clamp(1.05rem, calc(var(--d) * 0.05), 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--cn-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cn-bubble-title:focus {
+  outline: none;
+}
+
+.cn-bubble-title:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-underline-offset: 0.2em;
+}
+
+/* Content lives in the circle's inscribed area and scrolls if it's long. */
+.cn-bubble-scroll {
+  position: absolute;
+  top: calc(var(--d) * 0.22);
+  bottom: max(calc(var(--d) * 0.2), calc(var(--d) * 0.06 + 50px));
+  left: 50%;
+  width: calc(var(--d) * 0.72);
+  transform: translateX(-50%);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+  font-size: clamp(0.85rem, calc(var(--d) * 0.03), 1.05rem);
+  line-height: 1.5;
+  scrollbar-width: none;
+  --ft: 0px;
+  --fb: 0px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--ft), #000 calc(100% - var(--fb)), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--ft), #000 calc(100% - var(--fb)), transparent 100%);
+}
+
+.cn-bubble-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cn-bubble-scroll:focus {
+  outline: none;
+}
+
+.cn-bubble-scroll.is-scrollable {
+  touch-action: pan-y;
+}
+
+.cn-bubble-scroll.fade-top {
+  --ft: 28px;
+}
+
+.cn-bubble-scroll.fade-bottom {
+  --fb: 28px;
+}
+
+.cn-bubble-content {
+  margin-block: auto;
+  padding-block: 0.25rem;
+}
+
+.cn-bubble-close {
+  position: absolute;
+  bottom: calc(var(--d) * 0.06);
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cn-ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cn-bubble-close svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  transition: transform 0.2s ease;
+}
+
+.cn-bubble-close:hover {
+  color: var(--red);
+}
+
+.cn-bubble-close:hover svg {
+  transform: rotate(90deg);
+}
+
+.cn-bubble-close:focus {
+  outline: none;
+}
+
+.cn-bubble-close:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: -6px;
+}
+
+/* ---------- circle content ---------- */
+
+.cn-bubble p {
+  margin: 0 0 0.8em;
+  font-size: 1em;
+}
+
+.cn-bubble a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.cn-bubble a:hover {
+  color: var(--red);
+}
+
+.cn-entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cn-entry {
+  font-weight: 500;
+}
+
+.cn-entries--list .cn-entry {
+  padding: 0.18em 0;
+}
+
+.cn-entries--list.is-numbered .cn-entry,
+.cn-entries--list .cn-entry:has(.cn-num) {
+  display: flex;
+  gap: 0.6em;
+  align-items: baseline;
+}
+
+.cn-entries--media .cn-entry {
+  border-bottom: 1px solid var(--cn-ink-faint);
+}
+
+.cn-entries--media .cn-entry:first-child {
+  border-top: 1px solid var(--cn-ink-faint);
+}
+
+.cn-entry-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.7em 0.1em;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 1.05em;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cn-entry-toggle:focus {
+  outline: none;
+}
+
+.cn-entry-toggle:focus-visible .cn-entry-text {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-underline-offset: 0.2em;
+}
+
+.cn-entry-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.cn-entry-toggle:hover .cn-entry-text {
+  color: var(--red);
+}
+
+/* the circled 01, 02… from the old favourites grid */
+.cn-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1em;
+  height: 2.1em;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.cn-entry-toggle[aria-expanded="true"] .cn-num {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* plus that turns into a minus */
+.cn-entry-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 0.7em;
+  height: 0.7em;
+}
+
+.cn-entry-icon::before,
+.cn-entry-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1.5px;
+  margin-top: -0.75px;
+  background: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.cn-entry-icon::after {
+  transform: rotate(90deg);
+}
+
+.cn-entry-toggle[aria-expanded="true"] .cn-entry-icon::after {
+  transform: rotate(0deg);
+}
+
+/* accordion: animates to the note's natural height */
+.cn-note {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.35s ease, opacity 0.35s ease;
+}
+
+.cn-note.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.cn-note-inner {
+  overflow: hidden;
+  min-height: 0;
+  font-weight: 400;
+  color: var(--cn-ink-soft);
+  line-height: 1.55;
+}
+
+.cn-note-inner > :first-child {
+  padding-top: 0.1em;
+}
+
+.cn-note-inner > :last-child {
+  padding-bottom: 0.9em;
+}
+
+.cn-note-inner img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.2em 0 0.6em;
+}
+
+/* "columns" variant: the old In / Out and Cafes / My order layout */
+.cn-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1em 1.4em;
+  font-size: 1rem;
+}
+
+.constellation .cn-columns h3 {
+  margin: 0 0 0.6em;
+  font-size: 1.2em;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--red);
+}
+
+@container (max-width: 250px) {
+  .cn-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cn-text p {
+  margin: 0 0 0.9em;
+}
+
+/* ---------- view controls ---------- */
+
+.cn-controls {
+  position: fixed;
+  z-index: 1400;
+  right: calc(1rem + var(--safe-r));
+  bottom: calc(1rem + var(--safe-b));
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cn-controls button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  background:transparent;
+  color: var(--cn-ink-soft);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cn-controls button:hover {
+  color: var(--cn-ink);
+  border-color: var(--cn-ink-soft);
+}
+
+.cn-controls button:focus {
+  outline: none;
+}
+
+.cn-controls button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.cn-controls svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- screen-reader text version ---------- */
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cn-noscript {
+  position: relative;
+  z-index: 10;
+  max-width: 36rem;
+  margin: 8rem 1.5rem;
+}
+
+/* ---------- reduced motion: fades instead of motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cn-line {
+    transition: opacity 0.25s ease;
+  }
+
+  .cn-shape {
+    transition: opacity 0.25s ease;
+  }
+
+  .cn-label span {
+    transform: none;
+  }
+
+  .cn-note {
+    transition: opacity 0.2s ease;
+  }
+
+  .cn-bubble-close svg {
+    transition: none;
+  }
+}
